@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide d'Intervention de Crise TSPT - Équipe Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-section {
+            display: none; 
+        }
+        .content-section.active {
+            display: block; 
+        }
+        .nav-link {
+            cursor: pointer;
+            padding: 0.85rem 1.25rem; 
+            border-radius: 0.375rem; /* rounded-md */
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            display: block; 
+            margin-bottom: 0.25rem; 
+        }
+        .nav-link:hover {
+            background-color: #334155; /* bg-slate-700 for hover */
+            color: #ffffff;
+        }
+        .nav-link.active {
+            background-color: #0ea5e9; /* bg-sky-500 for active */
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .submenu .nav-link {
+            padding-left: 2rem; 
+            font-size: 0.9rem;
+        }
+        .submenu .nav-link.active {
+             background-color: #0369a1; /* sky-700 for active submenu */
+        }
+
+        .alert-box, .recommendation-box, .idea-box {
+            padding: 1.25rem; 
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+        }
+        .alert-box { /* ROUGE: À éviter */
+            background-color: #fee2e2; 
+            border-left: 5px solid #ef4444; 
+            color: #991b1b; 
+        }
+        .recommendation-box { /* VERT: À faire */
+            background-color: #dcfce7; 
+            border-left: 5px solid #22c55e; 
+            color: #14532d; 
+        }
+        .idea-box { /* JAUNE: Idée phare */
+            background-color: #fef9c3; 
+            border-left: 5px solid #eab308; 
+            color: #713f12; 
+        }
+        .alert-box h4, .recommendation-box h4, .idea-box h4 {
+            font-weight: 700; 
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem; /* text-lg */
+            color: inherit; 
+        }
+        .alert-box ul, .recommendation-box ul, .idea-box ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+        .alert-box li, .recommendation-box li, .idea-box li {
+            margin-bottom: 0.375rem;
+        }
+        .icon {
+            margin-right: 0.75rem; 
+            font-size: 1.1em;
+        }
+
+        #sidebar::-webkit-scrollbar { width: 8px; }
+        #sidebar::-webkit-scrollbar-track { background: #0f172a; }
+        #sidebar::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
+        #sidebar::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        #main-content::-webkit-scrollbar { width: 10px; }
+        #main-content::-webkit-scrollbar-track { background: #e2e8f0; }
+        #main-content::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 5px; }
+        #main-content::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        h1.guide-title { color: #ffffff; }
+        h2 { margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.75rem; font-weight: 700; color: #0c4a6e; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.5rem; } 
+        h3 { margin-top: 1.25rem; margin-bottom: 0.75rem; font-size: 1.5rem; font-weight: 600; color: #0369a1; } 
+        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 600; color: #075985; } 
+        
+        @media (min-width: 768px) { /* md breakpoint */
+            h2 { font-size: 2.25rem; margin-top: 2rem; margin-bottom: 1.25rem;}
+            h3 { font-size: 1.875rem; margin-top: 1.75rem; margin-bottom: 1rem;}
+            h4 { font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 0.75rem;}
+        }
+
+        .content-section p { margin-bottom: 1rem; line-height: 1.7; font-size: 0.95rem; } 
+         @media (min-width: 768px) { 
+            .content-section p { font-size: 1rem; }
+        }
+        .content-section ul, .content-section ol { margin-bottom: 1rem; padding-left: 1.75rem; }
+        .content-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .content-section cite { font-style: normal; } 
+        .content-section a { color: #0ea5e9; text-decoration: none; font-weight: 500; }
+        .content-section a:hover { color: #0369a1; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; }
+        th { background-color: #f1f5f9; font-weight: 600; color: #1e293b; }
+
+        .accordion-item {
+            border: 1px solid #cbd5e1; 
+            border-radius: 0.5rem; 
+            margin-bottom: 0.75rem;
+            background-color: #ffffff; 
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07), 0 1px 2px 0 rgba(0,0,0,0.04);
+        }
+        .accordion-header {
+            background-color: #f1f5f9; 
+            color: #1e3a8a; 
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            border-radius: 0.5rem 0.5rem 0 0; 
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .accordion-header:hover {
+            background-color: #e2e8f0; 
+        }
+        .accordion-header.open {
+             border-bottom: 1px solid #cbd5e1; 
+             border-radius: 0.5rem 0.5rem 0 0;
+        }
+        .accordion-content {
+            padding: 1.25rem;
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem; 
+            background-color: #ffffff; 
+        }
+        .accordion-content.hidden {
+            display: none;
+        }
+        .accordion-header .fas {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.open .fas {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 flex flex-col min-h-screen">
+
+    <button id="mobile-menu-button" class="md:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 text-white rounded-md shadow-lg">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="flex flex-col md:flex-row flex-1"> 
+        <nav id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 sm:w-72 bg-slate-800 text-slate-100 shadow-lg p-4 md:p-6 space-y-1 overflow-y-auto transform -translate-x-full md:relative md:translate-x-0 md:w-1/4 lg:w-1/5 transition-transform duration-300 ease-in-out">
+            <button id="close-sidebar-button" class="md:hidden absolute top-4 right-4 text-slate-300 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <h1 class="guide-title text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center md:text-left pt-8 md:pt-0">Guide de Crise TSPT</h1>
+            <a href="https://thot586.github.io/EM_CRT/" class="block text-center bg-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-600 transition-colors duration-300 mb-6 shadow-lg">
+                <i class="fas fa-arrow-left mr-2"></i>Retour au Portail
+            </a>
+            <a class="nav-link" onclick="showSection('section-home'); closeSidebar();"><i class="fas fa-home icon"></i>Accueil</a>
+            <a class="nav-link" onclick="showSection('section-introduction-guide-tspt'); closeSidebar();"><i class="fas fa-info-circle icon"></i>Objectif du Guide</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-clipboard-list icon"></i>Plan d'Intervention de Crise <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-crise-phase1'); closeSidebar();">Phase 1: Sécurisation</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase2'); closeSidebar();">Phase 2: Stabilisation</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase3'); closeSidebar();">Phase 3: Consolidation</a>
+                </div>
+            </div>
+
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-tools icon"></i>Boîte à Outils Thérapeutiques <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-tspt-outils-stabilisation'); closeSidebar();">Techniques de Stabilisation</a>
+                    <a class="nav-link" onclick="showSection('section-tspt-outils-fenetre'); closeSidebar();">La Fenêtre de Tolérance</a>
+                    <a class="nav-link" onclick="showSection('section-tspt-outils-restructuration'); closeSidebar();">Restructuration Cognitive</a>
+                     <a class="nav-link" onclick="showSection('section-tspt-outils-securite'); closeSidebar();">Le Plan de Sécurité</a>
+                </div>
+            </div>
+
+             <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-book-open icon"></i>Fondamentaux (Théorie) <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-tspt-compreprendre'); closeSidebar();">Comprendre le TSPT</a>
+                    <a class="nav-link" onclick="showSection('section-tspt-neurobio'); closeSidebar();">Neurobiologie du Trauma</a>
+                    <a class="nav-link" onclick="showSection('section-tspt-tic'); closeSidebar();">Le Soin Informé du Trauma</a>
+                </div>
+            </div>
+            
+            <a class="nav-link" onclick="showSection('section-tspt-roles-recap'); closeSidebar();"><i class="fas fa-users-cog icon"></i>Rôles de l'Équipe en Crise</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-chalkboard-teacher icon"></i>Psychoéducation <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-tspt-psychoed-patient'); closeSidebar();">Pour la Personne</a>
+                    <a class="nav-link" onclick="showSection('section-tspt-psychoed-entourage'); closeSidebar();">Pour l'Entourage</a>
+                </div>
+            </div>
+            <a class="nav-link" onclick="showSection('section-tspt-glossaire'); closeSidebar();"><i class="fas fa-book icon"></i>Glossaire</a>
+            <a class="nav-link" onclick="showSection('section-tspt-references'); closeSidebar();"><i class="fas fa-link icon"></i>Références</a>
+        </nav>
+
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden" onclick="closeSidebar()"></div>
+
+        <main id="main-content" class="flex-1 p-4 md:p-8 lg:p-10 overflow-y-auto">
+            <div id="section-home" class="content-section">
+                <h2>Guide d'Intervention de Crise : Trouble de Stress Post-Traumatique (TSPT)</h2>
+                <p>Ce guide est un outil opérationnel pour les équipes mobiles de psychiatrie intervenant en <strong>alternative à l'hospitalisation (modèle CRT)</strong> pour des personnes en crise liée à un TSPT. Il est conçu pour structurer une intervention rapide, sécurisante et centrée sur la personne, en s'appuyant sur les principes du <strong>Soin Informé du Trauma (Trauma-Informed Care)</strong>.</p>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Comment utiliser ce guide :</h4>
+                    <ul>
+                        <li>La section <strong>Plan d'Intervention de Crise</strong> est le cœur du guide. Elle offre un protocole par phases pour guider l'action de l'équipe.</li>
+                        <li>La <strong>Boîte à Outils Thérapeutiques</strong> détaille les techniques de stabilisation et de régulation émotionnelle à utiliser en priorité.</li>
+                        <li>Les autres sections fournissent le contexte théorique et pratique pour une prise en charge cohérente et multidisciplinaire.</li>
+                        <li>Utilisez ce guide comme support pour vos synthèses d'équipe afin de planifier et d'ajuster les interventions au domicile.</li>
+                    </ul>
+                </div>
+                <p>Notre mission est de considérer la crise non comme une pathologie, mais comme une réaction normale à une situation anormale. L'objectif est de co-construire avec la personne un sentiment de sécurité physique et psychologique, condition indispensable avant tout travail sur le trauma.</p>
+            </div>
+
+            <div id="section-introduction-guide-tspt" class="content-section">
+                <h2>Objectif de ce Guide Opérationnel</h2>
+                <p>Intervenir au domicile d'une personne en crise de TSPT, c'est entrer dans un espace où le sentiment de sécurité a été brisé. Notre mission, inspirée des équipes de Résolution de Crise et Traitement à Domicile (Crisis Resolution and Home Treatment - CRT) (<cite>Johnson et al., 2015</cite>), est de faire du domicile un lieu de sécurité et de stabilisation, et non un lieu d'isolement et de danger perçu.</p>
+                <p>Ce guide propose un <strong>protocole par phases</strong> pour une intervention intensive et coordonnée, visant à :</p>
+                <ul class="list-disc ml-5">
+                    <li>Réduire l'hyperactivation neurovégétative et les symptômes de reviviscence.</li>
+                    <li>Restaurer un sentiment de contrôle et d'agentivité chez la personne.</li>
+                    <li>Impliquer l'entourage comme partenaire de soin.</li>
+                    <li>Éviter l'hospitalisation, qui peut être re-traumatisante.</li>
+                </ul>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Notre mission en trois temps :</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Sécuriser :</strong> Assurer la sécurité physique et psychologique en utilisant des techniques de stabilisation et en agissant sur l'environnement.</li>
+                        <li><strong>Stabiliser :</strong> Aider la personne à sortir de l'état de survie (hyper/hypo-activation) pour revenir dans sa "fenêtre de tolérance".</li>
+                        <li><strong>Connecter :</strong> Préparer le relais vers une prise en charge spécialisée sur le trauma (EMDR, thérapie d'exposition, etc.) une fois la personne stabilisée.</li>
+                    </ol>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Priorité absolue : "Safety First"</h4>
+                    <p>Aucun travail d'élaboration sur le contenu du trauma ne doit être entrepris tant que la personne n'est pas stabilisée et ne dispose pas d'outils de régulation émotionnelle efficaces. Forcer le récit peut être délétère et re-traumatisant. La sécurité prime sur tout.</p>
+                </div>
+            </div>
+            
+            <!-- PLAN D'INTERVENTION -->
+            <div id="section-crise-phase1" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 1 : Sécurisation (Jours 1 à 5)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Abaisser l'hyperactivation, co-créer un sentiment de sécurité et fournir des outils de régulation immédiats.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Très haute fréquence.</strong> La présence fiable et prévisible de l'équipe contrecarre le sentiment de danger imminent et d'impuissance.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Infirmier·ère / Pair-aidant :</strong> Visite quotidienne, centrée sur la pratique d'exercices de stabilisation.</li>
+                    <li><strong>Psychiatre :</strong> Visite à J1 pour évaluation (risque, sommeil, comorbidités) et ajustement médicamenteux si besoin (ex: Prazosine pour les cauchemars, anxiolytiques avec prudence).</li>
+                    <li><strong>Assistant·e Social·e / Ergothérapeute :</strong> Évaluation de la sécurité de l'environnement dès J1-J2.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Évaluation du risque :</strong> Suicidaire, mais aussi mise en danger par hypervigilance (ex: réactions de sursaut).</li>
+                        <li><strong>Psychoéducation sur le TSPT :</strong> Normaliser les symptômes. "Ce que vous vivez est une réaction normale du cerveau à un événement anormal. Votre corps est bloqué en mode 'survie'."</li>
+                        <li><strong>Coaching intensif des techniques de stabilisation :</strong> Pratiquer des exercices de grounding et de respiration à chaque visite.</li>
+                        <li><strong>Sécurisation de l'environnement :</strong> Avec l'accord de la personne, identifier et réduire les déclencheurs (ex: fermer les volets, réduire les bruits).</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas poser de questions sur les détails du trauma.</strong> L'objectif est le "ici et maintenant".</li>
+                        <li><strong>Ne pas toucher la personne sans son consentement explicite.</strong></li>
+                        <li><strong>Ne pas minimiser la peur :</strong> Éviter les phrases comme "Vous êtes en sécurité maintenant, n'ayez pas peur."</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase2" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 2 : Stabilisation (Jours 6 à 15)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Renforcer l'utilisation autonome des outils de régulation et élargir la fenêtre de tolérance de la personne.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Fréquence élevée mais en diminuant progressivement.</strong> L'objectif est de renforcer l'autonomie et la confiance de la personne dans sa capacité à gérer les "vagues" émotionnelles.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Infirmier·ère / Psychologue :</strong> Visites espacées (1 jour sur 2), centrées sur l'analyse des situations de dérégulation et le renforcement des compétences.</li>
+                    <li><strong>Ergothérapeute :</strong> Accompagnement progressif pour réinvestir des lieux ou activités évités mais sécurisants.</li>
+                    <li><strong>Pair-aidant :</strong> Partage d'expérience sur les stratégies de stabilisation qui ont fonctionné pour lui/elle.</li>
+                </ul>
+
+                 <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Introduire le concept de "Fenêtre de Tolérance" :</strong> Aider la personne à identifier ses signes d'hyper- et d'hypo-activation.</li>
+                        <li><strong>Co-construire le Plan de Sécurité :</strong> (Voir <a href="#" onclick="showSection('section-tspt-outils-securite')">détails dans la boîte à outils</a>) Que faire quand je sens que je sors de ma fenêtre ?</li>
+                        <li><strong>Travailler sur le sommeil :</strong> Mettre en place des rituels d'endormissement sécurisants.</li>
+                         <li><strong>Identifier les pensées "rouges" :</strong> Commencer une introduction douce à la restructuration cognitive sur les pensées de danger imminent ("Je ne suis jamais en sécurité").</li>
+                    </ul>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas commencer une thérapie d'exposition.</strong> La stabilisation est le seul objectif.</li>
+                        <li><strong>Ne pas créer de dépendance :</strong> Encourager activement l'utilisation des outils par la personne <strong>avant</strong> d'appeler l'équipe.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase3" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 3 : Consolidation et Relais (Jours 16+)</h3>
+                 <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Ancrer les acquis, préparer un relais sécurisé vers une thérapie du trauma et prévenir les rechutes.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Fréquence de suivi de droit commun.</strong></p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Référent de cas (Infirmier·ère ou autre) :</strong> Visite hebdomadaire pour consolider le plan de prévention de la rechute.</li>
+                    <li><strong>Ensemble de l'équipe :</strong> Organiser activement la transition vers le partenaire de relais.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Identifier avec la personne le type de thérapie du trauma souhaité</strong> (EMDR, TCC centrée sur le trauma, etc.) et le praticien.</li>
+                        <li><strong>Organiser une rencontre de transition tripartite</strong> (personne, équipe mobile, futur thérapeute) pour assurer la continuité.</li>
+                        <li><strong>Formaliser un plan de prévention de la rechute :</strong> Quels sont mes déclencheurs ? Quelles compétences utiliser ? Qui appeler ?</li>
+                        <li><strong>Valoriser le chemin parcouru et la résilience :</strong> Aider la personne à identifier ses forces et ses ressources (croissance post-traumatique).</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas arrêter le suivi brutalement.</strong> Prévoir un ou deux contacts téléphoniques après la fin des visites.</li>
+                        <li><strong>Ne pas négliger les dates anniversaires du trauma</strong> dans le plan de prévention.</li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- BOITE A OUTILS -->
+            <div id="section-tspt-outils-stabilisation" class="content-section">
+                <h2>Boîte à Outils : Techniques de Stabilisation</h2>
+                <p>Ces techniques sont le fondement de l'intervention de crise en TSPT. Elles doivent être pratiquées à chaque visite, même lorsque la personne va bien.</p>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Le Grounding (Ancrage Sensoriel) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Ramener l'attention de la personne sur le présent, le "ici et maintenant", pour la sortir des reviviscences ou de la dissociation.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> L'exercice du 5-4-3-2-1</h4>
+                            <p>Guidez la personne à voix basse et calme :</p>
+                            <ol class="list-decimal ml-5">
+                                <li>"Nommez <strong>5 choses</strong> que vous pouvez voir autour de vous."</li>
+                                <li>"Nommez <strong>4 choses</strong> que vous pouvez sentir (vos vêtements sur votre peau, la chaise sous vous...)."</li>
+                                <li>"Nommez <strong>3 choses</strong> que vous pouvez entendre."</li>
+                                <li>"Nommez <strong>2 choses</strong> que vous pouvez sentir avec votre nez."</li>
+                                <li>"Nommez <strong>1 chose</strong> que vous pouvez goûter."</li>
+                            </ol>
+                            <p>Pour voir plus de techniques d'ancrage, consultez le site de <a href="https://igorthiriez.com/portfolio/ancrage/" target="_blank" rel="noopener">Igor Thiriez</a>.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. La Respiration Carrée <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Activer le système nerveux parasympathique pour calmer la réponse de "lutte ou fuite".</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Comment pratiquer</h4>
+                            <p>Guidez la personne (ou faites-le avec elle) :</p>
+                            <ol class="list-decimal ml-5">
+                                <li><strong>Inspirez</strong> par le nez en comptant jusqu'à 4.</li>
+                                <li><strong>Bloquez</strong> votre respiration en comptant jusqu'à 4.</li>
+                                <li><strong>Expirez</strong> lentement par la bouche en comptant jusqu'à 4.</li>
+                                <li><strong>Bloquez</strong> votre respiration en comptant jusqu'à 4.</li>
+                                <li>Recommencez plusieurs fois.</li>
+                            </ol>
+                            <p>Voir une démonstration vidéo : <a href="https://youtu.be/y3ABNa6HNQA?si=gaMpPXwz0E9hdB9q" target="_blank" rel="noopener">Respiration Carrée (Tuto Débutant)</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. L'exercice du Lieu Sûr <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Créer un refuge mental que la personne peut utiliser pour s'apaiser.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Comment le construire</h4>
+                            <p>À faire pendant un moment de calme. Demandez à la personne d'imaginer un lieu (réel ou imaginaire) où elle se sent parfaitement en sécurité et en paix. Aidez-la à le décrire avec tous ses sens (les couleurs, les sons, les odeurs, les sensations...). C'est un outil qu'elle pourra "visiter" mentalement en cas de détresse.</p>
+                            <p>Voir une démonstration vidéo : <a href="https://youtu.be/S9gzV6OazGs?si=37RobhfFBEuE7tzj" target="_blank" rel="noopener">Exercice du Lieu Sûr (Vidéo EMDR)</a></p>
+                        </div>
+                        <div class="alert-box">
+                            <h4><i class="fas fa-exclamation-triangle icon"></i> Attention</h4>
+                            <p>Assurez-vous que le lieu choisi n'a aucune association, même lointaine, avec un événement traumatique.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-tspt-outils-fenetre" class="content-section">
+                <h2>Boîte à Outils : La Fenêtre de Tolérance</h2>
+                <p>Le concept de "Fenêtre de Tolérance" (<cite>Siegel, 2012</cite>) est un outil de psychoéducation puissant. Il aide la personne à comprendre ses états internes sans jugement.</p>
+                <p>La fenêtre de tolérance est la zone où nous pouvons penser, ressentir et réagir de manière adaptée. Le trauma rétrécit cette fenêtre.</p>
+                            
+            <!-- Bloc image responsive -->
+            <div class="image-box my-4 flex justify-center items-center">
+                <img src="https://psychologue-tiffany-gerard.com/wp-content/uploads/2023/09/fonctionnement-emotionnel-1024x738.jpg" 
+                    alt="Schéma de la fenêtre de tolérance" 
+                    class="rounded-lg shadow-md max-w-full max-h-screen object-contain cursor-zoom-in"
+                    onclick="openImageModal(this.src, this.alt)">
+            </div>
+            <p class="text-xs text-center mt-2">
+                Source : Gérard, T. (2023). <em>Fonctionnement émotionnel et fenêtre de tolérance</em>. Psychologue Tiffany Gérard.
+            </p>
+
+            <!-- Modal plein écran (caché par défaut) -->
+            <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 hidden flex items-center justify-center z-50">
+                <span class="absolute top-5 right-8 text-white text-3xl cursor-pointer" onclick="closeImageModal()">&times;</span>
+                <img id="modalImage" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg shadow-lg cursor-zoom-out">
+            </div>
+
+            <!-- Script -->
+            <script>
+            function openImageModal(src, alt) {
+                document.getElementById("modalImage").src = src;
+                document.getElementById("modalImage").alt = alt;
+                document.getElementById("imageModal").classList.remove("hidden");
+            }
+            function closeImageModal() {
+                document.getElementById("imageModal").classList.add("hidden");
+            }
+            </script>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Les 3 états</h4>
+                    <ul>
+                        <li><strong>Hyper-activation (au-dessus de la fenêtre) :</strong> "Lutte ou fuite". Anxiété, colère, panique, hypervigilance. Le système nerveux sympathique est suractivé.</li>
+                        <li><strong>Dans la fenêtre :</strong> État optimal. On se sent en sécurité, calme, capable de réfléchir et de se connecter aux autres.</li>
+                        <li><strong>Hypo-activation (en dessous de la fenêtre) :</strong> "Figement ou soumission". Dissociation, sentiment de vide, d'engourdissement, d'épuisement. Le système nerveux dorsal-vagal est suractivé.</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Notre rôle en crise</h4>
+                    <p>Notre but est d'utiliser les outils de stabilisation (grounding, respiration) pour aider la personne à <strong>revenir à l'intérieur de sa fenêtre</strong>, et à long terme, à <strong>élargir cette fenêtre</strong>.</p>
+                </div>
+            </div>
+           
+            <div id="section-tspt-outils-restructuration" class="content-section"> 
+                <h2>Boîte à Outils : Restructuration Cognitive</h2>
+                <p>Le trauma laisse souvent des croyances négatives profondes et rigides. La restructuration cognitive vise à les identifier, les mettre en perspective et les reformuler. Elle doit être introduite uniquement après une stabilisation suffisante et une alliance thérapeutique solide.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Croyances dysfonctionnelles fréquentes dans le TSPT</h4>
+                    <p>Ces croyances sont souvent liées à la sécurité, la confiance, l'intimité, l'estime de soi et le pouvoir (<cite>Resick et al., 2016</cite> ; <cite>Beck & Dozois, 2011</cite>).</p>
+                    <ul>
+                        <li><strong>Sur soi :</strong> "Je suis souillé(e)", "C'est de ma faute", "Je suis faible".</li>
+                        <li><strong>Sur le monde :</strong> "Le monde est dangereux", "On ne peut faire confiance à personne".</li>
+                        <li><strong>Sur l’avenir :</strong> "Je ne pourrai jamais m’en sortir", "Je suis condamné(e) à revivre ce trauma".</li>
+                    </ul>
+                </div>
+                
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Comment commencer en douceur (Phase 2)</h4>
+                    <p>Utilisez des techniques de questionnement socratique et d’exploration guidée :</p>
+                    <ul>
+                        <li>"Quand cette pensée 'je ne suis en sécurité nulle part' apparaît, quelle est la preuve qu'elle est vraie à 100% en ce moment précis ?"</li>
+                        <li>"Existe-t-il une autre façon, même partielle, de comprendre cette situation ?"</li>
+                        <li>"Qu’est-ce que votre 'partie sage' ou 'adulte' dirait à la partie de vous qui a si peur ?"</li>
+                    </ul>
+                    <p>Pour une présentation complète : 
+                        <a href="https://www.ptsd.va.gov/understand_tx/cognitive_processing.asp" target="_blank" rel="noopener">VA – Cognitive Processing Therapy (CPT)</a>
+                    </p>
+                </div>
+                
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Outils complémentaires</h4>
+                    <ul>
+                        <li><strong>Feuilles de pensées</strong> : noter situation, émotion, pensée automatique, intensité et alternatives.</li>
+                        <li><strong>Colonnes de Beck</strong> : pensée, distorsion cognitive, reformulation rationnelle.</li>
+                        <li><strong>Cartes de coping</strong> : phrases alternatives à relire en cas de montée d’angoisse.</li>
+                        <li><strong>Exercices écrits de CPT</strong> : "Impact Statement" (décrire comment le trauma a affecté ses croyances sur soi, les autres et le monde).</li>
+                    </ul>
+                    <p>Ressource utile : 
+                        <a href="https://www.youtube.com/watch?v=nLHBeDQD7xM" target="_blank" rel="noopener">TCC Montréal – Restructuration cognitive (vidéo explicative)</a>
+                    </p>
+                </div>
+                
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Ne pas confronter trop tôt</h4>
+                    <p>Remettre en question les croyances centrales trop tôt peut être vécu comme une invalidation ou une attaque. Cette étape nécessite un travail progressif, avec validation émotionnelle et stabilisation préalable.</p>
+                </div>
+            </div>
+
+            <div id="section-tspt-outils-securite" class="content-section">
+                <h2>Boîte à Outils : Le Plan de Sécurité</h2>
+                <p>Similaire au plan de crise classique, le plan de sécurité pour le TSPT est spécifiquement axé sur la gestion des symptômes traumatiques (reviviscences, dissociation, impulsivité).</p>
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Éléments clés à co-construire</h4>
+                    <ol class="list-decimal ml-5 space-y-2">
+                        <li><strong>Quels sont mes signaux d'alerte ?</strong> (Que se passe-t-il dans mon corps juste avant une crise ou un flashback ?)</li>
+                        <li><strong>Mes stratégies de grounding préférées.</strong> (Lister 2-3 exercices qui fonctionnent bien pour moi).</li>
+                        <li><strong>Objets d'ancrage.</strong> (Un objet à toucher, une odeur, une musique qui me ramène au présent).</li>
+                        <li><strong>Phrases d'auto-apaisement.</strong> ("Je suis en [année]", "Le danger est passé", "C'est un souvenir, pas la réalité").</li>
+                        <li><strong>Personnes ressources à contacter.</strong></li>
+                        <li><strong>Professionnels à contacter</strong> (numéro de l'équipe, etc.).</li>
+                         <li><strong>Comment rendre mon environnement plus sûr pendant une crise.</strong></li>
+                    </ol>
+                </div>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Un document vivant</h4>
+                    <p>Le plan doit être écrit, visible (ex: sur le frigo) et la personne doit être encouragée à l'utiliser et à l'annoter. C'est un outil d'autonomisation.</p>
+                </div>
+            </div>
+
+            <!-- FONDAMENTAUX -->
+            <div id="section-tspt-compreprendre" class="content-section">
+                 <h2>Fondamentaux : Comprendre le TSPT</h2>
+                 <p>Le Trouble de Stress Post-Traumatique est une condition qui peut se développer après avoir vécu ou été témoin d'un événement traumatique. Ce n'est pas un signe de faiblesse, mais une blessure psychique.</p>
+                <h4>Les 4 Pôles de Symptômes (DSM-5) :</h4>
+                <ol class="list-decimal ml-5">
+                    <li><strong>Reviviscence :</strong> La personne revit le trauma de manière involontaire (flashbacks, cauchemars, détresse intense face à des indices).</li>
+                    <li><strong>Évitement :</strong> La personne évite activement les souvenirs, pensées, lieux ou personnes qui rappellent le trauma.</li>
+                    <li><strong>Altérations Négatives de la Cognition et de l'Humeur :</strong> Croyances négatives persistantes, sentiment de détachement, incapacité à ressentir des émotions positives.</li>
+                    <li><strong>Altérations de l'Éveil et de la Réactivité :</strong> Hypervigilance, sursauts, irritabilité, troubles du sommeil et de la concentration.</li>
+                </ol>
+            </div>
+            
+            <div id="section-tspt-neurobio" class="content-section">
+                <h2>Fondamentaux : Neurobiologie du Trauma</h2>
+                <p>Comprendre ce qui se passe dans le cerveau permet de déculpabiliser la personne et l'équipe. Le TSPT est une réorganisation du cerveau pour la survie (<cite>van der Kolk, 2014</cite>).</p>
+                 <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Le trio cérébral du trauma</h4>
+                    <ul>
+                        <li><strong>L'Amygdale (la sentinelle) :</strong> Devient hyperactive. Elle sonne l'alarme en permanence, même en l'absence de danger réel. C'est elle qui déclenche les réponses de "lutte, fuite, figement".</li>
+                        <li><strong>L'Hippocampe (l'archiviste) :</strong> Est inhibé par le stress. Il n'arrive pas à classer le souvenir traumatique comme "passé". Le souvenir reste donc vécu comme présent, d'où les flashbacks.</li>
+                        <li><strong>Le Cortex Préfrontal (le chef d'orchestre) :</strong> Est "déconnecté". Il ne peut plus jouer son rôle de régulateur sur l'amygdale. La personne a du mal à réfléchir, à se calmer, à prendre des décisions.</li>
+                    </ul>
+                </div>
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> L'impact sur nos interventions</h4>
+                    <p>En crise, le cortex préfrontal est "hors-service". Argumenter ou raisonner est donc inutile. Les techniques de stabilisation (grounding, respiration) agissent directement sur le système nerveux et l'amygdale pour calmer l'alarme.</p>
+                </div>
+            </div>
+
+             <div id="section-tspt-tic" class="content-section">
+                <h2>Fondamentaux : Le Soin Informé du Trauma (Trauma-Informed Care)</h2>
+                <p>C'est un cadre de pensée qui guide TOUTES nos interactions. Il ne s'agit pas de "traiter le trauma", mais de créer un environnement qui ne re-traumatise pas.</p>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Le changement de paradigme</h4>
+                    <p>On passe de la question "Qu'est-ce qui ne va pas chez vous ?" à la question <strong>"Qu'est-ce qui vous est arrivé ?"</strong></p>
+                </div>
+                <h4>Les 5 Principes Clés :</h4>
+                <ol class="list-decimal ml-5">
+                    <li><strong>Sécurité :</strong> Assurer la sécurité physique et psychologique de la personne à tout moment.</li>
+                    <li><strong>Confiance :</strong> Être transparent, fiable et cohérent.</li>
+                    <li><strong>Choix :</strong> Offrir des choix à la personne pour lui redonner un sentiment de contrôle.</li>
+                    <li><strong>Collaboration :</strong> La personne est l'experte de son vécu. Nous sommes des partenaires.</li>
+                    <li><strong>Autonomisation (Empowerment) :</strong> Se concentrer sur les forces et la résilience de la personne.</li>
+                </ol>
+            </div>
+            
+            <!-- Rôles de l'équipe -->
+             <div id="section-tspt-roles-recap" class="content-section">
+                    <h2>Rôles de l'Équipe en Crise TSPT</h2>
+                <p>La coordination est la clé. Chaque membre de l'équipe apporte une expertise spécifique pour créer un filet de sécurité autour de la personne.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Professionnel</th>
+                            <th>Rôle Prioritaire en Crise TSPT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Psychiatre</strong></td>
+                            <td>Leader clinique. Évalue le risque et les comorbidités. Gère la pharmacologie de crise (sommeil, hyperactivation, cauchemars). Garant du cadre "Safety First".</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infirmier·ère</strong></td>
+                            <td>Intervenant de première ligne. Assure la présence à haute fréquence, coache et pratique les techniques de stabilisation, suit le plan de sécurité.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Psychologue</strong></td>
+                            <td>Apporte le cadre théorique (Fenêtre de tolérance, TIC). Aide à la psychoéducation. Prépare le travail sur le trauma pour le relais (ne le commence pas).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Assistant·e Social·e</strong></td>
+                            <td>Agit sur les stresseurs environnementaux (logement, sécurité du quartier, démarches administratives) qui peuvent majorer le sentiment d'insécurité.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Ergothérapeute & Aide-Soignant·e</strong></td>
+                            <td>Aide à la reprise des routines sécurisantes. Travaille sur l'évitement comportemental de manière très progressive (ex: oser rouvrir les volets, puis sortir dans le jardin).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pair-Aidant</strong></td>
+                            <td>Incarnation du rétablissement. Valide l'expérience vécue. Partage des stratégies de stabilisation concrètes. Offre un espoir fondé sur l'expérience.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Secrétaire</strong></td>
+                            <td>Premier point de contact. Adopte une communication calme et rassurante. Planifie les visites de manière fiable et prévisible pour la personne.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Psychoéducation -->
+            <div id="section-tspt-psychoed-patient" class="content-section">
+                <h2>Modules de Psychoéducation pour la Personne</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Mon cerveau en mode survie <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Normaliser les symptômes et déculpabiliser.</p>
+                        <p><strong>Contenu :</strong> Expliquer de manière simple la neurobiologie du trauma (amygdale, hippocampe, cortex préfrontal). Utiliser la métaphore de "l'alarme incendie qui reste bloquée".</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Comprendre ma fenêtre de tolérance <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Apprendre à s'auto-observer sans jugement.</p>
+                        <p><strong>Contenu :</strong> Dessiner la fenêtre et aider la personne à identifier ses propres signes d'hyper- et d'hypo-activation. "Quand je suis en hyper, je sens... Quand je suis en hypo, je me sens..."</p>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">3. La dissociation, c'est quoi ? <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Mettre des mots sur les expériences de déconnexion.</p>
+                        <p><strong>Contenu :</strong> Expliquer la dissociation comme un mécanisme de protection du cerveau. "C'est comme si votre cerveau disjonctait pour vous protéger d'une surcharge." Rassurer sur le fait que l'on peut apprendre à "revenir" avec le grounding.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-tspt-psychoed-entourage" class="content-section">
+                <h2>Modules de Psychoéducation pour l'Entourage</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Le trauma n'est pas juste "dans la tête" <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Aider les proches à comprendre l'impact physique du trauma.</p>
+                        <p><strong>Contenu :</strong> Expliquer que l'hypervigilance et les sursauts sont des réflexes corporels, pas un manque de volonté. Aider à déculpabiliser l'entourage qui peut se sentir impuissant.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Comment réagir face à un flashback ou un cauchemar ? <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                         <div class="recommendation-box">
+                             <h4><i class="fas fa-check-circle icon"></i> Quoi faire</h4>
+                             <ul>
+                                <li>Parler d'une voix calme et basse. Ne pas crier.</li>
+                                 <li>Ne pas toucher la personne sauf si elle le demande ou que c'est convenu.</li>
+                                 <li>L'orienter vers le présent : "Je suis [Prénom], tu es avec moi dans le salon. Nous sommes en 2025."</li>
+                                 <li>L'inviter à faire un exercice de grounding avec vous.</li>
+                             </ul>
+                        </div>
+                        <div class="alert-box">
+                             <h4><i class="fas fa-exclamation-triangle icon"></i> Quoi ne pas faire</h4>
+                             <ul>
+                                 <li>Ne pas la secouer ou la retenir de force.</li>
+                                 <li>Ne pas lui dire "calme-toi" ou "ce n'est rien".</li>
+                                 <li>Ne pas lui poser de questions sur le contenu du flashback.</li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Prendre soin de soi pour éviter l'épuisement <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Reconnaître le risque de trauma vicariant et d'épuisement.</p>
+                        <p><strong>Contenu :</strong> Souligner que leur bien-être est une condition pour aider leur proche. Les encourager à maintenir leurs propres activités et à chercher du soutien pour eux-mêmes (associations, etc.).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Glossaire et références -->
+            <div id="section-tspt-glossaire" class="content-section">
+                <h2>Glossaire</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">Dissociation <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Mécanisme de défense où le cerveau se "déconnecte" de la réalité présente pour échapper à une angoisse insupportable. Peut se manifester par un sentiment d'irréalité (déréalisation) ou de détachement de soi (dépersonnalisation).</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Fenêtre de Tolérance <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Concept de Daniel Siegel décrivant l'état d'activation optimal du système nerveux où une personne peut gérer ses émotions et informations sans être dépassée.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Flashback <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Reviviscence intense et involontaire du souvenir traumatique où la personne a l'impression de revivre l'événement sensoriellement (images, sons, odeurs, sensations physiques) dans le présent.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Grounding (Ancrage) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Ensemble de techniques visant à ramener l'attention d'une personne sur le moment présent et sur ses sensations corporelles, afin de contrer la dissociation ou les flashbacks.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Hypervigilance <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>État d'alerte et de surveillance permanent de l'environnement pour détecter d'éventuels dangers. Symptôme majeur d'hyperactivation du système nerveux.</p></div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">Soin Informé du Trauma (TIC) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Approche de soin qui part du principe qu'une personne a potentiellement un vécu traumatique et qui intègre cette connaissance dans toutes les facettes de l'organisation et de la pratique clinique pour éviter de re-traumatiser.</p></div>
+                </div>
+            </div>
+
+            <div id="section-tspt-references" class="content-section">
+                <h2>Références</h2>
+                <ul class="list-disc text-sm space-y-3">
+                    <li>Beck, J. S., & Dozois, D. J. A. (2011). Cognitive therapy: Current status and future directions. <em>Annual Review of Medicine, 62</em>, 397-409. <a href="https://doi.org/10.1146/annurev-med-052209-100032" target="_blank" class="break-all">https://doi.org/10.1146/annurev-med-052209-100032</a></li>
+                    <li>Desbiendras, N. (2020). Gestion du stress : Exercice du Lieu Sûr EMDR en 54321 [Vidéo]. Pôle EMDR - Toulouse. <a href="https://youtu.be/S9gzV6OazGs?si=37RobhfFBEuE7tzj" target="_blank" class="break-all">https://youtu.be/S9gzV6OazGs?si=37RobhfFBEuE7tzj</a></li>
+                    <li>Dorian. (2020). Respiration Carrée (Tuto Débutant) [Vidéo]. YouTube. <a href="https://youtu.be/y3ABNa6HNQA?si=gaMpPXwz0E9hdB9q" target="_blank" class="break-all">https://youtu.be/y3ABNa6HNQA?si=gaMpPXwz0E9hdB9q</a></li>
+                    <li>Gérard, T. (2023, septembre). Fonctionnement émotionnel et fenêtre de tolérance. Psychologue Tiffany Gérard. <a href="https://psychologue-tiffany-gerard.com/fonctionnement-emotionnel-et-fenetre-de-tolerance/" target="_blank" class="break-all">https://psychologue-tiffany-gerard.com/fonctionnement-emotionnel-et-fenetre-de-tolerance/</a></li>
+                    <li>Herman, J. L. (1997). <em>Trauma and recovery: The aftermath of violence—from domestic abuse to political terror</em>. Basic Books.</li>
+                    <li>Johnson, S., Lamb, D., & Nolan, F. (2015). The international development of crisis resolution and home treatment teams. In D. I. M. D. L. Vigano A (Ed.), <em>Home Treatment for Acute Mental Disorders</em> (pp. 23-38). Springer. <a href="https://doi.org/10.1007/978-3-319-09273-1_3" target="_blank" class="break-all">https://doi.org/10.1007/978-3-319-09273-1_3</a></li>
+                    <li>Resick, P. A., Monson, C. M., & Chard, K. M. (2016). <em>Cognitive processing therapy for PTSD: A comprehensive manual</em>. Guilford Press.</li>
+                    <li>Shapiro, F. (2018). <em>Eye movement desensitization and reprocessing (EMDR) therapy: Basic principles, protocols, and procedures</em> (3e éd.). Guilford Press.</li>
+                    <li>Siegel, D. J. (2012). <em>The developing mind: How relationships and the brain interact to shape who we are</em> (2e éd.). Guilford Press.</li>
+                    <li>TCC Montréal. (2020, 8 décembre). Restructuration cognitive [Vidéo]. YouTube. <a href="https://www.youtube.com/watch?v=nLHBeDQD7xM" target="_blank" class="break-all">https://www.youtube.com/watch?v=nLHBeDQD7xM</a></li>
+                    <li>Thiriez, I. (2021). Ancrage. Igor Thiriez. <a href="https://igorthiriez.com/portfolio/ancrage/" target="_blank" class="break-all">https://igorthiriez.com/portfolio/ancrage/</a></li>
+                    <li>U.S. Department of Veterans Affairs, National Center for PTSD. (2024, janvier 11). Cognitive Processing Therapy (CPT) for PTSD. <a href="https://www.ptsd.va.gov/understand_tx/cognitive_processing.asp" target="_blank" class="break-all">https://www.ptsd.va.gov/understand_tx/cognitive_processing.asp</a></li>
+                    <li>U.S. Department of Veterans Affairs, National Center for PTSD. (2025). Mobile App: CPT Coach. <a href="https://www.ptsd.va.gov/appvid/mobile/cptcoach_app_public.asp" target="_blank" class="break-all">https://www.ptsd.va.gov/appvid/mobile/cptcoach_app_public.asp</a></li>
+                    <li>UCL Child Trauma and Recovery Research Group. (2025). Training videos for professionals delivering cognitive therapy for PTSD. University College London. <a href="https://www.ucl.ac.uk/brain-sciences/pals/research/clinical-educational-and-health-psychology/research-groups/child-trauma-and-recovery-research-group/resources/training-videos-professionals-delivering-cognitive-therapy-ptsd" target="_blank" class="break-all">https://www.ucl.ac.uk/brain-sciences/pals/research/clinical-educational-and-health-psychology/research-groups/child-trauma-and-recovery-research-group/resources/training-videos-professionals-delivering-cognitive-therapy-ptsd</a></li>
+                    <li>Van der Kolk, B. A. (2014). <em>The body keeps the score: Brain, mind, and body in the healing of trauma</em>. Viking.</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+    
+    <footer class="mt-16 bg-slate-900 text-slate-300 text-sm border-t border-slate-700 py-6 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+            <!-- LOGO GAUCHE : VINATIER -->
+            <div class="flex-shrink-0">
+                <a href="https://www.ch-le-vinatier.fr" target="_blank" rel="noopener noreferrer">
+                    <img class="h-20 md:h-24 w-auto" 
+                         src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/e079f7cf4939908ea9a07ce40d529d0b" 
+                         alt="Logo Centre Hospitalier Le Vinatier">
+                </a>
+            </div>
+            <!-- TEXTE CENTRAL -->
+            <div class="flex-1 text-center md:text-left space-y-2">
+                <p>Dr <strong>FENOHASINA </strong>T.J. Felicien (Psychiatre - FFI) ;</p>
+                <p>Equipe Mobile - <strong>Pôle Centre</strong> Rive Gauche ;</p>
+                <p>Chef de service: Dr Thomas <strong>LATHIERE</strong> ;</p>
+                <p>Chef de Pôle: Prof. Nicolas <strong>FRANCK</strong></p>
+                <p>CH - Le <strong>Vinatier.</strong></p>
+                <div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+                    <img class="h-5 w-auto" 
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cc-by-nc-sa_icon.svg/120px-Cc-by-nc-sa_icon.svg.png" 
+                         alt="Icône Creative Commons BY-NC-SA">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="underline hover:text-white">Licence CC BY-NC-SA 4.0</a> –
+                    <span>Dernière mise à jour : 14 septembre 2025.</span>
+                </div>
+            </div>
+            <!-- LOGOS DROITS : CRR -->
+            <div class="flex items-center gap-6 flex-shrink-0">
+                <a href="https://www.facebook.com/Psykozy?locale=fr_FR" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://cdn-assets.inwink.com/fe065c87-0643-42fc-8b5d-4d94b5d12c11/a1904f78-1bca-466d-a9f4-8ac9fde06c0c" 
+                         alt="Logo Psy-kôzy">
+                </a>
+                <a href="https://centre-ressource-rehabilitation.org" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://faustinebrunet.com/images/RS/creation-nouveau-logo-domaine-sante-mentale.jpg" 
+                         alt="Logo Centre Ressource Réhabilitation">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeSidebarButton = document.getElementById('close-sidebar-button');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const mainContent = document.getElementById('main-content');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            sidebarBackdrop.classList.add('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            openSidebar();
+        });
+        closeSidebarButton.addEventListener('click', closeSidebar);
+        sidebarBackdrop.addEventListener('click', closeSidebar);
+
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                requestAnimationFrame(() => {
+                    mainContent.scrollTop = 0;
+                });
+            }
+
+            const navLinks = document.querySelectorAll('#sidebar .nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const isDirectMatch = link.getAttribute('onclick') && link.getAttribute('onclick').includes(`showSection('${sectionId}')`);
+                let isInSubmenuOfActiveParent = false;
+                
+                const submenu = link.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const submenuLinks = submenu.querySelectorAll('.nav-link');
+                    submenuLinks.forEach(sl => {
+                         sl.classList.remove('active'); 
+                        if (sl.getAttribute('onclick') && sl.getAttribute('onclick').includes(`showSection('${sectionId}')`)) {
+                            isInSubmenuOfActiveParent = true;
+                            sl.classList.add('active'); 
+                        }
+                    });
+                }
+
+                if (isDirectMatch || isInSubmenuOfActiveParent) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            const icon = element.querySelector('i.fa-chevron-down, i.fa-chevron-up');
+            if (submenu && submenu.classList.contains('submenu')) {
+                submenu.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                }
+            }
+        }
+        
+        function initializeAccordions() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.fas.fa-chevron-down, .fas.fa-chevron-up');
+                    
+                    content.classList.toggle('hidden');
+                    header.classList.toggle('open'); 
+                    
+                    if (icon) { 
+                        if (content.classList.contains('hidden')) {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        } else {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        }
+                    }
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('section-home');
+            
+            // Open the parent submenu for the crisis plan by default
+            const crisisPlanParentLink = Array.from(document.querySelectorAll('a.nav-link.font-semibold')).find(el => el.textContent.includes("Plan d'Intervention de Crise"));
+            if(crisisPlanParentLink) {
+                const submenu = crisisPlanParentLink.nextElementSibling;
+                const icon = crisisPlanParentLink.querySelector('i.fa-chevron-down');
+                 if (submenu && submenu.classList.contains('submenu') && icon) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                 }
+            }
+            
+            initializeAccordions(); 
+        });
+    </script>
+
+</body>
+</html>
+
