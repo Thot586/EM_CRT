@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil | Équipe Mobile de Crise - Pôle Centre Rive Gauche</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* bg-slate-50 */
+        }
+        .hero-bg {
+            background-color: #0f172a; /* bg-slate-900 */
+            background-image: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.1), transparent 50%);
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .link-card ul a {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem; /* rounded-lg */
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-weight: 500;
+        }
+        .link-card ul a:hover {
+            background-color: #f1f5f9; /* bg-slate-100 */
+            color: #0c4a6e; /* text-sky-900 */
+        }
+        .icon-circle {
+            background-color: #e0f2fe; /* bg-sky-100 */
+            color: #0ea5e9; /* text-sky-500 */
+        }
+        h2 {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 800;
+            color: #1e293b; /* text-slate-800 */
+            letter-spacing: -0.025em;
+        }
+        h3 {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700;
+            color: #0c4a6e; /* text-sky-900 */
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <!-- Section Héros -->
+    <header class="hero-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
+                <span class="block">Équipe Mobile de Crise</span>
+                <span class="block text-sky-400 mt-2">Pôle Centre Rive Gauche</span>
+            </h1>
+            <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-slate-300">
+                Une alternative à l'hospitalisation fondée sur le modèle <strong>Crisis Resolution and Home Treatment (CRT)</strong>, pour une intervention intensive et personnalisée au cœur du milieu de vie.
+            </p>
+            <div class="mt-8">
+                <a href="#mission" class="inline-block bg-sky-500 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-sky-600 transition-colors duration-300">
+                    Découvrir notre mission
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        
+        <!-- Section Mission -->
+        <section id="mission" class="text-center">
+            <h2 class="mb-12">Notre Approche en Trois Temps</h2>
+            <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+                <!-- Carte 1: Sécuriser -->
+                <div class="card p-8">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full icon-circle mx-auto mb-6">
+                        <i class="fa-solid fa-shield-halved fa-2x"></i>
+                    </div>
+                    <h3 class="mb-2">Sécuriser</h3>
+                    <p class="text-slate-600">Assurer la sécurité physique et psychologique de la personne en créant un environnement apaisé et en fournissant des outils de régulation immédiats.</p>
+                </div>
+                <!-- Carte 2: Stabiliser -->
+                <div class="card p-8">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full icon-circle mx-auto mb-6">
+                        <i class="fa-solid fa-heart-pulse fa-2x"></i>
+                    </div>
+                    <h3 class="mb-2">Stabiliser</h3>
+                    <p class="text-slate-600">Aider la personne à sortir de l'état de crise aiguë pour revenir dans sa fenêtre de tolérance, en renforçant ses compétences et son autonomie.</p>
+                </div>
+                <!-- Carte 3: Connecter -->
+                <div class="card p-8">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full icon-circle mx-auto mb-6">
+                        <i class="fa-solid fa-people-arrows fa-2x"></i>
+                    </div>
+                    <h3 class="mb-2">Connecter</h3>
+                    <p class="text-slate-600">Préparer un relais sécurisé et collaboratif vers une prise en charge ambulatoire adaptée, pour assurer la continuité des soins et prévenir les rechutes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Champs d'Intervention -->
+        <section id="interventions" class="mt-24 sm:mt-32">
+            <h2 class="text-center mb-12">Nos Champs d'Intervention</h2>
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <!-- Colonne 1: Indications Principales -->
+                <div class="card link-card p-6 md:p-8">
+                    <h3 class="mb-4 border-b pb-3 border-slate-200">Indications Principales</h3>
+                    <ul class="space-y-2 text-slate-800">
+                        <li><a href="#"><!-- Insérez votre lien ici -->Troubles psychotiques</a></li>
+                        <li><a href="#"><!-- Insérez votre lien ici -->Trouble dépressif majeur</a></li>
+                        <li><a href="https://thot586.github.io/psychiatrie/Trouble_personnalite.html"> Trouble de la personnalité</a></li>
+                        <li><a href="#"><!-- Insérez votre lien ici -->Trouble de Stress Post-Traumatique</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 2: Indications Fréquentes -->
+                <div class="card link-card p-6 md:p-8">
+                    <h3 class="mb-4 border-b pb-3 border-slate-200">Indications Fréquentes</h3>
+                    <ul class="space-y-2 text-slate-800">
+                        <li><a href="#"><!-- Insérez votre lien ici -->Trouble bipolaire</a></li>
+                        <li><a href="#"><!-- Insérez votre lien ici -->Troubles anxieux</a></li>
+                        <li><a href="#"><!-- Insérez votre lien ici -->Trouble obsessionnel-compulsif</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Comorbidités -->
+                <div class="card link-card p-6 md:p-8">
+                    <h3 class="mb-4 border-b pb-3 border-slate-200">Prise en Charge Complexe</h3>
+                    <ul class="space-y-2 text-slate-800">
+                        <li><a href="#"><!-- Insérez votre lien ici -->Troubles liés à l'usage de substances</a></li>
+                        <li><a href="#"><!-- Insérez votre lien ici -->Troubles du neurodéveloppement</a></li>
+                        <li><a href="#"><!-- Insérez votre lien ici -->Troubles des conduites alimentaires</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Avertissement -->
+        <section id="avertissement" class="mt-24 sm:mt-32">
+            <div class="max-w-4xl mx-auto bg-slate-100 border-l-4 border-sky-500 text-slate-800 p-6 rounded-lg shadow">
+                <h3 class="text-sky-900"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Avertissement Important</h3>
+                <p class="mt-3">Les informations et guides présentés sur ce site sont des ressources destinées aux professionnels et aux partenaires du réseau de soins. Ils visent à harmoniser les pratiques et à fournir un cadre de référence fondé sur les données actuelles de la science.</p>
+                <p class="mt-2 font-semibold">Toutefois, ces documents ne sauraient en aucun cas se substituer au jugement clinique, qui demeure souverain dans l'évaluation et la prise de décision pour chaque situation individuelle. La sécurité de la personne et de son entourage constitue la priorité absolue de toute intervention.</p>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="mt-16 bg-slate-900 text-slate-300 text-sm border-t border-slate-700 py-6 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+            <!-- LOGO GAUCHE : VINATIER -->
+            <div class="flex-shrink-0">
+                <a href="https://www.ch-le-vinatier.fr" target="_blank" rel="noopener noreferrer">
+                    <img class="h-20 md:h-24 w-auto" 
+                         src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/e079f7cf4939908ea9a07ce40d529d0b" 
+                         alt="Logo Centre Hospitalier Le Vinatier">
+                </a>
+            </div>
+            <!-- TEXTE CENTRAL -->
+            <div class="flex-1 text-center md:text-left space-y-2">
+                <p>Dr <strong>FENOHASINA </strong>T.J. Felicien (Psychiatre - FFI) ;</p>
+                <p>Equipe Mobile - <strong>Pôle Centre</strong> Rive Gauche ;</p>
+                <p>Chef de service: Dr Thomas <strong>LATHIERE</strong> ;</p>
+                <p>Chef de Pôle: Prof. Nicolas <strong>FRANCK</strong></p>
+                <p>CH - Le <strong>Vinatier.</strong></p>
+                <div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+                    <img class="h-5 w-auto" 
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cc-by-nc-sa_icon.svg/120px-Cc-by-nc-sa_icon.svg.png" 
+                         alt="Icône Creative Commons BY-NC-SA">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="underline hover:text-white">Licence CC BY-NC-SA 4.0</a> –
+                    <span>Dernière mise à jour : 14 septembre 2025.</span>
+                </div>
+            </div>
+            <!-- LOGOS DROITS : CRR -->
+            <div class="flex items-center gap-6 flex-shrink-0">
+                <a href="https://www.facebook.com/Psykozy?locale=fr_FR" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://cdn-assets.inwink.com/fe065c87-0643-42fc-8b5d-4d94b5d12c11/a1904f78-1bca-466d-a9f4-8ac9fde06c0c" 
+                         alt="Logo Psy-kôzy">
+                </a>
+                <a href="https://centre-ressource-rehabilitation.org" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://faustinebrunet.com/images/RS/creation-nouveau-logo-domaine-sante-mentale.jpg" 
+                         alt="Logo Centre Ressource Réhabilitation">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
