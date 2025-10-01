@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide d'Intervention de Crise Dépression - Équipe Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-section {
+            display: none; 
+        }
+        .content-section.active {
+            display: block; 
+        }
+        .nav-link {
+            cursor: pointer;
+            padding: 0.85rem 1.25rem; 
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            display: block; 
+            margin-bottom: 0.25rem; 
+        }
+        .nav-link:hover {
+            background-color: #334155;
+            color: #ffffff;
+        }
+        .nav-link.active {
+            background-color: #0ea5e9;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .submenu .nav-link {
+            padding-left: 2rem; 
+            font-size: 0.9rem;
+        }
+        .submenu .nav-link.active {
+             background-color: #0369a1;
+        }
+
+        .alert-box, .recommendation-box, .idea-box {
+            padding: 1.25rem; 
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+        }
+        .alert-box {
+            background-color: #fee2e2; 
+            border-left: 5px solid #ef4444; 
+            color: #991b1b; 
+        }
+        .recommendation-box {
+            background-color: #dcfce7; 
+            border-left: 5px solid #22c55e; 
+            color: #14532d; 
+        }
+        .idea-box {
+            background-color: #fef9c3; 
+            border-left: 5px solid #eab308; 
+            color: #713f12; 
+        }
+        .alert-box h4, .recommendation-box h4, .idea-box h4 {
+            font-weight: 700; 
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+            color: inherit; 
+        }
+        .alert-box ul, .recommendation-box ul, .idea-box ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+        .alert-box li, .recommendation-box li, .idea-box li {
+            margin-bottom: 0.375rem;
+        }
+        .icon {
+            margin-right: 0.75rem; 
+            font-size: 1.1em;
+        }
+
+        #sidebar::-webkit-scrollbar { width: 8px; }
+        #sidebar::-webkit-scrollbar-track { background: #0f172a; }
+        #sidebar::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
+        #sidebar::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        #main-content::-webkit-scrollbar { width: 10px; }
+        #main-content::-webkit-scrollbar-track { background: #e2e8f0; }
+        #main-content::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 5px; }
+        #main-content::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        h1.guide-title { color: #ffffff; }
+        h2 { margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.75rem; font-weight: 700; color: #0c4a6e; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.5rem; } 
+        h3 { margin-top: 1.25rem; margin-bottom: 0.75rem; font-size: 1.5rem; font-weight: 600; color: #0369a1; } 
+        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 600; color: #075985; } 
+        
+        @media (min-width: 768px) {
+            h2 { font-size: 2.25rem; margin-top: 2rem; margin-bottom: 1.25rem;}
+            h3 { font-size: 1.875rem; margin-top: 1.75rem; margin-bottom: 1rem;}
+            h4 { font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 0.75rem;}
+        }
+
+        .content-section p { margin-bottom: 1rem; line-height: 1.7; font-size: 0.95rem; } 
+         @media (min-width: 768px) { 
+            .content-section p { font-size: 1rem; }
+        }
+        .content-section ul, .content-section ol { margin-bottom: 1rem; padding-left: 1.75rem; }
+        .content-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .content-section cite { font-style: normal; } 
+        .content-section a { color: #0ea5e9; text-decoration: none; font-weight: 500; }
+        .content-section a:hover { color: #0369a1; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; }
+        th { background-color: #f1f5f9; font-weight: 600; color: #1e293b; }
+
+        .accordion-item {
+            border: 1px solid #cbd5e1; 
+            border-radius: 0.5rem; 
+            margin-bottom: 0.75rem;
+            background-color: #ffffff; 
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07), 0 1px 2px 0 rgba(0,0,0,0.04);
+        }
+        .accordion-header {
+            background-color: #f1f5f9; 
+            color: #1e3a8a; 
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            border-radius: 0.5rem 0.5rem 0 0; 
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .accordion-header:hover {
+            background-color: #e2e8f0; 
+        }
+        .accordion-header.open {
+             border-bottom: 1px solid #cbd5e1; 
+             border-radius: 0.5rem 0.5rem 0 0;
+        }
+        .accordion-content {
+            padding: 1.25rem;
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem; 
+            background-color: #ffffff; 
+        }
+        .accordion-content.hidden {
+            display: none;
+        }
+        .accordion-header .fas {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.open .fas {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 flex flex-col min-h-screen">
+
+    <button id="mobile-menu-button" class="md:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 text-white rounded-md shadow-lg">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="flex flex-col md:flex-row flex-1"> 
+        <nav id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 sm:w-72 bg-slate-800 text-slate-100 shadow-lg p-4 md:p-6 space-y-1 overflow-y-auto transform -translate-x-full md:relative md:translate-x-0 md:w-1/4 lg:w-1/5 transition-transform duration-300 ease-in-out">
+            <button id="close-sidebar-button" class="md:hidden absolute top-4 right-4 text-slate-300 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <h1 class="guide-title text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center md:text-left pt-8 md:pt-0">Guide de Crise Dépression</h1>
+            <a href="https://thot586.github.io/EM_CRT/#interventions" class="block text-center bg-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-600 transition-colors duration-300 mb-6 shadow-lg">
+                <i class="fas fa-arrow-left mr-2"></i>Retour au Portail
+            </a>
+            <a class="nav-link" onclick="showSection('section-home'); closeSidebar();"><i class="fas fa-home icon"></i>Accueil</a>
+            <a class="nav-link" onclick="showSection('section-introduction-guide'); closeSidebar();"><i class="fas fa-info-circle icon"></i>Objectif du Guide</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-clipboard-list icon"></i>Plan d'Intervention de Crise <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-crise-phase1'); closeSidebar();">Phase 1: Engagement</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase2'); closeSidebar();">Phase 2: Activation</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase3'); closeSidebar();">Phase 3: Consolidation</a>
+                </div>
+            </div>
+
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-tools icon"></i>Boîte à Outils Thérapeutiques <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-outils-activation'); closeSidebar();">Activation Comportementale</a>
+                    <a class="nav-link" onclick="showSection('section-outils-routine'); closeSidebar();">Structure et Routine</a>
+                    <a class="nav-link" onclick="showSection('section-outils-cognitive'); closeSidebar();">Restructuration Cognitive</a>
+                     <a class="nav-link" onclick="showSection('section-outils-securite'); closeSidebar();">Gestion du Risque Suicidaire</a>
+                </div>
+            </div>
+
+             <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-book-open icon"></i>Fondamentaux (Théorie) <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-comprendre'); closeSidebar();">Comprendre la Dépression</a>
+                    <a class="nav-link" onclick="showSection('section-neurobio'); closeSidebar();">Neurobiologie</a>
+                    <a class="nav-link" onclick="showSection('section-modele'); closeSidebar();">Modèle Cognitivo-Comportemental</a>
+                </div>
+            </div>
+            
+            <a class="nav-link" onclick="showSection('section-roles-recap'); closeSidebar();"><i class="fas fa-users-cog icon"></i>Rôles de l'Équipe en Crise</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-chalkboard-teacher icon"></i>Psychoéducation <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-psychoed-patient'); closeSidebar();">Pour la Personne</a>
+                    <a class="nav-link" onclick="showSection('section-psychoed-entourage'); closeSidebar();">Pour l'Entourage</a>
+                </div>
+            </div>
+            <a class="nav-link" onclick="showSection('section-glossaire'); closeSidebar();"><i class="fas fa-book icon"></i>Glossaire</a>
+            <a class="nav-link" onclick="showSection('section-references'); closeSidebar();"><i class="fas fa-link icon"></i>Références</a>
+        </nav>
+
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden" onclick="closeSidebar()"></div>
+
+        <main id="main-content" class="flex-1 p-4 md:p-8 lg:p-10 overflow-y-auto">
+            <div id="section-home" class="content-section">
+                <h2>Guide d'Intervention de Crise : Épisode Dépressif Caractérisé</h2>
+                <p>Ce guide est un outil opérationnel pour les équipes mobiles de psychiatrie intervenant en <strong>alternative à l'hospitalisation (modèle CRT)</strong> pour des personnes en crise dépressive sévère. Il est conçu pour structurer une intervention intensive, progressive et centrée sur la personne, en s'appuyant sur les principes de l'<strong>activation comportementale</strong> et de la <strong>thérapie cognitivo-comportementale</strong>.</p>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Comment utiliser ce guide :</h4>
+                    <ul>
+                        <li>La section <strong>Plan d'Intervention de Crise</strong> est le cœur du guide. Elle offre un protocole par phases pour guider l'action de l'équipe.</li>
+                        <li>La <strong>Boîte à Outils Thérapeutiques</strong> détaille les techniques d'activation comportementale et de structuration à utiliser en priorité.</li>
+                        <li>Les autres sections fournissent le contexte théorique et pratique pour une prise en charge cohérente et multidisciplinaire.</li>
+                        <li>Utilisez ce guide comme support pour vos synthèses d'équipe afin de planifier et d'ajuster les interventions au domicile.</li>
+                    </ul>
+                </div>
+                <p>Notre mission est de briser le cercle vicieux de la dépression (inactivité → pensées négatives → baisse d'humeur → inactivité) en co-construisant avec la personne un retour progressif à l'action et au sens, condition indispensable à la sortie de crise.</p>
+            </div>
+
+            <div id="section-introduction-guide" class="content-section">
+                <h2>Objectif de ce Guide Opérationnel</h2>
+                <p>Intervenir au domicile d'une personne en crise dépressive sévère, c'est entrer dans un espace où l'énergie, l'espoir et le sens ont disparu. Notre mission, inspirée des équipes de Résolution de Crise et Traitement à Domicile (Crisis Resolution and Home Treatment - CRT) (<cite>Johnson et al., 2015</cite>), est de faire du domicile un lieu de réactivation progressive et de reconstruction du quotidien, et non un lieu d'isolement et d'immobilisme.</p>
+                <p>Ce guide propose un <strong>protocole par phases</strong> pour une intervention intensive et coordonnée, visant à :</p>
+                <ul class="list-disc ml-5">
+                    <li>Évaluer et sécuriser le risque suicidaire.</li>
+                    <li>Briser le cercle vicieux de l'inactivité et du retrait social.</li>
+                    <li>Restaurer une structure quotidienne minimale (sommeil, alimentation, hygiène).</li>
+                    <li>Réactiver progressivement des activités porteuses de sens et de plaisir.</li>
+                    <li>Impliquer l'entourage comme partenaire de soin.</li>
+                    <li>Éviter l'hospitalisation quand elle n'est pas nécessaire.</li>
+                </ul>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Notre mission en trois temps :</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Engager :</strong> Créer une alliance thérapeutique solide, évaluer la situation et établir la sécurité.</li>
+                        <li><strong>Activer :</strong> Réintroduire progressivement l'action et la structure dans le quotidien.</li>
+                        <li><strong>Consolider :</strong> Ancrer les acquis, travailler sur les pensées négatives et préparer le relais vers un suivi ambulatoire.</li>
+                    </ol>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Priorité absolue : Évaluation du risque suicidaire</h4>
+                    <p>La dépression sévère comporte un risque suicidaire élevé. L'évaluation du risque doit être systématique, répétée et bienveillante. Ne jamais hésiter à aborder directement la question du suicide avec la personne. Cela ne donne pas d'idées, cela peut sauver une vie.</p>
+                </div>
+            </div>
+            
+            <!-- PLAN D'INTERVENTION -->
+            <div id="section-crise-phase1" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 1 : Engagement et Sécurisation (Jours 1 à 5)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Établir une alliance thérapeutique solide, évaluer la situation dans sa globalité et assurer la sécurité immédiate.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Très haute fréquence.</strong> La présence régulière et fiable de l'équipe contrecarre l'isolement et communique un message d'espoir : "Vous n'êtes pas seul·e, nous sommes là".</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Infirmier·ère / Pair-aidant :</strong> Visite quotidienne, centrée sur l'évaluation de l'état clinique et la création du lien.</li>
+                    <li><strong>Psychiatre :</strong> Visite à J1 pour évaluation complète (risque suicidaire, symptômes dépressifs, comorbidités, traitements) et ajustement thérapeutique si nécessaire.</li>
+                    <li><strong>Assistant·e Social·e :</strong> Évaluation des conditions de vie et identification des stresseurs psychosociaux dès J1-J2.</li>
+                    <li><strong>Psychologue :</strong> Première rencontre à J2-J3 pour évaluation psychologique et début de psychoéducation.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Évaluation du risque suicidaire :</strong> Utiliser une échelle validée (ex: Columbia-Suicide Severity Rating Scale). Aborder directement : "Avez-vous des pensées de suicide ? Avez-vous un plan ?"</li>
+                        <li><strong>Évaluation de la sévérité dépressive :</strong> Utiliser une échelle (PHQ-9, Hamilton). Identifier les symptômes prioritaires (anhédonie, troubles du sommeil, ralentissement psychomoteur).</li>
+                        <li><strong>Psychoéducation initiale :</strong> Expliquer la dépression comme une maladie, pas une faiblesse. "Votre cerveau fonctionne différemment en ce moment, mais cela peut changer."</li>
+                        <li><strong>Établissement d'objectifs micro :</strong> Identifier UN petit objectif quotidien réaliste (ex: prendre une douche, manger un repas).</li>
+                        <li><strong>Sécurisation de l'environnement :</strong> Retirer les moyens létaux potentiels si risque suicidaire, impliquer l'entourage.</li>
+                        <li><strong>Évaluation du sommeil et de l'alimentation :</strong> État nutritionnel, hydratation, rythme veille-sommeil.</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas minimiser la souffrance :</strong> Éviter les phrases comme "Ce n'est pas si grave" ou "Vous devez vous ressaisir".</li>
+                        <li><strong>Ne pas fixer des objectifs trop ambitieux :</strong> Cela risque de renforcer le sentiment d'échec.</li>
+                        <li><strong>Ne pas négliger les besoins physiologiques de base :</strong> Sommeil, alimentation et hydratation sont prioritaires.</li>
+                        <li><strong>Ne pas être intrusif :</strong> Respecter le rythme de la personne dans l'établissement de la relation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase2" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 2 : Activation Comportementale (Jours 6 à 15)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Briser le cercle vicieux de l'inactivité en réintroduisant progressivement l'action, aussi minime soit-elle.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Fréquence élevée mais en diminuant progressivement.</strong> L'objectif est de soutenir la personne dans ses premiers pas vers la réactivation tout en renforçant son autonomie.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Infirmier·ère / Ergothérapeute :</strong> Visites 1 jour sur 2, centrées sur la mise en place et le suivi de la routine quotidienne et des activités.</li>
+                    <li><strong>Psychologue :</strong> Séances régulières (2-3 par semaine) focalisées sur l'activation comportementale et la psychoéducation.</li>
+                    <li><strong>Pair-aidant :</strong> Accompagnement pour sortir du domicile (promenade, courses) et partage d'expériences de rétablissement.</li>
+                    <li><strong>Psychiatre :</strong> Visite à mi-phase pour réévaluation et ajustement thérapeutique.</li>
+                </ul>
+
+                 <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Mettre en place une routine quotidienne structurée :</strong> Heures de lever et coucher fixes, repas réguliers, activités planifiées (voir <a href="#" onclick="showSection('section-outils-routine')">section dédiée</a>).</li>
+                        <li><strong>Planification d'activités graduées :</strong> Commencer par des activités très simples et augmenter progressivement la difficulté (échelle d'activation).</li>
+                        <li><strong>Réintroduction du mouvement :</strong> Marches quotidiennes courtes, exercices légers. L'activité physique a un effet antidépresseur prouvé.</li>
+                        <li><strong>Identification des activités porteuses de sens :</strong> Que faisait la personne avant qui lui apportait satisfaction ou plaisir ? Comment y revenir progressivement ?</li>
+                        <li><strong>Travail sur le sommeil :</strong> Hygiène du sommeil, restriction du temps au lit, gestion de l'insomnie ou de l'hypersomnie.</li>
+                         <li><strong>Réactivation sociale progressive :</strong> Appels téléphoniques, visites brèves, participation à des activités en présence d'autrui.</li>
+                    </ul>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas forcer l'action :</strong> Encourager fermement mais ne pas contraindre. Respecter les limites de la personne.</li>
+                        <li><strong>Ne pas négliger la validation émotionnelle :</strong> Reconnaître la difficulté de chaque petit pas : "Je sais que c'est dur, et vous l'avez fait."</li>
+                        <li><strong>Ne pas oublier de célébrer les victoires :</strong> Chaque petit progrès doit être reconnu et valorisé.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase3" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 3 : Consolidation et Relais (Jours 16+)</h3>
+                 <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Consolider les acquis comportementaux, travailler sur les schémas de pensée négatifs et préparer un relais sécurisé vers un suivi ambulatoire.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Fréquence de suivi de droit commun.</strong></p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Référent de cas (Infirmier·ère ou autre) :</strong> Visite hebdomadaire pour consolidation et prévention de la rechute.</li>
+                    <li><strong>Psychologue :</strong> Séances hebdomadaires focalisées sur la restructuration cognitive et la prévention de la rechute.</li>
+                    <li><strong>Ensemble de l'équipe :</strong> Organiser activement la transition vers le partenaire de relais (CMP, psychiatre libéral, etc.).</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Consolidation de la routine :</strong> S'assurer que la personne maintient sa structure quotidienne de manière autonome.</li>
+                        <li><strong>Travail sur les pensées automatiques négatives :</strong> Introduction de la restructuration cognitive (voir <a href="#" onclick="showSection('section-outils-cognitive')">section dédiée</a>).</li>
+                        <li><strong>Identification des signes avant-coureurs de rechute :</strong> Quels sont les premiers signes qui indiquent que je replonge ?</li>
+                        <li><strong>Élaboration d'un plan de prévention de la rechute :</strong> Que faire si je sens que ça ne va plus ? Qui contacter ? Quelles stratégies utiliser ?</li>
+                        <li><strong>Organiser une rencontre de transition tripartite :</strong> Personne, équipe mobile, futur thérapeute/référent pour assurer la continuité.</li>
+                        <li><strong>Valorisation du chemin parcouru :</strong> Faire un bilan des progrès réalisés, identifier les forces et ressources de la personne.</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas arrêter le suivi brutalement.</strong> Prévoir une diminution progressive des contacts et des appels de suivi post-intervention.</li>
+                        <li><strong>Ne pas sous-estimer le risque de rechute.</strong> La dépression est souvent récurrente, le plan de prévention est crucial.</li>
+                        <li><strong>Ne pas négliger les facteurs de stress psychosociaux.</strong> S'assurer que les problématiques sociales identifiées sont prises en charge.</li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- BOITE A OUTILS -->
+            <div id="section-outils-activation" class="content-section">
+                <h2>Boîte à Outils : Activation Comportementale</h2>
+                <p>L'activation comportementale est le cœur de l'intervention de crise en dépression. Le principe : l'action précède la motivation. On n'attend pas d'avoir envie pour agir, on agit pour retrouver l'envie (<cite>Martell et al., 2010</cite>).</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Le cercle vicieux de la dépression</h4>
+                    <p>Événement déclencheur → Humeur dépressive → Retrait et inactivité → Perte de renforcements positifs → Augmentation de l'humeur dépressive → Retrait accru...</p>
+                    <p><strong>Notre but :</strong> Briser ce cercle en réintroduisant l'action, même sans motivation initiale.</p>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">1. La Planification d'Activités <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Structurer la journée avec des activités concrètes et planifiées.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Comment procéder</h4>
+                            <ol class="list-decimal ml-5">
+                                <li><strong>Identifier les activités :</strong> Distinguer les activités de nécessité (manger, se laver) et les activités de plaisir/sens (lire, jardiner, voir un ami).</li>
+                                <li><strong>Planifier heure par heure :</strong> Utiliser un agenda ou un planning visuel. Commencer par des plages de 1-2h.</li>
+                                <li><strong>Graduer la difficulté :</strong> Commencer par ce qui est le plus facile (niveau de difficulté 2-3/10), puis augmenter progressivement.</li>
+                                <li><strong>Suivre et ajuster :</strong> Noter ce qui a été fait, comment la personne s'est sentie après. Célébrer les réussites, analyser les difficultés sans jugement.</li>
+                            </ol>
+                            <p>Outil à utiliser : Planning d'activités hebdomadaire avec cotation de l'humeur avant et après chaque activité.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. L'Échelle d'Activation Progressive <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Décomposer une activité complexe en micro-étapes réalisables.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Exemple : "Faire les courses"</h4>
+                            <ol class="list-decimal ml-5">
+                                <li>Niveau 1 : Faire une liste de courses (5 minutes)</li>
+                                <li>Niveau 2 : S'habiller pour sortir</li>
+                                <li>Niveau 3 : Marcher jusqu'à la porte du magasin</li>
+                                <li>Niveau 4 : Acheter 1 ou 2 articles</li>
+                                <li>Niveau 5 : Faire les courses complètes</li>
+                            </ol>
+                            <p>On avance d'un niveau seulement quand le niveau précédent est maîtrisé.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Le Monitoring de l'Humeur et des Activités <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Aider la personne à identifier le lien entre action et humeur.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Comment faire</h4>
+                            <p>Demander à la personne de noter chaque jour :</p>
+                            <ul>
+                                <li>Ce qu'elle a fait (activités)</li>
+                                <li>Son niveau d'humeur avant et après (échelle 0-10)</li>
+                                <li>Son niveau de plaisir/satisfaction (échelle 0-10)</li>
+                            </ul>
+                            <p>Cela permet de mettre en évidence que certaines activités améliorent l'humeur, même si la motivation initiale était faible. C'est un outil puissant de psychoéducation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-outils-routine" class="content-section">
+                <h2>Boîte à Outils : Structure et Routine Quotidienne</h2>
+                <p>La dépression désorganise le quotidien. Restaurer une structure est thérapeutique en soi (<cite>Frank et al., 2005</cite>).</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Pourquoi la routine est cruciale</h4>
+                    <p>La routine offre un cadre externe quand la motivation interne fait défaut. Elle réduit la charge cognitive ("Qu'est-ce que je dois faire ?") et crée des automatismes protecteurs.</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Les piliers d'une routine thérapeutique</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Horaires de lever et coucher fixes :</strong> Même le week-end. Cela régule l'horloge biologique et améliore le sommeil.</li>
+                        <li><strong>Trois repas structurés :</strong> À heures régulières. Même un repas minimal est mieux que rien.</li>
+                        <li><strong>Hygiène quotidienne :</strong> Douche, vêtements propres. C'est un acte de soin envers soi.</li>
+                        <li><strong>Sortie quotidienne :</strong> Ne serait-ce que 10 minutes. L'exposition à la lumière naturelle est antidépressive.</li>
+                        <li><strong>Contact social minimal :</strong> Un appel, un message. Contrer l'isolement.</li>
+                        <li><strong>Activité physique :</strong> Même légère (marche, étirements). 30 minutes par jour idéalement.</li>
+                        <li><strong>Temps sans écran avant le coucher :</strong> Au moins 1h. Les écrans perturbent le sommeil.</li>
+                    </ol>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Attention à la rigidité</h4>
+                    <p>La routine doit être un soutien, pas une prison. Certains jours, la personne ne pourra pas tout faire, et c'est normal. L'objectif est la tendance générale, pas la perfection.</p>
+                </div>
+            </div>
+           
+            <div id="section-outils-cognitive" class="content-section"> 
+                <h2>Boîte à Outils : Restructuration Cognitive</h2>
+                <p>La dépression génère des pensées automatiques négatives rigides, souvent centrées sur trois thèmes : soi, le monde, l'avenir (la triade cognitive de Beck). La restructuration cognitive vise à les identifier et à les assouplir (<cite>Beck et al., 1979</cite>).</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Pensées automatiques négatives fréquentes en dépression</h4>
+                    <ul>
+                        <li><strong>Sur soi :</strong> "Je suis nul·le", "Je ne vaux rien", "C'est de ma faute".</li>
+                        <li><strong>Sur le monde :</strong> "Personne ne m'aime", "Le monde est hostile".</li>
+                        <li><strong>Sur l'avenir :</strong> "Ça ne changera jamais", "Je ne m'en sortirai jamais", "Il n'y a aucun espoir".</li>
+                    </ul>
+                </div>
+                
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Timing important</h4>
+                    <p>La restructuration cognitive n'est efficace que si la personne a retrouvé un minimum d'énergie et de structure. En phase aiguë (Phase 1), privilégier l'activation comportementale. Introduire la restructuration cognitive en Phase 2-3.</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> La méthode des colonnes de Beck</h4>
+                    <p>Outil simple pour identifier et challenger les pensées négatives :</p>
+                    <table class="text-sm">
+                        <thead>
+                            <tr>
+                                <th>Situation</th>
+                                <th>Pensée automatique</th>
+                                <th>Émotion (0-10)</th>
+                                <th>Preuves pour</th>
+                                <th>Preuves contre</th>
+                                <th>Pensée alternative</th>
+                                <th>Émotion après (0-10)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Un ami ne répond pas à mon message</td>
+                                <td>"Personne ne m'aime"</td>
+                                <td>Tristesse 8/10</td>
+                                <td>Il ne répond pas</td>
+                                <td>Il m'a répondu avant, il a peut-être pas vu, il est peut-être occupé</td>
+                                <td>"Mon ami n'a peut-être pas vu mon message ou est occupé"</td>
+                                <td>Tristesse 4/10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Questions socratiques utiles</h4>
+                    <ul>
+                        <li>"Quelle est la preuve que cette pensée est vraie à 100% ?"</li>
+                        <li>"Y a-t-il une autre façon de voir cette situation ?"</li>
+                        <li>"Que dirais-tu à un ami qui aurait cette pensée ?"</li>
+                        <li>"Est-ce que tu penses en tout ou rien ?" (Identifier les distorsions cognitives)</li>
+                        <li>"Dans 5 ans, est-ce que cette situation aura autant d'importance ?"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-outils-securite" class="content-section">
+                <h2>Boîte à Outils : Gestion du Risque Suicidaire</h2>
+                <p>L'évaluation et la gestion du risque suicidaire sont au cœur de l'intervention de crise en dépression. Il faut en parler ouvertement, régulièrement et sans jugement.</p>
+                
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Évaluation structurée du risque</h4>
+                    <p>À chaque visite en Phase 1, puis régulièrement :</p>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Idéations suicidaires :</strong> "Avez-vous des pensées de mort ou de suicide ?" Fréquence ? Intensité ?</li>
+                        <li><strong>Plan suicidaire :</strong> "Avez-vous pensé à comment vous le feriez ?"</li>
+                        <li><strong>Intention :</strong> "Avez-vous l'intention de mettre ce plan à exécution ?"</li>
+                        <li><strong>Moyens :</strong> "Avez-vous accès aux moyens nécessaires ?" (médicaments, armes, etc.)</li>
+                        <li><strong>Tentatives antérieures :</strong> Historique ?</li>
+                        <li><strong>Facteurs protecteurs :</strong> Qu'est-ce qui vous retient de passer à l'acte ? (enfants, religion, peur de la douleur, etc.)</li>
+                    </ol>
+                    <p>Utiliser une échelle validée : Columbia-Suicide Severity Rating Scale (C-SSRS) ou équivalent.</p>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Quand hospitaliser ?</h4>
+                    <p>Hospitalisation en urgence si :</p>
+                    <ul>
+                        <li>Plan précis + intention + moyens disponibles</li>
+                        <li>Tentative de suicide récente</li>
+                        <li>Facteurs de risque élevés + absence de facteurs protecteurs</li>
+                        <li>Incapacité à établir un contrat de sécurité</li>
+                        <li>Isolement social complet</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Le Plan de Sécurité (Safety Plan)</h4>
+                    <p>À co-construire avec la personne (inspiré du modèle de Stanley & Brown) :</p>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Signes d'alerte :</strong> Quels pensées, images, humeurs me signalent que je vais mal ? (ex: "Je pense que je suis un fardeau")</li>
+                        <li><strong>Stratégies d'auto-apaisement :</strong> Que puis-je faire seul·e pour me sentir mieux ? (marcher, écouter de la musique, douche, etc.)</li>
+                        <li><strong>Personnes ou lieux distrayants :</strong> Où puis-je aller pour être distrait·e et ne pas être seul·e ? (café, ami, famille)</li>
+                        <li><strong>Personnes à qui demander de l'aide :</strong> Nom, numéro, relation.</li>
+                        <li><strong>Professionnels à contacter :</strong> Équipe mobile, psychiatre, médecin traitant, numéro d'urgence.</li>
+                        <li><strong>Rendre l'environnement sûr :</strong> Retirer/limiter l'accès aux moyens létaux.</li>
+                        <li><strong>Ma raison de vivre :</strong> Pourquoi je choisis de rester en vie ? (enfants, projets, valeurs, etc.)</li>
+                    </ol>
+                    <p>Le plan doit être écrit, donné à la personne et à son entourage proche. Le réviser régulièrement.</p>
+                </div>
+            </div>
+
+            <!-- FONDAMENTAUX -->
+            <div id="section-comprendre" class="content-section">
+                 <h2>Fondamentaux : Comprendre la Dépression</h2>
+                 <p>L'épisode dépressif caractérisé est un trouble de l'humeur fréquent (prévalence vie entière : 15-20%) et potentiellement grave. Ce n'est pas un simple "coup de blues", mais un état pathologique qui affecte le cerveau, le corps et le comportement.</p>
+                
+                <h4>Critères diagnostiques (DSM-5) :</h4>
+                <p>Au moins 5 des symptômes suivants pendant au moins 2 semaines, dont obligatoirement (1) ou (2) :</p>
+                <ol class="list-decimal ml-5">
+                    <li><strong>Humeur dépressive</strong> la majeure partie de la journée, presque tous les jours.</li>
+                    <li><strong>Perte d'intérêt ou de plaisir</strong> pour presque toutes les activités (anhédonie).</li>
+                    <li>Perte ou gain de poids significatif, ou diminution/augmentation de l'appétit.</li>
+                    <li>Insomnie ou hypersomnie.</li>
+                    <li>Agitation ou ralentissement psychomoteur.</li>
+                    <li>Fatigue ou perte d'énergie.</li>
+                    <li>Sentiment de dévalorisation ou de culpabilité excessive.</li>
+                    <li>Diminution de l'aptitude à penser ou à se concentrer, ou indécision.</li>
+                    <li>Pensées récurrentes de mort, idées suicidaires.</li>
+                </ol>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Comprendre la sévérité</h4>
+                    <ul>
+                        <li><strong>Léger :</strong> Peu de symptômes au-delà du minimum, altération fonctionnelle mineure.</li>
+                        <li><strong>Moyen :</strong> Nombre de symptômes et altération fonctionnelle entre léger et sévère.</li>
+                        <li><strong>Sévère :</strong> Nombre de symptômes nettement supérieur au minimum, altération marquée du fonctionnement, +/- caractéristiques psychotiques.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="section-neurobio" class="content-section">
+                <h2>Fondamentaux : Neurobiologie de la Dépression</h2>
+                <p>La dépression n'est pas "dans la tête", c'est une maladie du cerveau avec des anomalies biologiques mesurables.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Trois systèmes dysfonctionnels</h4>
+                    <ul>
+                        <li><strong>Les neurotransmetteurs :</strong> Déficit en sérotonine, noradrénaline et dopamine. Ces molécules régulent l'humeur, le plaisir, l'énergie et le sommeil.</li>
+                        <li><strong>L'axe hypothalamo-hypophyso-surrénalien (HHS) :</strong> Hyperactivité chronique du système de stress. Production excessive de cortisol.</li>
+                        <li><strong>La neuroplasticité :</strong> Réduction du volume de l'hippocampe et du cortex préfrontal. Diminution de la neurogenèse (formation de nouveaux neurones).</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> L'impact sur nos interventions</h4>
+                    <p>Ces anomalies expliquent pourquoi "se secouer" ne fonctionne pas. Le cerveau dépressif a besoin de temps, de traitement et de stimulation progressive pour se recâbler. L'activation comportementale et l'activité physique favorisent la neuroplasticité et la production de facteurs neurotrophiques (BDNF).</p>
+                </div>
+            </div>
+
+             <div id="section-modele" class="content-section">
+                <h2>Fondamentaux : Le Modèle Cognitivo-Comportemental</h2>
+                <p>Le modèle cognitivo-comportemental de la dépression (Beck, 1979) est le fondement théorique de notre intervention. Il postule une interaction entre pensées, émotions et comportements.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Le triangle cognitif</h4>
+                    <p><strong>Situation</strong> → <strong>Pensées</strong> (interprétation) → <strong>Émotions</strong> → <strong>Comportements</strong> → Conséquences (qui renforcent les pensées négatives)</p>
+                    <p>Exemple :</p>
+                    <ul>
+                        <li><strong>Situation :</strong> Invitation à sortir</li>
+                        <li><strong>Pensée :</strong> "Je vais gâcher la soirée, je suis nul·le en société"</li>
+                        <li><strong>Émotion :</strong> Anxiété, tristesse</li>
+                        <li><strong>Comportement :</strong> Refus de l'invitation</li>
+                        <li><strong>Conséquence :</strong> Isolement accru, renforcement de la croyance "je suis nul·le"</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Deux leviers d'intervention</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Comportemental (prioritaire en crise) :</strong> Changer d'abord le comportement (accepter l'invitation malgré l'anxiété) pour modifier ensuite les pensées et les émotions.</li>
+                        <li><strong>Cognitif (en Phase 2-3) :</strong> Identifier et challenger les pensées automatiques négatives pour modifier l'interprétation des situations.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- Rôles de l'équipe -->
+             <div id="section-roles-recap" class="content-section">
+                <h2>Rôles de l'Équipe en Crise Dépressive</h2>
+                <p>La coordination est la clé. Chaque membre de l'équipe apporte une expertise spécifique pour créer un filet de sécurité et de soutien autour de la personne.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Professionnel</th>
+                            <th>Rôle Prioritaire en Crise Dépressive</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Psychiatre</strong></td>
+                            <td>Leader clinique. Évalue la sévérité, le risque suicidaire et les comorbidités. Gère la pharmacologie. Garant du cadre de sécurité. Décision d'hospitalisation si nécessaire.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infirmier·ère</strong></td>
+                            <td>Intervenant de première ligne. Assure la présence à haute fréquence, suit la routine quotidienne, monitore l'état clinique et le risque suicidaire, encourage l'activation.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Psychologue</strong></td>
+                            <td>Apporte le cadre théorique (TCC, activation comportementale). Mène les séances de psychoéducation et de restructuration cognitive. Travaille sur le plan de prévention de la rechute.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Assistant·e Social·e</strong></td>
+                            <td>Agit sur les stresseurs psychosociaux (logement, finances, droits, aide à domicile) qui peuvent entretenir ou aggraver la dépression.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Ergothérapeute & Aide-Soignant·e</strong></td>
+                            <td>Aide à la structuration du quotidien et à la reprise des activités de vie quotidienne (AVQ). Accompagne les sorties, les courses, la préparation des repas. Travaille sur l'activation progressive.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pair-Aidant</strong></td>
+                            <td>Incarnation du rétablissement et de l'espoir. Partage son expérience de la dépression et des stratégies qui ont fonctionné. Offre un soutien par les pairs non-jugeant.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Secrétaire</strong></td>
+                            <td>Premier point de contact. Adopte une communication chaleureuse et rassurante. Planifie les visites de manière fiable et prévisible. Gère les urgences téléphoniques.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Psychoéducation -->
+            <div id="section-psychoed-patient" class="content-section">
+                <h2>Modules de Psychoéducation pour la Personne</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. La dépression est une maladie, pas une faiblesse <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Déculpabiliser et normaliser.</p>
+                        <p><strong>Contenu :</strong> Expliquer que la dépression est un trouble médical qui affecte le cerveau (neurotransmetteurs, neuroplasticité). Ce n'est pas un manque de volonté. "Votre cerveau fonctionne différemment en ce moment, comme si vous aviez une grippe du cerveau. Ça peut se soigner."</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Le cercle vicieux de l'inactivité <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Comprendre pourquoi rester inactif aggrave la dépression.</p>
+                        <p><strong>Contenu :</strong> Dessiner le cercle vicieux : Inactivité → Perte de plaisir et de sens → Humeur plus basse → Encore moins d'énergie → Inactivité accrue. "Plus vous restez inactif·ve, plus votre cerveau se convainc que rien ne vaut la peine. On doit briser ce cercle en agissant, même sans motivation au départ."</p>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">3. L'action précède la motivation <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Renverser la croyance "je dois attendre d'avoir envie".</p>
+                        <p><strong>Contenu :</strong> "En dépression, la motivation ne vient pas d'elle-même. On doit d'abord agir, même sans envie, et la motivation suivra. C'est contre-intuitif, mais c'est prouvé scientifiquement." Utiliser des métaphores : "C'est comme démarrer une voiture par temps froid, il faut forcer un peu au début, puis le moteur chauffe."</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Les pensées ne sont pas des faits <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Introduire la notion de distance par rapport aux pensées négatives.</p>
+                        <p><strong>Contenu :</strong> "Votre cerveau dépressif produit beaucoup de pensées négatives. Ces pensées semblent vraies, mais elles sont déformées par la dépression. 'Je suis nul·le' est une pensée, pas un fait. On va apprendre à les identifier et à les challenger."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-psychoed-entourage" class="content-section">
+                <h2>Modules de Psychoéducation pour l'Entourage</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. La dépression n'est pas de la paresse <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Aider les proches à comprendre la différence entre dépression et manque de volonté.</p>
+                        <p><strong>Contenu :</strong> Expliquer que la fatigue dépressive est différente de la fatigue normale. "Votre proche ne 'choisit' pas de rester au lit. Son cerveau lui envoie des messages de danger et d'épuisement constants. C'est physique, pas psychologique."</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Comment aider sans s'épuiser ? <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                         <div class="recommendation-box">
+                             <h4><i class="fas fa-check-circle icon"></i> Quoi faire</h4>
+                             <ul>
+                                <li>Être présent·e, écouter sans juger.</li>
+                                <li>Encourager doucement l'action : "Et si on allait marcher 10 minutes ?" plutôt que "Tu dois sortir !"</li>
+                                <li>Célébrer les petits progrès.</li>
+                                <li>Maintenir une routine pour soi et pour la personne.</li>
+                                 <li>Prendre soin de soi : sortir, voir ses amis, se reposer.</li>
+                             </ul>
+                        </div>
+                        <div class="alert-box">
+                             <h4><i class="fas fa-exclamation-triangle icon"></i> Quoi ne pas faire</h4>
+                             <ul>
+                                 <li>Ne pas dire "Secoue-toi" ou "Pense positif".</li>
+                                 <li>Ne pas culpabiliser : "Tu n'as aucune raison d'être déprimé·e".</li>
+                                 <li>Ne pas tout faire à sa place (cela renforce l'inactivité).</li>
+                                 <li>Ne pas minimiser : "Ce n'est pas si grave".</li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Quand s'inquiéter ? Les signes d'alerte du suicide <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Apprendre à identifier les signaux d'alarme.</p>
+                        <div class="alert-box">
+                             <h4><i class="fas fa-exclamation-triangle icon"></i> Signes d'urgence</h4>
+                             <ul>
+                                 <li>Parle de mourir ou de se suicider</li>
+                                 <li>Recherche des moyens (médicaments, armes)</li>
+                                 <li>Parle de se sentir désespéré·e ou sans raison de vivre</li>
+                                 <li>Dit être un fardeau pour les autres</li>
+                                 <li>Se met soudainement à donner ses affaires ou à "mettre ses affaires en ordre"</li>
+                                 <li>S'isole complètement</li>
+                                 <li>Augmentation de la consommation d'alcool ou de drogues</li>
+                             </ul>
+                             <p><strong>Si vous observez ces signes, contactez immédiatement l'équipe mobile, le psychiatre ou les urgences.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Glossaire et références -->
+            <div id="section-glossaire" class="content-section">
+                <h2>Glossaire</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">Activation Comportementale <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Approche thérapeutique basée sur le principe que l'action précède la motivation. On encourage la personne à reprendre des activités, même sans envie, pour briser le cercle vicieux de l'inactivité.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Anhédonie <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Incapacité à éprouver du plaisir dans des activités habituellement agréables. Symptôme cardinal de la dépression.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Pensées Automatiques Négatives <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Pensées involontaires et rapides qui apparaissent en réaction à une situation. En dépression, elles sont souvent négatives, rigides et déformées (ex: "Je suis nul·le", "Rien ne changera jamais").</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Ralentissement Psychomoteur <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Ralentissement visible des mouvements, de la parole et de la pensée. La personne semble "au ralenti", parle lentement, met du temps à répondre.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Triade Cognitive <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Concept d'Aaron Beck décrivant trois types de pensées négatives en dépression : sur soi (je suis nul·le), sur le monde (le monde est hostile), sur l'avenir (ça ne changera jamais).</p></div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">Ruminations <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Pensées répétitives et involontaires centrées sur les aspects négatifs de soi et de la situation. Les ruminations entretiennent et aggravent la dépression.</p></div>
+                </div>
+            </div>
+
+            <div id="section-references" class="content-section">
+                <h2>Références</h2>
+                <ul class="list-disc text-sm space-y-3">
+                    <li>American Psychiatric Association. (2013). <em>Diagnostic and Statistical Manual of Mental Disorders</em> (5e éd.). Arlington, VA: American Psychiatric Publishing.</li>
+                    <li>Beck, A. T., Rush, A. J., Shaw, B. F., & Emery, G. (1979). <em>Cognitive therapy of depression</em>. New York: Guilford Press.</li>
+                    <li>Cuijpers, P., Berking, M., Andersson, G., Quigley, L., Kleiboer, A., & Dobson, K. S. (2013). A meta-analysis of cognitive-behavioural therapy for adult depression, alone and in comparison with other treatments. <em>Canadian Journal of Psychiatry, 58</em>(7), 376-385.</li>
+                    <li>Dimidjian, S., Hollon, S. D., Dobson, K. S., Schmaling, K. B., Kohlenberg, R. J., Addis, M. E., ... & Jacobson, N. S. (2006). Randomized trial of behavioral activation, cognitive therapy, and antidepressant medication in the acute treatment of adults with major depression. <em>Journal of Consulting and Clinical Psychology, 74</em>(4), 658-670.</li>
+                    <li>Frank, E., Kupfer, D. J., Thase, M. E., Mallinger, A. G., Swartz, H. A., Fagiolini, A. M., ... & Monk, T. (2005). Two-year outcomes for interpersonal and social rhythm therapy in individuals with bipolar I disorder. <em>Archives of General Psychiatry, 62</em>(9), 996-1004.</li>
+                    <li>Haute Autorité de Santé. (2017). <em>Épisode dépressif caractérisé de l'adulte : prise en charge en soins de premier recours</em>. <a href="https://www.has-sante.fr/jcms/c_2772040/fr/episode-depressif-caracterise-de-l-adulte-prise-en-charge-en-soins-de-premier-recours" target="_blank" class="break-all">https://www.has-sante.fr/jcms/c_2772040/fr/episode-depressif-caracterise-de-l-adulte-prise-en-charge-en-soins-de-premier-recours</a></li>
+                    <li>Johnson, S., Lamb, D., & Nolan, F. (2015). The international development of crisis resolution and home treatment teams. In D. I. M. D. L. Vigano A (Ed.), <em>Home Treatment for Acute Mental Disorders</em> (pp. 23-38). Springer.</li>
+                    <li>Kroenke, K., Spitzer, R. L., & Williams, J. B. (2001). The PHQ-9: validity of a brief depression severity measure. <em>Journal of General Internal Medicine, 16</em>(9), 606-613.</li>
+                    <li>Martell, C. R., Dimidjian, S., & Herman-Dunn, R. (2010). <em>Behavioral activation for depression: A clinician's guide</em>. New York: Guilford Press.</li>
+                    <li>Posner, K., Brown, G. K., Stanley, B., Brent, D. A., Yershova, K. V., Oquendo, M. A., ... & Mann, J. J. (2011). The Columbia-Suicide Severity Rating Scale: initial validity and internal consistency findings from three multisite studies with adolescents and adults. <em>American Journal of Psychiatry, 168</em>(12), 1266-1277.</li>
+                    <li>Stanley, B., & Brown, G. K. (2012). Safety planning intervention: A brief intervention to mitigate suicide risk. <em>Cognitive and Behavioral Practice, 19</em>(2), 256-264.</li>
+                    <li>World Health Organization. (2017). <em>Depression and Other Common Mental Disorders: Global Health Estimates</em>. Geneva: WHO. <a href="https://www.who.int/publications/i/item/depression-global-health-estimates" target="_blank" class="break-all">https://www.who.int/publications/i/item/depression-global-health-estimates</a></li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+    
+    <footer class="mt-16 bg-slate-900 text-slate-300 text-sm border-t border-slate-700 py-6 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+            <div class="flex-shrink-0">
+                <a href="https://www.ch-le-vinatier.fr" target="_blank" rel="noopener noreferrer">
+                    <img class="h-20 md:h-24 w-auto" 
+                         src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/e079f7cf4939908ea9a07ce40d529d0b" 
+                         alt="Logo Centre Hospitalier Le Vinatier">
+                </a>
+            </div>
+            <div class="flex-1 text-center md:text-left space-y-2">
+                <p>Dr <strong>FENOHASINA </strong>T.J. Felicien (Psychiatre - FFI) ;</p>
+                <p>Dr <strong>MONNIER </strong>Romain (Psychiatre - CCA) ; </p>
+                <p>Equipe Mobile - <strong>Pôle Centre</strong> Rive Gauche ;</p>
+                <p>Chef de service: Dr Thomas <strong>LATHIERE</strong> ;</p>
+                <p>Chef de Pôle: Prof. Nicolas <strong>FRANCK</strong></p>
+                <p>CH - Le <strong>Vinatier.</strong></p>
+                <div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+                    <img class="h-5 w-auto" 
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cc-by-nc-sa_icon.svg/120px-Cc-by-nc-sa_icon.svg.png" 
+                         alt="Icône Creative Commons BY-NC-SA">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="underline hover:text-white">Licence CC BY-NC-SA 4.0</a> –
+                    <span>Dernière mise à jour : Octobre 2025.</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 flex-shrink-0">
+                <a href="https://www.facebook.com/Psykozy?locale=fr_FR" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://cdn-assets.inwink.com/fe065c87-0643-42fc-8b5d-4d94b5d12c11/a1904f78-1bca-466d-a9f4-8ac9fde06c0c" 
+                         alt="Logo Psy-kôzy">
+                </a>
+                <a href="https://centre-ressource-rehabilitation.org" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://faustinebrunet.com/images/RS/creation-nouveau-logo-domaine-sante-mentale.jpg" 
+                         alt="Logo Centre Ressource Réhabilitation">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeSidebarButton = document.getElementById('close-sidebar-button');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const mainContent = document.getElementById('main-content');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            sidebarBackdrop.classList.add('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            openSidebar();
+        });
+        closeSidebarButton.addEventListener('click', closeSidebar);
+        sidebarBackdrop.addEventListener('click', closeSidebar);
+
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                requestAnimationFrame(() => {
+                    mainContent.scrollTop = 0;
+                });
+            }
+
+            const navLinks = document.querySelectorAll('#sidebar .nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const isDirectMatch = link.getAttribute('onclick') && link.getAttribute('onclick').includes(`showSection('${sectionId}')`);
+                let isInSubmenuOfActiveParent = false;
+                
+                const submenu = link.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const submenuLinks = submenu.querySelectorAll('.nav-link');
+                    submenuLinks.forEach(sl => {
+                         sl.classList.remove('active'); 
+                        if (sl.getAttribute('onclick') && sl.getAttribute('onclick').includes(`showSection('${sectionId}')`)) {
+                            isInSubmenuOfActiveParent = true;
+                            sl.classList.add('active'); 
+                        }
+                    });
+                }
+
+                if (isDirectMatch || isInSubmenuOfActiveParent) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            const icon = element.querySelector('i.fa-chevron-down, i.fa-chevron-up');
+            if (submenu && submenu.classList.contains('submenu')) {
+                submenu.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                }
+            }
+        }
+        
+        function initializeAccordions() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.fas.fa-chevron-down, .fas.fa-chevron-up');
+                    
+                    content.classList.toggle('hidden');
+                    header.classList.toggle('open'); 
+                    
+                    if (icon) { 
+                        if (content.classList.contains('hidden')) {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        } else {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        }
+                    }
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('section-home');
+            
+            const crisisPlanParentLink = Array.from(document.querySelectorAll('a.nav-link.font-semibold')).find(el => el.textContent.includes("Plan d'Intervention de Crise"));
+            if(crisisPlanParentLink) {
+                const submenu = crisisPlanParentLink.nextElementSibling;
+                const icon = crisisPlanParentLink.querySelector('i.fa-chevron-down');
+                 if (submenu && submenu.classList.contains('submenu') && icon) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                 }
+            }
+            
+            initializeAccordions(); 
+        });
+    </script>
+
+</body>
+</html>
