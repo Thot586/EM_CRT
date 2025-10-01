@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide d'Intervention de Crise Bipolaire - Équipe Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-section {
+            display: none; 
+        }
+        .content-section.active {
+            display: block; 
+        }
+        .nav-link {
+            cursor: pointer;
+            padding: 0.85rem 1.25rem; 
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            display: block; 
+            margin-bottom: 0.25rem; 
+        }
+        .nav-link:hover {
+            background-color: #334155;
+            color: #ffffff;
+        }
+        .nav-link.active {
+            background-color: #0ea5e9;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .submenu .nav-link {
+            padding-left: 2rem; 
+            font-size: 0.9rem;
+        }
+        .submenu .nav-link.active {
+             background-color: #0369a1;
+        }
+
+        .alert-box, .recommendation-box, .idea-box {
+            padding: 1.25rem; 
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+        }
+        .alert-box {
+            background-color: #fee2e2; 
+            border-left: 5px solid #ef4444; 
+            color: #991b1b; 
+        }
+        .recommendation-box {
+            background-color: #dcfce7; 
+            border-left: 5px solid #22c55e; 
+            color: #14532d; 
+        }
+        .idea-box {
+            background-color: #fef9c3; 
+            border-left: 5px solid #eab308; 
+            color: #713f12; 
+        }
+        .alert-box h4, .recommendation-box h4, .idea-box h4 {
+            font-weight: 700; 
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+            color: inherit; 
+        }
+        .alert-box ul, .recommendation-box ul, .idea-box ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+        .alert-box li, .recommendation-box li, .idea-box li {
+            margin-bottom: 0.375rem;
+        }
+        .icon {
+            margin-right: 0.75rem; 
+            font-size: 1.1em;
+        }
+
+        #sidebar::-webkit-scrollbar { width: 8px; }
+        #sidebar::-webkit-scrollbar-track { background: #0f172a; }
+        #sidebar::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
+        #sidebar::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        #main-content::-webkit-scrollbar { width: 10px; }
+        #main-content::-webkit-scrollbar-track { background: #e2e8f0; }
+        #main-content::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 5px; }
+        #main-content::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        h1.guide-title { color: #ffffff; }
+        h2 { margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.75rem; font-weight: 700; color: #0c4a6e; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.5rem; } 
+        h3 { margin-top: 1.25rem; margin-bottom: 0.75rem; font-size: 1.5rem; font-weight: 600; color: #0369a1; } 
+        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 600; color: #075985; } 
+        
+        @media (min-width: 768px) {
+            h2 { font-size: 2.25rem; margin-top: 2rem; margin-bottom: 1.25rem;}
+            h3 { font-size: 1.875rem; margin-top: 1.75rem; margin-bottom: 1rem;}
+            h4 { font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 0.75rem;}
+        }
+
+        .content-section p { margin-bottom: 1rem; line-height: 1.7; font-size: 0.95rem; } 
+         @media (min-width: 768px) { 
+            .content-section p { font-size: 1rem; }
+        }
+        .content-section ul, .content-section ol { margin-bottom: 1rem; padding-left: 1.75rem; }
+        .content-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .content-section cite { font-style: normal; } 
+        .content-section a { color: #0ea5e9; text-decoration: none; font-weight: 500; }
+        .content-section a:hover { color: #0369a1; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; }
+        th { background-color: #f1f5f9; font-weight: 600; color: #1e293b; }
+
+        .accordion-item {
+            border: 1px solid #cbd5e1; 
+            border-radius: 0.5rem; 
+            margin-bottom: 0.75rem;
+            background-color: #ffffff; 
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07), 0 1px 2px 0 rgba(0,0,0,0.04);
+        }
+        .accordion-header {
+            background-color: #f1f5f9; 
+            color: #1e3a8a; 
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            border-radius: 0.5rem 0.5rem 0 0; 
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .accordion-header:hover {
+            background-color: #e2e8f0; 
+        }
+        .accordion-header.open {
+             border-bottom: 1px solid #cbd5e1; 
+             border-radius: 0.5rem 0.5rem 0 0;
+        }
+        .accordion-content {
+            padding: 1.25rem;
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem; 
+            background-color: #ffffff; 
+        }
+        .accordion-content.hidden {
+            display: none;
+        }
+        .accordion-header .fas {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.open .fas {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 flex flex-col min-h-screen">
+
+    <button id="mobile-menu-button" class="md:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 text-white rounded-md shadow-lg">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="flex flex-col md:flex-row flex-1"> 
+        <nav id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 sm:w-72 bg-slate-800 text-slate-100 shadow-lg p-4 md:p-6 space-y-1 overflow-y-auto transform -translate-x-full md:relative md:translate-x-0 md:w-1/4 lg:w-1/5 transition-transform duration-300 ease-in-out">
+            <button id="close-sidebar-button" class="md:hidden absolute top-4 right-4 text-slate-300 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <h1 class="guide-title text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center md:text-left pt-8 md:pt-0">Guide de Crise Bipolaire</h1>
+            <a href="https://thot586.github.io/EM_CRT/#interventions" class="block text-center bg-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-600 transition-colors duration-300 mb-6 shadow-lg">
+                <i class="fas fa-arrow-left mr-2"></i>Retour au Portail
+            </a>
+            <a class="nav-link" onclick="showSection('section-home'); closeSidebar();"><i class="fas fa-home icon"></i>Accueil</a>
+            <a class="nav-link" onclick="showSection('section-introduction-guide'); closeSidebar();"><i class="fas fa-info-circle icon"></i>Objectif du Guide</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-clipboard-list icon"></i>Plan d'Intervention de Crise <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-crise-phase1'); closeSidebar();">Phase 1: Sécurisation</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase2'); closeSidebar();">Phase 2: Stabilisation</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase3'); closeSidebar();">Phase 3: Prévention</a>
+                </div>
+            </div>
+
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-tools icon"></i>Boîte à Outils Thérapeutiques <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-outils-rythmes'); closeSidebar();">Régulation des Rythmes</a>
+                    <a class="nav-link" onclick="showSection('section-outils-monitoring'); closeSidebar();">Monitoring de l'Humeur</a>
+                    <a class="nav-link" onclick="showSection('section-outils-sommeil'); closeSidebar();">Gestion du Sommeil</a>
+                     <a class="nav-link" onclick="showSection('section-outils-action'); closeSidebar();">Plan d'Action Précoce</a>
+                </div>
+            </div>
+
+             <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-book-open icon"></i>Fondamentaux (Théorie) <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-comprendre'); closeSidebar();">Comprendre le Trouble Bipolaire</a>
+                    <a class="nav-link" onclick="showSection('section-spectre'); closeSidebar();">Le Spectre Bipolaire</a>
+                    <a class="nav-link" onclick="showSection('section-modele-rythmes'); closeSidebar();">Dysrégulation des Rythmes</a>
+                </div>
+            </div>
+            
+            <a class="nav-link" onclick="showSection('section-roles-recap'); closeSidebar();"><i class="fas fa-users-cog icon"></i>Rôles de l'Équipe en Crise</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-chalkboard-teacher icon"></i>Psychoéducation <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-psychoed-patient'); closeSidebar();">Pour la Personne</a>
+                    <a class="nav-link" onclick="showSection('section-psychoed-entourage'); closeSidebar();">Pour l'Entourage</a>
+                </div>
+            </div>
+            <a class="nav-link" onclick="showSection('section-glossaire'); closeSidebar();"><i class="fas fa-book icon"></i>Glossaire</a>
+            <a class="nav-link" onclick="showSection('section-references'); closeSidebar();"><i class="fas fa-link icon"></i>Références</a>
+        </nav>
+
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden" onclick="closeSidebar()"></div>
+
+        <main id="main-content" class="flex-1 p-4 md:p-8 lg:p-10 overflow-y-auto">
+            <div id="section-home" class="content-section">
+                <h2>Guide d'Intervention de Crise : Trouble Bipolaire</h2>
+                <p>Ce guide est un outil opérationnel pour les équipes mobiles de psychiatrie intervenant en <strong>alternative à l'hospitalisation (modèle CRT)</strong> pour des personnes en crise liée à un trouble bipolaire. Il est conçu pour structurer une intervention intensive, adaptée à la phase (maniaque, dépressive ou mixte) et centrée sur la stabilisation de l'humeur et la régulation des rythmes biologiques et sociaux.</p>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Comment utiliser ce guide :</h4>
+                    <ul>
+                        <li>La section <strong>Plan d'Intervention de Crise</strong> est le cœur du guide. Elle offre un protocole par phases pour guider l'action de l'équipe selon l'état thymique.</li>
+                        <li>La <strong>Boîte à Outils Thérapeutiques</strong> détaille les techniques de régulation des rythmes, de monitoring de l'humeur et de gestion du sommeil, piliers de la prise en charge.</li>
+                        <li>Les autres sections fournissent le contexte théorique et pratique pour une prise en charge cohérente et multidisciplinaire.</li>
+                        <li>Utilisez ce guide comme support pour vos synthèses d'équipe afin de planifier et d'ajuster les interventions au domicile.</li>
+                    </ul>
+                </div>
+                <p>Notre mission est de considérer le trouble bipolaire non comme une fatalité, mais comme une condition chronique gérable. L'objectif est de co-construire avec la personne et son entourage une compréhension de sa cyclicité, des outils de stabilisation et un mode de vie protecteur permettant une vie riche et signifiante entre les épisodes.</p>
+            </div>
+
+            <div id="section-introduction-guide" class="content-section">
+                <h2>Objectif de ce Guide Opérationnel</h2>
+                <p>Intervenir au domicile d'une personne en crise bipolaire, c'est entrer dans un monde où l'humeur dicte tout : l'énergie, la perception, les décisions, les relations. Selon la phase (maniaque, hypomaniaque, dépressive, mixte), les besoins sont radicalement différents. Notre mission, inspirée des équipes de Résolution de Crise et Traitement à Domicile (Crisis Resolution and Home Treatment - CRT), est de faire du domicile un lieu de régulation et de stabilisation, en s'appuyant sur les principes de la <strong>thérapie interpersonnelle et des rythmes sociaux (IPSRT)</strong>.</p>
+                <p>Ce guide propose un <strong>protocole par phases</strong> pour une intervention intensive et coordonnée, visant à :</p>
+                <ul class="list-disc ml-5">
+                    <li>Assurer la sécurité immédiate en phase maniaque (conduites à risque, agitation) ou dépressive (risque suicidaire).</li>
+                    <li>Stabiliser l'humeur rapidement par des moyens pharmacologiques et comportementaux.</li>
+                    <li>Restaurer ou maintenir des rythmes circadiens et sociaux réguliers.</li>
+                    <li>Développer la conscience de la cyclicité et des prodromes.</li>
+                    <li>Impliquer l'entourage comme partenaire de soin et de surveillance.</li>
+                    <li>Prévenir les rechutes par un plan personnalisé.</li>
+                    <li>Éviter l'hospitalisation quand elle n'est pas nécessaire.</li>
+                </ul>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Notre mission en trois temps :</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Sécuriser et Réguler :</strong> Assurer la sécurité, stabiliser l'épisode aigu (maniaque ou dépressif), restaurer le sommeil.</li>
+                        <li><strong>Stabiliser et Structurer :</strong> Maintenir l'euthymie, établir des rythmes réguliers, renforcer l'adhésion thérapeutique.</li>
+                        <li><strong>Prévenir et Autonomiser :</strong> Développer la reconnaissance des prodromes, élaborer un plan d'action précoce, soutenir le projet de vie.</li>
+                    </ol>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Priorités selon la phase</h4>
+                    <ul>
+                        <li><strong>Phase maniaque/hypomaniaque :</strong> Sécurité (conduites à risque, dépenses, sexualité, agressivité), réduction de la stimulation, sommeil prioritaire.</li>
+                        <li><strong>Phase dépressive :</strong> Évaluation du risque suicidaire (particulièrement élevé dans les phases mixtes), activation comportementale douce, soutien quotidien.</li>
+                        <li><strong>Phase mixte :</strong> La plus dangereuse. Hyperactivation + idées noires = risque suicidaire maximal. Surveillance rapprochée indispensable.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- PLAN D'INTERVENTION -->
+            <div id="section-crise-phase1" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 1 : Sécurisation et Régulation (Jours 1 à 7)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Assurer la sécurité immédiate, stabiliser l'épisode aigu et restaurer le sommeil (priorité absolue).</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Très haute fréquence.</strong> En phase aiguë maniaque ou dépressive sévère, la présence quotidienne (voire bi-quotidienne) est essentielle.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Infirmier·ère :</strong> Visite quotidienne (ou 2x/jour si nécessaire), évaluation de l'état thymique, observance, sommeil, surveillance des risques.</li>
+                    <li><strong>Psychiatre :</strong> Visite à J1 pour évaluation complète et ajustement pharmacologique. Réévaluation à J3-J5.</li>
+                    <li><strong>Assistant·e Social·e :</strong> Évaluation à J1-J2 des dégâts potentiels (financiers, relationnels, professionnels) et mise en place de protections si nécessaire.</li>
+                    <li><strong>Entourage :</strong> Information et mobilisation dès J1.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener - PHASE MANIAQUE/HYPOMANIAQUE</h4>
+                     <ul>
+                        <li><strong>Évaluation de la sécurité :</strong> Conduites à risque (dépenses excessives, projets irréalistes, sexualité à risque, conduite automobile dangereuse, agressivité), risque d'hétéro-agressivité si irritabilité majeure.</li>
+                        <li><strong>Mise en place de protections :</strong> Retrait des moyens de paiement si dépenses massives, limitation de l'accès aux véhicules, information de l'employeur si nécessaire (avec accord).</li>
+                        <li><strong>Réduction drastique de la stimulation :</strong> Environnement calme, peu de visiteurs, lumière tamisée, pas d'alcool ni de substances.</li>
+                        <li><strong>Restauration du sommeil (PRIORITÉ #1) :</strong> Ajustement pharmacologique (benzodiazépines, antipsychotiques sédatifs), hygiène du sommeil stricte, horaires fixes.</li>
+                        <li><strong>Structure et limites fermes mais bienveillantes :</strong> Encadrer les activités, poser des limites claires sur les comportements à risque.</li>
+                        <li><strong>Monitoring de l'agitation et de l'irritabilité :</strong> Désamorcer les conflits, environnement apaisant.</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener - PHASE DÉPRESSIVE</h4>
+                     <ul>
+                        <li><strong>Évaluation du risque suicidaire :</strong> Systématique, répétée, approfondie (voir guide dépression).</li>
+                        <li><strong>Activation comportementale douce :</strong> Mais adaptée à l'énergie disponible (ne pas sur-stimuler en phase mixte).</li>
+                        <li><strong>Surveillance du virage maniaque :</strong> Attention à ne pas déclencher un virage par activation excessive ou antidépresseurs mal gérés.</li>
+                        <li><strong>Maintien des rythmes :</strong> Lever et coucher à heures fixes, même si la personne a envie de rester au lit.</li>
+                        <li><strong>Soutien à l'entourage :</strong> Épuisement fréquent, besoin d'information sur la durée de l'épisode.</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Phase maniaque : Ne pas confronter directement.</strong> "Vous êtes malade, arrêtez ces bêtises" est contre-productif. Rediriger doucement.</li>
+                        <li><strong>Ne pas sous-estimer le risque de passage à l'acte.</strong> L'impulsivité est majeure en phase maniaque.</li>
+                        <li><strong>Phase dépressive : Ne pas minimiser.</strong> Le risque suicidaire est réel, surtout en phase mixte.</li>
+                        <li><strong>Ne pas activer excessivement en phase mixte.</strong> Cela peut augmenter le risque de passage à l'acte suicidaire.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase2" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 2 : Stabilisation et Structuration (Jours 8 à 21)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Maintenir l'euthymie retrouvée, établir des rythmes réguliers et renforcer l'alliance thérapeutique et l'adhésion.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Fréquence élevée mais en diminuant progressivement.</strong></p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Infirmier·ère :</strong> Visites 1 jour sur 2, centrées sur le monitoring de l'humeur et le maintien des rythmes.</li>
+                    <li><strong>Psychologue :</strong> Début des séances structurées de psychoéducation et de thérapie interpersonnelle et des rythmes sociaux (IPSRT).</li>
+                    <li><strong>Ergothérapeute :</strong> Accompagnement pour la reprise progressive des activités dans un cadre régulier.</li>
+                    <li><strong>Psychiatre :</strong> Visite hebdomadaire pour consolidation thérapeutique.</li>
+                </ul>
+
+                 <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Psychoéducation intensive :</strong> Comprendre le trouble bipolaire, le modèle stress-rythmes-rechute, l'importance du traitement à long terme.</li>
+                        <li><strong>Mise en place de la Routine de Rythmes Sociaux (SRM) :</strong> Outil clé de l'IPSRT (voir <a href="#" onclick="showSection('section-outils-rythmes')">section dédiée</a>). Régulariser les horaires de lever, coucher, repas, activités sociales.</li>
+                        <li><strong>Monitoring quotidien de l'humeur :</strong> Apprentissage de l'auto-observation (graphique d'humeur, échelles). Identifier les fluctuations précoces.</li>
+                        <li><strong>Gestion du sommeil :</strong> Hygiène du sommeil stricte, horaires non-négociables. Le sommeil est le régulateur principal de l'humeur.</li>
+                        <li><strong>Travail sur l'acceptation du diagnostic :</strong> Souvent difficile. Accompagner le deuil de la "vie sans trouble", valoriser les périodes d'euthymie.</li>
+                        <li><strong>Implication de l'entourage :</strong> Séances de psychoéducation familiale. L'entourage doit comprendre les prodromes et son rôle.</li>
+                         <li><strong>Réparation des dégâts de l'épisode :</strong> Travail social sur les conséquences (dettes, conflits), soutien psychologique sur la culpabilité.</li>
+                    </ul>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas relâcher trop vite la surveillance.</strong> Le risque de rechute est élevé les premiers mois.</li>
+                        <li><strong>Ne pas négliger les symptômes résiduels.</strong> Irritabilité, troubles du sommeil, symptômes dépressifs subsyndromiques doivent être adressés.</li>
+                        <li><strong>Ne pas imposer un rythme trop rigide immédiatement.</strong> Y aller progressivement, par étapes.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase3" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 3 : Prévention et Autonomisation (Jours 22+)</h3>
+                 <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Consolider les acquis, développer l'autonomie dans la gestion du trouble, élaborer un plan d'action précoce et soutenir le projet de vie.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Fréquence de suivi de droit commun.</strong></p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Référent de cas (Infirmier·ère ou autre) :</strong> Visite hebdomadaire puis bimensuelle.</li>
+                    <li><strong>Psychologue :</strong> Séances bimensuelles pour consolidation et prévention.</li>
+                    <li><strong>Ensemble de l'équipe :</strong> Organiser activement la transition vers le partenaire de relais (CMP, CATTP, psychiatre libéral).</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Élaboration du Plan d'Action Précoce (Early Warning Signs Plan) :</strong> Document détaillé listant les prodromes, les facteurs de risque et les actions à entreprendre (voir <a href="#" onclick="showSection('section-outils-action')">section dédiée</a>).</li>
+                        <li><strong>Consolidation de la routine de rythmes sociaux :</strong> La personne doit être autonome dans le maintien de ses rythmes.</li>
+                        <li><strong>Travail sur le projet de vie :</strong> Études, emploi, relations. Comment concilier vie riche et gestion du trouble ? Identification des facteurs protecteurs.</li>
+                        <li><strong>Prévention du stigma internalisé :</strong> "Je suis bipolaire" vs "J'ai un trouble bipolaire". Travail identitaire.</li>
+                        <li><strong>Gestion des stresseurs interpersonnels :</strong> Les conflits relationnels sont un déclencheur majeur. Stratégies de résolution de problèmes.</li>
+                        <li><strong>Information sur les groupes de pairs :</strong> Associations de patients (ex: Bicycle, France Dépression), groupes d'entraide.</li>
+                        <li><strong>Planification de la transition :</strong> Rencontre tripartite, dossier de liaison, plan de prévention partagé.</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas considérer la personne "guérie".</strong> Le trouble bipolaire est chronique. L'objectif est la stabilité, pas la guérison.</li>
+                        <li><strong>Ne pas arrêter le traitement de fond.</strong> C'est la cause #1 de rechute. Même si la personne va bien depuis des mois.</li>
+                        <li><strong>Ne pas négliger les comorbidités.</strong> Addictions, anxiété, troubles de la personnalité doivent être adressés pour stabilité à long terme.</li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- BOITE A OUTILS -->
+            <div id="section-outils-rythmes" class="content-section">
+                <h2>Boîte à Outils : Régulation des Rythmes Sociaux</h2>
+                <p>La thérapie interpersonnelle et des rythmes sociaux (IPSRT), développée par Ellen Frank, est l'une des approches psychothérapeutiques les plus efficaces pour le trouble bipolaire. Son principe : la dysrégulation des rythmes circadiens et sociaux déclenche et entretient les épisodes thymiques.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Principe de base</h4>
+                    <p>Les événements de vie qui perturbent les rythmes sociaux (changement d'emploi, voyage avec décalage horaire, rupture, naissance) déstabilisent les rythmes biologiques (sommeil, hormones), ce qui déstabilise l'humeur chez les personnes vulnérables.</p>
+                    <p><strong>Équation :</strong> Événement perturbateur → Dysrégulation des rythmes → Épisode thymique</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> La Routine de Rythmes Sociaux (SRM - Social Rhythm Metric)</h4>
+                    <p>Outil de monitoring et de régulation. La personne note chaque jour :</p>
+                    <table class="text-sm">
+                        <thead>
+                            <tr>
+                                <th>Activité</th>
+                                <th>Heure cible</th>
+                                <th>Heure réelle</th>
+                                <th>Autres personnes présentes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Se lever</td>
+                                <td>7h00</td>
+                                <td>7h15</td>
+                                <td>Seul·e</td>
+                            </tr>
+                            <tr>
+                                <td>Premier contact avec une personne</td>
+                                <td>7h30</td>
+                                <td>7h30</td>
+                                <td>Conjoint·e</td>
+                            </tr>
+                            <tr>
+                                <td>Début d'activité (travail, études, etc.)</td>
+                                <td>9h00</td>
+                                <td>9h10</td>
+                                <td>Collègues</td>
+                            </tr>
+                            <tr>
+                                <td>Déjeuner</td>
+                                <td>12h30</td>
+                                <td>12h45</td>
+                                <td>Collègues</td>
+                            </tr>
+                            <tr>
+                                <td>Dîner</td>
+                                <td>19h00</td>
+                                <td>19h00</td>
+                                <td>Famille</td>
+                            </tr>
+                            <tr>
+                                <td>Se coucher</td>
+                                <td>22h30</td>
+                                <td>23h00</td>
+                                <td>Conjoint·e</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Objectif :</strong> Maintenir une régularité maximale, surtout pour le lever et le coucher. Variation acceptable : +/- 30 minutes maximum.</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Les 5 piliers de la régulation des rythmes</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Sommeil :</strong> Horaires fixes de lever et coucher, même le week-end. 7-9h de sommeil par nuit. Ni trop, ni trop peu.</li>
+                        <li><strong>Alimentation :</strong> Trois repas à heures régulières. Éviter de sauter des repas.</li>
+                        <li><strong>Activité physique :</strong> Régulière, idéalement à la même heure chaque jour. Pas d'exercice intense le soir (perturbe le sommeil).</li>
+                        <li><strong>Exposition à la lumière :</strong> Lumière naturelle le matin, obscurité le soir. Éviter les écrans 1h avant le coucher.</li>
+                        <li><strong>Activités sociales :</strong> Contacts sociaux réguliers, prévisibles. Éviter l'isolement prolongé ou la sur-stimulation sociale.</li>
+                    </ol>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Gestion des perturbations inévitables</h4>
+                    <p>Certains événements vont perturber les rythmes (voyage, fête, naissance, décès). L'objectif n'est pas de les éviter complètement, mais de :</p>
+                    <ul>
+                        <li>Les anticiper (prévenir l'équipe, augmenter la surveillance)</li>
+                        <li>Limiter la perturbation (ex: après une nuit courte, se lever quand même à l'heure habituelle)</li>
+                        <li>Revenir rapidement à la routine après l'événement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-outils-monitoring" class="content-section">
+                <h2>Boîte à Outils : Monitoring de l'Humeur</h2>
+                <p>L'auto-monitoring de l'humeur est un outil essentiel pour développer la conscience de la cyclicité et détecter précocement les fluctuations. Il permet à la personne de devenir "experte" de son trouble.</p>
+                
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Le Graphique d'Humeur (Mood Chart)</h4>
+                    <p>À remplir quotidiennement, idéalement le soir. Noter sur une échelle de -3 à +3 :</p>
+                    <ul>
+                        <li><strong>+3 :</strong> Manie sévère (hospitalisé·e ou devrait l'être)</li>
+                        <li><strong>+2 :</strong> Hypomanie marquée (énergie excessive, projets multiples, sommeil réduit)</li>
+                        <li><strong>+1 :</strong> Hypomanie légère (bonne humeur, énergie, productivité, mais contrôlable)</li>
+                        <li><strong>0 :</strong> Euthymie (humeur normale)</li>
+                        <li><strong>-1 :</strong> Dépression légère (tristesse, fatigue, mais fonctionnel·le)</li>
+                        <li><strong>-2 :</strong> Dépression modérée (difficultés marquées à fonctionner)</li>
+                        <li><strong>-3 :</strong> Dépression sévère (non fonctionnel·le, hospitalisé·e ou devrait l'être)</li>
+                    </ul>
+                    <p>Noter également :</p>
+                    <ul>
+                        <li>Heures de sommeil</li>
+                        <li>Prise des médicaments (oui/non)</li>
+                        <li>Événements de vie marquants</li>
+                        <li>Symptômes spécifiques (irritabilité, idées suicidaires, pensées accélérées, etc.)</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Applications mobiles utiles</h4>
+                    <p>Plusieurs applications facilitent le monitoring :</p>
+                    <ul>
+                        <li><strong>eMoods :</strong> Graphique d'humeur, tracking des médicaments, identification de patterns</li>
+                        <li><strong>Daylio :</strong> Tracking d'humeur et d'activités, très visuel</li>
+                        <li><strong>MoodPath :</strong> Monitoring avec questions guidées</li>
+                    </ul>
+                    <p>L'important est la régularité, pas l'outil spécifique.</p>
+                </div>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Utiliser le graphique en consultation</h4>
+                    <p>Le graphique doit être apporté à chaque visite. Il permet de :</p>
+                    <ul>
+                        <li>Visualiser les fluctuations sur plusieurs semaines/mois</li>
+                        <li>Identifier les patterns (ex: cycles saisonniers, déclencheurs récurrents)</li>
+                        <li>Évaluer l'efficacité du traitement</li>
+                        <li>Détecter précocement un virage</li>
+                    </ul>
+                </div>
+            </div>
+           
+            <div id="section-outils-sommeil" class="content-section"> 
+                <h2>Boîte à Outils : Gestion du Sommeil</h2>
+                <p>Le sommeil est le régulateur principal de l'humeur dans le trouble bipolaire. Sa perturbation est à la fois un prodrome et un facteur déclenchant des épisodes. La gestion du sommeil est donc CENTRALE dans la prise en charge.</p>
+                
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Le paradoxe du sommeil bipolaire</h4>
+                    <ul>
+                        <li><strong>Trop peu de sommeil</strong> → Risque de virage maniaque</li>
+                        <li><strong>Trop de sommeil</strong> → Peut aggraver la dépression</li>
+                        <li><strong>Sommeil irrégulier</strong> → Déstabilisation de l'humeur</li>
+                    </ul>
+                    <p><strong>Objectif :</strong> Sommeil régulier, de durée adaptée (7-9h), à horaires fixes.</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Hygiène du sommeil spécifique au trouble bipolaire</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Horaires non-négociables :</strong> Se coucher et se lever à la même heure chaque jour, MÊME LE WEEK-END, MÊME EN VACANCES. C'est le point le plus important.</li>
+                        <li><strong>Durée optimale :</strong> 7-9h. Ni moins (risque maniaque), ni plus (risque dépressif).</li>
+                        <li><strong>Rituel d'endormissement :</strong> 1h avant le coucher, réduire la stimulation (lumière tamisée, pas d'écrans, activité calme).</li>
+                        <li><strong>Éviter les siestes :</strong> Sauf si vraiment nécessaire, et alors maximum 20-30 minutes en début d'après-midi.</li>
+                        <li><strong>Exposition à la lumière :</strong> Lumière vive le matin (idéalement lumière naturelle), obscurité totale la nuit (rideaux occultants, pas de lumière bleue).</li>
+                        <li><strong>Éviter les excitants :</strong> Café après 14h, alcool (perturbe le sommeil), cannabis.</li>
+                        <li><strong>Lit = sommeil uniquement :</strong> Pas de travail, de télévision ou de téléphone au lit.</li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Que faire en cas de trouble du sommeil ?</h4>
+                    <p><strong>Si insomnie (début de phase maniaque) :</strong></p>
+                    <ul>
+                        <li>Contacter l'équipe immédiatement</li>
+                        <li>Ajustement pharmacologique (benzodiazépine, antipsychotique sédatif)</li>
+                        <li>Réduction drastique de la stimulation</li>
+                        <li>Surveillance rapprochée</li>
+                    </ul>
+                    <p><strong>Si hypersomnie (dépression) :</strong></p>
+                    <ul>
+                        <li>Maintenir quand même l'heure de lever (utiliser plusieurs alarmes, demander à l'entourage de réveiller)</li>
+                        <li>Exposition à la lumière vive dès le réveil</li>
+                        <li>Activation comportementale</li>
+                        <li>Limiter le temps au lit à 9h maximum</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-outils-action" class="content-section">
+                <h2>Boîte à Outils : Plan d'Action Précoce (Early Warning Signs Plan)</h2>
+                <p>Le plan d'action précoce est le document central de prévention de la rechute. Il liste de manière personnalisée les signes avant-coureurs de chaque personne et les actions à entreprendre pour chaque niveau d'alerte.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Principe du système d'alerte en 3 zones</h4>
+                    <p>Similaire à un système de feux tricolores :</p>
+                    <ul>
+                        <li><strong>🟢 Zone verte :</strong> Tout va bien, euthymie, routine maintenue</li>
+                        <li><strong>🟡 Zone jaune :</strong> Signes d'alerte précoces détectés, intervention légère nécessaire</li>
+                        <li><strong>🔴 Zone rouge :</strong> Épisode en cours, intervention intensive nécessaire</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Élaborer le plan - Exemple pour virage maniaque</h4>
+                    <p><strong>🟡 Zone Jaune - Signes d'alerte précoces (hypomanie débutante) :</strong></p>
+                    <ul>
+                        <li><strong>Mes signes :</strong> Sommeil réduit (5-6h au lieu de 8h) sans fatigue, idées qui fusent, envie de démarrer plein de projets, parle plus vite, irritabilité augmentée, dépenses un peu plus importantes.</li>
+                        <li><strong>Actions à entreprendre :</strong>
+                            <ul class="ml-4">
+                                <li>Renforcer l'hygiène du sommeil (coucher encore plus tôt)</li>
+                                <li>Réduire la stimulation (annuler sorties prévues, limiter contacts sociaux)</li>
+                                <li>Éviter décisions importantes (achats, projets)</li>
+                                <li>Contacter infirmier·ère référent·e dans les 24h</li>
+                                <li>Demander à conjoint·e de surveiller dépenses</li>
+                                <li>Augmenter temporairement le traitement si prévu par psychiatre</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p><strong>🔴 Zone Rouge - Épisode maniaque en cours :</strong></p>
+                    <ul>
+                        <li><strong>Mes signes :</strong> Sommeil < 4h, sentiment de toute-puissance, projets grandioses, dépenses massives, irritabilité extrême, pensées qui défilent trop vite pour les suivre.</li>
+                        <li><strong>Actions à entreprendre :</strong>
+                            <ul class="ml-4">
+                                <li>Contact IMMÉDIAT avec l'équipe (ou urgences si équipe non joignable)</li>
+                                <li>Entourage informé et mobilisé</li>
+                                <li>Retrait moyens de paiement, clés de voiture</li>
+                                <li>Hospitalisation possible si sécurité compromise</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Élaborer le plan - Exemple pour virage dépressif</h4>
+                    <p><strong>🟡 Zone Jaune - Signes d'alerte précoces :</strong></p>
+                    <ul>
+                        <li><strong>Mes signes :</strong> Fatigue qui augmente, envie de m'isoler, petites tâches deviennent lourdes, perte d'intérêt pour loisirs, sommeil perturbé (trop ou pas assez), pensées plus négatives.</li>
+                        <li><strong>Actions :</strong> Maintenir routine coûte que coûte, augmenter contacts sociaux (même si pas envie), contacter équipe, surveiller idées noires.</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Rôle de l'entourage</h4>
+                    <p>L'entourage doit avoir une copie du plan et être formé à reconnaître les signes. Ils voient souvent les prodromes avant la personne elle-même, notamment en phase maniaque (déni fréquent).</p>
+                    <p>Inclure dans le plan : "Qui a le droit de me dire que je suis en train de virer ? Qu'est-ce que j'accepte comme intervention de leur part ?"</p>
+                </div>
+            </div>
+
+            <!-- FONDAMENTAUX -->
+            <div id="section-comprendre" class="content-section">
+                 <h2>Fondamentaux : Comprendre le Trouble Bipolaire</h2>
+                 <p>Le trouble bipolaire (anciennement psychose maniaco-dépressive) est une maladie chronique de l'humeur caractérisée par l'alternance d'épisodes dépressifs et d'épisodes maniaques ou hypomaniaques. Il affecte environ 1-2% de la population et débute généralement entre 15 et 25 ans.</p>
+                
+                <h4>Les différents types d'épisodes :</h4>
+                <div class="accordion-item">
+                    <button class="accordion-header">Épisode Maniaque <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Durée :</strong> Au moins 7 jours (ou hospitalisation nécessaire)</p>
+                        <p><strong>Caractéristiques :</strong></p>
+                        <ul>
+                            <li>Humeur élevée, expansive ou irritable de manière anormale et persistante</li>
+                            <li>Augmentation de l'énergie et de l'activité</li>
+                            <li>Augmentation de l'estime de soi ou idées de grandeur</li>
+                            <li>Réduction du besoin de sommeil</li>
+                            <li>Logorrhée (parle beaucoup, rapidement)</li>
+                            <li>Fuite des idées, pensées qui défilent</li>
+                            <li>Distractibilité importante</li>
+                            <li>Augmentation des activités orientées vers un but ou agitation psychomotrice</li>
+                            <li>Engagement excessif dans des activités à risque (dépenses, sexualité, investissements)</li>
+                        </ul>
+                        <p><strong>Impact :</strong> Altération marquée du fonctionnement, souvent hospitalisation nécessaire</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Épisode Hypomaniaque <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Durée :</strong> Au moins 4 jours</p>
+                        <p><strong>Caractéristiques :</strong> Similaires à la manie mais en moins intense</p>
+                        <ul>
+                            <li>Symptômes identiques à la manie mais moins sévères</li>
+                            <li>Changement observable par l'entourage</li>
+                            <li>N'entraîne PAS d'altération marquée du fonctionnement</li>
+                            <li>Pas d'hospitalisation nécessaire</li>
+                            <li>Pas de caractéristiques psychotiques</li>
+                        </ul>
+                        <p><strong>Piège :</strong> Souvent vécu comme agréable, la personne ne consulte pas. Mais risque de virage vers manie complète ou dépression.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Épisode Dépressif <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p>Identique aux épisodes dépressifs caractérisés (voir guide dépression). Durée minimale : 2 semaines.</p>
+                        <p><strong>Particularité dans le bipolaire :</strong></p>
+                        <ul>
+                            <li>Souvent plus sévères et longs que dans la dépression unipolaire</li>
+                            <li>Risque de virage maniaque sous antidépresseurs</li>
+                            <li>Peuvent alterner rapidement avec des phases maniaques (cycles rapides)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Épisode Mixte <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Le plus dangereux.</strong> Présence simultanée de symptômes dépressifs et maniaques/hypomaniaques.</p>
+                        <p><strong>Exemple :</strong> Pensées suicidaires (dépression) + énergie et impulsivité (manie) = risque de passage à l'acte maximal</p>
+                        <p>Ou : Irritabilité extrême + agitation + pensées négatives</p>
+                        <p><strong>Nécessite une vigilance maximale</strong></p>
+                    </div>
+                </div>
+
+                <h4>Types de trouble bipolaire :</h4>
+                <ul class="list-disc ml-5">
+                    <li><strong>Bipolaire de type I :</strong> Au moins un épisode maniaque dans la vie. Épisodes dépressifs fréquents mais pas obligatoires pour le diagnostic.</li>
+                    <li><strong>Bipolaire de type II :</strong> Au moins un épisode hypomaniaque ET un épisode dépressif. Pas d'épisode maniaque complet. Souvent sous-diagnostiqué.</li>
+                    <li><strong>Cyclothymie :</strong> Fluctuations chroniques entre hypomanie et dépression subsyndromique pendant au moins 2 ans. Forme "atténuée" mais handicapante.</li>
+                </ul>
+            </div>
+            
+            <div id="section-spectre" class="content-section">
+                <h2>Fondamentaux : Le Spectre Bipolaire</h2>
+                <p>Le trouble bipolaire n'est pas une entité unique mais un spectre de conditions partageant des fluctuations de l'humeur. Comprendre ce spectre aide à personnaliser la prise en charge.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Du trouble bipolaire "classique" aux formes atténuées</h4>
+                    <p>On peut visualiser un continuum :</p>
+                    <ul>
+                        <li><strong>Bipolaire I avec épisodes maniaques sévères</strong> (nécessitant hospitalisation, avec caractéristiques psychotiques)</li>
+                        <li>↓</li>
+                        <li><strong>Bipolaire I avec manies modérées</strong></li>
+                        <li>↓</li>
+                        <li><strong>Bipolaire II</strong> (hypomanies + dépressions)</li>
+                        <li>↓</li>
+                        <li><strong>Cyclothymie</strong> (fluctuations chroniques mais subsyndromiques)</li>
+                        <li>↓</li>
+                        <li><strong>Tempérament hyperthymique ou cyclothymique</strong> (personnalité avec fluctuations de l'humeur, pas de maladie)</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Patterns de cyclicité</h4>
+                    <ul>
+                        <li><strong>Cycles rapides (rapid cycling) :</strong> ≥ 4 épisodes par an. Plus difficile à traiter, souvent chez les femmes.</li>
+                        <li><strong>Cycles ultra-rapides :</strong> Plusieurs épisodes par mois</li>
+                        <li><strong>Cycles ultra-ultra-rapides (ultra-dian) :</strong> Fluctuations dans la même journée</li>
+                        <li><strong>Saisonnalité :</strong> Dépressions en automne/hiver, hypomanies au printemps/été</li>
+                    </ul>
+                    <p>Identifier le pattern est essentiel pour la prévention.</p>
+                </div>
+            </div>
+
+             <div id="section-modele-rythmes" class="content-section">
+                <h2>Fondamentaux : Modèle de la Dysrégulation des Rythmes</h2>
+                <p>Ce modèle, développé notamment par Ellen Frank et ses collègues, propose que le trouble bipolaire résulte d'une vulnérabilité biologique à la dysrégulation des rythmes circadiens, couplée à des facteurs environnementaux perturbateurs.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> La théorie des rythmes sociaux</h4>
+                    <p><strong>Hypothèse :</strong> Les événements de vie qui perturbent les routines sociales (qui donnent le tempo de nos rythmes biologiques) peuvent déclencher des épisodes thymiques chez les personnes vulnérables.</p>
+                    <p><strong>Mécanisme :</strong></p>
+                    <ol class="list-decimal ml-5">
+                        <li>Événement de vie perturbateur (rupture, naissance, changement d'emploi, voyage)</li>
+                        <li>↓</li>
+                        <li>Perturbation des routines sociales (horaires de sommeil, repas, activités)</li>
+                        <li>↓</li>
+                        <li>Dysrégulation des rythmes circadiens biologiques (horloge interne, mélatonine, cortisol)</li>
+                        <li>↓</li>
+                        <li>Déstabilisation de l'humeur → Épisode thymique</li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Implications cliniques</h4>
+                    <p>Ce modèle explique :</p>
+                    <ul>
+                        <li>Pourquoi le sommeil est si crucial (il est le marqueur et régulateur principal des rythmes)</li>
+                        <li>Pourquoi certains événements "positifs" (promotion, mariage) peuvent déclencher un épisode (ils perturbent les routines)</li>
+                        <li>Pourquoi la régularité des rythmes est protectrice</li>
+                        <li>Pourquoi le travail de nuit ou en horaires décalés est un facteur de risque majeur</li>
+                        <li>L'efficacité de l'IPSRT qui cible directement la régulation des rythmes</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Facteurs de risque de dysrégulation</h4>
+                    <ul>
+                        <li><strong>Biologiques :</strong> Génétique (risque x10 si parent au 1er degré atteint), anomalies des gènes de l'horloge circadienne</li>
+                        <li><strong>Événements de vie :</strong> Stress interpersonnels, pertes, conflits, changements majeurs</li>
+                        <li><strong>Perturbateurs de rythmes :</strong> Décalage horaire, travail posté, manque de sommeil chronique, substances (alcool, cannabis, stimulants)</li>
+                        <li><strong>Saisonnalité :</strong> Changements de photopériode</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Rôles de l'équipe -->
+             <div id="section-roles-recap" class="content-section">
+                <h2>Rôles de l'Équipe en Crise Bipolaire</h2>
+                <p>La coordination est la clé. Le trouble bipolaire nécessite une approche bio-psycho-sociale intégrée.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Professionnel</th>
+                            <th>Rôle Prioritaire en Crise Bipolaire</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Psychiatre</strong></td>
+                            <td>Leader clinique. Diagnostic et évaluation de la phase. Gestion pharmacologique (thymorégulateurs, antipsychotiques, benzodiazépines). Évaluation du risque. Décision d'hospitalisation. Coordination médicale.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infirmier·ère</strong></td>
+                            <td>Intervenant de première ligne. Présence à haute fréquence, monitoring quotidien de l'humeur et du sommeil, observance thérapeutique, surveillance des risques (conduites à risque en manie, suicide en dépression/mixte). Garant de la continuité.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Psychologue</strong></td>
+                            <td>Expertise en IPSRT et psychoéducation. Mène les séances de régulation des rythmes, de monitoring de l'humeur, d'élaboration du plan d'action précoce. Travail sur l'acceptation du diagnostic. Prévention de la rechute.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Assistant·e Social·e</strong></td>
+                            <td>Gestion des conséquences sociales des épisodes (dettes, conflits professionnels, procédures). Mise en place de protections en phase maniaque. Soutien aux démarches. Travail sur l'insertion/réinsertion professionnelle. Lien avec les tutelles si nécessaire.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Ergothérapeute & Aide-Soignant·e</strong></td>
+                            <td>Aide à la structuration du quotidien et au maintien des rythmes. Accompagnement dans les activités. Évaluation de l'impact fonctionnel. Travail sur l'équilibre occupationnel (ni trop, ni trop peu d'activités).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pair-Aidant</strong></td>
+                            <td>Témoignage du rétablissement et de la vie possible avec un trouble bipolaire. Partage d'expérience sur la gestion des épisodes, l'acceptation du diagnostic, les stratégies de prévention. Réduction du stigma. Soutien moral.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Secrétaire</strong></td>
+                            <td>Premier point de contact. Gestion des urgences (reconnaître les signes de virage maniaque ou de crise suicidaire). Planification rigoureuse des visites. Communication claire avec la personne et l'entourage. Coordination logistique.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Psychoéducation -->
+            <div id="section-psychoed-patient" class="content-section">
+                <h2>Modules de Psychoéducation pour la Personne</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Comprendre mon trouble : le modèle bio-psycho-social <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Fournir un cadre explicatif clair et non-stigmatisant.</p>
+                        <p><strong>Contenu :</strong> "Vous avez une vulnérabilité biologique (génétique, neurobiologique) à la dysrégulation de l'humeur. Quand vos rythmes biologiques (sommeil, activité) sont perturbés par des facteurs de stress ou des changements de vie, votre humeur peut basculer vers le haut (manie) ou le bas (dépression). Ce n'est pas un manque de volonté, c'est une condition médicale. Mais vous pouvez apprendre à stabiliser vos rythmes et à repérer les signes avant-coureurs."</p>
+                        <p>Utiliser des schémas, des vidéos. Insister sur la chronicité mais aussi sur le potentiel de stabilité avec un traitement adapté.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Pourquoi le traitement est-il à vie ? <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Améliorer l'adhésion thérapeutique.</p>
+                        <p><strong>Contenu :</strong> "Les thymorégulateurs (lithium, valproate, etc.) et/ou les antipsychotiques ne sont pas des béquilles dont vous pouvez vous passer. Ils régulent la chimie de votre cerveau de manière continue. Arrêter le traitement, c'est comme un diabétique qui arrête son insuline. Le risque de rechute est de 90% dans l'année qui suit l'arrêt du traitement. Même si vous allez très bien depuis longtemps."</p>
+                        <p>Aborder les effets secondaires : ils existent, on peut les gérer, mais le bénéfice l'emporte sur les inconvénients. Possibilité d'ajuster, pas d'arrêter.</p>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">3. Mon sommeil = mon baromètre <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Faire du sommeil le focus principal de surveillance.</p>
+                        <p><strong>Contenu :</strong> "Dans le trouble bipolaire, le sommeil n'est pas juste un symptôme, c'est LE régulateur de votre humeur. Quand votre sommeil se dérègle, votre humeur suit. Moins de sommeil → risque de virage maniaque. Trop de sommeil → aggravation de la dépression. Vous devez devenir un·e expert·e de votre sommeil : horaires fixes, hygiène stricte, surveiller les variations. C'est votre premier outil de prévention."</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Vivre avec le bipolaire : que puis-je faire/ne pas faire ? <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Donner des repères concrets.</p>
+                        <p><strong>Ce que vous pouvez faire :</strong> Avoir une vie riche, des études, un travail, une famille, des projets. Voyager (en gérant le décalage horaire). Faire la fête (occasionnellement, avec limites).</p>
+                        <p><strong>Ce qu'il faut éviter/gérer :</strong></p>
+                        <ul>
+                            <li>Travail de nuit ou en horaires très irréguliers (facteur de risque majeur)</li>
+                            <li>Privation de sommeil prolongée</li>
+                            <li>Alcool (interfère avec le traitement et déstabilise l'humeur)</li>
+                            <li>Cannabis et autres substances (risque de virage maniaque ou psychotique)</li>
+                            <li>Décisions importantes en phase maniaque (achats, démissions, ruptures)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-psychoed-entourage" class="content-section">
+                <h2>Modules de Psychoéducation pour l'Entourage</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Comprendre les phases : ce n'est pas "sa personnalité" <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Aider l'entourage à distinguer la maladie de la personne.</p>
+                        <p><strong>Contenu :</strong> "Quand votre proche est en phase maniaque, son jugement, sa personnalité et ses comportements sont altérés par la maladie. Les dépenses excessives, les projets grandioses, l'irritabilité, ce n'est pas 'lui/elle', c'est la manie. De même, en dépression, le retrait, l'irritabilité, ce n'est pas du rejet, c'est la maladie. Votre proche est toujours là, sous la maladie, et il/elle reviendra quand l'épisode se stabilisera."</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Comment réagir en phase maniaque ? <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                         <div class="recommendation-box">
+                             <h4><i class="fas fa-check-circle icon"></i> Quoi faire</h4>
+                             <ul>
+                                <li>Rester calme, ne pas rentrer dans le conflit ou l'argumentation</li>
+                                <li>Poser des limites fermes mais bienveillantes : "Je comprends que tu aies envie d'acheter cette voiture, mais on va attendre quelques jours"</li>
+                                <li>Réduire la stimulation : environnement calme, peu de visiteurs</li>
+                                <li>Surveiller le sommeil : c'est LE premier indicateur</li>
+                                <li>Protéger : cacher moyens de paiement, clés de voiture si nécessaire</li>
+                                <li>Contacter l'équipe rapidement</li>
+                                <li>Ne pas prendre personnellement l'irritabilité ou l'agressivité</li>
+                             </ul>
+                        </div>
+                        <div class="alert-box">
+                             <h4><i class="fas fa-exclamation-triangle icon"></i> Quoi ne pas faire</h4>
+                             <ul>
+                                 <li>Ne pas confronter directement : "Tu es malade, tu déconnes"</li>
+                                 <li>Ne pas participer aux projets délirants ou aux dépenses</li>
+                                 <li>Ne pas s'épuiser à essayer de raisonner (impossible en phase maniaque aiguë)</li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Comment réagir en phase dépressive ? <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Voir guide dépression</strong>, avec ces spécificités :</p>
+                        <ul>
+                            <li>Maintenir les routines et les rythmes coûte que coûte (lever à heure fixe même si la personne veut rester au lit)</li>
+                            <li>Ne pas sur-activer (risque de virage maniaque)</li>
+                            <li>Surveiller le risque suicidaire, particulièrement en phase mixte</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Prendre soin de soi : éviter l'épuisement <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Prévenir le burn-out des aidants.</p>
+                        <p><strong>Contenu :</strong> "Vivre avec une personne bipolaire est épuisant, surtout lors des épisodes. Vous devez prendre soin de vous :"</p>
+                        <ul>
+                            <li>Maintenir vos activités personnelles</li>
+                            <li>Demander de l'aide (famille, amis, professionnels)</li>
+                            <li>Rejoindre un groupe de soutien (UNAFAM, Bicycle)</li>
+                            <li>Accepter que vous ne pouvez pas tout contrôler</li>
+                            <li>Mettre des limites si nécessaire (vous n'êtes pas responsable de tout)</li>
+                        </ul>
+                        <p>Ressources : <a href="https://www.unafam.org" target="_blank" rel="noopener">UNAFAM</a>, <a href="https://www.bicycle-asso.org" target="_blank" rel="noopener">Association Bicycle</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Glossaire et références -->
+            <div id="section-glossaire" class="content-section">
+                <h2>Glossaire</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">Cycles Rapides (Rapid Cycling) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Présence d'au moins 4 épisodes thymiques (maniaques, hypomaniaques ou dépressifs) sur une période de 12 mois. Forme plus difficile à traiter. Facteurs de risque : sexe féminin, hypothyroïdie, antidépresseurs.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Euthymie <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>État d'humeur normale, ni dépressive ni maniaque/hypomaniaque. L'objectif du traitement est de maintenir l'euthymie le plus longtemps possible.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Hypomanie <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Forme atténuée de manie. Durée minimale de 4 jours. Symptômes similaires mais moins intenses, pas d'altération marquée du fonctionnement, pas d'hospitalisation. Souvent vécue positivement par la personne, d'où retard de diagnostic.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">IPSRT (Interpersonal and Social Rhythm Therapy) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Thérapie interpersonnelle et des rythmes sociaux. Approche psychothérapeutique spécifique au trouble bipolaire visant à stabiliser les rythmes sociaux et biologiques et à gérer les facteurs de stress interpersonnels.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Thymorégulateur <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Médicament qui stabilise l'humeur et prévient les rechutes maniaques et dépressives. Exemples : lithium (gold standard), valproate, carbamazépine, lamotrigine. Traitement de fond du trouble bipolaire.</p></div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">Virage (Switch) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Passage brutal d'une phase à l'autre (dépression → manie, ou inversement). Peut être spontané ou induit (ex : par un antidépresseur, par privation de sommeil). Nécessite une intervention rapide.</p></div>
+                </div>
+            </div>
+
+            <div id="section-references" class="content-section">
+                <h2>Références</h2>
+                <ul class="list-disc text-sm space-y-3">
+                    <li>American Psychiatric Association. (2013). <em>Diagnostic and Statistical Manual of Mental Disorders</em> (5e éd.). Arlington, VA: American Psychiatric Publishing.</li>
+                    <li>Colom, F., & Vieta, E. (2006). <em>Psychoeducation manual for bipolar disorder</em>. Cambridge: Cambridge University Press.</li>
+                    <li>Frank, E. (2005). <em>Treating bipolar disorder: A clinician's guide to interpersonal and social rhythm therapy</em>. New York: Guilford Press.</li>
+                    <li>Frank, E., Kupfer, D. J., Thase, M. E., Mallinger, A. G., Swartz, H. A., Fagiolini, A. M., ... & Monk, T. (2005). Two-year outcomes for interpersonal and social rhythm therapy in individuals with bipolar I disorder. <em>Archives of General Psychiatry, 62</em>(9), 996-1004.</li>
+                    <li>Goodwin, F. K., & Jamison, K. R. (2007). <em>Manic-depressive illness: Bipolar disorders and recurrent depression</em> (2e éd.). New York: Oxford University Press.</li>
+                    <li>Harvey, A. G. (2008). Sleep and circadian rhythms in bipolar disorder: seeking synchrony, harmony, and regulation. <em>American Journal of Psychiatry, 165</em>(7), 820-829.</li>
+                    <li>Lam, D. H., Watkins, E. R., Hayward, P., Bright, J., Wright, K., Kerr, N., ... & Sham, P. (2003). A randomized controlled study of cognitive therapy for relapse prevention for bipolar affective disorder: outcome of the first year. <em>Archives of General Psychiatry, 60</em>(2), 145-152.</li>
+                    <li>Miklowitz, D. J. (2008). <em>Bipolar disorder: A family-focused treatment approach</em> (2e éd.). New York: Guilford Press.</li>
+                    <li>Miklowitz, D. J., & Scott, J. (2009). Psychosocial treatments for bipolar disorder: cost-effectiveness, mediating mechanisms, and future directions. <em>Bipolar Disorders, 11</em>(Suppl 2), 110-122.</li>
+                    <li>Perry, A., Tarrier, N., Morriss, R., McCarthy, E., & Limb, K. (1999). Randomised controlled trial of efficacy of teaching patients with bipolar disorder to identify early symptoms of relapse and obtain treatment. <em>BMJ, 318</em>(7177), 149-153.</li>
+                    <li>Yatham, L. N., Kennedy, S. H., Parikh, S. V., Schaffer, A., Bond, D. J., Frey, B. N., ... & Berk, M. (2018). Canadian Network for Mood and Anxiety Treatments (CANMAT) and International Society for Bipolar Disorders (ISBD) 2018 guidelines for the management of patients with bipolar disorder. <em>Bipolar Disorders, 20</em>(2), 97-170.</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+    
+    <footer class="mt-16 bg-slate-900 text-slate-300 text-sm border-t border-slate-700 py-6 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+            <div class="flex-shrink-0">
+                <a href="https://www.ch-le-vinatier.fr" target="_blank" rel="noopener noreferrer">
+                    <img class="h-20 md:h-24 w-auto" 
+                         src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/e079f7cf4939908ea9a07ce40d529d0b" 
+                         alt="Logo Centre Hospitalier Le Vinatier">
+                </a>
+            </div>
+            <div class="flex-1 text-center md:text-left space-y-2">
+                <p>Dr <strong>FENOHASINA </strong>T.J. Felicien (Psychiatre - FFI) ;</p>
+                <p>Dr <strong>MONNIER </strong>Romain (Psychiatre - CCA) ; </p>
+                <p>Equipe Mobile - <strong>Pôle Centre</strong> Rive Gauche ;</p>
+                <p>Chef de service: Dr Thomas <strong>LATHIERE</strong> ;</p>
+                <p>Chef de Pôle: Prof. Nicolas <strong>FRANCK</strong></p>
+                <p>CH - Le <strong>Vinatier.</strong></p>
+                <div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+                    <img class="h-5 w-auto" 
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cc-by-nc-sa_icon.svg/120px-Cc-by-nc-sa_icon.svg.png" 
+                         alt="Icône Creative Commons BY-NC-SA">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="underline hover:text-white">Licence CC BY-NC-SA 4.0</a> –
+                    <span>Dernière mise à jour : Octobre 2025.</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 flex-shrink-0">
+                <a href="https://www.facebook.com/Psykozy?locale=fr_FR" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://cdn-assets.inwink.com/fe065c87-0643-42fc-8b5d-4d94b5d12c11/a1904f78-1bca-466d-a9f4-8ac9fde06c0c" 
+                         alt="Logo Psy-kôzy">
+                </a>
+                <a href="https://centre-ressource-rehabilitation.org" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://faustinebrunet.com/images/RS/creation-nouveau-logo-domaine-sante-mentale.jpg" 
+                         alt="Logo Centre Ressource Réhabilitation">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeSidebarButton = document.getElementById('close-sidebar-button');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const mainContent = document.getElementById('main-content');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            sidebarBackdrop.classList.add('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            openSidebar();
+        });
+        closeSidebarButton.addEventListener('click', closeSidebar);
+        sidebarBackdrop.addEventListener('click', closeSidebar);
+
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                requestAnimationFrame(() => {
+                    mainContent.scrollTop = 0;
+                });
+            }
+
+            const navLinks = document.querySelectorAll('#sidebar .nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const isDirectMatch = link.getAttribute('onclick') && link.getAttribute('onclick').includes(`showSection('${sectionId}')`);
+                let isInSubmenuOfActiveParent = false;
+                
+                const submenu = link.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const submenuLinks = submenu.querySelectorAll('.nav-link');
+                    submenuLinks.forEach(sl => {
+                         sl.classList.remove('active'); 
+                        if (sl.getAttribute('onclick') && sl.getAttribute('onclick').includes(`showSection('${sectionId}')`)) {
+                            isInSubmenuOfActiveParent = true;
+                            sl.classList.add('active'); 
+                        }
+                    });
+                }
+
+                if (isDirectMatch || isInSubmenuOfActiveParent) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            const icon = element.querySelector('i.fa-chevron-down, i.fa-chevron-up');
+            if (submenu && submenu.classList.contains('submenu')) {
+                submenu.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                }
+            }
+        }
+        
+        function initializeAccordions() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.fas.fa-chevron-down, .fas.fa-chevron-up');
+                    
+                    content.classList.toggle('hidden');
+                    header.classList.toggle('open'); 
+                    
+                    if (icon) { 
+                        if (content.classList.contains('hidden')) {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        } else {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        }
+                    }
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('section-home');
+            
+            const crisisPlanParentLink = Array.from(document.querySelectorAll('a.nav-link.font-semibold')).find(el => el.textContent.includes("Plan d'Intervention de Crise"));
+            if(crisisPlanParentLink) {
+                const submenu = crisisPlanParentLink.nextElementSibling;
+                const icon = crisisPlanParentLink.querySelector('i.fa-chevron-down');
+                 if (submenu && submenu.classList.contains('submenu') && icon) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                 }
+            }
+            
+            initializeAccordions(); 
+        });
+    </script>
+
+</body>
+</html>
