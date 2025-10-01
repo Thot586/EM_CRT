@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide d'Intervention de Crise - Équipe Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-section {
+            display: none; 
+        }
+        .content-section.active {
+            display: block; 
+        }
+        .nav-link {
+            cursor: pointer;
+            padding: 0.85rem 1.25rem; 
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            display: block; 
+            margin-bottom: 0.25rem; 
+        }
+        .nav-link:hover {
+            background-color: #334155;
+            color: #ffffff;
+        }
+        .nav-link.active {
+            background-color: #0ea5e9;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .submenu .nav-link {
+            padding-left: 2rem; 
+            font-size: 0.9rem;
+        }
+        .submenu .nav-link.active {
+             background-color: #0369a1;
+        }
+
+        .alert-box, .recommendation-box, .idea-box {
+            padding: 1.25rem; 
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+        }
+        .alert-box {
+            background-color: #fee2e2; 
+            border-left: 5px solid #ef4444; 
+            color: #991b1b; 
+        }
+        .recommendation-box {
+            background-color: #dcfce7; 
+            border-left: 5px solid #22c55e; 
+            color: #14532d; 
+        }
+        .idea-box {
+            background-color: #fef9c3; 
+            border-left: 5px solid #eab308; 
+            color: #713f12; 
+        }
+        .alert-box h4, .recommendation-box h4, .idea-box h4 {
+            font-weight: 700; 
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+            color: inherit; 
+        }
+        .alert-box ul, .recommendation-box ul, .idea-box ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+        .alert-box li, .recommendation-box li, .idea-box li {
+            margin-bottom: 0.375rem;
+        }
+        .icon {
+            margin-right: 0.75rem; 
+            font-size: 1.1em;
+        }
+
+        #sidebar::-webkit-scrollbar { width: 8px; }
+        #sidebar::-webkit-scrollbar-track { background: #0f172a; }
+        #sidebar::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
+        #sidebar::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        #main-content::-webkit-scrollbar { width: 10px; }
+        #main-content::-webkit-scrollbar-track { background: #e2e8f0; }
+        #main-content::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 5px; }
+        #main-content::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        h1.guide-title { color: #ffffff; }
+        h2 { margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.75rem; font-weight: 700; color: #0c4a6e; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.5rem; } 
+        h3 { margin-top: 1.25rem; margin-bottom: 0.75rem; font-size: 1.5rem; font-weight: 600; color: #0369a1; } 
+        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 600; color: #075985; } 
+        
+        @media (min-width: 768px) {
+            h2 { font-size: 2.25rem; margin-top: 2rem; margin-bottom: 1.25rem;}
+            h3 { font-size: 1.875rem; margin-top: 1.75rem; margin-bottom: 1rem;}
+            h4 { font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 0.75rem;}
+        }
+
+        .content-section p { margin-bottom: 1rem; line-height: 1.7; font-size: 0.95rem; } 
+         @media (min-width: 768px) { 
+            .content-section p { font-size: 1rem; }
+        }
+        .content-section ul, .content-section ol { margin-bottom: 1rem; padding-left: 1.75rem; }
+        .content-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .content-section cite { font-style: normal; } 
+        .content-section a { color: #0ea5e9; text-decoration: none; font-weight: 500; }
+        .content-section a:hover { color: #0369a1; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; }
+        th { background-color: #f1f5f9; font-weight: 600; color: #1e293b; }
+
+        .accordion-item {
+            border: 1px solid #cbd5e1; 
+            border-radius: 0.5rem; 
+            margin-bottom: 0.75rem;
+            background-color: #ffffff; 
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07), 0 1px 2px 0 rgba(0,0,0,0.04);
+        }
+        .accordion-header {
+            background-color: #f1f5f9; 
+            color: #1e3a8a; 
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            border-radius: 0.5rem 0.5rem 0 0; 
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .accordion-header:hover {
+            background-color: #e2e8f0; 
+        }
+        .accordion-header.open {
+             border-bottom: 1px solid #cbd5e1; 
+             border-radius: 0.5rem 0.5rem 0 0;
+        }
+        .accordion-content {
+            padding: 1.25rem;
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem; 
+            background-color: #ffffff; 
+        }
+        .accordion-content.hidden {
+            display: none;
+        }
+        .accordion-header .fas {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.open .fas {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 flex flex-col min-h-screen">
+
+    <button id="mobile-menu-button" class="md:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 text-white rounded-md shadow-lg">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="flex flex-col md:flex-row flex-1"> 
+        <nav id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 sm:w-72 bg-slate-800 text-slate-100 shadow-lg p-4 md:p-6 space-y-1 overflow-y-auto transform -translate-x-full md:relative md:translate-x-0 md:w-1/4 lg:w-1/5 transition-transform duration-300 ease-in-out">
+            <button id="close-sidebar-button" class="md:hidden absolute top-4 right-4 text-slate-300 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <h1 class="guide-title text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center md:text-left pt-8 md:pt-0">Guide de Crise CRT</h1>
+            <a href="https://thot586.github.io/EM_CRT/#interventions" class="block text-center bg-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-600 transition-colors duration-300 mb-6 shadow-lg">
+                <i class="fas fa-arrow-left mr-2"></i>Retour au Portail
+            </a>
+            <a class="nav-link" onclick="showSection('section-home'); closeSidebar();"><i class="fas fa-home icon"></i>Accueil</a>
+            <a class="nav-link" onclick="showSection('section-introduction-guide'); closeSidebar();"><i class="fas fa-info-circle icon"></i>Objectif du Guide</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-clipboard-list icon"></i>Plan d'Intervention de Crise <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-crise-phase1'); closeSidebar();">Phase 1: Évaluation & Engagement</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase2'); closeSidebar();">Phase 2: Stabilisation Intensive</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase3'); closeSidebar();">Phase 3: Consolidation & Relais</a>
+                </div>
+            </div>
+
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-tools icon"></i>Boîte à Outils Cliniques <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-outils-evaluation'); closeSidebar();">Évaluation du Risque</a>
+                    <a class="nav-link" onclick="showSection('section-outils-desescalade'); closeSidebar();">Techniques de Désescalade</a>
+                    <a class="nav-link" onclick="showSection('section-outils-plan-crise'); closeSidebar();">Plan de Crise Personnel</a>
+                    <a class="nav-link" onclick="showSection('section-outils-gestion-symptomes'); closeSidebar();">Gestion des Symptômes Aigus</a>
+                </div>
+            </div>
+
+             <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-book-open icon"></i>Fondamentaux Théoriques <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-modele-crt'); closeSidebar();">Le Modèle CRT</a>
+                    <a class="nav-link" onclick="showSection('section-principes-intervention'); closeSidebar();">Principes d'Intervention</a>
+                    <a class="nav-link" onclick="showSection('section-recovery-oriented'); closeSidebar();">Approche Orientée Rétablissement</a>
+                </div>
+            </div>
+            
+            <a class="nav-link" onclick="showSection('section-roles-equipe'); closeSidebar();"><i class="fas fa-users-cog icon"></i>Rôles de l'Équipe</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-chalkboard-teacher icon"></i>Psychoéducation <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-psychoed-patient'); closeSidebar();">Pour la Personne</a>
+                    <a class="nav-link" onclick="showSection('section-psychoed-entourage'); closeSidebar();">Pour l'Entourage</a>
+                </div>
+            </div>
+            <a class="nav-link" onclick="showSection('section-glossaire'); closeSidebar();"><i class="fas fa-book icon"></i>Glossaire</a>
+            <a class="nav-link" onclick="showSection('section-references'); closeSidebar();"><i class="fas fa-link icon"></i>Références</a>
+        </nav>
+
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden" onclick="closeSidebar()"></div>
+
+        <main id="main-content" class="flex-1 p-4 md:p-8 lg:p-10 overflow-y-auto">
+            <div id="section-home" class="content-section">
+                <h2>Guide d'Intervention de Crise : Équipe Mobile de Psychiatrie</h2>
+                <p>Ce guide opérationnel est conçu pour les équipes mobiles de psychiatrie intervenant en <strong>alternative à l'hospitalisation</strong>, selon le modèle des <strong>Crisis Resolution and Home Treatment (CRT) teams</strong>. Il structure une intervention intensive, coordonnée et centrée sur la personne, visant à résoudre les crises psychiatriques au domicile.</p>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Comment utiliser ce guide :</h4>
+                    <ul>
+                        <li>Le <strong>Plan d'Intervention de Crise</strong> propose un protocole structuré par phases pour guider l'action de l'équipe sur le terrain.</li>
+                        <li>La <strong>Boîte à Outils Cliniques</strong> regroupe les techniques d'évaluation et d'intervention essentielles pour gérer les situations de crise.</li>
+                        <li>Les sections théoriques fournissent le cadre conceptuel pour une prise en charge cohérente, multiprofessionnelle et orientée rétablissement.</li>
+                        <li>Utilisez ce guide lors des synthèses d'équipe pour planifier, coordonner et ajuster les interventions au domicile.</li>
+                    </ul>
+                </div>
+                <p>Notre mission est de considérer la crise comme un moment de changement potentiel, pas comme un échec. L'objectif est de mobiliser les ressources de la personne et de son environnement pour co-construire une résolution durable, dans le respect de son autonomie et de sa dignité.</p>
+            </div>
+
+            <div id="section-introduction-guide" class="content-section">
+                <h2>Objectif de ce Guide Opérationnel</h2>
+                <p>Intervenir en crise psychiatrique au domicile, c'est apporter une réponse rapide, intensive et adaptée là où la personne se trouve, dans son environnement de vie. Cette approche, développée par les équipes CRT britanniques et adoptée internationalement, repose sur un principe simple mais puissant : <strong>la plupart des crises peuvent être résolues sans hospitalisation</strong> si une intervention intensive et coordonnée est mise en place rapidement.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Les trois piliers de notre intervention :</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Rapidité :</strong> Évaluation et intervention dans les 4 heures suivant la demande, disponibilité 7j/7.</li>
+                        <li><strong>Intensité :</strong> Visites quotidiennes (voire bi-quotidiennes) en phase aiguë, implication de toute l'équipe pluridisciplinaire.</li>
+                        <li><strong>Brièveté :</strong> Intervention limitée dans le temps (moyenne 2-4 semaines), avec préparation active du relais dès le début.</li>
+                    </ol>
+                </div>
+
+                <p>Ce guide propose un <strong>protocole par phases</strong> pour structurer l'intervention de crise, visant à :</p>
+                <ul class="list-disc ml-5">
+                    <li>Assurer la sécurité de la personne et de son entourage.</li>
+                    <li>Réduire rapidement l'intensité des symptômes aigus.</li>
+                    <li>Prévenir l'hospitalisation et ses effets iatrogènes potentiels.</li>
+                    <li>Mobiliser les ressources personnelles et environnementales de la personne.</li>
+                    <li>Préparer un relais adapté vers les soins de suivi.</li>
+                </ul>
+
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Principe fondamental : "Right Care, Right Place, Right Time"</h4>
+                    <p>Notre rôle est de fournir le bon niveau de soins, au bon endroit (le domicile), au bon moment (en phase de crise). Nous ne remplaçons pas l'hospitalisation quand elle est nécessaire, mais nous offrons une alternative quand elle ne l'est pas.</p>
+                </div>
+            </div>
+            
+            <!-- PLAN D'INTERVENTION -->
+            <div id="section-crise-phase1" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 1 : Évaluation & Engagement (Jours 1-3)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Évaluer le risque, établir l'alliance thérapeutique et initier la stabilisation.</h4>
+                </div>
+                
+                <h4>Temporalité des interventions :</h4>
+                <p><strong>Très haute intensité.</strong> La rapidité et la présence régulière sont cruciales pour établir la confiance et contenir la crise.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Première évaluation :</strong> Dans les 4 heures suivant l'orientation (idéalement par binôme psychiatre + infirmier·ère).</li>
+                    <li><strong>Visites quotidiennes</strong> : Minimum 1 visite/jour, possibilité de 2 visites/jour selon l'intensité de la crise.</li>
+                    <li><strong>Disponibilité téléphonique :</strong> Ligne directe accessible 7j/7 pour la personne et sa famille.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Évaluation complète du risque :</strong> Suicidaire, hétéro-agressif, de négligence grave, de vulnérabilité (voir section Outils).</li>
+                        <li><strong>Évaluation psychiatrique :</strong> Nature de la crise, symptomatologie actuelle, antécédents, traitements en cours.</li>
+                        <li><strong>Évaluation psychosociale :</strong> Réseau de soutien, conditions de logement, situation financière, facteurs précipitants.</li>
+                        <li><strong>Formulation partagée de la crise :</strong> Comprendre avec la personne ce qui s'est passé et pourquoi maintenant.</li>
+                        <li><strong>Élaboration d'un plan de crise initial :</strong> Mesures de sécurité immédiates, personnes ressources, stratégies de gestion.</li>
+                        <li><strong>Coordination avec les partenaires :</strong> Médecin traitant, psychiatre référent, services sociaux si nécessaire.</li>
+                        <li><strong>Ajustements thérapeutiques si besoin :</strong> Optimisation du traitement médicamenteux, gestion des symptômes aigus.</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne jamais promettre ce que l'équipe ne peut pas tenir.</strong> Soyez transparents sur les limites du service.</li>
+                        <li><strong>Ne pas sous-estimer le risque.</strong> En cas de doute, prioriser toujours la sécurité.</li>
+                        <li><strong>Ne pas imposer un plan.</strong> La collaboration est essentielle pour l'adhésion et l'efficacité.</li>
+                        <li><strong>Ne pas ignorer l'entourage.</strong> Leur implication précoce est un facteur de réussite majeur.</li>
+                    </ul>
+                </div>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Critères d'inclusion/exclusion</h4>
+                    <p><strong>Inclusion :</strong> Crise psychiatrique aiguë nécessitant une intervention intensive mais gérable au domicile avec soutien adéquat.</p>
+                    <p><strong>Exclusion :</strong> Risque imminent et incontrôlable, absence de soutien minimal au domicile, besoin de soins médicaux aigus, refus catégorique de l'intervention.</p>
+                </div>
+            </div>
+
+            <div id="section-crise-phase2" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 2 : Stabilisation Intensive (Jours 4-14)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Réduire l'intensité des symptômes, renforcer les stratégies d'adaptation et mobiliser les ressources.</h4>
+                </div>
+                
+                <h4>Temporalité des interventions :</h4>
+                <p><strong>Intensité élevée avec adaptation progressive.</strong> L'équipe ajuste la fréquence des visites selon l'évolution clinique.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Visites quotidiennes</strong> en début de phase, puis espacement progressif si amélioration (1 jour sur 2).</li>
+                    <li><strong>Intervention pluridisciplinaire coordonnée :</strong> Chaque professionnel apporte son expertise spécifique.</li>
+                    <li><strong>Synthèses d'équipe régulières</strong> (2-3 fois/semaine) pour ajuster le plan d'intervention.</li>
+                </ul>
+
+                 <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Suivi rapproché des symptômes :</strong> Utilisation d'échelles d'évaluation standardisées pour objectiver l'évolution.</li>
+                        <li><strong>Interventions psychothérapeutiques brèves :</strong> Techniques de résolution de problèmes, activation comportementale, gestion de l'anxiété.</li>
+                        <li><strong>Psychoéducation ciblée :</strong> Sur la pathologie, les traitements, les signes de rechute, les stratégies d'adaptation.</li>
+                        <li><strong>Travail avec l'entourage :</strong> Soutien aux aidants, guidance, implication dans le plan de crise.</li>
+                        <li><strong>Interventions sur l'environnement :</strong> Ergothérapie au domicile, aide aux démarches administratives, liaison avec services sociaux.</li>
+                        <li><strong>Renforcement de l'adhésion thérapeutique :</strong> Éducation thérapeutique, gestion des effets secondaires, ajustements si nécessaire.</li>
+                        <li><strong>Préparation progressive du relais :</strong> Identifier le référent de suivi, planifier la transition.</li>
+                    </ul>
+                </div>
+
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas prolonger l'intervention au-delà du nécessaire.</strong> Risque de dépendance et de désinvestissement des soins de suivi.</li>
+                        <li><strong>Ne pas diminuer trop rapidement l'intensité.</strong> Évaluer soigneusement la stabilité avant d'espacer les visites.</li>
+                        <li><strong>Ne pas négliger les facteurs psychosociaux.</strong> La crise a souvent des déterminants environnementaux qui doivent être adressés.</li>
+                    </ul>
+                </div>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Indicateurs d'amélioration</h4>
+                    <ul>
+                        <li>Réduction du risque suicidaire ou hétéro-agressif</li>
+                        <li>Amélioration du sommeil et de l'appétit</li>
+                        <li>Reprise progressive des activités quotidiennes</li>
+                        <li>Meilleure utilisation des stratégies d'adaptation</li>
+                        <li>Renforcement du réseau de soutien</li>
+                        <li>Amélioration de l'insight et de l'adhésion thérapeutique</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase3" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 3 : Consolidation & Relais (Jours 15+)</h3>
+                 <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Consolider les acquis, prévenir la rechute et assurer une transition en douceur vers les soins de suivi.</h4>
+                </div>
+                
+                <h4>Temporalité des interventions :</h4>
+                <p><strong>Diminution progressive de l'intensité.</strong> Préparation active du désengagement de l'équipe mobile.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Visites espacées :</strong> 2-3 fois/semaine, puis hebdomadaires en fin de phase.</li>
+                    <li><strong>Rencontres de transition :</strong> Organisation de rendez-vous tripartites (personne, équipe mobile, référent de suivi).</li>
+                    <li><strong>Durée moyenne de l'intervention :</strong> 2-4 semaines au total, avec possibilité de prolongation si nécessaire (maximum 6 semaines).</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Finalisation du plan de prévention de la rechute :</strong> Identification des signes précurseurs, stratégies d'action, personnes ressources.</li>
+                        <li><strong>Coordination du relais :</strong> Transmission détaillée au référent de suivi (CMP, psychiatre libéral, etc.).</li>
+                        <li><strong>Rencontre de passation :</strong> Rencontre tripartite pour assurer la continuité des soins et rassurer la personne.</li>
+                        <li><strong>Évaluation de l'intervention :</strong> Recueillir le feedback de la personne et de sa famille sur l'intervention.</li>
+                        <li><strong>Bilan des acquis :</strong> Valoriser les progrès réalisés, renforcer la confiance en ses capacités.</li>
+                        <li><strong>Information sur la réaccessibilité :</strong> Expliquer les conditions dans lesquelles la personne peut à nouveau solliciter l'équipe en cas de nouvelle crise.</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas clore brutalement l'intervention.</strong> La transition doit être progressive et anticipée.</li>
+                        <li><strong>Ne pas laisser de vide entre la fin de l'intervention mobile et la reprise par le référent.</strong></li>
+                        <li><strong>Ne pas oublier le suivi post-intervention.</strong> Un contact téléphonique à 1 mois peut prévenir les rechutes.</li>
+                    </ul>
+                </div>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Critères de fin d'intervention</h4>
+                    <ul>
+                        <li>Stabilisation clinique suffisante</li>
+                        <li>Risque maîtrisé</li>
+                        <li>Plan de crise opérationnel et compris</li>
+                        <li>Relais de soins organisé et accepté</li>
+                        <li>Reprise d'un niveau de fonctionnement acceptable</li>
+                        <li>Adhésion thérapeutique satisfaisante</li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- BOITE A OUTILS -->
+            <div id="section-outils-evaluation" class="content-section">
+                <h2>Boîte à Outils : Évaluation du Risque</h2>
+                <p>L'évaluation du risque est la pierre angulaire de toute intervention de crise. Elle doit être systématique, structurée et répétée tout au long de l'intervention.</p>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Évaluation du Risque Suicidaire <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Principe :</strong> Évaluer de manière directe, empathique et non-jugeante.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Dimensions à explorer</h4>
+                            <ul>
+                                <li><strong>Idéations suicidaires :</strong> Fréquence, intensité, contrôlabilité. "Avez-vous des pensées de mort ou de suicide ?"</li>
+                                <li><strong>Intentionnalité :</strong> Désir de mourir vs. ambivalence. "Souhaitez-vous vraiment mourir ou cherchez-vous à faire cesser la souffrance ?"</li>
+                                <li><strong>Planification :</strong> Existence d'un plan, précision, létalité du moyen envisagé.</li>
+                                <li><strong>Accès aux moyens :</strong> Disponibilité immédiate de moyens létaux (médicaments, armes, etc.).</li>
+                                <li><strong>Passages à l'acte antérieurs :</strong> Historique de tentatives, contexte, méthode utilisée.</li>
+                                <li><strong>Facteurs de risque :</strong> Isolement social, abus de substances, événements de vie stressants récents, troubles psychiatriques.</li>
+                                <li><strong>Facteurs de protection :</strong> Soutien social, raisons de vivre, projet, croyances religieuses.</li>
+                                <li><strong>Sentiment d'être un fardeau et thwarted belongingness :</strong> Concepts de la théorie interpersonnelle du suicide.</li>
+                            </ul>
+                        </div>
+                        <div class="alert-box">
+                            <h4><i class="fas fa-exclamation-triangle icon"></i> Signaux d'alarme urgents</h4>
+                            <p>Hospitalisation à considérer si : plan précis + moyen accessible + intentionnalité forte + absence de facteurs de protection + incapacité à garantir sa sécurité.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Évaluation du Risque Hétéro-agressif <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Éléments à évaluer</h4>
+                            <ul>
+                                <li><strong>Idéations d'agression :</strong> Pensées de violence envers autrui, cible identifiée.</li>
+                                <li><strong>Antécédents de violence :</strong> Comportements violents passés, contexte.</li>
+                                <li><strong>État mental actuel :</strong> Agitation, impulsivité, symptômes psychotiques (persécution, commande hallucinatoire).</li>
+                                <li><strong>Intoxication :</strong> Usage récent d'alcool ou de substances.</li>
+                                <li><strong>Facteurs situationnels :</strong> Conflits interpersonnels actifs, accès à des armes.</li>
+                                <li><strong>Capacité de contrôle :</strong> Insight, capacité à gérer la frustration.</li>
+                            </ul>
+                        </div>
+                        <div class="alert-box">
+                            <h4><i class="fas fa-exclamation-triangle icon"></i> Mesures de sécurité</h4>
+                            <p>En cas de risque élevé : intervention en binôme, éviter l'isolement avec la personne, avoir un plan de sortie, informer les personnes potentiellement menacées si nécessaire (duty to warn), envisager l'hospitalisation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Évaluation de la Vulnérabilité et de la Capacité <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p>Évaluer la capacité de la personne à prendre soin d'elle-même et à prendre des décisions.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Dimensions</h4>
+                            <ul>
+                                <li><strong>Capacité de prise de décision :</strong> Comprendre l'information, peser les options, communiquer un choix.</li>
+                                <li><strong>Autonomie dans les AVQ :</strong> Alimentation, hygiène, gestion du domicile.</li>
+                                <li><strong>Risque de négligence grave :</strong> Dénutrition, déshydratation, absence de soins médicaux essentiels.</li>
+                                <li><strong>Risque d'exploitation :</strong> Vulnérabilité financière, relationnelle.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-outils-desescalade" class="content-section">
+                <h2>Boîte à Outils : Techniques de Désescalade</h2>
+                <p>La désescalade verbale est une compétence essentielle pour prévenir l'escalade de l'agitation et de la violence potentielle.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Principes fondamentaux</h4>
+                    <ul>
+                        <li><strong>Maintenir le calme :</strong> Votre calme influence celui de la personne.</li>
+                        <li><strong>Respecter l'espace personnel :</strong> Distance de sécurité d'au moins 1-2 mètres.</li>
+                        <li><strong>Position non-menaçante :</strong> Debout de côté, mains visibles, posture ouverte.</li>
+                        <li><strong>Ton de voix :</strong> Calme, bas, lent, sans être condescendant.</li>
+                        <li><strong>Contact visuel :</strong> Modéré, non insistant.</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Techniques de communication</h4>
+                    <ul>
+                        <li><strong>Écoute active :</strong> "Je comprends que vous êtes en colère. Pouvez-vous m'expliquer ce qui s'est passé ?"</li>
+                        <li><strong>Validation des émotions :</strong> "Je vois que cette situation est très frustrante pour vous."</li>
+                        <li><strong>Proposer des choix :</strong> "Préférez-vous qu'on parle ici ou dans une autre pièce ?"</li>
+                        <li><strong>Utiliser des phrases courtes et claires</strong></li>
+                        <li><strong>Éviter la confrontation :</strong> Ne pas contredire directement, ne pas argumenter sur les délires.</li>
+                        <li><strong>Reformulation :</strong> "Si je comprends bien, vous me dites que..."</li>
+                        <li><strong>Établir des limites claires :</strong> "Je veux vous aider, mais je ne peux pas le faire si vous criez."</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Comportements à éviter</h4>
+                    <ul>
+                        <li>Se positionner entre la personne et la sortie</li>
+                        <li>Pointer du doigt ou avoir des gestes brusques</li>
+                        <li>Toucher la personne sans permission</li>
+                        <li>Argumenter ou essayer de raisonner sur des idées délirantes</li>
+                        <li>Hausser le ton ou parler rapidement</li>
+                        <li>Prendre les provocations personnellement</li>
+                        <li>Faire des promesses qu'on ne peut pas tenir</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-outils-plan-crise" class="content-section">
+                <h2>Boîte à Outils : Plan de Crise Personnel</h2>
+                <p>Le plan de crise personnel (ou plan d'action en cas de crise) est un document co-construit avec la personne qui identifie les signes précurseurs de crise et les stratégies d'action préventives.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Objectifs du plan de crise</h4>
+                    <ul>
+                        <li>Augmenter la capacité de la personne à reconnaître les signes précoces de déstabilisation</li>
+                        <li>Fournir des stratégies d'auto-gestion concrètes</li>
+                        <li>Identifier les personnes ressources à contacter</li>
+                        <li>Clarifier les préférences de la personne en matière de soins</li>
+                        <li>Prévenir les hospitalisations futures</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Composantes du plan de crise</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Mes signes précurseurs :</strong> "Quand je commence à ne plus bien aller, je remarque que..." (troubles du sommeil, irritabilité, retrait social, etc.)</li>
+                        <li><strong>Mes stratégies d'auto-gestion :</strong> "Ce qui m'aide quand je ne vais pas bien..." (exercice, musique, techniques de relaxation, activités apaisantes)</li>
+                        <li><strong>Mes personnes ressources :</strong> Famille, amis, professionnels avec coordonnées actualisées</li>
+                        <li><strong>Numéros d'urgence :</strong> Équipe mobile, ligne de crise, urgences</li>
+                        <li><strong>Mes préférences de soins :</strong> "Si je ne peux plus décider, j'aimerais que..." (traitement préféré, personne de confiance)</li>
+                        <li><strong>Ce qui n'aide PAS :</strong> Stratégies à éviter (ex: isolement, consommation d'alcool)</li>
+                        <li><strong>Mes raisons de vivre :</strong> Ce qui est important pour moi, mes projets</li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Modalités pratiques</h4>
+                    <ul>
+                        <li>Document écrit, dans les mots de la personne</li>
+                        <li>Copies multiples : personne, famille, équipe soignante</li>
+                        <li>Révision régulière (tous les 6-12 mois ou après une crise)</li>
+                        <li>Format accessible (papier au frigo, photo dans le téléphone)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-outils-gestion-symptomes" class="content-section">
+                <h2>Boîte à Outils : Gestion des Symptômes Aigus</h2>
+                <p>Stratégies d'intervention pour les principaux syndromes rencontrés en crise.</p>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Crise Suicidaire <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Interventions</h4>
+                            <ul>
+                                <li><strong>Restriction des moyens :</strong> Sécuriser le domicile (retirer médicaments, armes)</li>
+                                <li><strong>Présence constante :</strong> Solliciter la famille/les proches pour ne jamais laisser seul</li>
+                                <li><strong>Contrat de non-passage à l'acte :</strong> (avec prudence) Engagement à contacter l'équipe avant d'agir</li>
+                                <li><strong>Renforcement des raisons de vivre :</strong> Explorer ce qui retient la personne</li>
+                                <li><strong>Résolution de problèmes :</strong> Travailler sur les stresseurs aigus</li>
+                                <li><strong>Disponibilité accrue :</strong> Visites bi-quotidiennes, contacts téléphoniques</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Décompensation Psychotique <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Interventions</h4>
+                            <ul>
+                                <li><strong>Environnement peu stimulant :</strong> Réduire le bruit, la lumière, les interactions</li>
+                                <li><strong>Communication simple et claire :</strong> Phrases courtes, informations concrètes</li>
+                                <li><strong>Ne pas confronter les idées délirantes :</strong> Ni confirmer ni infirmer, recentrer sur les émotions</li>
+                                <li><strong>Traitement antipsychotique :</strong> Initiation ou optimisation</li>
+                                <li><strong>Évaluation du risque :</strong> Commandes hallucinatoires, persécution</li>
+                                <li><strong>Psychoéducation (quand possible) :</strong> Sur les symptômes et le traitement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Épisode Dépressif Sévère <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Interventions</h4>
+                            <ul>
+                                <li><strong>Activation comportementale :</strong> Établir une routine quotidienne simple</li>
+                                <li><strong>Objectifs micro :</strong> Tâches réalisables (se lever, se doucher, manger)</li>
+                                <li><strong>Lutte contre l'isolement :</strong> Contacts sociaux courts mais réguliers</li>
+                                <li><strong>Surveillance de l'alimentation et du sommeil</strong></li>
+                                <li><strong>Traitement antidépresseur :</strong> Optimisation, association si besoin</li>
+                                <li><strong>Restructuration cognitive de base :</strong> Identifier les pensées négatives automatiques</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Agitation / Manie <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Interventions</h4>
+                            <ul>
+                                <li><strong>Environnement calme et structuré</strong></li>
+                                <li><strong>Limites claires et bienveillantes :</strong> Sur les comportements à risque</li>
+                                <li><strong>Réduction des stimulations</strong></li>
+                                <li><strong>Protection financière :</strong> Limitation de l'accès aux moyens de paiement</li>
+                                <li><strong>Thymorégulateur + antipsychotique si nécessaire</strong></li>
+                                <li><strong>Surveillance du sommeil :</strong> Priorité absolue</li>
+                                <li><strong>Implication de la famille :</strong> Pour la surveillance et la gestion des comportements</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FONDAMENTAUX -->
+            <div id="section-modele-crt" class="content-section">
+                 <h2>Fondamentaux : Le Modèle CRT</h2>
+                 <p>Les équipes de Crisis Resolution and Home Treatment (CRT) ont été développées au Royaume-Uni dans les années 1990 comme alternative à l'hospitalisation psychiatrique. Elles reposent sur des preuves solides d'efficacité.</p>
+                
+                <h4>Caractéristiques essentielles du modèle CRT :</h4>
+                <ul class="list-disc ml-5">
+                    <li><strong>Intervention rapide :</strong> Évaluation dans les 4 heures, disponibilité 24/7</li>
+                    <li><strong>Intensité élevée :</strong> Visites quotidiennes en phase aiguë</li>
+                    <li><strong>Durée limitée :</strong> 2-6 semaines en moyenne</li>
+                    <li><strong>Équipe pluridisciplinaire :</strong> Psychiatres, infirmiers, psychologues, travailleurs sociaux, pairs-aidants</li>
+                    <li><strong>Intervention au domicile :</strong> Dans l'environnement naturel de la personne</li>
+                    <li><strong>Alternative à l'hospitalisation :</strong> Pour les crises gérables en ambulatoire</li>
+                    <li><strong>Approche orientée rétablissement :</strong> Mobilisation des ressources de la personne</li>
+                </ul>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Efficacité démontrée</h4>
+                    <p>Les études montrent que les CRT réduisent les hospitalisations de 25-30%, améliorent la satisfaction des usagers et de leurs familles, et sont coût-efficaces.</p>
+                </div>
+            </div>
+            
+            <div id="section-principes-intervention" class="content-section">
+                <h2>Fondamentaux : Principes d'Intervention</h2>
+                <p>Notre pratique s'appuie sur des principes fondamentaux qui guident chaque interaction.</p>
+                
+                <h4>1. Centrage sur la personne</h4>
+                <p>La personne est experte de son expérience. Nos interventions doivent partir de ses besoins, ses priorités et ses préférences, pas seulement de notre agenda thérapeutique.</p>
+
+                <h4>2. Approche systémique</h4>
+                <p>La crise ne concerne pas seulement l'individu, mais son système (famille, réseau social, environnement). Nous intervenons sur tous ces niveaux.</p>
+
+                <h4>3. Perspective temporelle</h4>
+                <p>Nous nous concentrons sur le "ici et maintenant" : Qu'est-ce qui se passe maintenant ? Qu'est-ce qui a précipité la crise maintenant ? Que peut-on faire maintenant pour améliorer la situation ?</p>
+
+                <h4>4. Mobilisation des forces</h4>
+                <p>Nous cherchons activement les ressources, les compétences et les stratégies d'adaptation qui ont fonctionné pour la personne dans le passé.</p>
+
+                <h4>5. Collaboration et co-construction</h4>
+                <p>Nous travaillons <strong>avec</strong> la personne, pas <strong>sur</strong> elle. Chaque décision, chaque plan est élaboré en collaboration.</p>
+
+                <h4>6. Espoir et optimisme réaliste</h4>
+                <p>La crise est temporaire. Le rétablissement est possible. Notre attitude doit transmettre cet espoir.</p>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Questions à se poser constamment</h4>
+                    <ul>
+                        <li>Qu'est-ce qui est important pour cette personne ?</li>
+                        <li>Quelles sont ses forces et ses ressources ?</li>
+                        <li>Comment puis-je soutenir son autonomie ?</li>
+                        <li>Cette intervention respecte-t-elle sa dignité ?</li>
+                        <li>Suis-je en train de faire <strong>pour</strong> ou <strong>avec</strong> ?</li>
+                    </ul>
+                </div>
+            </div>
+
+             <div id="section-recovery-oriented" class="content-section">
+                <h2>Fondamentaux : Approche Orientée Rétablissement</h2>
+                <p>Le rétablissement (recovery) ne signifie pas nécessairement la disparition complète des symptômes, mais plutôt la possibilité de vivre une vie satisfaisante et pleine de sens malgré la maladie.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Les principes CHIME du rétablissement</h4>
+                    <ul>
+                        <li><strong>Connectedness (Connexion) :</strong> Relations, soutien social, appartenance</li>
+                        <li><strong>Hope (Espoir) :</strong> Croire en la possibilité d'un meilleur avenir</li>
+                        <li><strong>Identity (Identité) :</strong> Se redéfinir au-delà de la maladie</li>
+                        <li><strong>Meaning (Sens) :</strong> Trouver un but, des activités signifiantes</li>
+                        <li><strong>Empowerment (Autonomisation) :</strong> Reprendre le contrôle de sa vie</li>
+                    </ul>
+                </div>
+
+                <h4>Implications pour notre pratique en crise :</h4>
+                <ul class="list-disc ml-5">
+                    <li>Valoriser les choix et l'autodétermination</li>
+                    <li>S'appuyer sur les forces plutôt que sur les déficits</li>
+                    <li>Reconnaître l'expertise de la personne</li>
+                    <li>Faciliter l'espoir et l'optimisme</li>
+                    <li>Travailler sur les objectifs personnels, pas seulement sur les symptômes</li>
+                    <li>Intégrer les pairs-aidants dans l'équipe</li>
+                </ul>
+            </div>
+            
+            <!-- Rôles de l'équipe -->
+             <div id="section-roles-equipe" class="content-section">
+                    <h2>Rôles de l'Équipe Mobile</h2>
+                <p>L'efficacité d'une équipe CRT repose sur la complémentarité des compétences et une coordination étroite. Chaque membre apporte une expertise unique au service de la personne en crise.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Professionnel</th>
+                            <th>Rôle Spécifique en Équipe Mobile</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Psychiatre</strong></td>
+                            <td>Évaluation clinique complexe, diagnostic différentiel, gestion pharmacologique, évaluation médico-légale (capacité, mesures de protection), coordination médicale avec les partenaires.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infirmier·ère</strong></td>
+                            <td>Évaluation quotidienne de l'état clinique, administration et surveillance des traitements, éducation thérapeutique, gestion des symptômes, coordination du plan de soins, lien privilégié avec la personne et sa famille.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Psychologue</strong></td>
+                            <td>Évaluation psychologique approfondie, interventions psychothérapeutiques brèves (résolution de problèmes, activation comportementale), soutien psychologique de l'entourage, supervision de la dynamique d'équipe.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Assistant·e Social·e</strong></td>
+                            <td>Évaluation psychosociale, intervention sur les déterminants sociaux de la crise (logement, finances, emploi), coordination avec les services sociaux, défense des droits, aide aux démarches administratives.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Ergothérapeute</strong></td>
+                            <td>Évaluation du fonctionnement occupationnel, intervention sur l'environnement domiciliaire, réhabilitation des activités de vie quotidienne, adaptation du domicile, activation graduelle.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pair-Aidant</strong></td>
+                            <td>Partage d'expérience vécue du rétablissement, modèle d'espoir, accompagnement non-clinique, perspective unique sur les besoins et préférences, lutte contre la stigmatisation, soutien par les pairs.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Coordinateur·rice de Soins</strong></td>
+                            <td>Organisation logistique des interventions, gestion de l'agenda de l'équipe, interface avec les partenaires, préparation des relais, suivi administratif, premier contact téléphonique.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Le travail en équipe</h4>
+                    <ul>
+                        <li><strong>Synthèses cliniques régulières :</strong> 2-3 fois par semaine minimum</li>
+                        <li><strong>Communication continue :</strong> Dossier partagé, messagerie sécurisée</li>
+                        <li><strong>Référent de cas :</strong> Désigné pour chaque situation, assure la continuité</li>
+                        <li><strong>Approche en binôme :</strong> Selon les situations (première visite, risque élevé)</li>
+                        <li><strong>Supervision et soutien d'équipe :</strong> Essentiel pour prévenir l'épuisement</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Psychoéducation -->
+            <div id="section-psychoed-patient" class="content-section">
+                <h2>Modules de Psychoéducation pour la Personne</h2>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Comprendre la crise <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Message clé :</strong> La crise est un moment difficile mais temporaire. Elle signale que quelque chose doit changer.</p>
+                        <p><strong>Points à aborder :</strong></p>
+                        <ul>
+                            <li>La crise comme point de rupture d'un équilibre</li>
+                            <li>Les facteurs déclenchants vs. les facteurs de vulnérabilité</li>
+                            <li>Le caractère temporaire de la crise</li>
+                            <li>La possibilité d'en sortir renforcé (croissance post-crise)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Reconnaître mes signes précurseurs <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Développer la capacité d'auto-observation pour intervenir précocement.</p>
+                        <p><strong>Exercice :</strong> "Quand je commence à ne plus bien aller, généralement je remarque que..."</p>
+                        <ul>
+                            <li>Changements physiques (sommeil, appétit, énergie)</li>
+                            <li>Changements émotionnels (irritabilité, anxiété, tristesse)</li>
+                            <li>Changements comportementaux (isolement, impulsivité, négligence)</li>
+                            <li>Changements cognitifs (ruminations, difficultés de concentration)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="accordion-item">
+                    <button class="accordion-header">3. Mes stratégies d'adaptation <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Identifier et renforcer les stratégies fonctionnelles, remplacer les dysfonctionnelles.</p>
+                        <p><strong>Exercice :</strong> "Qu'est-ce qui m'a déjà aidé dans le passé ?"</p>
+                        <div class="recommendation-box">
+                            <h4>Stratégies adaptatives</h4>
+                            <ul>
+                                <li>Activité physique</li>
+                                <li>Contact social sélectif</li>
+                                <li>Activités plaisantes</li>
+                                <li>Techniques de relaxation</li>
+                                <li>Expression créative</li>
+                                <li>Routines structurantes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Le rôle du traitement <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Objectifs :</strong> Améliorer la compréhension et l'adhésion thérapeutique.</p>
+                        <ul>
+                            <li>Comment fonctionne le traitement prescrit</li>
+                            <li>Effets attendus et délai d'action</li>
+                            <li>Effets secondaires possibles et gestion</li>
+                            <li>Importance de la régularité</li>
+                            <li>Que faire en cas d'oubli ou d'effet indésirable</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-psychoed-entourage" class="content-section">
+                <h2>Modules de Psychoéducation pour l'Entourage</h2>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Comprendre la maladie mentale <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Objectif :</strong> Réduire la stigmatisation et favoriser l'empathie.</p>
+                        <ul>
+                            <li>La maladie mentale comme condition médicale</li>
+                            <li>Les bases neurobiologiques</li>
+                            <li>Ce n'est ni un manque de volonté ni une faiblesse</li>
+                            <li>L'importance du traitement et du soutien</li>
+                            <li>Le pronostic et la possibilité de rétablissement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Comment aider au quotidien <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                         <div class="recommendation-box">
+                             <h4><i class="fas fa-check-circle icon"></i> Attitudes aidantes</h4>
+                             <ul>
+                                <li><strong>Écouter sans juger :</strong> "Je suis là pour toi, tu peux me parler."</li>
+                                <li><strong>Encourager sans forcer :</strong> Proposer des activités mais respecter les refus.</li>
+                                <li><strong>Maintenir une routine :</strong> Structure et prévisibilité.</li>
+                                <li><strong>Valoriser les petits progrès</strong></li>
+                                <li><strong>Respecter le besoin d'espace</strong> quand nécessaire</li>
+                                <li><strong>Faciliter l'accès aux soins :</strong> Rappel des rendez-vous, accompagnement</li>
+                             </ul>
+                        </div>
+                        <div class="alert-box">
+                             <h4><i class="fas fa-exclamation-triangle icon"></i> Attitudes contre-productives</h4>
+                             <ul>
+                                 <li>Minimiser : "Ce n'est pas si grave, secoue-toi un peu"</li>
+                                 <li>Donner des conseils non sollicités</li>
+                                 <li>Prendre les symptômes personnellement</li>
+                                 <li>Surprotéger au point d'infantiliser</li>
+                                 <li>S'épuiser en négligeant ses propres besoins</li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Prendre soin de soi en tant qu'aidant <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Message clé :</strong> Vous ne pouvez pas aider si vous êtes épuisé. Prendre soin de vous n'est pas égoïste.</p>
+                        <div class="recommendation-box">
+                            <h4>Stratégies de préservation</h4>
+                            <ul>
+                                <li>Maintenir ses propres activités et relations sociales</li>
+                                <li>Fixer des limites claires et bienveillantes</li>
+                                <li>Chercher du soutien (groupes de familles, psychothérapie)</li>
+                                <li>Reconnaître ses émotions (culpabilité, colère, tristesse) comme normales</li>
+                                <li>Partager la charge avec d'autres membres de la famille</li>
+                                <li>Prendre des pauses régulières (respite)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Gérer une situation de crise <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Que faire si je m'inquiète pour la sécurité de mon proche ?</strong></p>
+                        <ol class="list-decimal ml-5">
+                            <li>Rester calme</li>
+                            <li>Écouter sans juger ni minimiser</li>
+                            <li>Poser directement la question : "As-tu des pensées de te faire du mal ?"</li>
+                            <li>Ne pas laisser seul si risque imminent</li>
+                            <li>Contacter l'équipe mobile ou les urgences selon l'intensité</li>
+                            <li>Retirer l'accès aux moyens létaux si possible</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Glossaire et références -->
+            <div id="section-glossaire" class="content-section">
+                <h2>Glossaire</h2>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">Activation Comportementale <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Technique thérapeutique visant à augmenter l'engagement dans des activités valorisantes pour améliorer l'humeur, particulièrement efficace dans la dépression.</p></div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">CRT (Crisis Resolution Team) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Équipe mobile de psychiatrie offrant des interventions intensives à domicile comme alternative à l'hospitalisation en phase de crise aiguë.</p></div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Désescalade <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Ensemble de techniques verbales et non-verbales visant à réduire l'agitation et prévenir l'escalade vers la violence.</p></div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Plan de Crise Personnel <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Document co-construit identifiant les signes précurseurs de crise, les stratégies d'adaptation et les personnes ressources pour prévenir ou gérer une future crise.</p></div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Rétablissement (Recovery) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Processus profondément personnel de changement d'attitudes, de valeurs, de buts et de rôles permettant de vivre une vie satisfaisante malgré la maladie mentale.</p></div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Résolution de Problèmes <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Approche structurée en étapes (identifier le problème, générer des solutions, évaluer les options, choisir et mettre en œuvre) pour gérer les difficultés concrètes.</p></div>
+                </div>
+            </div>
+
+            <div id="section-references" class="content-section">
+                <h2>Références</h2>
+                <ul class="list-none text-sm space-y-3">
+                    <li>Johnson, S., Nolan, F., Pilling, S., Sandor, A., Hoult, J., McKenzie, N., White, I. R., Thompson, M., & Bebbington, P. (2005). Randomised controlled trial of acute mental health care by a crisis resolution team: The north Islington crisis study. <em>BMJ, 331</em>(7517), 599. https://doi.org/10.1136/bmj.38519.678148.8F</li>
+                    
+                    <li>Jorm, A. F., Kitchener, B. A., Sawyer, M. G., Scales, H., & Cvetkovski, S. (2010). Mental health first aid training for high school teachers: A cluster randomized trial. <em>BMC Psychiatry, 10</em>(1), 51. https://doi.org/10.1186/1471-244X-10-51</li>
+                    
+                    <li>Leamy, M., Bird, V., Le Boutillier, C., Williams, J., & Slade, M. (2011). Conceptual framework for personal recovery in mental health: Systematic review and narrative synthesis. <em>British Journal of Psychiatry, 199</em>(6), 445-452. https://doi.org/10.1192/bjp.bp.110.083733</li>
+                    
+                    <li>National Institute for Health and Care Excellence. (2011). <em>Self-harm in over 8s: Long-term management</em> (Clinical guideline CG133). https://www.nice.org.uk/guidance/cg133</li>
+                    
+                    <li>Richmond, J. S., Berlin, J. S., Fishkind, A. B., Holloman, G. H., Zeller, S. L., Wilson, M. P., Rifai, M. A., & Ng, A. T. (2012). Verbal de-escalation of the agitated patient: Consensus statement of the American Association for Emergency Psychiatry Project BETA De-escalation Workgroup. <em>Western Journal of Emergency Medicine, 13</em>(1), 17-25. https://doi.org/10.5811/westjem.2011.9.6864</li>
+                    
+                    <li>Slade, M., Amering, M., Farkas, M., Hamilton, B., O'Hagan, M., Panther, G., Perkins, R., Shepherd, G., Tse, S., & Whitley, R. (2014). Uses and abuses of recovery: Implementing recovery-oriented practices in mental health systems. <em>World Psychiatry, 13</em>(1), 12-20. https://doi.org/10.1002/wps.20084</li>
+                    
+                    <li>Wheeler, C., Lloyd-Evans, B., Churchard, A., Fitzgerald, C., Fullarton, K., Mosse, L., Paterson, B., Prabhakaran, P., Riley, G., & Johnson, S. (2015). Implementation of the Crisis Resolution Team model in adult mental health settings: A systematic review. <em>BMC Psychiatry, 15</em>, 74. https://doi.org/10.1186/s12888-015-0441-x</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+    
+    <footer class="mt-16 bg-slate-900 text-slate-300 text-sm border-t border-slate-700 py-6 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+            <div class="flex-shrink-0">
+                <a href="https://www.ch-le-vinatier.fr" target="_blank" rel="noopener noreferrer">
+                    <img class="h-20 md:h-24 w-auto" 
+                         src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/e079f7cf4939908ea9a07ce40d529d0b" 
+                         alt="Logo Centre Hospitalier Le Vinatier">
+                </a>
+            </div>
+            <div class="flex-1 text-center md:text-left space-y-2">
+                <p>Dr <strong>FENOHASINA </strong>T.J. Felicien (Psychiatre - FFI) ;</p>
+                <p>Dr <strong>MONNIER </strong>Romain (Psychiatre - CCA) ; </p>
+                <p>Equipe Mobile - <strong>Pôle Centre</strong> Rive Gauche ;</p>
+                <p>Chef de service: Dr Thomas <strong>LATHIERE</strong> ;</p>
+                <p>Chef de Pôle: Prof. Nicolas <strong>FRANCK</strong></p>
+                <p>CH - Le <strong>Vinatier.</strong></p>
+                <div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+                    <img class="h-5 w-auto" 
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cc-by-nc-sa_icon.svg/120px-Cc-by-nc-sa_icon.svg.png" 
+                         alt="Icône Creative Commons BY-NC-SA">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="underline hover:text-white">Licence CC BY-NC-SA 4.0</a> –
+                    <span>Dernière mise à jour : 1 octobre 2025.</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 flex-shrink-0">
+                <a href="https://www.facebook.com/Psykozy?locale=fr_FR" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://cdn-assets.inwink.com/fe065c87-0643-42fc-8b5d-4d94b5d12c11/a1904f78-1bca-466d-a9f4-8ac9fde06c0c" 
+                         alt="Logo Psy-kôzy">
+                </a>
+                <a href="https://centre-ressource-rehabilitation.org" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://faustinebrunet.com/images/RS/creation-nouveau-logo-domaine-sante-mentale.jpg" 
+                         alt="Logo Centre Ressource Réhabilitation">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeSidebarButton = document.getElementById('close-sidebar-button');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const mainContent = document.getElementById('main-content');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            sidebarBackdrop.classList.add('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            openSidebar();
+        });
+        closeSidebarButton.addEventListener('click', closeSidebar);
+        sidebarBackdrop.addEventListener('click', closeSidebar);
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                requestAnimationFrame(() => {
+                    mainContent.scrollTop = 0;
+                });
+            }
+
+            const navLinks = document.querySelectorAll('#sidebar .nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const isDirectMatch = link.getAttribute('onclick') && link.getAttribute('onclick').includes(`showSection('${sectionId}')`);
+                let isInSubmenuOfActiveParent = false;
+                
+                const submenu = link.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const submenuLinks = submenu.querySelectorAll('.nav-link');
+                    submenuLinks.forEach(sl => {
+                         sl.classList.remove('active'); 
+                        if (sl.getAttribute('onclick') && sl.getAttribute('onclick').includes(`showSection('${sectionId}')`)) {
+                            isInSubmenuOfActiveParent = true;
+                            sl.classList.add('active'); 
+                        }
+                    });
+                }
+
+                if (isDirectMatch || isInSubmenuOfActiveParent) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            const icon = element.querySelector('i.fa-chevron-down, i.fa-chevron-up');
+            if (submenu && submenu.classList.contains('submenu')) {
+                submenu.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                }
+            }
+        }
+        
+        function initializeAccordions() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.fas.fa-chevron-down, .fas.fa-chevron-up');
+                    
+                    content.classList.toggle('hidden');
+                    header.classList.toggle('open'); 
+                    
+                    if (icon) { 
+                        if (content.classList.contains('hidden')) {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        } else {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        }
+                    }
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('section-home');
+            
+            const crisisPlanParentLink = Array.from(document.querySelectorAll('a.nav-link.font-semibold')).find(el => el.textContent.includes("Plan d'Intervention de Crise"));
+            if(crisisPlanParentLink) {
+                const submenu = crisisPlanParentLink.nextElementSibling;
+                const icon = crisisPlanParentLink.querySelector('i.fa-chevron-down');
+                 if (submenu && submenu.classList.contains('submenu') && icon) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                 }
+            }
+            
+            initializeAccordions(); 
+        });
+    </script>
+
+</body>
+</html>
