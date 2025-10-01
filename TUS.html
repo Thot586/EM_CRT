@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide d'Intervention de Crise Addiction - Équipe Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-section {
+            display: none; 
+        }
+        .content-section.active {
+            display: block; 
+        }
+        .nav-link {
+            cursor: pointer;
+            padding: 0.85rem 1.25rem; 
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            display: block; 
+            margin-bottom: 0.25rem; 
+        }
+        .nav-link:hover {
+            background-color: #334155;
+            color: #ffffff;
+        }
+        .nav-link.active {
+            background-color: #0ea5e9;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .submenu .nav-link {
+            padding-left: 2rem; 
+            font-size: 0.9rem;
+        }
+        .submenu .nav-link.active {
+             background-color: #0369a1;
+        }
+
+        .alert-box, .recommendation-box, .idea-box {
+            padding: 1.25rem; 
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+        }
+        .alert-box {
+            background-color: #fee2e2; 
+            border-left: 5px solid #ef4444; 
+            color: #991b1b; 
+        }
+        .recommendation-box {
+            background-color: #dcfce7; 
+            border-left: 5px solid #22c55e; 
+            color: #14532d; 
+        }
+        .idea-box {
+            background-color: #fef9c3; 
+            border-left: 5px solid #eab308; 
+            color: #713f12; 
+        }
+        .alert-box h4, .recommendation-box h4, .idea-box h4 {
+            font-weight: 700; 
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+            color: inherit; 
+        }
+        .alert-box ul, .recommendation-box ul, .idea-box ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+        .alert-box li, .recommendation-box li, .idea-box li {
+            margin-bottom: 0.375rem;
+        }
+        .icon {
+            margin-right: 0.75rem; 
+            font-size: 1.1em;
+        }
+
+        #sidebar::-webkit-scrollbar { width: 8px; }
+        #sidebar::-webkit-scrollbar-track { background: #0f172a; }
+        #sidebar::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
+        #sidebar::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        #main-content::-webkit-scrollbar { width: 10px; }
+        #main-content::-webkit-scrollbar-track { background: #e2e8f0; }
+        #main-content::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 5px; }
+        #main-content::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        h1.guide-title { color: #ffffff; }
+        h2 { margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.75rem; font-weight: 700; color: #0c4a6e; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.5rem; } 
+        h3 { margin-top: 1.25rem; margin-bottom: 0.75rem; font-size: 1.5rem; font-weight: 600; color: #0369a1; } 
+        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 600; color: #075985; } 
+        
+        @media (min-width: 768px) {
+            h2 { font-size: 2.25rem; margin-top: 2rem; margin-bottom: 1.25rem;}
+            h3 { font-size: 1.875rem; margin-top: 1.75rem; margin-bottom: 1rem;}
+            h4 { font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 0.75rem;}
+        }
+
+        .content-section p { margin-bottom: 1rem; line-height: 1.7; font-size: 0.95rem; } 
+         @media (min-width: 768px) { 
+            .content-section p { font-size: 1rem; }
+        }
+        .content-section ul, .content-section ol { margin-bottom: 1rem; padding-left: 1.75rem; }
+        .content-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .content-section cite { font-style: normal; } 
+        .content-section a { color: #0ea5e9; text-decoration: none; font-weight: 500; }
+        .content-section a:hover { color: #0369a1; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; }
+        th { background-color: #f1f5f9; font-weight: 600; color: #1e293b; }
+
+        .accordion-item {
+            border: 1px solid #cbd5e1; 
+            border-radius: 0.5rem; 
+            margin-bottom: 0.75rem;
+            background-color: #ffffff; 
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07), 0 1px 2px 0 rgba(0,0,0,0.04);
+        }
+        .accordion-header {
+            background-color: #f1f5f9; 
+            color: #1e3a8a; 
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            border-radius: 0.5rem 0.5rem 0 0; 
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .accordion-header:hover {
+            background-color: #e2e8f0; 
+        }
+        .accordion-header.open {
+             border-bottom: 1px solid #cbd5e1; 
+             border-radius: 0.5rem 0.5rem 0 0;
+        }
+        .accordion-content {
+            padding: 1.25rem;
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem; 
+            background-color: #ffffff; 
+        }
+        .accordion-content.hidden {
+            display: none;
+        }
+        .accordion-header .fas {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.open .fas {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 flex flex-col min-h-screen">
+
+    <button id="mobile-menu-button" class="md:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 text-white rounded-md shadow-lg">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="flex flex-col md:flex-row flex-1"> 
+        <nav id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 sm:w-72 bg-slate-800 text-slate-100 shadow-lg p-4 md:p-6 space-y-1 overflow-y-auto transform -translate-x-full md:relative md:translate-x-0 md:w-1/4 lg:w-1/5 transition-transform duration-300 ease-in-out">
+            <button id="close-sidebar-button" class="md:hidden absolute top-4 right-4 text-slate-300 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <h1 class="guide-title text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center md:text-left pt-8 md:pt-0">Guide de Crise Addiction</h1>
+            <a href="https://thot586.github.io/EM_CRT/#interventions" class="block text-center bg-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-600 transition-colors duration-300 mb-6 shadow-lg">
+                <i class="fas fa-arrow-left mr-2"></i>Retour au Portail
+            </a>
+            <a class="nav-link" onclick="showSection('section-home'); closeSidebar();"><i class="fas fa-home icon"></i>Accueil</a>
+            <a class="nav-link" onclick="showSection('section-introduction-guide'); closeSidebar();"><i class="fas fa-info-circle icon"></i>Objectif du Guide</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-clipboard-list icon"></i>Plan d'Intervention de Crise <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-crise-phase1'); closeSidebar();">Phase 1: Sécurisation</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase2'); closeSidebar();">Phase 2: Engagement</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase3'); closeSidebar();">Phase 3: Consolidation</a>
+                </div>
+            </div>
+
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-tools icon"></i>Boîte à Outils Thérapeutiques <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-outils-motivationnel'); closeSidebar();">Entretien Motivationnel</a>
+                    <a class="nav-link" onclick="showSection('section-outils-reduction'); closeSidebar();">Réduction des Risques</a>
+                    <a class="nav-link" onclick="showSection('section-outils-sevrage'); closeSidebar();">Gestion du Sevrage</a>
+                     <a class="nav-link" onclick="showSection('section-outils-rechute'); closeSidebar();">Prévention de la Rechute</a>
+                </div>
+            </div>
+
+             <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-book-open icon"></i>Fondamentaux (Théorie) <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-comprendre'); closeSidebar();">Comprendre l'Addiction</a>
+                    <a class="nav-link" onclick="showSection('section-neurobio'); closeSidebar();">Neurobiologie de l'Addiction</a>
+                    <a class="nav-link" onclick="showSection('section-modele'); closeSidebar();">Modèle Bio-Psycho-Social</a>
+                </div>
+            </div>
+            
+            <a class="nav-link" onclick="showSection('section-roles-recap'); closeSidebar();"><i class="fas fa-users-cog icon"></i>Rôles de l'Équipe en Crise</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-chalkboard-teacher icon"></i>Psychoéducation <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-psychoed-patient'); closeSidebar();">Pour la Personne</a>
+                    <a class="nav-link" onclick="showSection('section-psychoed-entourage'); closeSidebar();">Pour l'Entourage</a>
+                </div>
+            </div>
+            <a class="nav-link" onclick="showSection('section-glossaire'); closeSidebar();"><i class="fas fa-book icon"></i>Glossaire</a>
+            <a class="nav-link" onclick="showSection('section-references'); closeSidebar();"><i class="fas fa-link icon"></i>Références</a>
+        </nav>
+
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden" onclick="closeSidebar()"></div>
+
+        <main id="main-content" class="flex-1 p-4 md:p-8 lg:p-10 overflow-y-auto">
+            <div id="section-home" class="content-section">
+                <h2>Guide d'Intervention de Crise : Trouble d'Usage de Substance</h2>
+                <p>Ce guide est un outil opérationnel pour les équipes mobiles de psychiatrie intervenant en <strong>alternative à l'hospitalisation (modèle CRT)</strong> pour des personnes en crise liée à un trouble d'usage de substance. Il est conçu pour structurer une intervention intensive et pragmatique, s'appuyant sur l'<strong>entretien motivationnel</strong>, la <strong>réduction des risques</strong> et les approches psychosociales fondées sur les preuves.</p>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Comment utiliser ce guide :</h4>
+                    <ul>
+                        <li>La section <strong>Plan d'Intervention de Crise</strong> est le cœur du guide. Elle offre un protocole par phases adapté au stade de changement de la personne.</li>
+                        <li>La <strong>Boîte à Outils Thérapeutiques</strong> détaille les techniques d'entretien motivationnel, de réduction des risques et de gestion du sevrage.</li>
+                        <li>Les autres sections fournissent le contexte théorique et pratique pour une prise en charge cohérente et multidisciplinaire.</li>
+                        <li>Utilisez ce guide comme support pour vos synthèses d'équipe afin de planifier et d'ajuster les interventions au domicile.</li>
+                    </ul>
+                </div>
+                <p>Notre mission est de rencontrer la personne là où elle en est dans son parcours, sans jugement ni moralisation. L'objectif n'est pas nécessairement l'abstinence immédiate, mais la réduction des risques, l'amélioration de la santé et de la qualité de vie, et l'accompagnement vers le changement quand la personne est prête.</p>
+            </div>
+
+            <div id="section-introduction-guide" class="content-section">
+                <h2>Objectif de ce Guide Opérationnel</h2>
+                <p>Intervenir au domicile d'une personne en crise liée à un trouble d'usage de substance, c'est entrer dans un contexte souvent complexe où s'entrecroisent dépendance physique, détresse psychologique, problèmes sociaux et parfois déni ou ambivalence face au changement. Notre mission, inspirée des équipes de Résolution de Crise et Traitement à Domicile (CRT) et des principes de la médecine des addictions, est de faire du domicile un espace de soin, de réduction des risques et d'accompagnement vers le changement.</p>
+                <p>Ce guide propose un <strong>protocole par phases</strong> pour une intervention intensive et coordonnée, visant à :</p>
+                <ul class="list-disc ml-5">
+                    <li>Assurer la sécurité immédiate (overdose, sevrage dangereux, comorbidités).</li>
+                    <li>Établir une alliance thérapeutique basée sur l'empathie et le non-jugement.</li>
+                    <li>Évaluer la motivation au changement et travailler avec l'ambivalence.</li>
+                    <li>Proposer des stratégies de réduction des risques adaptées au stade de changement.</li>
+                    <li>Accompagner un sevrage sécurisé si la personne le souhaite.</li>
+                    <li>Adresser les comorbidités psychiatriques (dépression, anxiété, TSPT).</li>
+                    <li>Impliquer l'entourage de manière constructive.</li>
+                    <li>Prévenir les rechutes et construire un projet de vie sans substance.</li>
+                    <li>Éviter l'hospitalisation quand elle n'est pas nécessaire.</li>
+                </ul>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Notre mission en trois temps :</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Sécuriser et Évaluer :</strong> Gérer les urgences (overdose, sevrage), évaluer la situation globale, établir une relation de confiance.</li>
+                        <li><strong>Engager et Accompagner :</strong> Utiliser l'entretien motivationnel, proposer réduction des risques ou sevrage selon la motivation, adresser les comorbidités.</li>
+                        <li><strong>Consolider et Prévenir :</strong> Maintenir l'abstinence ou la réduction, prévenir la rechute, construire un projet de vie, organiser le relais.</li>
+                    </ol>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Principes fondamentaux</h4>
+                    <ul>
+                        <li><strong>Rencontrer la personne là où elle est.</strong> Ne pas exiger l'abstinence comme préalable au soin. Certaines personnes ne sont pas prêtes, et c'est OK.</li>
+                        <li><strong>Réduction des risques d'abord.</strong> Même si la personne continue à consommer, on peut réduire les dommages (overdose, infections, etc.).</li>
+                        <li><strong>L'ambivalence est normale.</strong> Vouloir changer ET ne pas vouloir changer en même temps, c'est le cœur de l'addiction. On travaille AVEC l'ambivalence, pas contre.</li>
+                        <li><strong>L'addiction est une maladie, pas un choix ou un défaut moral.</strong> Neurobiologie + psychologie + contexte social. Pas de jugement.</li>
+                        <li><strong>La rechute fait partie du processus de rétablissement.</strong> Ce n'est pas un échec, c'est une opportunité d'apprentissage.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- PLAN D'INTERVENTION -->
+            <div id="section-crise-phase1" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 1 : Sécurisation et Évaluation (Jours 1 à 5)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Assurer la sécurité immédiate, gérer les urgences médicales, établir une alliance thérapeutique et évaluer la situation dans sa globalité.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Très haute fréquence.</strong> En crise aiguë (sevrage, intoxication récente, comorbidités décompensées), la présence quotidienne voire bi-quotidienne est essentielle.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Infirmier·ère :</strong> Visite quotidienne pour monitoring des signes vitaux, gestion du sevrage, création du lien thérapeutique.</li>
+                    <li><strong>Médecin / Psychiatre :</strong> Visite à J1 pour évaluation médicale et psychiatrique complète, gestion du sevrage si nécessaire, traitement des comorbidités.</li>
+                    <li><strong>Assistant·e Social·e :</strong> Évaluation à J1-J2 de la situation sociale (logement, ressources, contexte familial, problèmes légaux).</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Gestion des urgences vitales :</strong>
+                            <ul class="ml-4">
+                                <li>Risque d'overdose récente ? État de conscience, respiration, signes vitaux</li>
+                                <li>Sevrage en cours ? Évaluer la sévérité (échelle CIWA pour alcool, COWS pour opioïdes)</li>
+                                <li>Complications médicales ? (Infections, dénutrition, déshydratation, comorbidités somatiques)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Évaluation de la consommation :</strong> Substances utilisées, quantités, fréquence, voie d'administration, dernière consommation, durée du trouble.</li>
+                        <li><strong>Évaluation de la dépendance :</strong> Critères DSM-5, sévérité (légère, modérée, sévère).</li>
+                        <li><strong>Évaluation des comorbidités psychiatriques :</strong> Dépression (très fréquente), anxiété, TSPT, troubles psychotiques, tentatives de suicide.</li>
+                        <li><strong>Évaluation du stade de changement :</strong> Modèle de Prochaska & DiClemente (voir section entretien motivationnel). Où en est la personne ? (Pré-contemplation, contemplation, préparation, action, maintien)</li>
+                        <li><strong>Gestion du sevrage si nécessaire :</strong> Protocole médicamenteux sécurisé (benzodiazépines pour alcool, buprénorphine pour opioïdes, etc.).</li>
+                        <li><strong>Réduction immédiate des risques :</strong> Distribution de naloxone si opioïdes, information sur les pratiques à moindre risque.</li>
+                        <li><strong>Création de l'alliance thérapeutique :</strong> Attitude empathique, non-jugeante, respectueuse de l'autonomie. "Je suis là pour vous aider, pas pour vous juger."</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas moraliser ou culpabiliser.</strong> "Vous devriez avoir honte", "Vous faites souffrir votre famille" = rupture de l'alliance.</li>
+                        <li><strong>Ne pas exiger l'abstinence immédiate comme condition du soin.</strong> On soigne d'abord, on accompagne vers le changement ensuite.</li>
+                        <li><strong>Ne pas sous-estimer le sevrage.</strong> Le sevrage alcoolique et benzodiazépinique peut être mortel. Toujours protocole médicamenteux.</li>
+                        <li><strong>Ne pas négliger les comorbidités.</strong> La dépression, l'anxiété ou le TSPT peuvent alimenter la consommation. Les traiter est prioritaire.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase2" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 2 : Engagement et Accompagnement du Changement (Jours 6 à 21)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Utiliser l'entretien motivationnel pour explorer l'ambivalence, soutenir un éventuel sevrage ou proposer des stratégies de réduction des risques, adresser les comorbidités.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Fréquence élevée mais en diminuant progressivement selon stabilisation.</strong></p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Infirmier·ère / Addictologue :</strong> Visites 3-5 fois par semaine pour entretiens motivationnels, soutien du sevrage ou de la réduction, monitoring.</li>
+                    <li><strong>Psychologue :</strong> Séances hebdomadaires pour travail sur les comorbidités, TCC si addiction sévère, gestion des émotions.</li>
+                    <li><strong>Médecin / Psychiatre :</strong> Visite hebdomadaire pour ajustement thérapeutique, gestion des comorbidités, traitement de substitution si opioïdes.</li>
+                    <li><strong>Pair-aidant :</strong> Si disponible, témoignage du rétablissement, soutien par les pairs.</li>
+                </ul>
+
+                 <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Entretien motivationnel intensif :</strong> (voir <a href="#" onclick="showSection('section-outils-motivationnel')">section dédiée</a>). Explorer l'ambivalence, faire émerger le discours-changement, renforcer l'auto-efficacité.</li>
+                        <li><strong>Si la personne est en contemplation/préparation :</strong>
+                            <ul class="ml-4">
+                                <li>Balance décisionnelle : Avantages et inconvénients de changer vs rester pareil</li>
+                                <li>Identifier les valeurs personnelles et comment la consommation les entrave</li>
+                                <li>Élaborer un plan de changement concret et réaliste</li>
+                            </ul>
+                        </li>
+                        <li><strong>Si sevrage en cours :</strong>
+                            <ul class="ml-4">
+                                <li>Soutien quotidien, gestion des symptômes de sevrage, encouragement</li>
+                                <li>Gestion du craving (envies impérieuses) : techniques de distraction, pleine conscience, appel à l'équipe</li>
+                                <li>Structuration du quotidien : remplir le temps libéré par l'arrêt de la consommation</li>
+                            </ul>
+                        </li>
+                        <li><strong>Si la personne n'est pas prête au sevrage (pré-contemplation) :</strong>
+                            <ul class="ml-4">
+                                <li>Réduction des risques : matériel d'injection stérile, naloxone, information sur les pratiques à moindre risque</li>
+                                <li>Réduction des quantités : objectifs graduels, auto-monitoring</li>
+                                <li>Continuer à construire la relation, planter des graines de changement</li>
+                            </ul>
+                        </li>
+                        <li><strong>Traitement des comorbidités :</strong> La dépression et l'anxiété doivent être traitées activement (médicaments + psychothérapie). Souvent, elles alimentent la consommation.</li>
+                        <li><strong>Travail avec l'entourage :</strong> Psychoéducation, arrêt des comportements facilitateurs (acheter l'alcool, donner de l'argent), soutien sans contrôle.</li>
+                        <li><strong>Connexion aux ressources :</strong> Groupes d'entraide (AA, NA), CSAPA, associations, activités occupationnelles.</li>
+                    </ul>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas forcer le changement.</strong> Le réflexe correcteur ("Vous DEVEZ arrêter") renforce la résistance. L'entretien motivationnel est non-directif.</li>
+                        <li><strong>Ne pas abandonner si la personne n'arrête pas.</strong> La réduction des risques est un objectif valable en soi.</li>
+                        <li><strong>Ne pas négliger le sevrage psychologique.</strong> Le sevrage physique dure quelques jours/semaines. Le sevrage psychologique (habitudes, contextes, émotions) dure des mois.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase3" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 3 : Consolidation et Prévention de la Rechute (Jours 22+)</h3>
+                 <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Maintenir l'abstinence ou la réduction, prévenir la rechute, construire un projet de vie sans substance, organiser le relais.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Fréquence de suivi de droit commun.</strong></p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Référent de cas :</strong> Visite hebdomadaire puis bimensuelle pour maintien et prévention.</li>
+                    <li><strong>Psychologue :</strong> Séances hebdomadaires focalisées sur la prévention de la rechute, la gestion des émotions, la reconstruction identitaire.</li>
+                    <li><strong>Ensemble de l'équipe :</strong> Organiser la transition vers CSAPA, psychiatre addictologue, médecin traitant, groupes d'entraide.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Élaboration du plan de prévention de la rechute :</strong> (voir <a href="#" onclick="showSection('section-outils-rechute')">section dédiée</a>)
+                            <ul class="ml-4">
+                                <li>Identifier les situations à haut risque (SAHR) : lieux, personnes, émotions, moments</li>
+                                <li>Développer des stratégies d'évitement ou de gestion pour chaque SAHR</li>
+                                <li>Plan d'urgence en cas de craving intense ou de rechute</li>
+                            </ul>
+                        </li>
+                        <li><strong>Gestion des situations à haut risque :</strong>
+                            <ul class="ml-4">
+                                <li>Entraînement aux compétences de refus ("Non merci, je ne bois plus")</li>
+                                <li>Gestion des émotions difficiles sans consommer (techniques de régulation émotionnelle)</li>
+                                <li>Gestion de l'ennui et restructuration du temps libre</li>
+                            </ul>
+                        </li>
+                        <li><strong>Reconstruction d'une identité sans substance :</strong> "Qui suis-je maintenant que je ne consomme plus ?" Travail sur les valeurs, les projets, le sens.</li>
+                        <li><strong>Réinvestissement social et professionnel :</strong> Formation, emploi, loisirs, nouvelles relations sans consommation.</li>
+                        <li><strong>Maintien de l'engagement dans les groupes d'entraide :</strong> Les pairs sont un soutien crucial sur le long terme.</li>
+                        <li><strong>Gestion de la rechute si elle survient :</strong>
+                            <ul class="ml-4">
+                                <li>Normaliser : "La rechute n'est pas un échec, c'est une étape d'apprentissage"</li>
+                                <li>Analyser : Qu'est-ce qui s'est passé ? Quelles leçons pour la prochaine fois ?</li>
+                                <li>Reprendre rapidement le processus de changement</li>
+                            </ul>
+                        </li>
+                        <li><strong>Traitement de maintenance si opioïdes :</strong> Buprénorphine ou méthadone à long terme. Préparer le relais vers médecin de ville ou CSAPA.</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas considérer la personne "guérie" trop vite.</strong> L'addiction est une maladie chronique. La vigilance doit rester élevée les premiers mois/années.</li>
+                        <li><strong>Ne pas dramatiser une rechute.</strong> Culpabiliser la personne augmente le risque qu'elle abandonne le processus de changement.</li>
+                        <li><strong>Ne pas arrêter brutalement le suivi.</strong> Organiser une transition progressive avec contacts de suivi post-intervention.</li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- BOITE A OUTILS -->
+            <div id="section-outils-motivationnel" class="content-section">
+                <h2>Boîte à Outils : Entretien Motivationnel</h2>
+                <p>L'entretien motivationnel (Motivational Interviewing), développé par Miller et Rollnick, est l'approche de référence pour travailler avec l'ambivalence dans l'addiction. Ce n'est pas une technique de persuasion, mais une méthode collaborative pour aider la personne à explorer et résoudre son ambivalence.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Esprit de l'entretien motivationnel</h4>
+                    <p>Quatre principes fondamentaux :</p>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Partenariat :</strong> Relation collaborative, pas d'expert qui sait mieux que le patient</li>
+                        <li><strong>Acceptation :</strong> Respect inconditionnel, empathie, valorisation de l'autonomie</li>
+                        <li><strong>Compassion :</strong> Agir dans l'intérêt de la personne, pas pour nos propres objectifs</li>
+                        <li><strong>Évocation :</strong> Faire émerger les motivations de la personne, ne pas les imposer</li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Les 4 processus de l'entretien motivationnel</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Engagement (Engaging) :</strong> Créer la relation thérapeutique, établir la confiance
+                            <ul class="ml-4">
+                                <li>Écoute active et empathique</li>
+                                <li>Questions ouvertes</li>
+                                <li>Valorisations ("Je vois que vous avez essayé plusieurs fois, ça demande du courage")</li>
+                            </ul>
+                        </li>
+                        <li><strong>Focalisation (Focusing) :</strong> Identifier ensemble le ou les objectifs de changement
+                            <ul class="ml-4">
+                                <li>"Qu'aimeriez-vous qu'on aborde ensemble ?"</li>
+                                <li>Agenda partagé, pas agenda du thérapeute uniquement</li>
+                            </ul>
+                        </li>
+                        <li><strong>Évocation (Evoking) :</strong> Faire émerger le "discours-changement" (les raisons de changer exprimées par la personne elle-même)
+                            <ul class="ml-4">
+                                <li>Questions évocatrices : "Pourquoi voudriez-vous changer ?", "Qu'est-ce qui serait différent si vous arrêtiez ?", "Qu'est-ce qui est important pour vous dans votre vie ?"</li>
+                                <li>Amplifier l'ambivalence : explorer à la fois les avantages de consommer ET les inconvénients</li>
+                                <li>Reflets sélectifs : reformuler préférentiellement le discours-changement</li>
+                            </ul>
+                        </li>
+                        <li><strong>Planification (Planning) :</strong> Élaborer un plan de changement concret SI et seulement SI la personne est prête
+                            <ul class="ml-4">
+                                <li>Demander la permission : "Seriez-vous d'accord pour qu'on réfléchisse ensemble à un plan ?"</li>
+                                <li>Options multiples : proposer plusieurs stratégies, laisser la personne choisir</li>
+                                <li>Plan SMART : Spécifique, Mesurable, Atteignable, Réaliste, Temporellement défini</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Le modèle des stades de changement (Prochaska & DiClemente)</h4>
+                    <p>L'entretien motivationnel s'adapte au stade de changement de la personne :</p>
+                    <table class="text-sm">
+                        <thead>
+                            <tr>
+                                <th>Stade</th>
+                                <th>Caractéristiques</th>
+                                <th>Intervention</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pré-contemplation</td>
+                                <td>Pas d'intention de changer, déni ou résignation</td>
+                                <td>Éveiller le doute, explorer les conséquences, éviter la confrontation</td>
+                            </tr>
+                            <tr>
+                                <td>Contemplation</td>
+                                <td>Ambivalence, pense à changer mais pas encore décidé</td>
+                                <td>Renforcer le discours-changement, balance décisionnelle, augmenter confiance en soi</td>
+                            </tr>
+                            <tr>
+                                <td>Préparation</td>
+                                <td>Décision prise, commence à faire des petits changements</td>
+                                <td>Élaborer un plan d'action concret, identifier les obstacles, mobiliser le soutien</td>
+                            </tr>
+                            <tr>
+                                <td>Action</td>
+                                <td>Changement actif (sevrage, réduction)</td>
+                                <td>Soutien intensif, gestion du sevrage, renforcement positif, prévention rechute précoce</td>
+                            </tr>
+                            <tr>
+                                <td>Maintien</td>
+                                <td>Changement maintenu depuis >6 mois</td>
+                                <td>Prévention rechute, consolidation, projet de vie sans substance</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Les pièges à éviter</h4>
+                    <ul>
+                        <li><strong>Le réflexe correcteur :</strong> Argumenter pour le changement quand la personne exprime des réticences → Renforce la résistance</li>
+                        <li><strong>La question-réponse :</strong> Poser 10 questions fermées à la suite → Pas d'exploration</li>
+                        <li><strong>L'expert :</strong> Dire à la personne ce qu'elle doit faire → Réduit l'autonomie et la motivation intrinsèque</li>
+                        <li><strong>L'étiquetage prématuré :</strong> "Vous êtes alcoolique" → Crée de la résistance si la personne n'est pas prête à accepter cette identité</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-outils-reduction" class="content-section">
+                <h2>Boîte à Outils : Réduction des Risques</h2>
+                <p>La réduction des risques (RdR) est une approche pragmatique qui vise à diminuer les conséquences négatives de la consommation de substances, sans nécessairement exiger l'abstinence. C'est une approche validée scientifiquement et éthiquement, particulièrement pour les personnes qui ne sont pas prêtes ou capables d'arrêter.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Principes de la réduction des risques</h4>
+                    <ul>
+                        <li>Accepter la réalité de la consommation sans la cautionner</li>
+                        <li>Rencontrer les personnes là où elles en sont</li>
+                        <li>Hiérarchie des objectifs : réduction de la mortalité et morbidité d'abord, réduction puis abstinence si possible</li>
+                        <li>Approche bas-seuil : pas de conditions préalables pour accéder au soin</li>
+                        <li>Respect de l'autonomie et de la dignité</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Stratégies de RdR par substance</h4>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Opioïdes (héroïne, fentanyl, opiacés détournés) <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content hidden">
+                            <p><strong>Risques principaux :</strong> Overdose, infections (VIH, VHC, abcès), endocardite</p>
+                            <p><strong>Stratégies :</strong></p>
+                            <ul>
+                                <li><strong>Distribution de naloxone (Narcan) :</strong> Former la personne et son entourage à reconnaître une overdose et à administrer la naloxone</li>
+                                <li><strong>Ne jamais consommer seul·e :</strong> Risque d'overdose sans secours</li>
+                                <li><strong>Tester la dose :</strong> Commencer par une petite quantité, surtout après une période d'abstinence (tolérance réduite)</li>
+                                <li><strong>Matériel d'injection stérile :</strong> Seringues, coton, cuillère, eau stérile. JAMAIS partager de matériel</li>
+                                <li><strong>Traitement de substitution :</strong> Proposer buprénorphine ou méthadone, même en consommation active. Réduit drastiquement overdoses et infections</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">Alcool <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content hidden">
+                            <p><strong>Risques principaux :</strong> Cirrhose, pancréatite, accidents, violence, sevrage dangereux</p>
+                            <p><strong>Stratégies :</strong></p>
+                            <ul>
+                                <li><strong>Réduction graduée :</strong> Si arrêt impossible, réduire progressivement (objectifs hebdomadaires)</li>
+                                <li><strong>Éviter le binge drinking :</strong> Étaler la consommation plutôt que concentrer</li>
+                                <li><strong>Manger avant/pendant :</strong> Ralentit l'absorption, réduit les dommages gastriques</li>
+                                <li><strong>Hydratation :</strong> Alterner avec de l'eau</li>
+                                <li><strong>Jamais conduire :</strong> Zéro tolérance</li>
+                                <li><strong>Supplémentation :</strong> Vitamine B1 (thiamine) pour prévenir syndrome de Wernicke-Korsakoff</li>
+                                <li><strong>Surveillance médicale du sevrage :</strong> Ne jamais arrêter brutalement sans avis médical (risque de delirium tremens mortel)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">Stimulants (cocaïne, amphétamines, MDMA) <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content hidden">
+                            <p><strong>Risques principaux :</strong> Cardiovasculaires (AVC, infarctus), psychiatriques (psychose, dépression crash), épuisement</p>
+                            <p><strong>Stratégies :</strong></p>
+                            <ul>
+                                <li><strong>Limiter la fréquence :</strong> Espacer les consommations, éviter les marathons de plusieurs jours</li>
+                                <li><strong>Hydratation et alimentation :</strong> Boire régulièrement, manger même sans appétit</li>
+                                <li><strong>Repos obligatoire :</strong> Dormir entre les épisodes de consommation</li>
+                                <li><strong>Éviter les mélanges :</strong> Surtout avec alcool (produit cocaéthylène, toxique)</li>
+                                <li><strong>Si sniff :</strong> Matériel personnel, ne pas partager de paille (risque VHC)</li>
+                                <li><strong>Gestion du crash :</strong> Anticiper la dépression post-consommation, avoir un plan de soutien</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">Cannabis <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content hidden">
+                            <p><strong>Risques principaux :</strong> Dépendance psychologique, troubles cognitifs (mémoire, attention), risque psychotique chez vulnérables, respiratoires si fumé</p>
+                            <p><strong>Stratégies :</strong></p>
+                            <ul>
+                                <li><strong>Réduction de la fréquence :</strong> Jours sans consommation</li>
+                                <li><strong>Réduction du THC :</strong> Variétés moins concentrées</li>
+                                <li><strong>Mode de consommation :</strong> Vaporisation plutôt que combustion (réduit toxicité pulmonaire)</li>
+                                <li><strong>Éviter de fumer avant 25 ans :</strong> Cerveau en développement</li>
+                                <li><strong>Pas de conduite :</strong> Altération des réflexes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div id="section-outils-sevrage" class="content-section"> 
+                <h2>Boîte à Outils : Gestion du Sevrage</h2>
+                <p>Le sevrage est la phase aiguë d'arrêt de la substance après une consommation prolongée. Il peut être inconfortable (tous les produits) ou dangereux voire mortel (alcool, benzodiazépines). La gestion médicale est INDISPENSABLE pour certaines substances.</p>
+                
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Sevrages potentiellement mortels</h4>
+                    <p><strong>Alcool et benzodiazépines :</strong> Risque de convulsions, delirium tremens, décès. Ne JAMAIS sevrer sans surveillance et protocole médicamenteux.</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Sevrage alcoolique</h4>
+                    <p><strong>Symptômes :</strong> Tremblements, sueurs, anxiété, tachycardie, nausées, hallucinations (6-48h), convulsions (12-48h), delirium tremens (48-72h)</p>
+                    <p><strong>Évaluation :</strong> Échelle CIWA-Ar (Clinical Institute Withdrawal Assessment for Alcohol)</p>
+                    <p><strong>Traitement :</strong></p>
+                    <ul>
+                        <li>Benzodiazépines à dose adaptée (diazépam, oxazépam) selon protocole</li>
+                        <li>Hydratation, supplémentation vitaminique (B1, B6, PP)</li>
+                        <li>Surveillance des constantes vitales (PA, FC, température)</li>
+                        <li>Si delirium tremens : urgence vitale, hospitalisation nécessaire</li>
+                    </ul>
+                    <p><strong>Durée du sevrage physique :</strong> 5-7 jours en moyenne</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Sevrage opioïdes</h4>
+                    <p><strong>Symptômes :</strong> Douleurs, crampes, diarrhée, nausées, larmoiement, bâillements, sueurs, anxiété intense, insomnie. Très inconfortable mais non mortel.</p>
+                    <p><strong>Évaluation :</strong> Échelle COWS (Clinical Opiate Withdrawal Scale)</p>
+                    <p><strong>Deux options :</strong></p>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Sevrage symptomatique :</strong>
+                            <ul class="ml-4">
+                                <li>Clonidine (réduit symptômes adrénergiques)</li>
+                                <li>Antalgiques, antiémétiques, antidiarrhéiques</li>
+                                <li>Hypnotiques pour le sommeil</li>
+                                <li>Très difficile, taux élevé d'échec et de rechute</li>
+                            </ul>
+                        </li>
+                        <li><strong>Traitement de substitution (PRÉFÉRABLE) :</strong>
+                            <ul class="ml-4">
+                                <li>Buprénorphine (Subutex) ou méthadone</li>
+                                <li>Supprime le sevrage et le craving</li>
+                                <li>Permet de stabiliser la personne et de travailler sur le reste (psychologique, social)</li>
+                                <li>Peut être maintenu à long terme (maintenance)</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><strong>Durée du sevrage physique :</strong> 5-10 jours, mais malaise peut durer plusieurs semaines</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Sevrage stimulants (cocaïne, amphétamines)</h4>
+                    <p><strong>Symptômes :</strong> Crash dépressif majeur, fatigue extrême, hypersomnie, augmentation appétit, anhédonie, idées suicidaires, craving intense</p>
+                    <p><strong>Traitement :</strong></p>
+                    <ul>
+                        <li>Pas de traitement médicamenteux spécifique validé</li>
+                        <li>Surveillance rapprochée du risque suicidaire</li>
+                        <li>Repos, alimentation, hydratation</li>
+                        <li>Soutien psychologique intensif</li>
+                        <li>Traitement de la dépression si elle persiste au-delà de 2 semaines</li>
+                    </ul>
+                    <p><strong>Durée du crash :</strong> 3-7 jours, craving peut durer des semaines/mois</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Sevrage cannabis</h4>
+                    <p><strong>Symptômes :</strong> Irritabilité, anxiété, insomnie, perte d'appétit, agitation, craving. Inconfortable mais non dangereux.</p>
+                    <p><strong>Traitement :</strong> Symptomatique (hypnotiques si insomnie sévère), soutien psychologique, gestion de l'irritabilité</p>
+                    <p><strong>Durée :</strong> 1-2 semaines pour le pic, amélioration progressive sur 1 mois</p>
+                </div>
+            </div>
+
+            <div id="section-outils-rechute" class="content-section">
+                <h2>Boîte à Outils : Prévention de la Rechute</h2>
+                <p>La rechute est fréquente dans l'addiction (40-60% la première année). Ce n'est pas un échec mais une étape normale du processus de rétablissement. L'objectif est de la prévenir autant que possible et, si elle survient, de la gérer pour qu'elle ne devienne pas une "rechute catastrophique" avec retour à la consommation d'avant.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Modèle de la prévention de la rechute (Marlatt & Gordon)</h4>
+                    <p>La rechute n'est pas un événement soudain, c'est un processus qui commence bien avant la première consommation. On peut intervenir à chaque étape :</p>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Situation à Haut Risque (SAHR) :</strong> Contexte qui augmente la probabilité de consommer (lieu, personne, émotion, moment)</li>
+                        <li><strong>Stratégie d'adaptation :</strong> La personne utilise ou non une stratégie pour gérer la SAHR</li>
+                        <li><strong>Si stratégie efficace :</strong> Sentiment d'efficacité personnelle augmente → Probabilité de rechute diminue</li>
+                        <li><strong>Si pas de stratégie ou stratégie inefficace :</strong> Sentiment d'efficacité diminue → Attentes positives vis-à-vis de la substance augmentent → Envie (craving) → Rechute (lapse)</li>
+                        <li><strong>Effet de Violation de l'Abstinence (EVA) :</strong> Après un lapse, culpabilité et honte → "J'ai tout gâché, autant continuer" → Rechute complète</li>
+                    </ol>
+                    <p><strong>Prévention :</strong> Identifier les SAHR, développer des stratégies d'adaptation, gérer l'EVA si lapse</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Identifier les Situations à Haut Risque</h4>
+                    <p>Co-construire avec la personne une liste exhaustive :</p>
+                    <table class="text-sm">
+                        <thead>
+                            <tr>
+                                <th>Type de SAHR</th>
+                                <th>Exemples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lieux</td>
+                                <td>Bar, quartier où j'achetais, maison d'un ami consommateur</td>
+                            </tr>
+                            <tr>
+                                <td>Personnes</td>
+                                <td>Anciens partenaires de consommation, dealer, famille toxique</td>
+                            </tr>
+                            <tr>
+                                <td>Émotions négatives</td>
+                                <td>Stress, anxiété, colère, tristesse, solitude, ennui</td>
+                            </tr>
+                            <tr>
+                                <td>Émotions positives</td>
+                                <td>Célébrations, réussites (besoin de "fêter ça")</td>
+                            </tr>
+                            <tr>
+                                <td>Moments</td>
+                                <td>Fin de journée, week-end, dates anniversaires (du début de consommation, d'un décès, etc.)</td>
+                            </tr>
+                            <tr>
+                                <td>États physiques</td>
+                                <td>Fatigue, douleur, insomnie</td>
+                            </tr>
+                            <tr>
+                                <td>Pensées</td>
+                                <td>"Une fois n'est pas grave", "Je contrôle maintenant", "J'ai besoin de décompresser"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Développer des stratégies d'adaptation pour chaque SAHR</h4>
+                    <p>Pour chaque SAHR identifié, élaborer plusieurs stratégies :</p>
+                    <ul>
+                        <li><strong>Évitement :</strong> Si possible, ne pas s'exposer (ex: ne plus aller dans ce bar, couper contact avec certaines personnes)</li>
+                        <li><strong>Stratégies comportementales :</strong> Quitter les lieux, appeler un ami sobre, aller marcher, utiliser des techniques de distraction</li>
+                        <li><strong>Stratégies cognitives :</strong> Se rappeler les conséquences négatives de la consommation, visualiser ses objectifs de vie, utiliser des phrases d'auto-instruction ("Je peux gérer cette envie", "Ça va passer")</li>
+                        <li><strong>Gestion des émotions :</strong> Techniques de régulation émotionnelle, pleine conscience, acceptation de l'inconfort sans agir</li>
+                        <li><strong>Réseau de soutien :</strong> Qui appeler en cas de craving ? Avoir une liste de personnes disponibles (pairs, parrain AA/NA, équipe soignante)</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Plan d'urgence en cas de rechute (lapse)</h4>
+                    <p>Si malgré tout, une consommation a lieu :</p>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>STOP immédiat :</strong> Arrêter après la première consommation, ne pas continuer</li>
+                        <li><strong>Limiter les dégâts :</strong> Réduction des risques (ne pas conduire, ne pas sur-doser, matériel stérile si injection)</li>
+                        <li><strong>Contacter le réseau de soutien :</strong> Appeler immédiatement (équipe, parrain, ami sobre)</li>
+                        <li><strong>Pas de culpabilisation excessive :</strong> "Ce n'est pas la fin du monde, c'est une occasion d'apprendre"</li>
+                        <li><strong>Analyse fonctionnelle :</strong> Qu'est-ce qui s'est passé ? Quelle SAHR ? Quelle émotion ? Qu'est-ce que j'aurais pu faire différemment ?</li>
+                        <li><strong>Ajuster le plan de prévention :</strong> Intégrer cette expérience pour mieux prévenir la prochaine fois</li>
+                        <li><strong>Reprendre le processus immédiatement :</strong> Ne pas attendre "lundi" ou "le mois prochain"</li>
+                    </ol>
+                </div>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Lapse vs Relapse</h4>
+                    <p><strong>Lapse (écart, rechute ponctuelle) :</strong> Une consommation isolée après une période d'abstinence. Fréquent, gérable.</p>
+                    <p><strong>Relapse (rechute complète) :</strong> Retour au pattern de consommation d'avant. Plus grave.</p>
+                    <p><strong>L'Effet de Violation de l'Abstinence (EVA)</strong> transforme un lapse en relapse. Prévenir l'EVA en normalisant le lapse et en reprenant immédiatement.</p>
+                </div>
+            </div>
+
+            <!-- FONDAMENTAUX -->
+            <div id="section-comprendre" class="content-section">
+                 <h2>Fondamentaux : Comprendre l'Addiction</h2>
+                 <p>L'addiction (ou trouble d'usage de substance) est une maladie chronique du cerveau caractérisée par la recherche et l'usage compulsif de substance malgré les conséquences négatives. Ce n'est ni un manque de volonté ni un défaut moral, mais un dysfonctionnement des circuits de récompense, de motivation et de contrôle.</p>
+                
+                <h4>Critères diagnostiques (DSM-5) :</h4>
+                <p>Au moins 2 des critères suivants sur 12 mois :</p>
+                <ul class="list-disc ml-5">
+                    <li>Consommation en quantités ou durée plus importantes que prévu</li>
+                    <li>Désir persistant ou efforts infructueux pour réduire ou contrôler</li>
+                    <li>Temps important consacré à obtenir, consommer, récupérer</li>
+                    <li>Craving (envie intense)</li>
+                    <li>Incapacité à remplir des obligations (travail, famille, études)</li>
+                    <li>Usage malgré problèmes sociaux ou interpersonnels</li>
+                    <li>Abandon d'activités importantes</li>
+                    <li>Usage dans des situations dangereuses</li>
+                    <li>Usage malgré conscience des problèmes physiques ou psychologiques causés</li>
+                    <li><strong>Tolérance :</strong> Besoin de quantités croissantes pour même effet</li>
+                    <li><strong>Sevrage :</strong> Syndrome de sevrage ou consommation pour soulager/éviter le sevrage</li>
+                </ul>
+                <p><strong>Sévérité :</strong> Léger (2-3 critères), Modéré (4-5 critères), Sévère (≥6 critères)</p>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> L'addiction comme maladie chronique</h4>
+                    <p>Comparable au diabète ou à l'hypertension :</p>
+                    <ul>
+                        <li>Vulnérabilité génétique + facteurs environnementaux</li>
+                        <li>Altération d'un système physiologique (cerveau pour l'addiction, pancréas pour le diabète)</li>
+                        <li>Nécessite un traitement à long terme</li>
+                        <li>Rechutes fréquentes si traitement interrompu (40-60% pour addiction, 50-70% pour diabète/HTA)</li>
+                        <li>Modifications du mode de vie nécessaires</li>
+                    </ul>
+                    <p>Dire "C'est une maladie" n'enlève pas la responsabilité de se soigner, mais enlève la honte et facilite l'engagement.</p>
+                </div>
+            </div>
+            
+            <div id="section-neurobio" class="content-section">
+                <h2>Fondamentaux : Neurobiologie de l'Addiction</h2>
+                <p>L'addiction modifie profondément trois circuits cérébraux fondamentaux.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Les trois circuits dysfonctionnels</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Circuit de la récompense (système mésolimbique dopaminergique) :</strong>
+                            <ul class="ml-4">
+                                <li>Normalement activé par récompenses naturelles (nourriture, sexe, relations sociales)</li>
+                                <li>Les substances détournent ce circuit : libération massive de dopamine (2-10x plus que récompenses naturelles)</li>
+                                <li>Le cerveau "apprend" que la substance = super-récompense</li>
+                                <li>Avec répétition : hyposensibilisation → besoin de plus pour même effet (tolérance) + anhédonie (plus de plaisir aux activités normales)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Circuit de la motivation et de l'habitude (striatum dorsal) :</strong>
+                            <ul class="ml-4">
+                                <li>La consommation devient automatique, habitude profondément ancrée</li>
+                                <li>Déclenchée par des indices (lieux, personnes, émotions) sans décision consciente</li>
+                                <li>Explique pourquoi "juste décider d'arrêter" ne suffit pas</li>
+                            </ul>
+                        </li>
+                        <li><strong>Circuit du contrôle exécutif (cortex préfrontal) :</strong>
+                            <ul class="ml-4">
+                                <li>Normalement : planification, inhibition des impulsions, anticipation des conséquences</li>
+                                <li>Dans l'addiction : hypoactivité → perte de contrôle, impulsivité, mauvaise prise de décision</li>
+                                <li>Explique la consommation malgré conscience des conséquences</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Implications pour le traitement</h4>
+                    <ul>
+                        <li><strong>Médicaments :</strong> Peuvent agir sur ces circuits (naltrexone, buprénorphine, acamprosate)</li>
+                        <li><strong>Thérapies :</strong> Ré-entraînement du cortex préfrontal (TCC), création de nouvelles habitudes (activation comportementale)</li>
+                        <li><strong>Éviter les indices :</strong> Limiter exposition aux déclencheurs pour ne pas activer automatiquement le circuit de l'habitude</li>
+                        <li><strong>Temps :</strong> Le cerveau peut se réparer (neuroplasticité), mais cela prend des mois/années d'abstinence</li>
+                    </ul>
+                </div>
+            </div>
+
+             <div id="section-modele" class="content-section">
+                <h2>Fondamentaux : Modèle Bio-Psycho-Social</h2>
+                <p>L'addiction ne se réduit pas à la neurobiologie. C'est une interaction complexe entre biologie, psychologie et environnement social.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Les trois dimensions</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Facteurs biologiques :</strong>
+                            <ul class="ml-4">
+                                <li>Génétique (50-60% du risque est héréditaire)</li>
+                                <li>Neurobiologie (circuits de récompense, impulsivité)</li>
+                                <li>Comorbidités médicales (douleur chronique → opioïdes)</li>
+                                <li>Pharmacologie de la substance (potentiel addictif)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Facteurs psychologiques :</strong>
+                            <ul class="ml-4">
+                                <li>Comorbidités psychiatriques (dépression, anxiété, TSPT, TDAH) → auto-médication</li>
+                                <li>Traumas (enfance, violences) fortement associés à l'addiction</li>
+                                <li>Troubles de la personnalité (impulsivité, recherche de sensations)</li>
+                                <li>Cognitions dysfonctionnelles (croyances sur la substance, faible sentiment d'efficacité)</li>
+                                <li>Difficultés de régulation émotionnelle</li>
+                            </ul>
+                        </li>
+                        <li><strong>Facteurs sociaux :</strong>
+                            <ul class="ml-4">
+                                <li>Précarité, pauvreté, chômage</li>
+                                <li>Isolement social, ruptures familiales</li>
+                                <li>Accessibilité de la substance</li>
+                                <li>Normes culturelles et sociales</li>
+                                <li>Stigmatisation (frein à l'accès aux soins)</li>
+                                <li>Problèmes judiciaires</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Implications pour l'intervention</h4>
+                    <p>Une intervention efficace doit agir sur les trois dimensions :</p>
+                    <ul>
+                        <li><strong>Biologique :</strong> Médicaments (sevrage, substitution, comorbidités), santé physique</li>
+                        <li><strong>Psychologique :</strong> Psychothérapie (entretien motivationnel, TCC), traitement des comorbidités psy, travail sur le trauma</li>
+                        <li><strong>Social :</strong> Aide sociale (logement, emploi, ressources), reconstruction du réseau social sobre, médiation familiale, aide juridique</li>
+                    </ul>
+                    <p>Négliger une dimension = risque d'échec. L'équipe mobile CRT est idéale pour cette approche globale.</p>
+                </div>
+            </div>
+            
+            <!-- Rôles de l'équipe -->
+             <div id="section-roles-recap" class="content-section">
+                <h2>Rôles de l'Équipe en Crise d'Addiction</h2>
+                <p>La prise en charge de l'addiction nécessite une approche multidisciplinaire coordonnée. Chaque professionnel apporte une expertise complémentaire.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Professionnel</th>
+                            <th>Rôle Prioritaire en Crise d'Addiction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Médecin / Psychiatre addictologue</strong></td>
+                            <td>Leader clinique. Évaluation médicale et psychiatrique. Gestion du sevrage (protocoles médicamenteux). Prescription de traitements de substitution (buprénorphine, méthadone) ou de médicaments anti-craving (naltrexone, acamprosate, baclofène). Traitement des comorbidités. Coordination médicale.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infirmier·ère</strong></td>
+                            <td>Intervenant de première ligne. Présence à haute fréquence, monitoring des signes vitaux et du sevrage, administration des traitements. Entretiens motivationnels courts. Éducation à la réduction des risques. Distribution de matériel (naloxone, seringues). Lien thérapeutique crucial.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Psychologue / Addictologue</strong></td>
+                            <td>Expert en entretien motivationnel et TCC pour l'addiction. Évaluation de la motivation et du stade de changement. Travail sur l'ambivalence. Prévention de la rechute. Traitement des comorbidités psychiatriques. Thérapie des traumas si nécessaire.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Assistant·e Social·e</strong></td>
+                            <td>Évaluation et action sur les déterminants sociaux. Accès au logement, ressources financières, couverture santé. Aide aux démarches administratives. Médiation familiale. Problèmes judiciaires. Lien avec structures d'insertion (emploi, formation). ESSENTIEL pour stabilité à long terme.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Ergothérapeute</strong></td>
+                            <td>Évalue l'impact fonctionnel de l'addiction. Accompagne la reprise d'activités structurantes. Travaille sur la gestion du temps (combler le vide laissé par la substance). Réinsertion professionnelle ou occupationnelle progressive.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pair-Aidant / Médiateur de Santé-Pair</strong></td>
+                            <td>CRUCIAL. Personne en rétablissement d'une addiction. Crédibilité unique ("il/elle comprend vraiment"). Partage d'expérience, stratégies concrètes. Accompagnement vers groupes d'entraide. Réduction du stigma. Message d'espoir incarné. Facilite l'engagement dans le soin.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Secrétaire</strong></td>
+                            <td>Premier contact téléphonique souvent. Attitude non-jugeante essentielle. Planification des visites. Coordination avec CSAPA, structures d'hébergement, etc. Gestion des urgences (overdose, sevrage).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Psychoéducation -->
+            <div id="section-psychoed-patient" class="content-section">
+                <h2>Modules de Psychoéducation pour la Personne</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. L'addiction est une maladie du cerveau <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Déculpabiliser, déstigmatiser, expliquer pourquoi "juste arrêter" ne suffit pas.</p>
+                        <p><strong>Contenu :</strong> "Votre addiction n'est pas un manque de volonté ou un défaut moral. C'est une maladie chronique du cerveau. Les substances ont modifié vos circuits de récompense, de motivation et de contrôle. C'est pour ça que vous avez envie même quand vous savez que c'est mauvais pour vous. Ce n'est pas de votre faute d'avoir développé cette maladie. MAIS c'est votre responsabilité de vous soigner, et on est là pour vous aider."</p>
+                        <p>Utiliser l'analogie avec le diabète : maladie chronique, rechutes possibles, traitement à long terme nécessaire.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. L'ambivalence est normale <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Normaliser le conflit interne.</p>
+                        <p><strong>Contenu :</strong> "C'est normal de vouloir arrêter ET de ne pas vouloir arrêter en même temps. Une partie de vous voit les problèmes et veut changer. Une autre partie trouve des bénéfices à la consommation (détente, oubli, socialisation, gestion d'émotions difficiles). C'est pas hypocrite, c'est humain. On va travailler ensemble sur cette ambivalence, sans vous forcer."</p>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">3. La rechute fait partie du rétablissement <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Réduire la honte et l'abandon du processus après une rechute.</p>
+                        <p><strong>Contenu :</strong> "Si vous reconsommez après une période d'abstinence, ce n'est pas un échec total. C'est fréquent (40-60% des gens rechutent la première année). L'important, c'est de ne pas abandonner. Analyser ce qui s'est passé, apprendre, ajuster votre plan, et reprendre. Chaque tentative vous apprend quelque chose et vous rapproche du rétablissement durable."</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Le rétablissement, c'est pas juste arrêter <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Élargir la vision du rétablissement.</p>
+                        <p><strong>Contenu :</strong> "Le rétablissement, c'est bien plus que ne pas consommer. C'est reconstruire une vie qui a du sens, des relations saines, des activités qui vous apportent satisfaction, une identité au-delà de l'addiction. Certaines personnes se rétablissent en abstinence totale, d'autres en réduction contrôlée. Il n'y a pas qu'un seul chemin. L'important, c'est VOTRE qualité de vie et VOTRE santé."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-psychoed-entourage" class="content-section">
+                <h2>Modules de Psychoéducation pour l'Entourage</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. L'addiction est une maladie, pas un choix <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Réduire la culpabilisation et le jugement.</p>
+                        <p><strong>Contenu :</strong> "Votre proche ne CHOISIT pas d'être dépendant·e. L'addiction a modifié son cerveau de manière profonde. Il/elle ne peut pas 'juste arrêter' par simple décision, pas plus qu'un diabétique ne peut guérir en 'se ressaisissant'. Cela ne veut pas dire qu'il/elle n'a aucune responsabilité, mais comprendre que c'est une maladie aide à moins juger et à mieux soutenir."</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Ne pas aider = aider parfois (arrêter l'enabling) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Expliquer le concept d'enabling et comment arrêter sans rejeter.</p>
+                        <p><strong>Contenu :</strong> "L'enabling, c'est quand, en voulant aider, vous facilitez en fait la poursuite de l'addiction. Exemples : donner de l'argent, acheter la substance, mentir pour couvrir, assumer toutes les responsabilités à la place de la personne. Cela semble bienveillant, mais ça empêche votre proche de ressentir les conséquences de ses actes et donc de vouloir changer."</p>
+                        <div class="recommendation-box">
+                             <h4><i class="fas fa-check-circle icon"></i> Comment arrêter l'enabling sans rejeter</h4>
+                             <ul>
+                                <li>Poser des limites fermes mais bienveillantes : "Je t'aime, mais je ne te donnerai plus d'argent", "Je ne mentirai plus pour toi"</li>
+                                <li>Laisser la personne assumer les conséquences naturelles (dans la limite du raisonnable et de la sécurité)</li>
+                                <li>Offrir un soutien émotionnel et encourager le soin, pas la consommation</li>
+                                <li>Maintenir votre disponibilité pour aider dans le rétablissement (accompagner à un rendez-vous, écouter)</li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Prendre soin de vous (pour les proches) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Prévenir l'épuisement et la co-dépendance.</p>
+                        <p><strong>Contenu :</strong> "Vivre avec une personne qui a une addiction est extrêmement éprouvant. Vous pouvez ressentir de la colère, de la frustration, de la tristesse, de l'impuissance. Vous avez le droit de ces émotions. Vous devez prendre soin de vous :"</p>
+                        <ul>
+                            <li>Maintenir vos activités et relations</li>
+                            <li>Rejoindre un groupe de soutien (Al-Anon pour proches d'alcooliques, Nar-Anon pour proches de toxicomanes)</li>
+                            <li>Consulter un psychologue si besoin</li>
+                            <li>Mettre des limites pour vous protéger</li>
+                            <li>Accepter que vous ne pouvez pas contrôler l'addiction de votre proche. Vous pouvez l'aider, pas le guérir.</li>
+                        </ul>
+                        <p>Ressources : <a href="https://al-anon-france.fr" target="_blank" rel="noopener">Al-Anon France</a></p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Comment réagir en cas d'overdose <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Formation à la reconnaissance et gestion d'une overdose (si opioïdes).</p>
+                        <div class="alert-box">
+                             <h4><i class="fas fa-exclamation-triangle icon"></i> Signes d'overdose aux opioïdes</h4>
+                             <ul>
+                                 <li>Inconscience ou semi-conscience, impossible de réveiller</li>
+                                 <li>Respiration très lente ou absente</li>
+                                 <li>Lèvres/ongles bleutés</li>
+                                 <li>Pupilles très rétrécies (tête d'épingle)</li>
+                                 <li>Peau froide et moite</li>
+                             </ul>
+                        </div>
+                        <div class="recommendation-box">
+                             <h4><i class="fas fa-check-circle icon"></i> Que faire</h4>
+                             <ol class="list-decimal ml-5">
+                                <li><strong>Appeler le 15 (SAMU) immédiatement</strong></li>
+                                <li>Administrer la naloxone (Narcan) si vous en avez : spray nasal ou injection intramusculaire</li>
+                                <li>Mettre la personne en position latérale de sécurité</li>
+                                <li>Rester avec elle jusqu'à l'arrivée des secours</li>
+                                <li>Si elle se réveille après naloxone, elle peut être agressive (sevrage brutal). Rester calme.</li>
+                             </ol>
+                             <p><strong>La naloxone sauve des vies. Tout proche d'une personne consommant des opioïdes devrait en avoir.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Glossaire et références -->
+            <div id="section-glossaire" class="content-section">
+                <h2>Glossaire</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">Craving <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Envie impérieuse et intense de consommer. Peut être déclenchée par des indices (lieux, personnes, émotions) ou survenir spontanément. Le craving est un symptôme de l'addiction, pas un manque de volonté.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Enabling <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Comportements de l'entourage qui, bien qu'intentionnés, facilitent la poursuite de l'addiction en protégeant la personne des conséquences de sa consommation (donner argent, mentir, assumer responsabilités).</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Réduction des Risques (RdR) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Approche pragmatique visant à diminuer les conséquences négatives de l'usage de drogues sans nécessairement exiger l'abstinence. Inclut : matériel stérile, naloxone, salles de consommation, information.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Sevrage <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Ensemble de symptômes physiques et psychologiques apparaissant lors de l'arrêt ou de la réduction d'une substance après usage prolongé. Peut être inconfortable (tous produits) ou dangereux voire mortel (alcool, benzodiazépines).</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Tolérance <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Nécessité d'augmenter les doses pour obtenir le même effet. Phénomène neurobiologique lié à l'adaptation du cerveau à la présence chronique de la substance.</p></div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">Traitement de Substitution <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Pour les opioïdes : prescription médicale de buprénorphine (Subutex) ou méthadone pour remplacer l'héroïne/opiacés illicites. Supprime sevrage et craving, permet stabilisation et réduction des risques (overdose, infections). Peut être maintenu à long terme.</p></div>
+                </div>
+            </div>
+
+            <div id="section-references" class="content-section">
+                <h2>Références</h2>
+                <ul class="list-disc text-sm space-y-3">
+                    <li>American Psychiatric Association. (2013). <em>Diagnostic and Statistical Manual of Mental Disorders</em> (5e éd.). Arlington, VA: American Psychiatric Publishing.</li>
+                    <li>American Society of Addiction Medicine. (2020). <em>The ASAM national practice guideline for the treatment of opioid use disorder: 2020 focused update</em>. Journal of Addiction Medicine, 14(2S Suppl 1), 1-91.</li>
+                    <li>Hawk, M., Coulter, R. W. S., Egan, J. E., Fisk, S., Friedman, M. R., Tula, M., & Kinsky, S. (2017). Harm reduction principles for healthcare settings. <em>Harm Reduction Journal, 14</em>(1), 70.</li>
+                    <li>Marlatt, G. A., & Donovan, D. M. (2005). <em>Relapse prevention: Maintenance strategies in the treatment of addictive behaviors</em> (2e éd.). New York: Guilford Press.</li>
+                    <li>Miller, W. R., & Rollnick, S. (2013). <em>Motivational interviewing: Helping people change</em> (3e éd.). New York: Guilford Press.</li>
+                    <li>National Institute on Drug Abuse. (2020). <em>Drugs, brains, and behavior: The science of addiction</em>. Bethesda, MD: NIDA.</li>
+                    <li>Prochaska, J. O., & DiClemente, C. C. (1983). Stages and processes of self-change of smoking: Toward an integrative model of change. <em>Journal of Consulting and Clinical Psychology, 51</em>(3), 390-395.</li>
+                    <li>Substance Abuse and Mental Health Services Administration. (2020). <em>Treatment Improvement Protocol (TIP) Series 63: Medications for Opioid Use Disorder</em>. Rockville, MD: SAMHSA.</li>
+                    <li>Volkow, N. D., Koob, G. F., & McLellan, A. T. (2016). Neurobiologic advances from the brain disease model of addiction. <em>New England Journal of Medicine, 374</em>(4), 363-371.</li>
+                    <li>World Health Organization. (2014). <em>Community management of opioid overdose</em>. Geneva: WHO.</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+    
+    <footer class="mt-16 bg-slate-900 text-slate-300 text-sm border-t border-slate-700 py-6 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+            <div class="flex-shrink-0">
+                <a href="https://www.ch-le-vinatier.fr" target="_blank" rel="noopener noreferrer">
+                    <img class="h-20 md:h-24 w-auto" 
+                         src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/e079f7cf4939908ea9a07ce40d529d0b" 
+                         alt="Logo Centre Hospitalier Le Vinatier">
+                </a>
+            </div>
+            <div class="flex-1 text-center md:text-left space-y-2">
+                <p>Dr <strong>FENOHASINA </strong>T.J. Felicien (Psychiatre - FFI) ;</p>
+                <p>Dr <strong>MONNIER </strong>Romain (Psychiatre - CCA) ; </p>
+                <p>Equipe Mobile - <strong>Pôle Centre</strong> Rive Gauche ;</p>
+                <p>Chef de service: Dr Thomas <strong>LATHIERE</strong> ;</p>
+                <p>Chef de Pôle: Prof. Nicolas <strong>FRANCK</strong></p>
+                <p>CH - Le <strong>Vinatier.</strong></p>
+                <div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+                    <img class="h-5 w-auto" 
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cc-by-nc-sa_icon.svg/120px-Cc-by-nc-sa_icon.svg.png" 
+                         alt="Icône Creative Commons BY-NC-SA">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="underline hover:text-white">Licence CC BY-NC-SA 4.0</a> –
+                    <span>Dernière mise à jour : Octobre 2025.</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 flex-shrink-0">
+                <a href="https://www.facebook.com/Psykozy?locale=fr_FR" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://cdn-assets.inwink.com/fe065c87-0643-42fc-8b5d-4d94b5d12c11/a1904f78-1bca-466d-a9f4-8ac9fde06c0c" 
+                         alt="Logo Psy-kôzy">
+                </a>
+                <a href="https://centre-ressource-rehabilitation.org" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://faustinebrunet.com/images/RS/creation-nouveau-logo-domaine-sante-mentale.jpg" 
+                         alt="Logo Centre Ressource Réhabilitation">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeSidebarButton = document.getElementById('close-sidebar-button');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const mainContent = document.getElementById('main-content');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            sidebarBackdrop.classList.add('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            openSidebar();
+        });
+        closeSidebarButton.addEventListener('click', closeSidebar);
+        sidebarBackdrop.addEventListener('click', closeSidebar);
+
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                requestAnimationFrame(() => {
+                    mainContent.scrollTop = 0;
+                });
+            }
+
+            const navLinks = document.querySelectorAll('#sidebar .nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const isDirectMatch = link.getAttribute('onclick') && link.getAttribute('onclick').includes(`showSection('${sectionId}')`);
+                let isInSubmenuOfActiveParent = false;
+                
+                const submenu = link.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const submenuLinks = submenu.querySelectorAll('.nav-link');
+                    submenuLinks.forEach(sl => {
+                         sl.classList.remove('active'); 
+                        if (sl.getAttribute('onclick') && sl.getAttribute('onclick').includes(`showSection('${sectionId}')`)) {
+                            isInSubmenuOfActiveParent = true;
+                            sl.classList.add('active'); 
+                        }
+                    });
+                }
+
+                if (isDirectMatch || isInSubmenuOfActiveParent) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            const icon = element.querySelector('i.fa-chevron-down, i.fa-chevron-up');
+            if (submenu && submenu.classList.contains('submenu')) {
+                submenu.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                }
+            }
+        }
+        
+        function initializeAccordions() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.fas.fa-chevron-down, .fas.fa-chevron-up');
+                    
+                    content.classList.toggle('hidden');
+                    header.classList.toggle('open'); 
+                    
+                    if (icon) { 
+                        if (content.classList.contains('hidden')) {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        } else {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        }
+                    }
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('section-home');
+            
+            const crisisPlanParentLink = Array.from(document.querySelectorAll('a.nav-link.font-semibold')).find(el => el.textContent.includes("Plan d'Intervention de Crise"));
+            if(crisisPlanParentLink) {
+                const submenu = crisisPlanParentLink.nextElementSibling;
+                const icon = crisisPlanParentLink.querySelector('i.fa-chevron-down');
+                 if (submenu && submenu.classList.contains('submenu') && icon) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                 }
+            }
+            
+            initializeAccordions(); 
+        });
+    </script>
+
+</body>
+</html>
