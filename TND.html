@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide d'Intervention de Crise - Troubles du Neurodéveloppement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-section {
+            display: none; 
+        }
+        .content-section.active {
+            display: block; 
+        }
+        .nav-link {
+            cursor: pointer;
+            padding: 0.85rem 1.25rem; 
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            display: block; 
+            margin-bottom: 0.25rem; 
+        }
+        .nav-link:hover {
+            background-color: #334155;
+            color: #ffffff;
+        }
+        .nav-link.active {
+            background-color: #0ea5e9;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .submenu .nav-link {
+            padding-left: 2rem; 
+            font-size: 0.9rem;
+        }
+        .submenu .nav-link.active {
+             background-color: #0369a1;
+        }
+
+        .alert-box, .recommendation-box, .idea-box {
+            padding: 1.25rem; 
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+        }
+        .alert-box {
+            background-color: #fee2e2; 
+            border-left: 5px solid #ef4444; 
+            color: #991b1b; 
+        }
+        .recommendation-box {
+            background-color: #dcfce7; 
+            border-left: 5px solid #22c55e; 
+            color: #14532d; 
+        }
+        .idea-box {
+            background-color: #fef9c3; 
+            border-left: 5px solid #eab308; 
+            color: #713f12; 
+        }
+        .alert-box h4, .recommendation-box h4, .idea-box h4 {
+            font-weight: 700; 
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+            color: inherit; 
+        }
+        .alert-box ul, .recommendation-box ul, .idea-box ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+        .alert-box li, .recommendation-box li, .idea-box li {
+            margin-bottom: 0.375rem;
+        }
+        .icon {
+            margin-right: 0.75rem; 
+            font-size: 1.1em;
+        }
+
+        #sidebar::-webkit-scrollbar { width: 8px; }
+        #sidebar::-webkit-scrollbar-track { background: #0f172a; }
+        #sidebar::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
+        #sidebar::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        #main-content::-webkit-scrollbar { width: 10px; }
+        #main-content::-webkit-scrollbar-track { background: #e2e8f0; }
+        #main-content::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 5px; }
+        #main-content::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        h1.guide-title { color: #ffffff; }
+        h2 { margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.75rem; font-weight: 700; color: #0c4a6e; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.5rem; } 
+        h3 { margin-top: 1.25rem; margin-bottom: 0.75rem; font-size: 1.5rem; font-weight: 600; color: #0369a1; } 
+        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 600; color: #075985; } 
+        
+        @media (min-width: 768px) {
+            h2 { font-size: 2.25rem; margin-top: 2rem; margin-bottom: 1.25rem;}
+            h3 { font-size: 1.875rem; margin-top: 1.75rem; margin-bottom: 1rem;}
+            h4 { font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 0.75rem;}
+        }
+
+        .content-section p { margin-bottom: 1rem; line-height: 1.7; font-size: 0.95rem; } 
+         @media (min-width: 768px) { 
+            .content-section p { font-size: 1rem; }
+        }
+        .content-section ul, .content-section ol { margin-bottom: 1rem; padding-left: 1.75rem; }
+        .content-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .content-section cite { font-style: normal; } 
+        .content-section a { color: #0ea5e9; text-decoration: none; font-weight: 500; }
+        .content-section a:hover { color: #0369a1; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; }
+        th { background-color: #f1f5f9; font-weight: 600; color: #1e293b; }
+
+        .accordion-item {
+            border: 1px solid #cbd5e1; 
+            border-radius: 0.5rem; 
+            margin-bottom: 0.75rem;
+            background-color: #ffffff; 
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07), 0 1px 2px 0 rgba(0,0,0,0.04);
+        }
+        .accordion-header {
+            background-color: #f1f5f9; 
+            color: #1e3a8a; 
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            border-radius: 0.5rem 0.5rem 0 0; 
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .accordion-header:hover {
+            background-color: #e2e8f0; 
+        }
+        .accordion-header.open {
+             border-bottom: 1px solid #cbd5e1; 
+             border-radius: 0.5rem 0.5rem 0 0;
+        }
+        .accordion-content {
+            padding: 1.25rem;
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem; 
+            background-color: #ffffff; 
+        }
+        .accordion-content.hidden {
+            display: none;
+        }
+        .accordion-header .fas {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.open .fas {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 flex flex-col min-h-screen">
+
+    <button id="mobile-menu-button" class="md:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 text-white rounded-md shadow-lg">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="flex flex-col md:flex-row flex-1"> 
+        <nav id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 sm:w-72 bg-slate-800 text-slate-100 shadow-lg p-4 md:p-6 space-y-1 overflow-y-auto transform -translate-x-full md:relative md:translate-x-0 md:w-1/4 lg:w-1/5 transition-transform duration-300 ease-in-out">
+            <button id="close-sidebar-button" class="md:hidden absolute top-4 right-4 text-slate-300 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <h1 class="guide-title text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center md:text-left pt-8 md:pt-0">Guide de Crise TND</h1>
+            <a href="https://thot586.github.io/EM_CRT/#interventions" class="block text-center bg-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-600 transition-colors duration-300 mb-6 shadow-lg">
+                <i class="fas fa-arrow-left mr-2"></i>Retour au Portail
+            </a>
+            <a class="nav-link" onclick="showSection('section-home'); closeSidebar();"><i class="fas fa-home icon"></i>Accueil</a>
+            <a class="nav-link" onclick="showSection('section-introduction-guide'); closeSidebar();"><i class="fas fa-info-circle icon"></i>Objectif du Guide</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-clipboard-list icon"></i>Plan d'Intervention de Crise <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-crise-phase1'); closeSidebar();">Phase 1: Désamorçage</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase2'); closeSidebar();">Phase 2: Analyse & Stabilisation</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase3'); closeSidebar();">Phase 3: Prévention & Relais</a>
+                </div>
+            </div>
+
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-tools icon"></i>Boîte à Outils <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-outils-communication'); closeSidebar();">Communication Adaptée</a>
+                    <a class="nav-link" onclick="showSection('section-outils-sensoriel'); closeSidebar();">Gestion Sensorielle</a>
+                    <a class="nav-link" onclick="showSection('section-outils-comportement'); closeSidebar();">Analyse Fonctionnelle</a>
+                    <a class="nav-link" onclick="showSection('section-outils-plan-soutien'); closeSidebar();">Plan de Soutien Comportemental</a>
+                </div>
+            </div>
+
+             <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-book-open icon"></i>Fondamentaux Théoriques <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-comprendre-tnd'); closeSidebar();">Comprendre les TND</a>
+                    <a class="nav-link" onclick="showSection('section-crises-tnd'); closeSidebar();">Les Crises dans les TND</a>
+                    <a class="nav-link" onclick="showSection('section-neurodiversite'); closeSidebar();">Approche Neurodiversité</a>
+                </div>
+            </div>
+            
+            <a class="nav-link" onclick="showSection('section-roles-equipe'); closeSidebar();"><i class="fas fa-users-cog icon"></i>Rôles de l'Équipe</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-chalkboard-teacher icon"></i>Psychoéducation <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-psychoed-personne'); closeSidebar();">Pour la Personne</a>
+                    <a class="nav-link" onclick="showSection('section-psychoed-famille'); closeSidebar();">Pour la Famille</a>
+                </div>
+            </div>
+            <a class="nav-link" onclick="showSection('section-glossaire'); closeSidebar();"><i class="fas fa-book icon"></i>Glossaire</a>
+            <a class="nav-link" onclick="showSection('section-references'); closeSidebar();"><i class="fas fa-link icon"></i>Références</a>
+        </nav>
+
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden" onclick="closeSidebar()"></div>
+
+        <main id="main-content" class="flex-1 p-4 md:p-8 lg:p-10 overflow-y-auto">
+            <div id="section-home" class="content-section">
+                <h2>Guide d'Intervention de Crise : Troubles du Neurodéveloppement</h2>
+                <p>Ce guide est conçu pour les équipes mobiles de psychiatrie intervenant auprès de personnes présentant des <strong>Troubles du Neurodéveloppement (TND)</strong> en situation de crise. Il propose une approche structurée, respectueuse de la neurodiversité, centrée sur la compréhension des causes de la crise et l'adaptation de l'environnement.</p>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Comment utiliser ce guide :</h4>
+                    <ul>
+                        <li>Le <strong>Plan d'Intervention de Crise</strong> propose un protocole par phases pour guider l'action de l'équipe en situation de crise comportementale ou d'épuisement familial.</li>
+                        <li>La <strong>Boîte à Outils</strong> détaille les stratégies concrètes d'adaptation de la communication, de l'environnement sensoriel et d'analyse des comportements.</li>
+                        <li>Les sections théoriques fournissent le cadre conceptuel pour une prise en charge respectueuse et efficace, basée sur les principes de neurodiversité.</li>
+                        <li>Ce guide s'adresse aux crises dans le contexte des TND : TSA, TDAH, déficience intellectuelle, troubles des apprentissages.</li>
+                    </ul>
+                </div>
+                <p>Notre mission est de comprendre que les crises comportementales ne sont pas des caprices mais des réponses à un environnement inadapté, une surcharge sensorielle, une difficulté de communication ou un besoin non satisfait. L'objectif est d'identifier et de modifier les facteurs déclenchants plutôt que de simplement "gérer" le comportement.</p>
+            </div>
+
+            <div id="section-introduction-guide" class="content-section">
+                <h2>Objectif de ce Guide Opérationnel</h2>
+                <p>Intervenir en crise auprès d'une personne avec un trouble du neurodéveloppement nécessite une compréhension fine des particularités cognitives, sensorielles et communicationnelles de la personne. Une crise n'est jamais un événement isolé : elle est le résultat d'une accumulation de facteurs stressants qui dépassent les capacités d'adaptation de la personne.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Changement de paradigme fondamental</h4>
+                    <p>Nous ne cherchons pas à "corriger" la personne ou à "éliminer" les comportements-défis. Nous cherchons à comprendre ce que le comportement communique et à adapter l'environnement pour prévenir les crises futures.</p>
+                </div>
+
+                <p>Ce guide s'appuie sur les approches reconnues internationalement :</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Analyse fonctionnelle du comportement (Applied Behavior Analysis - ABA)</strong> pour comprendre les fonctions des comportements</li>
+                    <li><strong>Soutien Comportemental Positif (Positive Behavioral Support - PBS)</strong> pour développer des plans de soutien proactifs</li>
+                    <li><strong>Approche sensorielle</strong> pour identifier et gérer les sur/sous-stimulations</li>
+                    <li><strong>Communication Alternative et Améliorée (CAA)</strong> pour faciliter l'expression des besoins</li>
+                    <li><strong>Perspective de neurodiversité</strong> qui reconnaît les différences comme des variations naturelles plutôt que des déficits</li>
+                </ul>
+
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Principe absolu : "D'abord, ne pas nuire"</h4>
+                    <p>Aucune intervention ne doit être traumatisante, humiliante ou coercitive. La contention physique ne doit être utilisée qu'en dernier recours absolu pour prévenir un danger immédiat, selon les protocoles légaux et éthiques. Toute contention doit être suivie d'un débriefing et d'une analyse pour prévenir sa répétition.</p>
+                </div>
+            </div>
+            
+            <!-- PLAN D'INTERVENTION -->
+            <div id="section-crise-phase1" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 1 : Désamorçage et Sécurisation (Heures 0-48)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Assurer la sécurité, réduire l'intensité de la crise et identifier les déclencheurs immédiats.</h4>
+                </div>
+                
+                <h4>Temporalité des interventions :</h4>
+                <p><strong>Intervention rapide et présence rassurante.</strong> La rapidité d'intervention est cruciale pour éviter l'escalade et l'épuisement de l'entourage.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Première intervention :</strong> Dans les 4 heures si situation de crise aiguë, par binôme formé aux TND.</li>
+                    <li><strong>Visites quotidiennes</strong> les premiers jours pour stabiliser la situation et rassurer la famille.</li>
+                    <li><strong>Disponibilité téléphonique</strong> pour conseils en temps réel lors des crises.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Évaluation de la sécurité immédiate :</strong> Risque d'auto/hétéro-agression, accès à des moyens dangereux, état de l'environnement.</li>
+                        <li><strong>Techniques de désamorçage :</strong> Réduction des stimulations, retrait dans un espace calme, respect de la distance physique, communication minimale et prévisible.</li>
+                        <li><strong>Entretien avec les aidants :</strong> Comprendre ce qui s'est passé juste avant, identifier les potentiels déclencheurs (changement de routine, surcharge sensorielle, frustration communicationnelle).</li>
+                        <li><strong>Observation de l'environnement :</strong> Évaluation sensorielle du domicile (bruits, lumières, température, encombrements).</li>
+                        <li><strong>Évaluation des besoins de base :</strong> Sommeil, alimentation, douleur physique (souvent non-verbalisée), état de santé général.</li>
+                        <li><strong>Premières adaptations environnementales :</strong> Modifications immédiates simples (réduire le bruit, créer un espace de retrait).</li>
+                        <li><strong>Évaluation de l'épuisement parental :</strong> Risque de burn-out, besoin de répit d'urgence.</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter absolument</h4>
+                    <ul>
+                        <li><strong>Ne jamais forcer le contact physique ou visuel.</strong> Respecter le besoin d'espace et de retrait.</li>
+                        <li><strong>Ne pas parler fort ou faire des gestes brusques.</strong></li>
+                        <li><strong>Ne pas poser trop de questions ou exiger des explications verbales</strong> pendant la crise.</li>
+                        <li><strong>Ne pas punir, réprimander ou moraliser</strong> sur le comportement.</li>
+                        <li><strong>Ne pas bloquer physiquement</strong> sauf danger imminent et grave.</li>
+                        <li><strong>Ne pas imposer de changements multiples simultanés.</strong></li>
+                    </ul>
+                </div>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Comprendre la courbe de la crise</h4>
+                    <p>Une crise comportementale suit généralement un cycle prévisible :</p>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Phase d'accumulation :</strong> Signes précurseurs (agitation, stéréotypies augmentées, retrait)</li>
+                        <li><strong>Phase d'escalade :</strong> Intensification rapide</li>
+                        <li><strong>Phase de pic :</strong> Moment de plus haute intensité</li>
+                        <li><strong>Phase de récupération :</strong> Épuisement, besoin de calme et de routine</li>
+                    </ol>
+                    <p>Notre intervention doit s'adapter à chaque phase. La phase de récupération n'est PAS le moment pour "faire la morale" ou analyser.</p>
+                </div>
+            </div>
+
+            <div id="section-crise-phase2" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 2 : Analyse Fonctionnelle et Stabilisation (Jours 3-14)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Identifier les fonctions des comportements-défis et mettre en place des stratégies de remplacement et d'adaptation environnementale.</h4>
+                </div>
+                
+                <h4>Temporalité des interventions :</h4>
+                <p><strong>Visites régulières avec focus d'observation et d'analyse.</strong></p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Visites d'observation :</strong> 3-4 fois par semaine à différents moments de la journée pour observer la personne dans ses routines.</li>
+                    <li><strong>Temps d'analyse avec la famille :</strong> Recueil d'informations détaillées, co-construction d'hypothèses.</li>
+                    <li><strong>Coordination avec les partenaires :</strong> École, IME, SESSAD, autres professionnels pour avoir une vision globale.</li>
+                </ul>
+
+                 <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Analyse fonctionnelle du comportement :</strong> Utiliser la grille ABC (Antécédent-Comportement-Conséquence) pour identifier les patterns. Que se passe-t-il juste avant ? Qu'est-ce que la personne obtient ou évite après ?</li>
+                        <li><strong>Évaluation sensorielle approfondie :</strong> Profil sensoriel (hyper/hypo-sensibilités), identification des déclencheurs sensoriels spécifiques.</li>
+                        <li><strong>Évaluation des capacités de communication :</strong> Comment la personne communique-t-elle ses besoins ? Quels outils utilise-t-elle (verbal, pictogrammes, gestes) ?</li>
+                        <li><strong>Identification des fonctions du comportement :</strong> Attention, échappement/évitement, accès à un objet/activité, auto-stimulation ?</li>
+                        <li><strong>Co-construction du plan de soutien comportemental positif :</strong> Stratégies préventives, stratégies d'enseignement de comportements de remplacement, adaptations environnementales.</li>
+                        <li><strong>Formation des aidants :</strong> Enseigner les techniques d'intervention, l'utilisation des outils de communication, la gestion de l'environnement sensoriel.</li>
+                        <li><strong>Mise en place d'outils visuels :</strong> Emplois du temps, timers, pictogrammes de communication, scripts sociaux.</li>
+                    </ul>
+                </div>
+
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Pièges à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas se focaliser uniquement sur le comportement visible</strong> sans chercher la fonction sous-jacente.</li>
+                        <li><strong>Ne pas proposer des stratégies trop complexes ou trop nombreuses.</strong> Prioriser 2-3 interventions clés.</li>
+                        <li><strong>Ne pas ignorer le contexte sensoriel.</strong> Un comportement peut être une régulation sensorielle nécessaire.</li>
+                        <li><strong>Ne pas culpabiliser la famille.</strong> Les comportements-défis ne sont pas dus à une "mauvaise éducation".</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase3" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 3 : Prévention et Relais (Jours 15+)</h3>
+                 <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Consolider les stratégies préventives, former l'entourage à leur utilisation autonome et organiser le relais vers les services de suivi adaptés.</h4>
+                </div>
+                
+                <h4>Temporalité des interventions :</h4>
+                <p><strong>Espacement progressif avec focus sur l'autonomisation de la famille.</strong></p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Visites hebdomadaires :</strong> Pour évaluer l'efficacité des stratégies et les ajuster.</li>
+                    <li><strong>Séances de formation :</strong> Transmission des compétences à la famille et aux professionnels du quotidien.</li>
+                    <li><strong>Coordination du relais :</strong> Avec CMP, CMPP, SESSAD, équipe éducative, services de répit.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Finalisation du Plan de Soutien Comportemental Positif :</strong> Document écrit, illustré, accessible à tous les intervenants.</li>
+                        <li><strong>Création d'un plan de crise :</strong> Que faire si les signes précurseurs apparaissent ? Qui contacter ? Quelles stratégies utiliser ?</li>
+                        <li><strong>Formation continue des aidants :</strong> Jeux de rôle, mises en situation, consolidation des acquis.</li>
+                        <li><strong>Identification des besoins de répit :</strong> Mise en place de solutions de relais (accueil temporaire, aide à domicile, activités adaptées).</li>
+                        <li><strong>Coordination avec l'école/l'institution :</strong> Transmission du plan de soutien, réunion de coordination, formation des professionnels éducatifs.</li>
+                        <li><strong>Orientation vers des thérapies spécialisées si besoin :</strong> Ergothérapie, psychomotricité, orthophonie, ABA, TCC adaptée.</li>
+                        <li><strong>Suivi post-intervention :</strong> Contacts téléphoniques réguliers, possibilité de ré-intervention rapide en cas de nouvelle crise.</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Ne pas oublier</h4>
+                    <ul>
+                        <li><strong>Le relais doit être préparé et progressif.</strong> Pas de rupture brutale dans l'accompagnement.</li>
+                        <li><strong>Les stratégies doivent être durables et réalistes</strong> pour être maintenues dans le temps.</li>
+                        <li><strong>Anticiper les périodes à risque :</strong> Rentrée scolaire, vacances, changements familiaux.</li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- BOITE A OUTILS -->
+            <div id="section-outils-communication" class="content-section">
+                <h2>Boîte à Outils : Communication Adaptée</h2>
+                <p>La communication avec les personnes TND nécessite souvent des adaptations pour être efficace et respectueuse de leurs particularités.</p>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Principes de Communication de Base <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Les 7 règles d'or</h4>
+                            <ol class="list-decimal ml-5">
+                                <li><strong>Phrases courtes et concrètes :</strong> "Prends ton manteau" plutôt que "Tu ne voudrais pas mettre ton manteau ?"</li>
+                                <li><strong>Consignes positives :</strong> "Marche doucement" plutôt que "Ne cours pas"</li>
+                                <li><strong>Une consigne à la fois</strong></li>
+                                <li><strong>Laisser du temps de traitement :</strong> Attendre 5-10 secondes après une question avant de répéter</li>
+                                <li><strong>Éviter l'ironie, les métaphores, le second degré</strong> (interprétation littérale)</li>
+                                <li><strong>Ton de voix calme et neutre</strong></li>
+                                <li><strong>Se positionner à hauteur des yeux</strong> (sans forcer le contact visuel)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Supports Visuels <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Pourquoi :</strong> Le canal visuel est souvent mieux traité que l'auditif chez les personnes TND. Les supports visuels réduisent l'anxiété en rendant le monde prévisible.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Outils visuels essentiels</h4>
+                            <ul>
+                                <li><strong>Emploi du temps visuel :</strong> Séquence d'activités avec pictogrammes ou photos</li>
+                                <li><strong>Timer visuel :</strong> Représentation du temps qui passe</li>
+                                <li><strong>Scénarios sociaux :</strong> Histoires illustrées expliquant une situation sociale</li>
+                                <li><strong>Tableaux de choix :</strong> Présenter visuellement les options disponibles</li>
+                                <li><strong>Cartes "j'ai besoin" :</strong> Pictogrammes pour exprimer les besoins de base (toilettes, boire, pause...)</li>
+                                <li><strong>Thermomètre émotionnel :</strong> Échelle visuelle des émotions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Communication Alternative et Améliorée (CAA) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p>Pour les personnes non-verbales ou avec langage limité, la CAA est essentielle.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Options de CAA</h4>
+                            <ul>
+                                <li><strong>PECS (Picture Exchange Communication System) :</strong> Échange de pictogrammes</li>
+                                <li><strong>Tablettes de communication :</strong> Applications type Proloquo2Go, Grid Player</li>
+                                <li><strong>Langage des signes adapté</strong></li>
+                                <li><strong>Cahiers de communication</strong> avec photos et pictogrammes</li>
+                                <li><strong>Systèmes à synthèse vocale</strong></li>
+                            </ul>
+                            <p><em>Principe : Tout le monde a le droit de communiquer. L'absence de parole ne signifie pas absence de pensée.</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-outils-sensoriel" class="content-section">
+                <h2>Boîte à Outils : Gestion Sensorielle</h2>
+                <p>Les particularités sensorielles sont au cœur de nombreuses crises dans les TND. Comprendre le profil sensoriel de la personne est crucial.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Comprendre les profils sensoriels</h4>
+                    <p>Chaque personne a un profil sensoriel unique avec des hyper-sensibilités (trop de stimulation) et/ou des hypo-sensibilités (recherche de stimulation) dans différents domaines :</p>
+                    <ul>
+                        <li>Auditif</li>
+                        <li>Visuel</li>
+                        <li>Tactile</li>
+                        <li>Olfactif</li>
+                        <li>Gustatif</li>
+                        <li>Proprioceptif (position du corps)</li>
+                        <li>Vestibulaire (équilibre, mouvement)</li>
+                    </ul>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Adapter l'Environnement Sensoriel <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Modifications de l'environnement</h4>
+                            <p><strong>Pour l'hypersensibilité auditive :</strong></p>
+                            <ul>
+                                <li>Réduire les bruits de fond (télé, radio)</li>
+                                <li>Prévenir avant les bruits forts (sonnette, aspirateur)</li>
+                                <li>Proposer un casque anti-bruit ou des bouchons d'oreille</li>
+                                <li>Créer des espaces calmes</li>
+                            </ul>
+                            <p><strong>Pour l'hypersensibilité visuelle :</strong></p>
+                            <ul>
+                                <li>Réduire l'intensité lumineuse</li>
+                                <li>Éviter les néons et lumières clignotantes</li>
+                                <li>Diminuer l'encombrement visuel</li>
+                                <li>Proposer des lunettes teintées</li>
+                            </ul>
+                            <p><strong>Pour l'hypersensibilité tactile :</strong></p>
+                            <ul>
+                                <li>Enlever les étiquettes des vêtements</li>
+                                <li>Privilégier des vêtements doux, amples ou compressifs selon préférence</li>
+                                <li>Prévenir avant tout contact physique</li>
+                                <li>Respecter les aliments refusés (texture)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Outils de Régulation Sensorielle <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Pour l'hypo-sensibilité (recherche de stimulation) :</strong></p>
+                        <div class="recommendation-box">
+                            <h4>Outils proprioceptifs et vestibulaires</h4>
+                            <ul>
+                                <li>Objets lestés (gilet, couverture, coussin)</li>
+                                <li>Ballon-siège, coussin oscillant</li>
+                                <li>Trampoline</li>
+                                <li>Activités de pression profonde (sandwich entre coussins, câlins profonds si acceptés)</li>
+                                <li>Objets à mâcher (bijoux à mordre)</li>
+                                <li>Activités physiques intenses régulières</li>
+                            </ul>
+                        </div>
+                        <p><strong>Outils apaisants :</strong></p>
+                        <ul>
+                            <li>Fidgets (objets manipulables)</li>
+                            <li>Balles anti-stress</li>
+                            <li>Tangle, spinner</li>
+                            <li>Sable cinétique, pâte à modeler</li>
+                            <li>Lampes à bulles, projecteurs lumineux doux</li>
+                            <li>Musique binaurale, bruits blancs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Espace de Retrait Sensoriel <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Créer un "coin calme" ou "refuge sensoriel" au domicile :</strong></p>
+                        <ul>
+                            <li>Espace délimité, prévisible, toujours disponible</li>
+                            <li>Éclairage doux ou modulable</li>
+                            <li>Réduction des stimulations auditives</li>
+                            <li>Objets apaisants personnalisés (peluche, couverture lestée)</li>
+                            <li>Pas un lieu de punition mais un lieu de ressource</li>
+                        </ul>
+                        <p><em>Important : La personne doit pouvoir y aller de son propre chef, ce n'est pas un isolement forcé.</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-outils-comportement" class="content-section">
+                <h2>Boîte à Outils : Analyse Fonctionnelle du Comportement</h2>
+                <p>Tout comportement a une fonction. Comprendre "pourquoi" avant de chercher à modifier "comment".</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Les 4 fonctions principales des comportements</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Obtenir de l'attention :</strong> Le comportement permet d'attirer l'attention des autres (même si c'est une attention négative)</li>
+                        <li><strong>Éviter/Échapper :</strong> Le comportement permet d'éviter une activité, une personne ou une situation désagréable</li>
+                        <li><strong>Accéder à un objet/activité :</strong> Le comportement permet d'obtenir quelque chose de désiré</li>
+                        <li><strong>Auto-stimulation/régulation sensorielle :</strong> Le comportement procure une sensation physique agréable ou régule l'état interne</li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Méthode ABC : Observer et Analyser</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>A - Antécédent</th>
+                                <th>B - Behavior (Comportement)</th>
+                                <th>C - Conséquence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Que s'est-il passé JUSTE AVANT ?</td>
+                                <td>Quel est le comportement observé ?</td>
+                                <td>Qu'est-ce qui s'est passé JUSTE APRÈS ?</td>
+                            </tr>
+                            <tr>
+                                <td>- Contexte (où, quand, avec qui)<br>- Événement déclencheur<br>- État interne (faim, fatigue, douleur)</td>
+                                <td>Description objective et précise du comportement</td>
+                                <td>- Réaction de l'entourage<br>- Ce que la personne a obtenu ou évité</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Exemple :</strong></p>
+                    <p><em>A :</em> Demande de ranger les jouets pour aller manger (transition + consigne désagréable)<br>
+                    <em>B :</em> Jette les jouets par terre, crie<br>
+                    <em>C :</em> Parent abandonne la consigne, dit "Ok, range plus tard"</p>
+                    <p><strong>Fonction probable :</strong> Échappement à la consigne. Le comportement est renforcé car il permet d'éviter la tâche.</p>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Erreurs fréquentes d'interprétation</h4>
+                    <ul>
+                        <li>"Il le fait exprès pour m'embêter" → Non, il communique un besoin ou une difficulté</li>
+                        <li>"C'est pour avoir de l'attention" → L'attention est un besoin humain fondamental, pas un caprice</li>
+                        <li>"Il doit apprendre à supporter" → La tolérance s'enseigne progressivement avec du soutien, pas par exposition forcée</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-outils-plan-soutien" class="content-section">
+                <h2>Boîte à Outils : Plan de Soutien Comportemental Positif</h2>
+                <p>Le Plan de Soutien Comportemental Positif (Positive Behavior Support Plan) est un document co-construit qui guide tous les intervenants dans la prévention et la gestion des comportements-défis.</p>
+                
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Structure du Plan</h4>
+                    
+                    <h4>1. Identification du comportement-défi</h4>
+                    <p>Description objective et mesurable (fréquence, intensité, durée, contexte)</p>
+                    
+                    <h4>2. Hypothèse fonctionnelle</h4>
+                    <p>Quelle est la fonction du comportement ? (Basée sur l'analyse ABC répétée)</p>
+                    
+                    <h4>3. Stratégies PRÉVENTIVES (le plus important)</h4>
+                    <ul>
+                        <li><strong>Modifications de l'environnement :</strong> Adapter l'espace, réduire les déclencheurs sensoriels</li>
+                        <li><strong>Adaptations de la communication :</strong> Supports visuels, anticipation des transitions</li>
+                        <li><strong>Routine prévisible :</strong> Emploi du temps stable et visible</li>
+                        <li><strong>Répondre aux besoins :</strong> Pauses sensorielles régulières, choix, attention positive préventive</li>
+                    </ul>
+                    
+                    <h4>4. Enseignement de comportements de REMPLACEMENT</h4>
+                    <p>Enseigner à la personne un comportement fonctionnellement équivalent mais socialement acceptable.</p>
+                    <p><strong>Exemple :</strong> Si le comportement sert à échapper à une tâche difficile, enseigner à demander "pause" avec un pictogramme plutôt que de jeter du matériel.</p>
+                    
+                    <h4>5. Stratégies de GESTION pendant la crise</h4>
+                    <ul>
+                        <li>Que faire pour assurer la sécurité ?</li>
+                        <li>Comment réduire l'escalade ?</li>
+                        <li>Quelles sont les consignes pour tous les intervenants ?</li>
+                    </ul>
+                    
+                    <h4>6. Stratégies APRÈS la crise</h4>
+                    <ul>
+                        <li>Permettre la récupération (temps calme, espace sensoriel)</li>
+                        <li>Ne pas "punir" ou faire la morale</li>
+                        <li>Reprendre les activités calmement</li>
+                        <li>Analyser pour ajuster les stratégies préventives</li>
+                    </ul>
+                </div>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Principe du Soutien Comportemental Positif</h4>
+                    <p>On investit 80% de l'énergie dans la PRÉVENTION et 20% dans la gestion de crise. L'inverse est épuisant et inefficace à long terme.</p>
+                </div>
+            </div>
+
+            <!-- FONDAMENTAUX -->
+            <div id="section-comprendre-tnd" class="content-section">
+                 <h2>Fondamentaux : Comprendre les Troubles du Neurodéveloppement</h2>
+                 <p>Les Troubles du Neurodéveloppement (TND) regroupent un ensemble de conditions qui affectent le développement du système nerveux et qui apparaissent généralement dans l'enfance. Ils ont un impact sur les fonctions cognitives, motrices, sociales et/ou communicationnelles.</p>
+                
+                <h4>Principaux TND :</h4>
+                <ul class="list-disc ml-5">
+                    <li><strong>Trouble du Spectre de l'Autisme (TSA) :</strong> Particularités dans la communication sociale et présence d'intérêts restreints et de comportements répétitifs. Large spectre de présentations cliniques.</li>
+                    <li><strong>Trouble Déficit de l'Attention avec ou sans Hyperactivité (TDAH) :</strong> Difficultés d'attention, impulsivité, hyperactivité motrice.</li>
+                    <li><strong>Troubles des Apprentissages :</strong> Dyslexie, dyscalculie, dysgraphie, dyspraxie.</li>
+                    <li><strong>Déficience Intellectuelle :</strong> Limitations des fonctions intellectuelles et du comportement adaptatif.</li>
+                    <li><strong>Troubles de la Communication :</strong> Difficultés de langage expressif et/ou réceptif.</li>
+                    <li><strong>Troubles Moteurs :</strong> Troubles de la coordination, tics, stéréotypies.</li>
+                </ul>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Points communs aux TND</h4>
+                    <ul>
+                        <li>Origine neurodéveloppementale (différences dans le développement et le fonctionnement du cerveau)</li>
+                        <li>Présents depuis l'enfance (même si diagnostic parfois tardif)</li>
+                        <li>Durables (conditions chroniques, pas des "retards" qu'on rattrape)</li>
+                        <li>Souvent comorbidités (plusieurs TND peuvent coexister)</li>
+                        <li>Grande hétérogénéité (chaque personne est unique)</li>
+                        <li>Impact fonctionnel variable selon l'environnement et les soutiens disponibles</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="section-crises-tnd" class="content-section">
+                <h2>Fondamentaux : Les Crises dans les TND</h2>
+                <p>Les crises comportementales dans le contexte des TND ne sont PAS des caprices, de la manipulation ou un manque de volonté. Ce sont des signaux de détresse face à un environnement inadapté ou dépassant les capacités d'adaptation de la personne.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Facteurs de vulnérabilité aux crises</h4>
+                    <ul>
+                        <li><strong>Difficultés de communication :</strong> Incapacité à exprimer verbalement un besoin, une douleur, une frustration</li>
+                        <li><strong>Particularités sensorielles :</strong> Surcharge sensorielle devenant insupportable</li>
+                        <li><strong>Rigidité cognitive :</strong> Difficulté à s'adapter aux changements imprévus</li>
+                        <li><strong>Anxiété élevée :</strong> Face à l'imprévisibilité, aux situations sociales, aux transitions</li>
+                        <li><strong>Faible tolérance à la frustration :</strong> Liée aux fonctions exécutives</li>
+                        <li><strong>Incompréhension des attentes sociales :</strong> Ce qui est attendu n'est pas explicite</li>
+                        <li><strong>Fatigue et surcharge cognitive :</strong> Effort constant d'adaptation dans un monde neurotypique</li>
+                    </ul>
+                </div>
+
+                <h4>Types de crises fréquents :</h4>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Crise de surcharge sensorielle (Meltdown) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Cause :</strong> Accumulation de stimulations sensorielles dépassant le seuil de tolérance. Ce n'est PAS volontaire.</p>
+                        <p><strong>Manifestations :</strong> Cris, pleurs, agitation motrice, comportements auto-agressifs, fuite, prostration.</p>
+                        <p><strong>Intervention :</strong> Réduire immédiatement les stimulations, proposer un retrait dans un espace calme, ne pas toucher ni parler, laisser la crise passer.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Crise d'opposition/frustration (Tantrum vs Meltdown) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Cause :</strong> Frustration face à un refus, une consigne, une difficulté. Peut avoir une fonction (obtenir/éviter).</p>
+                        <p><strong>Distinction avec meltdown :</strong> Plus sensible au contexte social (s'arrête si obtient ce qu'il veut, s'amplifie si public).</p>
+                        <p><strong>Intervention :</strong> Rester calme, ne pas céder à la demande pendant la crise (renforcement), proposer une alternative acceptable, utiliser la communication visuelle.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Crise d'anxiété/panique <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Cause :</strong> Changement imprévu, situation sociale stressante, anticipation anxieuse.</p>
+                        <p><strong>Manifestations :</strong> Hyperventilation, tremblements, fuite, sidération, agrippement à un objet/personne familière.</p>
+                        <p><strong>Intervention :</strong> Rassurer par la prévisibilité (supports visuels de ce qui va se passer), techniques de respiration si accessibles, présence calme et prévisible.</p>
+                    </div>
+                </div>
+            </div>
+
+             <div id="section-neurodiversite" class="content-section">
+                <h2>Fondamentaux : Approche Neurodiversité</h2>
+                <p>Le paradigme de la neurodiversité propose un changement radical de perspective sur les TND, en particulier l'autisme et le TDAH.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Principes de la neurodiversité</h4>
+                    <ul>
+                        <li><strong>La diversité neurologique est naturelle :</strong> Comme pour la biodiversité, il existe une neurodiversité. Les cerveaux autistes, TDAH, dyslexiques fonctionnent différemment, pas de manière déficitaire.</li>
+                        <li><strong>Le handicap est contextuel :</strong> C'est l'inadéquation entre les particularités de la personne et son environnement qui crée le handicap, pas la condition en elle-même.</li>
+                        <li><strong>Respecter l'autodétermination :</strong> Les personnes concernées doivent être au centre des décisions qui les concernent ("Nothing About Us Without Us").</li>
+                        <li><strong>Valoriser les forces :</strong> Les TND s'accompagnent de particularités qui peuvent être des atouts (attention aux détails, pensée visuelle, hyperfocus, créativité, honnêteté, etc.)</li>
+                    </ul>
+                </div>
+
+                <h4>Implications pour notre pratique :</h4>
+                <ul class="list-disc ml-5">
+                    <li><strong>Ne pas chercher à "normaliser" la personne</strong> mais à adapter l'environnement et enseigner des compétences utiles</li>
+                    <li><strong>Respecter les comportements auto-régulateurs</strong> (stimming, intérêts spécifiques) s'ils ne sont pas dangereux</li>
+                    <li><strong>Questionner la notion de "comportement approprié"</strong> : Approprié selon quelles normes ? Au service de qui ?</li>
+                    <li><strong>Écouter les personnes autistes adultes</strong> qui nous éclairent sur les expériences vécues</li>
+                    <li><strong>Éviter les interventions traumatisantes</strong> visant à "supprimer" les comportements autistiques</li>
+                </ul>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Débats éthiques</h4>
+                    <p>Certaines pratiques historiquement utilisées (comme l'ABA classique avec punitions, ou la suppression totale du stimming) sont aujourd'hui critiquées par les personnes autistes comme potentiellement traumatisantes. Notre approche privilégie le Soutien Comportemental Positif, qui se centre sur l'enseignement de compétences et l'adaptation environnementale plutôt que sur la suppression de comportements.</p>
+                </div>
+            </div>
+            
+            <!-- Rôles de l'équipe -->
+             <div id="section-roles-equipe" class="content-section">
+                    <h2>Rôles de l'Équipe Mobile en Crise TND</h2>
+                <p>L'intervention auprès des personnes avec TND nécessite une expertise spécifique et une coordination étroite entre professionnels.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Professionnel</th>
+                            <th>Rôle Spécifique en Crise TND</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Psychiatre</strong></td>
+                            <td>Diagnostic différentiel, évaluation des comorbidités (anxiété, dépression, troubles du sommeil), ajustements pharmacologiques si nécessaire (avec prudence), coordination médicale, décisions médico-légales.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Psychologue spécialisé TND</strong></td>
+                            <td>Analyse fonctionnelle du comportement, élaboration du plan de soutien comportemental positif, formation des aidants, évaluation cognitive et adaptive, psychothérapie adaptée (TCC, thérapie d'acceptation).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infirmier·ère</strong></td>
+                            <td>Évaluation des besoins de base (sommeil, alimentation, douleur), surveillance de la santé physique, administration des traitements, soutien au quotidien, coordination avec la famille.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ergothérapeute</strong></td>
+                            <td>Évaluation du profil sensoriel, aménagement de l'environnement domiciliaire, mise en place d'outils de régulation sensorielle, travail sur l'autonomie dans les AVQ, adaptation du matériel.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Orthophoniste</strong></td>
+                            <td>Évaluation des capacités de communication, mise en place de CAA, formation de l'entourage à la communication adaptée, travail sur les habiletés sociales pragmatiques.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Psychomotricien·ne</strong></td>
+                            <td>Régulation tonico-émotionnelle, travail corporel et sensoriel, relaxation adaptée, coordination motrice.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Éducateur·rice spécialisé·e</strong></td>
+                            <td>Mise en place de stratégies éducatives au quotidien, enseignement de compétences fonctionnelles, structuration de l'environnement, guidance parentale pratique.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pair-aidant TND</strong></td>
+                            <td>Partage d'expérience vécue, modèle positif, soutien à l'acceptation du diagnostic, lutte contre la stigmatisation, perspective d'auto-représentation.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Coordination essentielle</h4>
+                    <p>L'intervention doit être cohérente entre tous les professionnels et tous les lieux de vie (domicile, école, loisirs). Des synthèses régulières et un plan écrit partagé sont indispensables.</p>
+                </div>
+            </div>
+            
+            <!-- Psychoéducation -->
+            <div id="section-psychoed-personne" class="content-section">
+                <h2>Modules de Psychoéducation pour la Personne</h2>
+                <p>Adapter le contenu selon l'âge, le niveau de compréhension et les préférences de communication.</p>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Comprendre mon fonctionnement <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Objectif :</strong> Favoriser la connaissance de soi et l'acceptation.</p>
+                        <p><strong>Messages clés (adaptés à l'âge) :</strong></p>
+                        <ul>
+                            <li>Ton cerveau fonctionne différemment, pas moins bien</li>
+                            <li>Tu as des forces et des difficultés, comme tout le monde</li>
+                            <li>Certaines choses sont plus faciles pour toi, d'autres plus difficiles</li>
+                            <li>Ce n'est pas de ta faute si tu as parfois des difficultés</li>
+                            <li>Il existe des outils et des stratégies pour t'aider</li>
+                        </ul>
+                        <p><strong>Supports :</strong> Livres adaptés, vidéos, bandes dessinées sur l'autisme/TDAH, rencontre avec des pairs.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Reconnaître mes signaux d'alerte <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Objectif :</strong> Développer la conscience de ses états internes pour demander de l'aide avant la crise.</p>
+                        <p><strong>Exercice avec supports visuels :</strong></p>
+                        <ul>
+                            <li>Mon corps me dit que je vais bien : je me sens calme, détendu (zone verte)</li>
+                            <li>Mon corps me dit que je commence à être mal : je me sens nerveux, agité (zone jaune)</li>
+                            <li>Mon corps me dit que c'est trop : je ne contrôle plus (zone rouge)</li>
+                        </ul>
+                        <p>Identifier les sensations corporelles associées à chaque zone.</p>
+                    </div>
+                </div>
+
+                 <div class="accordion-item">
+                    <button class="accordion-header">3. Mes outils pour m'apaiser <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Objectif :</strong> Co-construire une "boîte à outils" personnalisée.</p>
+                        <div class="recommendation-box">
+                            <h4>Exemples d'outils</h4>
+                            <ul>
+                                <li>Aller dans mon coin calme</li>
+                                <li>Utiliser mes objets sensoriels (fidget, couverture lestée)</li>
+                                <li>Écouter ma musique préférée avec mon casque</li>
+                                <li>Faire des respirations profondes</li>
+                                <li>Demander une pause avec mon pictogramme</li>
+                                <li>Faire mon activité préférée (dessin, jeu vidéo, etc.)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Demander de l'aide <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Enseigner explicitement :</strong></p>
+                        <ul>
+                            <li>À qui je peux demander de l'aide (avec photos des personnes)</li>
+                            <li>Comment je peux demander (mots, gestes, pictogrammes)</li>
+                            <li>C'est OK de demander de l'aide, ce n'est pas être faible</li>
+                            <li>Pratiquer avec des jeux de rôle</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-psychoed-famille" class="content-section">
+                <h2>Modules de Psychoéducation pour la Famille</h2>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Comprendre le TND de mon enfant/proche <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Objectifs :</strong> Déconstruire les mythes, réduire la culpabilité, fournir des connaissances fiables.</p>
+                        <ul>
+                            <li>Ce n'est pas lié à l'éducation ou à un traumatisme (origine neurodéveloppementale)</li>
+                            <li>Ce n'est pas une maladie mentale au sens classique</li>
+                            <li>Les comportements difficiles ne sont pas volontaires ou manipulateurs</li>
+                            <li>Chaque personne avec un TND est unique</li>
+                            <li>Le pronostic dépend largement de la qualité de l'accompagnement et de l'adaptation de l'environnement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Décoder les comportements-défis <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Former la famille à l'analyse fonctionnelle :</strong></p>
+                        <div class="recommendation-box">
+                            <h4>Questions à se poser</h4>
+                            <ul>
+                                <li>Qu'est-ce qui s'est passé juste avant ?</li>
+                                <li>Où étions-nous ? (environnement sensoriel)</li>
+                                <li>Était-il fatigué, affamé, malade ?</li>
+                                <li>Y a-t-il eu un changement de routine ?</li>
+                                <li>Qu'a-t-il obtenu ou évité après le comportement ?</li>
+                                <li>Que nous dit ce comportement sur ses besoins ?</li>
+                            </ul>
+                        </div>
+                        <p><em>Outil : Journal ABC à remplir pour identifier les patterns.</em></p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Stratégies du quotidien <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                         <div class="recommendation-box">
+                             <h4><i class="fas fa-check-circle icon"></i> Les 10 stratégies de base</h4>
+                             <ol class="list-decimal ml-5">
+                                 <li><strong>Prévisibilité :</strong> Emploi du temps visuel, prévenir des changements</li>
+                                 <li><strong>Structuration :</strong> Routines claires et constantes</li>
+                                 <li><strong>Communication visuelle :</strong> Pictogrammes, photos, timers</li>
+                                 <li><strong>Offrir des choix :</strong> Donner un sentiment de contrôle</li>
+                                 <li><strong>Renforcement positif :</strong> Attention pour les comportements souhaités</li>
+                                 <li><strong>Temps de pause préventif :</strong> Avant la surcharge</li>
+                                 <li><strong>Adaptations sensorielles :</strong> Selon le profil</li>
+                                 <li><strong>Décomposer les tâches :</strong> Étape par étape</li>
+                                 <li><strong>Cohérence entre adultes :</strong> Mêmes règles, mêmes stratégies</li>
+                                 <li><strong>Patience et bienveillance :</strong> Célébrer les petits progrès</li>
+                             </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Prendre soin de soi comme aidant <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>Reconnaître le risque d'épuisement :</strong></p>
+                        <p>Élever un enfant avec TND peut être épuisant physiquement et émotionnellement. Ce n'est pas un échec de demander de l'aide.</p>
+                        <div class="recommendation-box">
+                            <h4>Ressources de soutien</h4>
+                            <ul>
+                                <li>Services de répit (accueil temporaire, aide à domicile)</li>
+                                <li>Groupes de parents (associations type Autisme France, HyperSupers TDAH)</li>
+                                <li>Psychothérapie pour les parents</li>
+                                <li>Formation aux TND (programmes de guidance parentale)</li>
+                                <li>Droits et aides (MDPH, AAH, AEEH, PCH)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Glossaire et références -->
+            <div id="section-glossaire" class="content-section">
+                <h2>Glossaire</h2>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">Analyse Fonctionnelle du Comportement <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Méthode systématique d'observation et d'analyse visant à identifier les fonctions (raisons) d'un comportement en examinant les antécédents et les conséquences.</p></div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">CAA (Communication Alternative et Améliorée) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Ensemble de méthodes et outils permettant aux personnes non-verbales ou avec langage limité de communiquer (pictogrammes, tablettes, langue des signes, etc.).</p></div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Meltdown <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Terme utilisé dans la communauté autiste pour désigner une crise de surcharge sensorielle ou émotionnelle. Ce n'est pas volontaire et la personne n'a pas de contrôle pendant l'épisode.</p></div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Neurodiversité <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Paradigme reconnaissant que les variations neurologiques (autisme, TDAH, etc.) sont des différences naturelles de l'espèce humaine plutôt que des déficits ou pathologies à corriger.</p></div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">PBS (Positive Behavior Support) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Approche éducative centrée sur la prévention des comportements-défis par l'enseignement de compétences, l'adaptation de l'environnement et le renforcement positif.</p></div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Stimming <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Auto-stimulation : mouvements répétitifs (balancements, battements de mains, etc.) servant à la régulation sensorielle et émotionnelle. Fait partie du fonctionnement naturel des personnes autistes.</p></div>
+                </div>
+            </div>
+
+            <div id="section-references" class="content-section">
+                <h2>Références</h2>
+                <ul class="list-none text-sm space-y-3">
+                    <li>American Psychiatric Association. (2013). <em>Diagnostic and statistical manual of mental disorders</em> (5e éd.). https://doi.org/10.1176/appi.books.9780890425596</li>
+                    
+                    <li>Carr, E. G., Dunlap, G., Horner, R. H., Koegel, R. L., Turnbull, A. P., Sailor, W., Anderson, J. L., Albin, R. W., Koegel, L. K., & Fox, L. (2002). Positive behavior support: Evolution of an applied science. <em>Journal of Positive Behavior Interventions, 4</em>(1), 4-16. https://doi.org/10.1177/109830070200400102</li>
+                    
+                    <li>Dunn, W. (2014). <em>Sensory Profile 2: User's manual</em>. Pearson.</li>
+                    
+                    <li>Haute Autorité de Santé. (2018). <em>Trouble du spectre de l'autisme : Interventions et parcours de vie de l'adulte</em>. https://www.has-sante.fr/jcms/c_2835217/fr/trouble-du-spectre-de-l-autisme-interventions-et-parcours-de-vie-de-l-adulte</li>
+                    
+                    <li>Kapp, S. K., Steward, R., Crane, L., Elliott, D., Elphick, C., Pellicano, E., & Russell, G. (2019). 'People should be allowed to do what they like': Autistic adults' views and experiences of stimming. <em>Autism, 23</em>(7), 1782-1792. https://doi.org/10.1177/1362361319829628</li>
+                    
+                    <li>Samson, A. C., Hardan, A. Y., Podell, R. W., Phillips, J. M., & Gross, J. J. (2015). Emotion regulation in children and adolescents with autism spectrum disorder. <em>Autism Research, 8</em>(1), 9-18. https://doi.org/10.1002/aur.1387</li>
+                    
+                    <li>Singer, J. (2017). Neurodiversity: The birth of an idea. https://neurodiversity2.blogspot.com/p/what.html</li>
+                    
+                    <li>Woodman, A. C., Mawdsley, H. P., & Hauser-Cram, P. (2015). Parenting stress and child behavior problems within families of children with developmental disabilities: Transactional relations across 15 years. <em>Research in Developmental Disabilities, 36</em>, 264-276. https://doi.org/10.1016/j.ridd.2014.10.011</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+    
+    <footer class="mt-16 bg-slate-900 text-slate-300 text-sm border-t border-slate-700 py-6 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+            <div class="flex-shrink-0">
+                <a href="https://www.ch-le-vinatier.fr" target="_blank" rel="noopener noreferrer">
+                    <img class="h-20 md:h-24 w-auto" 
+                         src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/e079f7cf4939908ea9a07ce40d529d0b" 
+                         alt="Logo Centre Hospitalier Le Vinatier">
+                </a>
+            </div>
+            <div class="flex-1 text-center md:text-left space-y-2">
+                <p>Dr <strong>FENOHASINA </strong>T.J. Felicien (Psychiatre - FFI) ;</p>
+                <p>Dr <strong>MONNIER </strong>Romain (Psychiatre - CCA) ; </p>
+                <p>Equipe Mobile - <strong>Pôle Centre</strong> Rive Gauche ;</p>
+                <p>Chef de service: Dr Thomas <strong>LATHIERE</strong> ;</p>
+                <p>Chef de Pôle: Prof. Nicolas <strong>FRANCK</strong></p>
+                <p>CH - Le <strong>Vinatier.</strong></p>
+                <div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+                    <img class="h-5 w-auto" 
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cc-by-nc-sa_icon.svg/120px-Cc-by-nc-sa_icon.svg.png" 
+                         alt="Icône Creative Commons BY-NC-SA">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="underline hover:text-white">Licence CC BY-NC-SA 4.0</a> –
+                    <span>Dernière mise à jour : 1 octobre 2025.</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 flex-shrink-0">
+                <a href="https://www.facebook.com/Psykozy?locale=fr_FR" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://cdn-assets.inwink.com/fe065c87-0643-42fc-8b5d-4d94b5d12c11/a1904f78-1bca-466d-a9f4-8ac9fde06c0c" 
+                         alt="Logo Psy-kôzy">
+                </a>
+                <a href="https://centre-ressource-rehabilitation.org" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://faustinebrunet.com/images/RS/creation-nouveau-logo-domaine-sante-mentale.jpg" 
+                         alt="Logo Centre Ressource Réhabilitation">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeSidebarButton = document.getElementById('close-sidebar-button');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const mainContent = document.getElementById('main-content');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            sidebarBackdrop.classList.add('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            openSidebar();
+        });
+        closeSidebarButton.addEventListener('click', closeSidebar);
+        sidebarBackdrop.addEventListener('click', closeSidebar);
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                requestAnimationFrame(() => {
+                    mainContent.scrollTop = 0;
+                });
+            }
+
+            const navLinks = document.querySelectorAll('#sidebar .nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const isDirectMatch = link.getAttribute('onclick') && link.getAttribute('onclick').includes(`showSection('${sectionId}')`);
+                let isInSubmenuOfActiveParent = false;
+                
+                const submenu = link.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const submenuLinks = submenu.querySelectorAll('.nav-link');
+                    submenuLinks.forEach(sl => {
+                         sl.classList.remove('active'); 
+                        if (sl.getAttribute('onclick') && sl.getAttribute('onclick').includes(`showSection('${sectionId}')`)) {
+                            isInSubmenuOfActiveParent = true;
+                            sl.classList.add('active'); 
+                        }
+                    });
+                }
+
+                if (isDirectMatch || isInSubmenuOfActiveParent) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            const icon = element.querySelector('i.fa-chevron-down, i.fa-chevron-up');
+            if (submenu && submenu.classList.contains('submenu')) {
+                submenu.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                }
+            }
+        }
+        
+        function initializeAccordions() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.fas.fa-chevron-down, .fas.fa-chevron-up');
+                    
+                    content.classList.toggle('hidden');
+                    header.classList.toggle('open'); 
+                    
+                    if (icon) { 
+                        if (content.classList.contains('hidden')) {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        } else {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        }
+                    }
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('section-home');
+            
+            const crisisPlanParentLink = Array.from(document.querySelectorAll('a.nav-link.font-semibold')).find(el => el.textContent.includes("Plan d'Intervention de Crise"));
+            if(crisisPlanParentLink) {
+                const submenu = crisisPlanParentLink.nextElementSibling;
+                const icon = crisisPlanParentLink.querySelector('i.fa-chevron-down');
+                 if (submenu && submenu.classList.contains('submenu') && icon) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                 }
+            }
+            
+            initializeAccordions(); 
+        });
+    </script>
+
+</body>
+</html>
