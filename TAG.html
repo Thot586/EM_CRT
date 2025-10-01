@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide d'Intervention de Crise TAG - Équipe Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-section {
+            display: none; 
+        }
+        .content-section.active {
+            display: block; 
+        }
+        .nav-link {
+            cursor: pointer;
+            padding: 0.85rem 1.25rem; 
+            border-radius: 0.375rem; /* rounded-md */
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            display: block; 
+            margin-bottom: 0.25rem; 
+        }
+        .nav-link:hover {
+            background-color: #334155; /* bg-slate-700 for hover */
+            color: #ffffff;
+        }
+        .nav-link.active {
+            background-color: #0ea5e9; /* bg-sky-500 for active */
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .submenu .nav-link {
+            padding-left: 2rem; 
+            font-size: 0.9rem;
+        }
+        .submenu .nav-link.active {
+             background-color: #0369a1; /* sky-700 for active submenu */
+        }
+
+        .alert-box, .recommendation-box, .idea-box {
+            padding: 1.25rem; 
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+        }
+        .alert-box { /* ROUGE: À éviter */
+            background-color: #fee2e2; 
+            border-left: 5px solid #ef4444; 
+            color: #991b1b; 
+        }
+        .recommendation-box { /* VERT: À faire */
+            background-color: #dcfce7; 
+            border-left: 5px solid #22c55e; 
+            color: #14532d; 
+        }
+        .idea-box { /* JAUNE: Idée phare */
+            background-color: #fef9c3; 
+            border-left: 5px solid #eab308; 
+            color: #713f12; 
+        }
+        .alert-box h4, .recommendation-box h4, .idea-box h4 {
+            font-weight: 700; 
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem; /* text-lg */
+            color: inherit; 
+        }
+        .alert-box ul, .recommendation-box ul, .idea-box ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+        .alert-box li, .recommendation-box li, .idea-box li {
+            margin-bottom: 0.375rem;
+        }
+        .icon {
+            margin-right: 0.75rem; 
+            font-size: 1.1em;
+        }
+
+        #sidebar::-webkit-scrollbar { width: 8px; }
+        #sidebar::-webkit-scrollbar-track { background: #0f172a; }
+        #sidebar::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
+        #sidebar::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        #main-content::-webkit-scrollbar { width: 10px; }
+        #main-content::-webkit-scrollbar-track { background: #e2e8f0; }
+        #main-content::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 5px; }
+        #main-content::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        h1.guide-title { color: #ffffff; }
+        h2 { margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.75rem; font-weight: 700; color: #0c4a6e; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.5rem; } 
+        h3 { margin-top: 1.25rem; margin-bottom: 0.75rem; font-size: 1.5rem; font-weight: 600; color: #0369a1; } 
+        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 600; color: #075985; } 
+        
+        @media (min-width: 768px) { /* md breakpoint */
+            h2 { font-size: 2.25rem; margin-top: 2rem; margin-bottom: 1.25rem;}
+            h3 { font-size: 1.875rem; margin-top: 1.75rem; margin-bottom: 1rem;}
+            h4 { font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 0.75rem;}
+        }
+
+        .content-section p { margin-bottom: 1rem; line-height: 1.7; font-size: 0.95rem; } 
+         @media (min-width: 768px) { 
+            .content-section p { font-size: 1rem; }
+        }
+        .content-section ul, .content-section ol { margin-bottom: 1rem; padding-left: 1.75rem; }
+        .content-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .content-section cite { font-style: normal; } 
+        .content-section a { color: #0ea5e9; text-decoration: none; font-weight: 500; }
+        .content-section a:hover { color: #0369a1; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; }
+        th { background-color: #f1f5f9; font-weight: 600; color: #1e293b; }
+
+        .accordion-item {
+            border: 1px solid #cbd5e1; 
+            border-radius: 0.5rem; 
+            margin-bottom: 0.75rem;
+            background-color: #ffffff; 
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07), 0 1px 2px 0 rgba(0,0,0,0.04);
+        }
+        .accordion-header {
+            background-color: #f1f5f9; 
+            color: #1e3a8a; 
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            border-radius: 0.5rem 0.5rem 0 0; 
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .accordion-header:hover {
+            background-color: #e2e8f0; 
+        }
+        .accordion-header.open {
+             border-bottom: 1px solid #cbd5e1; 
+             border-radius: 0.5rem 0.5rem 0 0;
+        }
+        .accordion-content {
+            padding: 1.25rem;
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem; 
+            background-color: #ffffff; 
+        }
+        .accordion-content.hidden {
+            display: none;
+        }
+        .accordion-header .fas {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.open .fas {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 flex flex-col min-h-screen">
+
+    <button id="mobile-menu-button" class="md:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 text-white rounded-md shadow-lg">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="flex flex-col md:flex-row flex-1"> 
+        <nav id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 sm:w-72 bg-slate-800 text-slate-100 shadow-lg p-4 md:p-6 space-y-1 overflow-y-auto transform -translate-x-full md:relative md:translate-x-0 md:w-1/4 lg:w-1/5 transition-transform duration-300 ease-in-out">
+            <button id="close-sidebar-button" class="md:hidden absolute top-4 right-4 text-slate-300 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <h1 class="guide-title text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center md:text-left pt-8 md:pt-0">Guide de Crise TAG</h1>
+            <a href="https://thot586.github.io/EM_CRT/#interventions" class="block text-center bg-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-600 transition-colors duration-300 mb-6 shadow-lg">
+                <i class="fas fa-arrow-left mr-2"></i>Retour au Portail
+            </a>
+            <a class="nav-link" onclick="showSection('section-home'); closeSidebar();"><i class="fas fa-home icon"></i>Accueil</a>
+            <a class="nav-link" onclick="showSection('section-introduction-guide-tag'); closeSidebar();"><i class="fas fa-info-circle icon"></i>Objectif du Guide</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-clipboard-list icon"></i>Plan d'Intervention de Crise <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-crise-phase1'); closeSidebar();">Phase 1: Apaisement</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase2'); closeSidebar();">Phase 2: Compétences</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase3'); closeSidebar();">Phase 3: Consolidation</a>
+                </div>
+            </div>
+
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-tools icon"></i>Boîte à Outils TCC <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-tag-outils-relaxation'); closeSidebar();">Techniques de Relaxation</a>
+                    <a class="nav-link" onclick="showSection('section-tag-outils-modele-tcc'); closeSidebar();">Le Modèle TCC du TAG</a>
+                    <a class="nav-link" onclick="showSection('section-tag-outils-restructuration'); closeSidebar();">Restructuration Cognitive</a>
+                    <a class="nav-link" onclick="showSection('section-tag-outils-exposition'); closeSidebar();">Exposition à l'Incertitude</a>
+                </div>
+            </div>
+
+             <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-book-open icon"></i>Fondamentaux (Théorie) <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-tag-compreprendre'); closeSidebar();">Comprendre le TAG</a>
+                    <a class="nav-link" onclick="showSection('section-tag-neurobio'); closeSidebar();">Neurobiologie de l'Anxiété</a>
+                    <a class="nav-link" onclick="showSection('section-tag-incertitude'); closeSidebar();">L'Intolérance à l'Incertitude</a>
+                </div>
+            </div>
+            
+            <a class="nav-link" onclick="showSection('section-tag-roles-recap'); closeSidebar();"><i class="fas fa-users-cog icon"></i>Rôles de l'Équipe en Crise</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-chalkboard-teacher icon"></i>Psychoéducation <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-tag-psychoed-patient'); closeSidebar();">Pour la Personne</a>
+                    <a class="nav-link" onclick="showSection('section-tag-psychoed-entourage'); closeSidebar();">Pour l'Entourage</a>
+                </div>
+            </div>
+            <a class="nav-link" onclick="showSection('section-tag-glossaire'); closeSidebar();"><i class="fas fa-book icon"></i>Glossaire</a>
+            <a class="nav-link" onclick="showSection('section-tag-references'); closeSidebar();"><i class="fas fa-link icon"></i>Références</a>
+        </nav>
+
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden" onclick="closeSidebar()"></div>
+
+        <main id="main-content" class="flex-1 p-4 md:p-8 lg:p-10 overflow-y-auto">
+            <div id="section-home" class="content-section">
+                <h2>Guide d'Intervention de Crise : Trouble Anxieux Généralisé (TAG)</h2>
+                <p>Ce guide est un outil opérationnel pour les équipes mobiles de psychiatrie intervenant en <strong>alternative à l'hospitalisation (modèle CRT)</strong> pour des personnes en crise liée à un TAG. Une crise de TAG se manifeste souvent par une escalade des inquiétudes, des symptômes somatiques intenses, un sentiment de perte de contrôle et une altération majeure du fonctionnement.</p>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Comment utiliser ce guide :</h4>
+                    <ul>
+                        <li>La section <strong>Plan d'Intervention de Crise</strong> est le cœur du guide. Elle offre un protocole par phases pour une désescalade rapide et une acquisition de compétences.</li>
+                        <li>La <strong>Boîte à Outils TCC</strong> détaille les techniques fondamentales de la Thérapie Cognitivo-Comportementale, gold standard pour le TAG.</li>
+                        <li>Les autres sections fournissent le contexte théorique nécessaire pour une prise en charge cohérente et basée sur les preuves.</li>
+                        <li>Ce guide sert de support aux synthèses d'équipe pour planifier et ajuster les interventions au domicile, en visant l'autonomisation rapide du patient.</li>
+                    </ul>
+                </div>
+                <p>Notre mission est de considérer la crise d'anxiété non pas comme une fatalité, mais comme le point culminant d'un processus dysfonctionnel (le cycle de l'inquiétude) qui peut être interrompu. L'objectif est de co-construire avec la personne des stratégies actives pour gérer l'anxiété et l'incertitude, plutôt que de les subir.</p>
+            </div>
+
+            <div id="section-introduction-guide-tag" class="content-section">
+                <h2>Objectif de ce Guide Opérationnel</h2>
+                <p>Intervenir au domicile pour une crise de TAG, c'est agir au cœur de l'environnement où les inquiétudes se cristallisent et où l'évitement s'installe. Notre mission, inspirée des équipes CRT (<cite>Johnson et al., 2015</cite>), est de faire du domicile un laboratoire d'apprentissage de nouvelles compétences et non une chambre d'écho pour les ruminations anxieuses.</p>
+                <p>Ce guide propose un <strong>protocole par phases</strong> basé sur les TCC, visant à :</p>
+                <ul class="list-disc ml-5">
+                    <li>Réduire l'hyperactivation neurovégétative et les symptômes somatiques.</li>
+                    <li>Restaurer un sentiment de contrôle face aux inquiétudes.</li>
+                    <li>Briser les cycles d'évitement comportemental et cognitif.</li>
+                    <li>Impliquer l'entourage pour modifier les dynamiques de réassurance.</li>
+                    <li>Éviter une hospitalisation, souvent peu indiquée et potentiellement iatrogène pour le TAG.</li>
+                </ul>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Notre mission en trois temps :</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Apaiser :</strong> Fournir des outils immédiats pour calmer le système nerveux et réduire le sentiment de "noyade" sous les inquiétudes.</li>
+                        <li><strong>Éduquer :</strong> Expliquer le fonctionnement du TAG pour que la personne devienne experte de son propre trouble.</li>
+                        <li><strong>Exposer :</strong> Aider la personne à affronter ce qu'elle craint le plus : l'incertitude et les sensations désagréables de l'anxiété.</li>
+                    </ol>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Priorité absolue : L'Action sur la Cognition</h4>
+                    <p>Le traitement du TAG ne vise pas à éliminer le stress ou les problèmes, mais à changer la <strong>relation</strong> que la personne entretient avec ses propres pensées (inquiétudes). L'objectif n'est pas de ne plus jamais s'inquiéter, mais d'apprendre à gérer l'inquiétude de manière adaptative.</p>
+                </div>
+            </div>
+            
+            <!-- PLAN D'INTERVENTION -->
+            <div id="section-crise-phase1" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 1 : Apaisement et Psychoéducation (Jours 1 à 5)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Réduire l'intensité des symptômes somatiques, valider la souffrance et introduire le modèle TCC.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Très haute fréquence.</strong> La présence quotidienne de l'équipe vise à briser l'isolement, à modéliser le calme et à initier l'alliance thérapeutique.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Infirmier·ère / Psychologue :</strong> Visite quotidienne, centrée sur la psychoéducation et l'apprentissage des techniques de relaxation.</li>
+                    <li><strong>Psychiatre :</strong> Visite à J1 pour évaluation, diagnostic différentiel et stratégie médicamenteuse. Discussion sur le rôle des ISRS/IRSNa comme traitement de fond et l'utilisation <strong>ultra-limitée et encadrée</strong> des benzodiazépines.</li>
+                    <li><strong>Assistant·e Social·e :</strong> Évaluation des stresseurs externes (financiers, administratifs) qui alimentent les inquiétudes.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Évaluation du risque suicidaire :</strong> Souvent associé à un sentiment de désespoir face à l'anxiété chronique.</li>
+                        <li><strong>Psychoéducation sur le TAG :</strong> Expliquer le cycle "déclencheur -> pensée catastrophique -> anxiété -> comportement d'évitement/réassurance -> soulagement à court terme -> renforcement de l'anxiété à long terme".</li>
+                        <li><strong>Apprentissage intensif des techniques de relaxation :</strong> Respiration diaphragmatique, relaxation musculaire progressive de Jacobson. Pratiquer à chaque visite.</li>
+                        <li><strong>Introduire l'auto-observation :</strong> Demander de noter les moments d'inquiétude intense (sans chercher à les modifier pour l'instant).</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas entrer dans un débat sur le contenu des inquiétudes.</strong> Ne pas chercher à rassurer sur le fond ("Non, votre enfant n'aura pas d'accident").</li>
+                        <li><strong>Ne pas banaliser l'anxiété :</strong> Éviter les phrases comme "Tout le monde s'inquiète" ou "Essayez de ne pas y penser".</li>
+                        <li><strong>Ne pas prescrire de benzodiazépines au long cours.</strong> Expliquer qu'ils sont un "pansement" qui empêche l'apprentissage de vraies compétences.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase2" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 2 : Acquisition des Compétences (Jours 6 à 15)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Appliquer activement les techniques de restructuration cognitive et commencer l'exposition à l'incertitude.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Fréquence élevée mais en diminuant.</strong> L'objectif est de coacher la personne dans l'application des techniques TCC face à ses inquiétudes quotidiennes.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Infirmier·ère / Psychologue :</strong> Visites espacées (1 jour sur 2), dédiées à la pratique de la restructuration cognitive sur des exemples concrets et à la planification des exercices d'exposition.</li>
+                    <li><strong>Ergothérapeute :</strong> Mise en place de l'activation comportementale pour contrer l'évitement et le retrait social.</li>
+                </ul>
+
+                 <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                      <ul>
+                        <li><strong>Restructuration cognitive :</strong> Identifier les distorsions cognitives (catastrophisme, lecture de pensée, surgénéralisation). Utiliser les colonnes de Beck.</li>
+                        <li><strong>Différencier inquiétudes "résolubles" et "non résolubles" :</strong> Pour les premières, appliquer des techniques de résolution de problème. Pour les secondes, appliquer les techniques d'exposition.</li>
+                        <li><strong>Construire la hiérarchie de l'exposition à l'incertitude :</strong> Lister les situations où la personne cherche à contrôler ou à être rassurée, et les classer par ordre de difficulté.</li>
+                        <li><strong>Commencer les exercices d'exposition :</strong> Ex: "Ne pas appeler son conjoint pour vérifier qu'il va bien", "Laisser un e-mail important sans le relire 10 fois".</li>
+                    </ul>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas accepter les "Oui, mais..." :</strong> La restructuration cognitive n'est pas un débat intellectuel, c'est un entraînement.</li>
+                        <li><strong>Ne pas faire les exercices à la place de la personne.</strong> Notre rôle est celui d'un coach, pas d'un sauveteur.</li>
+                        <li><strong>Ne pas confondre exposition et mise en danger.</strong> L'exposition se fait sur des scénarios plausibles mais à faible probabilité, pas sur des risques réels.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase3" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 3 : Consolidation et Prévention de la Rechute (Jours 16+)</h3>
+                 <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Rendre la personne autonome dans l'utilisation des outils TCC et préparer un relais efficace.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Fréquence de suivi de droit commun.</strong></p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Référent de cas :</strong> Visite hebdomadaire pour réviser le plan de prévention de la rechute et consolider les acquis.</li>
+                    <li><strong>Ensemble de l'équipe :</strong> Organiser la transition vers un psychothérapeute TCC en ambulatoire pour poursuivre le travail.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Élaborer un plan détaillé de prévention de la rechute :</strong> "Quels sont mes premiers signes de reprise des inquiétudes ?", "Quels outils dois-je utiliser en premier ?", "Qui puis-je appeler ?".</li>
+                        <li><strong>Planifier des expositions "piqûres de rappel" :</strong> Encourager la personne à continuer de s'exposer à l'incertitude de manière régulière.</li>
+                        <li><strong>Organiser une rencontre de transition tripartite</strong> (personne, équipe mobile, futur thérapeute).</li>
+                        <li><strong>Valoriser les changements comportementaux et cognitifs :</strong> "Comment réagissez-vous différemment aujourd'hui face à cette situation par rapport à il y a 3 semaines ?".</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas arrêter le suivi sans un relais clair et accepté.</strong></li>
+                        <li><strong>Ne pas laisser la personne penser que le but est "zéro anxiété".</strong> Le but est une meilleure gestion de l'anxiété inévitable de la vie.</li>
+                    </ul>
+                </div>
+            </div>
+
+              <!-- BOITE A OUTILS -->
+            <div id="section-tag-outils-relaxation" class="content-section">
+                <h2>Boîte à Outils : Techniques de Relaxation</h2>
+                <p>Ces techniques visent à diminuer l'hyperactivation physiologique. Elles sont une porte d'entrée pour montrer à la personne qu'elle peut avoir un contrôle sur ses états internes.</p>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. La Respiration Diaphragmatique <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Activer le système nerveux parasympathique et contrer l'hyperventilation souvent discrète dans le TAG.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Comment pratiquer</h4>
+                            <ol class="list-decimal ml-5">
+                                <li>Asseyez-vous ou allongez-vous confortablement. Placez une main sur votre poitrine et l'autre sur votre ventre.</li>
+                                <li>Inspirez lentement et profondément par le nez pendant 4 secondes. Sentez votre ventre se gonfler comme un ballon. La main sur la poitrine doit bouger le moins possible.</li>
+                                <li>Expirez lentement par la bouche pendant 6 secondes, comme si vous souffliez dans une paille. Sentez votre ventre se dégonfler.</li>
+                                <li>Répétez 5 à 10 fois.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. La Relaxation Musculaire Progressive de Jacobson <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Aider la personne à prendre conscience de ses tensions musculaires chroniques et à apprendre à les relâcher.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Comment pratiquer</h4>
+                             <p>Guider la personne à travers les différents groupes musculaires :</p>
+                            <ol class="list-decimal ml-5">
+                                <li>Contractez fortement un groupe de muscles (ex: les poings) pendant 5 secondes. Concentrez-vous sur la sensation de tension.</li>
+                                <li>Relâchez brusquement et concentrez-vous sur la sensation de détente et de chaleur pendant 15-20 secondes.</li>
+                                <li>Passez au groupe musculaire suivant (bras, épaules, visage, ventre, jambes, pieds).</li>
+                            </ol>
+                            <p>Des scripts audio sont facilement trouvables en ligne pour guider la séance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-tag-outils-modele-tcc" class="content-section">
+                <h2>Boîte à Outils : Le Modèle TCC du TAG</h2>
+                <p>C'est l'outil de psychoéducation central. Il montre que ce ne sont pas les événements qui causent l'anxiété, mais l'interprétation qu'on en fait. Il permet de visualiser les cibles de l'intervention.</p>
+                
+                <div class="image-box my-4 flex justify-center items-center">
+                    <img src="https://www.e-psychotherapie.com/wp-content/uploads/2021/08/modele_cognitif_beck-1.png" 
+                         alt="Schéma du modèle cognitivo-comportemental de Beck" 
+                         class="rounded-lg shadow-md max-w-full max-h-screen object-contain cursor-zoom-in"
+                         onclick="openImageModal(this.src, this.alt)">
+                </div>
+                <p class="text-xs text-center mt-2">
+                    Source : e-psychotherapie.com. (2021). <em>Le modèle cognitif de Beck</em>.
+                </p>
+
+                <!-- Modal plein écran (caché par défaut) -->
+                <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 hidden flex items-center justify-center z-50">
+                    <span class="absolute top-5 right-8 text-white text-3xl cursor-pointer" onclick="closeImageModal()">&times;</span>
+                    <img id="modalImage" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg shadow-lg cursor-zoom-out">
+                </div>
+
+                <script>
+                function openImageModal(src, alt) {
+                    document.getElementById("modalImage").src = src;
+                    document.getElementById("modalImage").alt = alt;
+                    document.getElementById("imageModal").classList.remove("hidden");
+                }
+                function closeImageModal() {
+                    document.getElementById("imageModal").classList.add("hidden");
+                }
+                </script>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Application au TAG</h4>
+                    <ul>
+                        <li><strong>Situation :</strong> Mon fils ne répond pas au téléphone.</li>
+                        <li><strong>Pensées (Cognitions) :</strong> "Il lui est arrivé quelque chose de grave !", "Et s'il avait eu un accident ?", "Je ne le supporterais pas."</li>
+                        <li><strong>Émotions :</strong> Anxiété (10/10), peur.</li>
+                        <li><strong>Sensations Physiques :</strong> Cœur qui bat vite, boule dans la gorge, mains moites.</li>
+                        <li><strong>Comportements :</strong> L'appeler en boucle, appeler ses amis, regarder les infos.</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Notre rôle</h4>
+                    <p>Utiliser ce schéma pour montrer à la personne que nous allons travailler principalement sur deux leviers : les <strong>Pensées</strong> (avec la restructuration cognitive) et les <strong>Comportements</strong> (avec l'exposition et l'activation comportementale).</p>
+                </div>
+            </div>
+            
+            <div id="section-tag-outils-restructuration" class="content-section"> 
+                <h2>Boîte à Outils : Restructuration Cognitive</h2>
+                <p>La restructuration cognitive est le processus qui consiste à identifier, évaluer et modifier les pensées anxieuses dysfonctionnelles.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Distorsions cognitives fréquentes dans le TAG</h4>
+                    <ul>
+                        <li><strong>Le Catastrophisme :</strong> Imaginer systématiquement le pire scénario possible. ("Si j'ai mal à la tête, c'est sûrement une tumeur au cerveau.")</li>
+                        <li><strong>La Surgénéralisation :</strong> Tirer une conclusion générale à partir d'un seul événement. ("J'ai raté cette présentation, je suis nul en tout.")</li>
+                        <li><strong>La Lecture de Pensées :</strong> Croire savoir ce que les autres pensent sans aucune preuve. ("Mon chef a l'air contrarié, il doit penser que mon travail est mauvais.")</li>
+                        <li><strong>La Maximisation du négatif et la Minimisation du positif.</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Le questionnement socratique</h4>
+                    <p>Aider la personne à devenir un "détective de ses propres pensées" :</p>
+                    <ul>
+                        <li>"Quelles sont les preuves qui confirment cette pensée ? Quelles sont celles qui l'infirment ?"</li>
+                        <li>"Y a-t-il une autre façon de voir la situation ?"</li>
+                        <li>"Quel est le pire qui pourrait arriver ? Pourrais-je y survivre ? Quel est le meilleur ? Quel est le plus réaliste ?"</li>
+                        <li>"Que dirais-je à un ami qui aurait cette pensée ?"</li>
+                        <li>"Cette inquiétude m'aide-t-elle à résoudre un problème ou me paralyse-t-elle ?"</li>
+                    </ul>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Ce n'est pas de la "pensée positive"</h4>
+                    <p>Le but n'est pas de remplacer une pensée négative par une pensée positive irréaliste, mais par une pensée plus <strong>équilibrée, nuancée et réaliste</strong>. Ex: passer de "Je vais forcément être licencié" à "Mon travail a des points faibles, mais aussi des points forts. Il y a un risque, mais je peux agir pour l'améliorer."</p>
+                </div>
+            </div>
+
+            <div id="section-tag-outils-exposition" class="content-section">
+                <h2>Boîte à Outils : Exposition à l'Incertitude</h2>
+                <p>C'est la technique la plus puissante pour le TAG. Elle consiste à confronter délibérément la personne à l'incertitude pour qu'elle apprenne à la tolérer, au lieu de chercher à la contrôler par des inquiétudes ou des rituels de vérification.</p>
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Comment construire la hiérarchie</h4>
+                    <p>Avec la personne, lister toutes les situations où elle ne supporte pas de ne pas savoir, puis les classer de 0 à 100.</p>
+                    <table>
+                        <thead><tr><th>Situation</th><th>Niveau d'anxiété (0-100)</th></tr></thead>
+                        <tbody>
+                            <tr><td>Laisser une petite faute de frappe dans un email interne.</td><td>30</td></tr>
+                            <tr><td>Partir de la maison sans vérifier 3 fois que la porte est fermée.</td><td>50</td></tr>
+                            <tr><td>Ne pas appeler ses enfants le soir pour vérifier que tout va bien.</td><td>70</td></tr>
+                            <tr><td>Déléguer une tâche importante à un collègue sans contrôler son travail.</td><td>85</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Le principe de l'exposition</h4>
+                    <p>L'exercice consiste à réaliser le comportement (ex: partir sans vérifier) et à <strong>bloquer la réponse de neutralisation</strong> (ne pas revenir, ne pas appeler quelqu'un pour vérifier). La personne doit rester avec l'anxiété et l'incertitude jusqu'à ce que l'anxiété diminue d'elle-même (habituation). C'est un apprentissage expérientiel : "J'ai pu tolérer de ne pas savoir, et la catastrophe n'est pas arrivée."</p>
+                </div>
+            </div>
+
+            <!-- FONDAMENTAUX -->
+            <div id="section-tag-compreprendre" class="content-section">
+                 <h2>Fondamentaux : Comprendre le TAG</h2>
+                 <p>Le Trouble Anxieux Généralisé (TAG) est caractérisé par une inquiétude excessive, chronique et incontrôlable concernant de nombreux événements ou activités.</p>
+                <h4>Critères Clés (DSM-5) :</h4>
+                <ol class="list-decimal ml-5">
+                    <li>Inquiétude et anxiété excessives survenant la plupart du temps depuis au moins 6 mois.</li>
+                    <li>Difficulté à contrôler cette préoccupation.</li>
+                    <li>L'anxiété est associée à au moins 3 des 6 symptômes suivants :
+                        <ul class="list-disc ml-6">
+                            <li>Agitation ou sensation d'être survolté.</li>
+                            <li>Fatigabilité.</li>
+                            <li>Difficultés de concentration ou trous de mémoire.</li>
+                            <li>Irritabilité.</li>
+                            <li>Tension musculaire.</li>
+                            <li>Perturbation du sommeil.</li>
+                        </ul>
+                    </li>
+                    <li>La détresse ou l'altération du fonctionnement est cliniquement significative.</li>
+                </ol>
+            </div>
+            
+            <div id="section-tag-neurobio" class="content-section">
+                <h2>Fondamentaux : Neurobiologie de l'Anxiété</h2>
+                <p>Le TAG est associé à une communication dysfonctionnelle entre plusieurs aires cérébrales, créant un état d'alerte et de rumination constant.</p>
+                 <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Le circuit de l'inquiétude</h4>
+                    <ul>
+                        <li><strong>L'Amygdale (la sentinelle) :</strong> Comme dans le TSPT, elle est hyperactive et détecte des menaces partout, même là où il n'y en a pas.</li>
+                        <li><strong>Le Cortex Préfrontal (le planificateur) :</strong> Au lieu de calmer l'amygdale, il s'emballe. Il se lance dans des scénarios catastrophes sans fin, créant des "boucles d'inquiétude" (worry loops). Sa capacité à réguler l'émotion est diminuée.</li>
+                        <li><strong>Le Système GABAergique :</strong> Le GABA est le principal neurotransmetteur "calmant" du cerveau. Dans le TAG, on suspecte un déficit de son action, ce qui explique pourquoi les benzodiazépines (qui augmentent l'action du GABA) fonctionnent à court terme.</li>
+                        <li><strong>La Sérotonine :</strong> Joue un rôle clé dans la régulation de l'humeur et de l'anxiété. C'est la cible des antidépresseurs ISRS, traitement de première ligne.</li>
+                    </ul>
+                </div>
+            </div>
+
+             <div id="section-tag-incertitude" class="content-section">
+                <h2>Fondamentaux : L'Intolérance à l'Incertitude</h2>
+                <p>C'est le concept central pour comprendre le TAG. Il a été développé par Dugas, Robichaud et leurs collègues (<cite>Dugas et al., 2004</cite>). Il postule que le TAG n'est pas une peur d'événements négatifs, mais une <strong>incapacité à tolérer l'absence de certitude</strong> sur l'avenir.</p>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Les 4 piliers du modèle de Dugas & Robichaud</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>L'Intolérance à l'Incertitude :</strong> Une disposition à réagir négativement à une situation incertaine, indépendamment de sa probabilité ou de ses conséquences. La personne préfère un résultat négatif certain à un résultat incertain.</li>
+                        <li><strong>Les Croyances Positives sur l'Inquiétude :</strong> La personne pense (à tort) que s'inquiéter est utile : "Si je m'inquiète, je serai mieux préparé(e)", "S'inquiéter montre que je suis quelqu'un de responsable".</li>
+                        <li><strong>L'Orientation Négative face aux Problèmes :</strong> Tendance à voir les problèmes comme des menaces insurmontables et à douter de sa capacité à les résoudre.</li>
+                        <li><strong>L'Évitement Cognitif :</strong> La personne utilise l'inquiétude sur des sujets "abstraits" pour éviter de ressentir des émotions plus profondes ou de faire face à des images mentales angoissantes.</li>
+                    </ol>
+                </div>
+                 <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Implication thérapeutique</h4>
+                    <p>Notre intervention doit cibler directement ces 4 piliers. L'exposition à l'incertitude est la clé pour traiter le premier pilier. La restructuration cognitive s'attaque aux trois autres.</p>
+                </div>
+            </div>
+            
+            <!-- Rôles de l'équipe -->
+             <div id="section-tag-roles-recap" class="content-section">
+                     <h2>Rôles de l'Équipe en Crise TAG</h2>
+                <p>La prise en charge est hautement collaborative, avec un focus sur le coaching de compétences TCC.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Professionnel</th>
+                            <th>Rôle Prioritaire en Crise TAG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Psychiatre</strong></td>
+                            <td>Diagnostic, gestion pharmacologique (initiation ISRS/IRSNa, sevrage des BZD), évaluation des comorbidités (dépression, abus de substance).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infirmier·ère / Psychologue</strong></td>
+                            <td>Intervenant principal. Assure la psychoéducation, l'apprentissage des techniques de relaxation, la restructuration cognitive et le coaching pour l'exposition.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Assistant·e Social·e</strong></td>
+                            <td>Aide à la résolution de problèmes concrets (factures, logement) qui sont des sources majeures d'inquiétudes "résolubles", libérant ainsi de l'espace mental.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Ergothérapeute & Aide-Soignant·e</strong></td>
+                            <td>Mise en place de l'activation comportementale. Aide la personne à réinvestir les activités (loisirs, socialisation) délaissées à cause de l'anxiété.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pair-Aidant</strong></td>
+                            <td>Modélise l'utilisation des stratégies TCC au quotidien. Partage son expérience sur la manière de "vivre avec l'incertitude". Dédramatise le processus thérapeutique.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Psychoéducation -->
+            <div id="section-tag-psychoed-patient" class="content-section">
+                <h2>Modules de Psychoéducation pour la Personne</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. L'inquiétude : le hamster dans sa roue <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Comprendre le caractère stérile de l'inquiétude chronique.</p>
+                        <p><strong>Contenu :</strong> Utiliser la métaphore du hamster qui court dans sa roue : beaucoup d'efforts, beaucoup d'agitation, mais aucun progrès. L'inquiétude donne l'impression d'agir sur un problème, mais en réalité, elle ne fait que nous épuiser.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Inquiétude productive vs. Inquiétude improductive <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Apprendre à trier les pensées.</p>
+                        <p><strong>Contenu :</strong> Une inquiétude <strong>productive</strong> mène à un plan d'action concret sur un problème réel et actuel (ex: "Comment vais-je payer cette facture ? -> Je vais faire un budget"). Une inquiétude <strong>improductive</strong> tourne en rond sur des "Et si ?" hypothétiques et lointains (ex: "Et si je tombais gravement malade dans 10 ans ?"). On apprend à transformer la première et à "laisser passer" la seconde.</p>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">3. L'évitement est le meilleur ami de l'anxiété <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Comprendre le piège de la réassurance et de l'évitement.</p>
+                        <p><strong>Contenu :</strong> Expliquer que chaque fois qu'on évite une situation anxiogène ou qu'on demande à être rassuré, on ressent un soulagement immédiat. Mais ce soulagement renforce l'idée que la situation était réellement dangereuse et que nous sommes incapables d'y faire face. À long terme, l'anxiété augmente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-tag-psychoed-entourage" class="content-section">
+                <h2>Modules de Psychoéducation pour l'Entourage</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Comment ne pas devenir le complice de l'anxiété ? <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Expliquer le piège de la réassurance excessive.</p>
+                        <p><strong>Contenu :</strong> Rassurer constamment une personne avec un TAG, c'est comme donner de l'alcool à un alcoolique : ça soulage sur le moment mais ça entretient la maladie. Aider les proches à passer de la réassurance à l'encouragement de l'autonomie.</p>
+                        <div class="recommendation-box">
+                            <h4><i class="fas fa-check-circle icon"></i> Quoi faire</h4>
+                            <p>Au lieu de répondre "Mais non, tout va bien se passer", dire : "Je vois que tu es très anxieux. C'est une pensée angoissante. Qu'est-ce qu'on a vu en thérapie que tu pourrais essayer pour gérer cette pensée ?".</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Valider l'émotion, pas la catastrophe <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Apprendre à soutenir sans renforcer les croyances anxieuses.</p>
+                        <p><strong>Contenu :</strong> Il est crucial de reconnaître la souffrance réelle de la personne ("Je comprends que tu aies peur, ça doit être horrible de penser ça") sans pour autant être d'accord avec le contenu de la pensée ("Oui, tu as raison, c'est sûrement une catastrophe"). Cette validation émotionnelle est essentielle pour maintenir l'alliance.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Glossaire et références -->
+            <div id="section-tag-glossaire" class="content-section">
+                <h2>Glossaire</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">Activation Comportementale <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Technique TCC visant à augmenter progressivement la participation de la personne à des activités positives et valorisantes, pour contrer l'apathie et l'évitement.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Distorsion Cognitive <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Schéma de pensée irrationnel ou exagéré qui contribue à des émotions négatives. Exemples : catastrophisme, surgénéralisation, pensée "tout ou rien".</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Exposition <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Technique TCC fondamentale qui consiste à se confronter de manière volontaire, progressive et répétée à des situations, pensées ou sensations redoutées, afin de réduire l'anxiété par habituation.</p></div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">Inquiétude (Worry) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Processus mental central dans le TAG, caractérisé par une chaîne de pensées et d'images à tonalité négative, visant à anticiper et résoudre des problèmes potentiels, mais qui devient rapidement incontrôlable et stérile.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Intolérance à l'Incertitude <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Tendance d'un individu à considérer la possibilité d'un événement négatif comme inacceptable et menaçante, indépendamment de sa probabilité réelle. C'est le moteur principal du TAG.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Restructuration Cognitive <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Processus consistant à identifier les pensées automatiques négatives (distorsions cognitives) et à les remplacer par des pensées plus réalistes et adaptées, après un examen critique des preuves.</p></div>
+                </div>
+            </div>
+
+            <div id="section-tag-references" class="content-section">
+                <h2>Références</h2>
+                <ul class="list-disc text-sm space-y-3">
+                    <li>American Psychiatric Association. (2013). <em>Diagnostic and statistical manual of mental disorders (5th ed.)</em>. https://doi.org/10.1176/appi.books.9780890425596</li>
+                    <li>Barlow, D. H. (2014). <em>Anxiety and its disorders: The nature and treatment of anxiety and panic (2nd ed.)</em>. Guilford Press.</li>
+                    <li>Dugas, M. J., Buhr, K., & Robichaud, M. (2004). Cognitive-behavioral treatment for generalized anxiety disorder: Treatment protocol. In R. G. Heimberg, C. L. Turk, & D. S. Mennin (Eds.), <em>Generalized anxiety disorder: Advances in research and practice</em> (pp. 288-320). Guilford Press.</li>
+                    <li>Dugas, M. J., & Robichaud, M. (2007). <em>Cognitive-behavioral treatment for generalized anxiety disorder: From science to practice</em>. Routledge.</li>
+                    <li>Heimberg, R. G., & Wilson, J. K. (2014). Generalized Anxiety Disorder. In D. H. Barlow (Ed.), <em>Clinical handbook of psychological disorders: A step-by-step treatment manual (5th ed.)</em> (pp. 221-252). The Guilford Press.</li>
+                    <li>Johnson, S., Lamb, D., & Nolan, F. (2015). The international development of crisis resolution and home treatment teams. In D. I. M. D. L. Vigano A (Ed.), <em>Home Treatment for Acute Mental Disorders</em> (pp. 23-38). Springer. https://doi.org/10.1007/978-3-319-09273-1_3</li>
+                    <li>National Institute for Health and Care Excellence (NICE). (2011). <em>Generalised anxiety disorder and panic disorder in adults: management (CG113)</em>. https://www.nice.org.uk/guidance/cg113</li>
+                    <li>Robichaud, M. (2013). A cognitive-behavioral model of generalized anxiety disorder: The intolerance of uncertainty model. In M. A. Constable, J. G. G. van Vliet, & G. M. W. van der Linden (Eds.), <em>Generalized anxiety disorder: Current concepts and future directions</em> (pp. 125-146). Springer.</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+    
+    <footer class="mt-16 bg-slate-900 text-slate-300 text-sm border-t border-slate-700 py-6 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+            <!-- LOGO GAUCHE : VINATIER -->
+            <div class="flex-shrink-0">
+                <a href="https://www.ch-le-vinatier.fr" target="_blank" rel="noopener noreferrer">
+                    <img class="h-20 md:h-24 w-auto" 
+                         src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/e079f7cf4939908ea9a07ce40d529d0b" 
+                         alt="Logo Centre Hospitalier Le Vinatier">
+                </a>
+            </div>
+            <!-- TEXTE CENTRAL -->
+            <div class="flex-1 text-center md:text-left space-y-2">
+                <p>Dr <strong>FENOHASINA </strong>T.J. Felicien (Psychiatre - FFI) ;</p>
+                <p>Dr <strong>MONNIER </strong>Romain (Psychiatre - CCA) ; </p>
+                <p>Equipe Mobile - <strong>Pôle Centre</strong> Rive Gauche ;</p>
+                <p>Chef de service: Dr Thomas <strong>LATHIERE</strong> ;</p>
+                <p>Chef de Pôle: Prof. Nicolas <strong>FRANCK</strong></p>
+                <p>CH - Le <strong>Vinatier.</strong></p>
+                <div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+                    <img class="h-5 w-auto" 
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cc-by-nc-sa_icon.svg/120px-Cc-by-nc-sa_icon.svg.png" 
+                         alt="Icône Creative Commons BY-NC-SA">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="underline hover:text-white">Licence CC BY-NC-SA 4.0</a> –
+                    <span>Dernière mise à jour : 19 septembre 2025.</span>
+                </div>
+            </div>
+            <!-- LOGOS DROITS : CRR -->
+            <div class="flex items-center gap-6 flex-shrink-0">
+                <a href="https://www.facebook.com/Psykozy?locale=fr_FR" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://cdn-assets.inwink.com/fe065c87-0643-42fc-8b5d-4d94b5d12c11/a1904f78-1bca-466d-a9f4-8ac9fde06c0c" 
+                         alt="Logo Psy-kôzy">
+                </a>
+                <a href="https://centre-ressource-rehabilitation.org" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://faustinebrunet.com/images/RS/creation-nouveau-logo-domaine-sante-mentale.jpg" 
+                         alt="Logo Centre Ressource Réhabilitation">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeSidebarButton = document.getElementById('close-sidebar-button');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const mainContent = document.getElementById('main-content');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            sidebarBackdrop.classList.add('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            openSidebar();
+        });
+        closeSidebarButton.addEventListener('click', closeSidebar);
+        sidebarBackdrop.addEventListener('click', closeSidebar);
+
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                requestAnimationFrame(() => {
+                    mainContent.scrollTop = 0;
+                });
+            }
+
+            const navLinks = document.querySelectorAll('#sidebar .nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const isDirectMatch = link.getAttribute('onclick') && link.getAttribute('onclick').includes(`showSection('${sectionId}')`);
+                let isInSubmenuOfActiveParent = false;
+                
+                const submenu = link.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const submenuLinks = submenu.querySelectorAll('.nav-link');
+                    submenuLinks.forEach(sl => {
+                         sl.classList.remove('active'); 
+                        if (sl.getAttribute('onclick') && sl.getAttribute('onclick').includes(`showSection('${sectionId}')`)) {
+                            isInSubmenuOfActiveParent = true;
+                             sl.classList.add('active'); 
+                        }
+                    });
+                }
+
+                if (isDirectMatch || isInSubmenuOfActiveParent) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            const icon = element.querySelector('i.fa-chevron-down, i.fa-chevron-up');
+            if (submenu && submenu.classList.contains('submenu')) {
+                submenu.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                }
+            }
+        }
+        
+        function initializeAccordions() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.fas.fa-chevron-down, .fas.fa-chevron-up');
+                    
+                    content.classList.toggle('hidden');
+                    header.classList.toggle('open'); 
+                    
+                    if (icon) { 
+                        if (content.classList.contains('hidden')) {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        } else {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        }
+                    }
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('section-home');
+            
+            // Open the parent submenu for the crisis plan by default
+            const crisisPlanParentLink = Array.from(document.querySelectorAll('a.nav-link.font-semibold')).find(el => el.textContent.includes("Plan d'Intervention de Crise"));
+            if(crisisPlanParentLink) {
+                const submenu = crisisPlanParentLink.nextElementSibling;
+                const icon = crisisPlanParentLink.querySelector('i.fa-chevron-down');
+                 if (submenu && submenu.classList.contains('submenu') && icon) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                 }
+            }
+            
+            initializeAccordions(); 
+        });
+    </script>
+
+</body>
+</html>
