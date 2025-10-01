@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide d'Intervention de Crise TOC - Équipe Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-section {
+            display: none; 
+        }
+        .content-section.active {
+            display: block; 
+        }
+        .nav-link {
+            cursor: pointer;
+            padding: 0.85rem 1.25rem; 
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            display: block; 
+            margin-bottom: 0.25rem; 
+        }
+        .nav-link:hover {
+            background-color: #334155;
+            color: #ffffff;
+        }
+        .nav-link.active {
+            background-color: #0ea5e9;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .submenu .nav-link {
+            padding-left: 2rem; 
+            font-size: 0.9rem;
+        }
+        .submenu .nav-link.active {
+             background-color: #0369a1;
+        }
+
+        .alert-box, .recommendation-box, .idea-box {
+            padding: 1.25rem; 
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+        }
+        .alert-box {
+            background-color: #fee2e2; 
+            border-left: 5px solid #ef4444; 
+            color: #991b1b; 
+        }
+        .recommendation-box {
+            background-color: #dcfce7; 
+            border-left: 5px solid #22c55e; 
+            color: #14532d; 
+        }
+        .idea-box {
+            background-color: #fef9c3; 
+            border-left: 5px solid #eab308; 
+            color: #713f12; 
+        }
+        .alert-box h4, .recommendation-box h4, .idea-box h4 {
+            font-weight: 700; 
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+            color: inherit; 
+        }
+        .alert-box ul, .recommendation-box ul, .idea-box ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+        .alert-box li, .recommendation-box li, .idea-box li {
+            margin-bottom: 0.375rem;
+        }
+        .icon {
+            margin-right: 0.75rem; 
+            font-size: 1.1em;
+        }
+
+        #sidebar::-webkit-scrollbar { width: 8px; }
+        #sidebar::-webkit-scrollbar-track { background: #0f172a; }
+        #sidebar::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
+        #sidebar::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        #main-content::-webkit-scrollbar { width: 10px; }
+        #main-content::-webkit-scrollbar-track { background: #e2e8f0; }
+        #main-content::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 5px; }
+        #main-content::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        h1.guide-title { color: #ffffff; }
+        h2 { margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.75rem; font-weight: 700; color: #0c4a6e; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.5rem; } 
+        h3 { margin-top: 1.25rem; margin-bottom: 0.75rem; font-size: 1.5rem; font-weight: 600; color: #0369a1; } 
+        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 600; color: #075985; } 
+        
+        @media (min-width: 768px) {
+            h2 { font-size: 2.25rem; margin-top: 2rem; margin-bottom: 1.25rem;}
+            h3 { font-size: 1.875rem; margin-top: 1.75rem; margin-bottom: 1rem;}
+            h4 { font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 0.75rem;}
+        }
+
+        .content-section p { margin-bottom: 1rem; line-height: 1.7; font-size: 0.95rem; } 
+         @media (min-width: 768px) { 
+            .content-section p { font-size: 1rem; }
+        }
+        .content-section ul, .content-section ol { margin-bottom: 1rem; padding-left: 1.75rem; }
+        .content-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .content-section cite { font-style: normal; } 
+        .content-section a { color: #0ea5e9; text-decoration: none; font-weight: 500; }
+        .content-section a:hover { color: #0369a1; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; }
+        th { background-color: #f1f5f9; font-weight: 600; color: #1e293b; }
+
+        .accordion-item {
+            border: 1px solid #cbd5e1; 
+            border-radius: 0.5rem; 
+            margin-bottom: 0.75rem;
+            background-color: #ffffff; 
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07), 0 1px 2px 0 rgba(0,0,0,0.04);
+        }
+        .accordion-header {
+            background-color: #f1f5f9; 
+            color: #1e3a8a; 
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            border-radius: 0.5rem 0.5rem 0 0; 
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .accordion-header:hover {
+            background-color: #e2e8f0; 
+        }
+        .accordion-header.open {
+             border-bottom: 1px solid #cbd5e1; 
+             border-radius: 0.5rem 0.5rem 0 0;
+        }
+        .accordion-content {
+            padding: 1.25rem;
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem; 
+            background-color: #ffffff; 
+        }
+        .accordion-content.hidden {
+            display: none;
+        }
+        .accordion-header .fas {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.open .fas {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 flex flex-col min-h-screen">
+
+    <button id="mobile-menu-button" class="md:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 text-white rounded-md shadow-lg">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="flex flex-col md:flex-row flex-1"> 
+        <nav id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 sm:w-72 bg-slate-800 text-slate-100 shadow-lg p-4 md:p-6 space-y-1 overflow-y-auto transform -translate-x-full md:relative md:translate-x-0 md:w-1/4 lg:w-1/5 transition-transform duration-300 ease-in-out">
+            <button id="close-sidebar-button" class="md:hidden absolute top-4 right-4 text-slate-300 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <h1 class="guide-title text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center md:text-left pt-8 md:pt-0">Guide de Crise TOC</h1>
+            <a href="https://thot586.github.io/EM_CRT/#interventions" class="block text-center bg-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-600 transition-colors duration-300 mb-6 shadow-lg">
+                <i class="fas fa-arrow-left mr-2"></i>Retour au Portail
+            </a>
+            <a class="nav-link" onclick="showSection('section-home'); closeSidebar();"><i class="fas fa-home icon"></i>Accueil</a>
+            <a class="nav-link" onclick="showSection('section-introduction-guide'); closeSidebar();"><i class="fas fa-info-circle icon"></i>Objectif du Guide</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-clipboard-list icon"></i>Plan d'Intervention de Crise <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-crise-phase1'); closeSidebar();">Phase 1: Évaluation</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase2'); closeSidebar();">Phase 2: Exposition</a>
+                    <a class="nav-link" onclick="showSection('section-crise-phase3'); closeSidebar();">Phase 3: Maintien</a>
+                </div>
+            </div>
+
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-tools icon"></i>Boîte à Outils Thérapeutiques <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-outils-epr'); closeSidebar();">Exposition et Prévention</a>
+                    <a class="nav-link" onclick="showSection('section-outils-hierarchie'); closeSidebar();">Hiérarchie d'Exposition</a>
+                    <a class="nav-link" onclick="showSection('section-outils-defusion'); closeSidebar();">Techniques de Défusion</a>
+                     <a class="nav-link" onclick="showSection('section-outils-entourage'); closeSidebar();">Désengagement de l'Entourage</a>
+                </div>
+            </div>
+
+             <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-book-open icon"></i>Fondamentaux (Théorie) <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-comprendre'); closeSidebar();">Comprendre le TOC</a>
+                    <a class="nav-link" onclick="showSection('section-cycle'); closeSidebar();">Le Cycle Obsession-Compulsion</a>
+                    <a class="nav-link" onclick="showSection('section-neurobio'); closeSidebar();">Neurobiologie du TOC</a>
+                </div>
+            </div>
+            
+            <a class="nav-link" onclick="showSection('section-roles-recap'); closeSidebar();"><i class="fas fa-users-cog icon"></i>Rôles de l'Équipe en Crise</a>
+            
+            <div>
+                <a class="nav-link font-semibold" onclick="toggleSubmenu(this)"><i class="fas fa-chalkboard-teacher icon"></i>Psychoéducation <i class="fas fa-chevron-down float-right mt-1 text-xs"></i></a>
+                <div class="submenu hidden ml-2 mt-1 space-y-px">
+                    <a class="nav-link" onclick="showSection('section-psychoed-patient'); closeSidebar();">Pour la Personne</a>
+                    <a class="nav-link" onclick="showSection('section-psychoed-entourage'); closeSidebar();">Pour l'Entourage</a>
+                </div>
+            </div>
+            <a class="nav-link" onclick="showSection('section-glossaire'); closeSidebar();"><i class="fas fa-book icon"></i>Glossaire</a>
+            <a class="nav-link" onclick="showSection('section-references'); closeSidebar();"><i class="fas fa-link icon"></i>Références</a>
+        </nav>
+
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden" onclick="closeSidebar()"></div>
+
+        <main id="main-content" class="flex-1 p-4 md:p-8 lg:p-10 overflow-y-auto">
+            <div id="section-home" class="content-section">
+                <h2>Guide d'Intervention de Crise : Trouble Obsessionnel Compulsif (TOC)</h2>
+                <p>Ce guide est un outil opérationnel pour les équipes mobiles de psychiatrie intervenant en <strong>alternative à l'hospitalisation (modèle CRT)</strong> pour des personnes en crise liée à un TOC sévère. Il est conçu pour structurer une intervention intensive basée sur l'<strong>Exposition avec Prévention de la Réponse (EPR)</strong>, traitement gold standard du TOC, adapté à un contexte de crise à domicile.</p>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Comment utiliser ce guide :</h4>
+                    <ul>
+                        <li>La section <strong>Plan d'Intervention de Crise</strong> est le cœur du guide. Elle offre un protocole par phases pour introduire progressivement l'EPR.</li>
+                        <li>La <strong>Boîte à Outils Thérapeutiques</strong> détaille les techniques d'exposition, la construction de hiérarchies et les stratégies de défusion cognitive.</li>
+                        <li>Les autres sections fournissent le contexte théorique et pratique pour une prise en charge cohérente et multidisciplinaire.</li>
+                        <li>Utilisez ce guide comme support pour vos synthèses d'équipe afin de planifier et d'ajuster les interventions au domicile.</li>
+                    </ul>
+                </div>
+                <p>Notre mission est de considérer le TOC non comme un défaut de caractère ou un manque de volonté, mais comme un trouble anxieux traitable. L'objectif est de co-construire avec la personne une compréhension du cycle obsession-compulsion et de l'accompagner dans l'expérience contre-intuitive mais libératrice de l'exposition sans rituel.</p>
+            </div>
+
+            <div id="section-introduction-guide" class="content-section">
+                <h2>Objectif de ce Guide Opérationnel</h2>
+                <p>Intervenir au domicile d'une personne en crise de TOC sévère, c'est entrer dans un quotidien envahi par les rituels, où chaque action peut déclencher une cascade d'anxiété et de comportements compulsifs. Le TOC peut transformer le domicile en prison, avec des heures perdues en vérifications, lavages ou rituels mentaux. Notre mission, inspirée des équipes de Résolution de Crise et Traitement à Domicile (CRT), est de faire du domicile un espace thérapeutique où la personne peut expérimenter l'exposition dans son environnement naturel.</p>
+                <p>Ce guide propose un <strong>protocole par phases</strong> pour une intervention intensive et coordonnée, visant à :</p>
+                <ul class="list-disc ml-5">
+                    <li>Évaluer précisément la sévérité du TOC et son impact fonctionnel.</li>
+                    <li>Établir une alliance thérapeutique solide basée sur la psychoéducation.</li>
+                    <li>Introduire progressivement l'Exposition avec Prévention de la Réponse (EPR).</li>
+                    <li>Briser le cercle vicieux de l'évitement et des rituels.</li>
+                    <li>Impliquer l'entourage en les désengageant des rituels d'aide.</li>
+                    <li>Prévenir les rechutes par un plan de maintien structuré.</li>
+                    <li>Éviter l'hospitalisation quand elle n'est pas nécessaire.</li>
+                </ul>
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Notre mission en trois temps :</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Évaluer et Éduquer :</strong> Comprendre le TOC de la personne, établir une formulation personnalisée, psychoéduquer sur le cycle obsession-compulsion.</li>
+                        <li><strong>Exposer et Accompagner :</strong> Introduire l'EPR de manière graduée, accompagner dans l'anxiété, célébrer les progrès.</li>
+                        <li><strong>Maintenir et Prévenir :</strong> Consolider les acquis, développer l'autonomie dans l'EPR auto-dirigée, prévenir les rechutes.</li>
+                    </ol>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Principes fondamentaux de l'intervention</h4>
+                    <ul>
+                        <li><strong>Ne JAMAIS rassurer.</strong> La réassurance est un rituel mental qui maintient le TOC. "Non, vous n'avez pas contaminé votre famille" = rituel.</li>
+                        <li><strong>L'exposition doit être graduée et consentie.</strong> Forcer l'exposition crée de la traumatisation, pas de l'habituation.</li>
+                        <li><strong>L'anxiété n'est pas l'ennemie.</strong> L'objectif de l'EPR n'est pas de réduire l'anxiété, mais d'apprendre à la tolérer sans ritualiser.</li>
+                        <li><strong>Les compulsions mentales comptent.</strong> Prier, compter, se rassurer mentalement = compulsions à prévenir aussi.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- PLAN D'INTERVENTION -->
+            <div id="section-crise-phase1" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 1 : Évaluation et Psychoéducation (Jours 1 à 7)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Comprendre le TOC spécifique de la personne, établir une formulation personnalisée et créer une alliance thérapeutique basée sur la compréhension du cycle obsession-compulsion.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Haute fréquence.</strong> L'évaluation du TOC nécessite du temps car les personnes cachent souvent certains rituels par honte.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Psychologue / Infirmier·ère formé·e en TCC :</strong> Visite quotidienne ou tous les 2 jours pour évaluation approfondie et psychoéducation.</li>
+                    <li><strong>Psychiatre :</strong> Visite à J1 pour évaluation globale, comorbidités (dépression, anxiété généralisée très fréquentes) et ajustement pharmacologique si nécessaire.</li>
+                    <li><strong>Ergothérapeute :</strong> Évaluation de l'impact fonctionnel (temps passé en rituels, activités évitées).</li>
+                    <li><strong>Assistant·e Social·e :</strong> Évaluation des conséquences socio-professionnelles.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Évaluation structurée de la sévérité :</strong> Utiliser la Y-BOCS (Yale-Brown Obsessive Compulsive Scale). Identifier les obsessions et compulsions principales.</li>
+                        <li><strong>Cartographie complète des rituels :</strong> Manifestes (lavage, vérification, rangement) ET mentaux (neutralisation, comptage, prière). Durée quotidienne totale ? Quels déclencheurs ?</li>
+                        <li><strong>Identification de l'accommodation familiale :</strong> L'entourage participe-t-il aux rituels ? Modifie-t-il son comportement pour éviter de déclencher le TOC ?</li>
+                        <li><strong>Psychoéducation intensive :</strong> Expliquer le cycle obsession → anxiété → compulsion → soulagement temporaire → renforcement du TOC. "Les rituels sont le problème, pas la solution."</li>
+                        <li><strong>Formulation personnalisée :</strong> Co-construire une compréhension : "Quand vous touchez une poignée (déclencheur), vous pensez 'Je vais contaminer ma famille' (obsession), vous ressentez de l'anxiété intense (émotion), et vous vous lavez les mains 15 fois (compulsion) pour réduire l'anxiété."</li>
+                        <li><strong>Introduction du modèle de l'EPR :</strong> "Pour guérir, il faut apprendre à tolérer l'anxiété SANS faire le rituel. L'anxiété finit par baisser naturellement."</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas rassurer sur le contenu des obsessions.</strong> "Non, vous n'allez pas contaminer vos enfants" = rituel de réassurance qui maintient le TOC.</li>
+                        <li><strong>Ne pas commencer l'EPR avant d'avoir une alliance solide.</strong> La personne doit comprendre le rationnel et être motivée.</li>
+                        <li><strong>Ne pas minimiser la détresse.</strong> Le TOC est extrêmement invalidant et douloureux.</li>
+                        <li><strong>Ne pas juger les obsessions.</strong> Elles sont ego-dystoniques (la personne ne les veut pas), créer de la honte est contre-productif.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase2" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 2 : Exposition et Prévention de la Réponse (Jours 8 à 28)</h3>
+                <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Introduire l'EPR de manière graduée, accompagner la personne dans l'expérience de l'anxiété sans ritualiser et constater l'habituation naturelle.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Très haute fréquence.</strong> L'EPR en crise nécessite un accompagnement intensif, idéalement des séances quotidiennes ou tous les 2 jours.</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Psychologue / Thérapeute TCC :</strong> Séances d'EPR 3-5 fois par semaine, durée 60-90 minutes. L'EPR est mieux faite au domicile (environnement naturel des déclencheurs).</li>
+                    <li><strong>Infirmier·ère :</strong> Visites de soutien entre les séances d'EPR pour monitoring et encouragement.</li>
+                    <li><strong>Entourage :</strong> Participation aux séances de psychoéducation pour apprendre à se désengager des rituels.</li>
+                </ul>
+
+                 <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Construction de la hiérarchie d'exposition :</strong> (voir <a href="#" onclick="showSection('section-outils-hierarchie')">section dédiée</a>). Lister toutes les situations évitées ou ritualisées, coter l'anxiété de 0-100 (échelle SUDS).</li>
+                        <li><strong>Commencer par le milieu de la hiérarchie :</strong> Contrairement à l'intuition, on ne commence pas par le plus facile. Commencer vers 50-60/100 d'anxiété est plus efficace.</li>
+                        <li><strong>Séances d'EPR structurées :</strong>
+                            <ul class="ml-4">
+                                <li>1. Exposition au déclencheur (ex: toucher une poignée de porte)</li>
+                                <li>2. Montée de l'anxiété (surveiller le SUDS)</li>
+                                <li>3. Prévention de la réponse (ne PAS se laver les mains, ne PAS neutraliser mentalement)</li>
+                                <li>4. Habituation (rester dans la situation jusqu'à ce que l'anxiété baisse d'au moins 50%)</li>
+                                <li>5. Durée : 60-90 minutes minimum par exposition</li>
+                            </ul>
+                        </li>
+                        <li><strong>EPR à domicile entre séances :</strong> Prescription d'exercices quotidiens. Tenir un journal d'EPR (déclencheur, SUDS avant/pendant/après, rituel prévenu oui/non).</li>
+                        <li><strong>Désengagement progressif de l'entourage :</strong> Si l'entourage participait aux rituels (ex: rassurer, laver des objets), ils doivent arrêter graduellement avec notre soutien.</li>
+                        <li><strong>Gestion des compulsions mentales :</strong> Plus difficile car invisibles. Techniques de défusion cognitive (voir <a href="#" onclick="showSection('section-outils-defusion')">section dédiée</a>).</li>
+                    </ul>
+                </div>
+                 <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas arrêter l'exposition trop tôt.</strong> Si on arrête quand l'anxiété est encore élevée, cela renforce l'évitement. Rester jusqu'à habituation.</li>
+                        <li><strong>Ne pas permettre de "petits rituels" ou de rituels "de transition".</strong> La prévention de la réponse doit être totale (0% du rituel), sinon le TOC reste renforcé.</li>
+                        <li><strong>Ne pas rassurer pendant l'exposition.</strong> "Vous allez voir, tout va bien se passer" = rituel de réassurance.</li>
+                        <li><strong>Ne pas forcer l'exposition.</strong> La personne doit consentir. Forcer crée de la traumatisation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-crise-phase3" class="content-section">
+                <h2>Plan d'Intervention de Crise</h2>
+                <h3>Phase 3 : Consolidation et Prévention de la Rechute (Jours 29+)</h3>
+                 <div class="idea-box">
+                    <h4><strong>Objectif Principal :</strong> Consolider les acquis, développer l'EPR auto-dirigée, généraliser à de nouveaux contextes et élaborer un plan de prévention de la rechute.</h4>
+                </div>
+                <h4>Temporalité des visites :</h4>
+                <p><strong>Fréquence décroissante.</strong></p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Psychologue :</strong> Séances hebdomadaires puis bimensuelles. Focus sur l'autonomisation et la généralisation.</li>
+                    <li><strong>Référent de cas :</strong> Suivi mensuel pour monitoring et prévention de la rechute.</li>
+                    <li><strong>Ensemble de l'équipe :</strong> Organiser la transition vers un suivi ambulatoire spécialisé en TCC si disponible.</li>
+                </ul>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Actions à mener</h4>
+                     <ul>
+                        <li><strong>Monter dans la hiérarchie :</strong> Aborder les expositions les plus difficiles (80-100/100). À ce stade, la personne a acquis de l'expérience et de la confiance.</li>
+                        <li><strong>Généralisation des acquis :</strong> Appliquer l'EPR à de nouveaux contextes et de nouveaux déclencheurs. Le TOC essaie souvent de "déménager" vers de nouveaux thèmes.</li>
+                        <li><strong>EPR auto-dirigée :</strong> La personne doit devenir autonome dans la création de ses propres expositions et la prévention des rituels.</li>
+                        <li><strong>Prévention de la rechute :</strong>
+                            <ul class="ml-4">
+                                <li>Identifier les situations à risque de rechute (stress, fatigue, événements de vie)</li>
+                                <li>Plan d'action : "Si je remarque que je recommence à ritualiser, je m'expose immédiatement"</li>
+                                <li>Maintenir une pratique régulière d'EPR même en l'absence de symptômes (exposition préventive)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Travail sur l'acceptation :</strong> Apprendre à vivre avec des pensées intrusives occasionnelles sans y réagir. Techniques ACT (Acceptance and Commitment Therapy).</li>
+                        <li><strong>Réinvestissement de la vie :</strong> Reprendre les activités abandonnées à cause du TOC (travail, loisirs, relations).</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Actions à éviter</h4>
+                    <ul>
+                        <li><strong>Ne pas considérer la personne "guérie" trop vite.</strong> Le TOC est souvent chronique avec des hauts et des bas. L'objectif est la gestion, pas l'élimination totale des symptômes.</li>
+                        <li><strong>Ne pas arrêter le traitement médicamenteux brutalement.</strong> Si la personne prend des ISRS, la décision d'arrêt doit être progressive et concertée.</li>
+                        <li><strong>Ne pas négliger les mini-rechutes.</strong> Un retour de rituels, même minime, doit être adressé immédiatement par de l'EPR.</li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- BOITE A OUTILS -->
+            <div id="section-outils-epr" class="content-section">
+                <h2>Boîte à Outils : Exposition avec Prévention de la Réponse (EPR)</h2>
+                <p>L'EPR est le traitement psychologique le plus efficace pour le TOC, avec des taux de réponse de 60-80%. Elle repose sur deux principes : l'habituation (l'anxiété diminue naturellement avec le temps) et l'extinction (le lien obsession-rituel se défait quand le rituel n'est plus effectué).</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Les deux composantes de l'EPR</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Exposition :</strong> Se confronter volontairement et de manière répétée aux situations, objets ou pensées qui déclenchent les obsessions et l'anxiété.</li>
+                        <li><strong>Prévention de la Réponse :</strong> S'abstenir complètement (100%) d'effectuer le rituel compulsif habituel.</li>
+                    </ol>
+                    <p><strong>Résultat :</strong> La personne apprend que (1) l'anxiété baisse naturellement sans rituel (habituation), (2) la catastrophe redoutée ne se produit pas (violation des attentes), (3) elle peut tolérer l'anxiété (renforcement du sentiment d'efficacité).</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Structure d'une séance d'EPR</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Préparation (10 min) :</strong>
+                            <ul class="ml-4">
+                                <li>Choisir l'exposition du jour sur la hiérarchie</li>
+                                <li>Rappeler le rationnel : "On va déclencher l'anxiété volontairement pour apprendre à la tolérer"</li>
+                                <li>Prédire le SUDS attendu (0-100)</li>
+                                <li>S'engager à ne pas ritualiser pendant et après la séance</li>
+                            </ul>
+                        </li>
+                        <li><strong>Exposition (60-90 min minimum) :</strong>
+                            <ul class="ml-4">
+                                <li>Déclencher l'exposition (ex: toucher le sol avec les mains)</li>
+                                <li>Monitoring du SUDS toutes les 5-10 minutes</li>
+                                <li>Encouragement verbal : "Vous le faites, restez avec l'anxiété"</li>
+                                <li>Pas de réassurance sur le contenu ("Est-ce que je vais vraiment tomber malade ?" → "Restez avec l'anxiété, c'est l'objectif")</li>
+                                <li>Continuer jusqu'à ce que le SUDS baisse d'au moins 50% par rapport au pic</li>
+                            </ul>
+                        </li>
+                        <li><strong>Débriefing (10 min) :</strong>
+                            <ul class="ml-4">
+                                <li>"Qu'avez-vous appris ?" (La catastrophe ne s'est pas produite, j'ai toléré l'anxiété, elle a fini par baisser)</li>
+                                <li>Valoriser l'effort et le courage</li>
+                                <li>Prescrire l'exposition à répéter quotidiennement à domicile</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Types d'exposition selon le TOC</h4>
+                    <table class="text-sm">
+                        <thead>
+                            <tr>
+                                <th>Type de TOC</th>
+                                <th>Exemple d'exposition</th>
+                                <th>Prévention de la réponse</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Contamination</td>
+                                <td>Toucher poubelle, sol, poignées publiques</td>
+                                <td>Ne pas se laver les mains, toucher visage/aliments avec mains "sales"</td>
+                            </tr>
+                            <tr>
+                                <td>Vérification</td>
+                                <td>Fermer porte/gaz une seule fois et partir</td>
+                                <td>Ne pas revérifier, ne pas demander confirmation à autrui</td>
+                            </tr>
+                            <tr>
+                                <td>Symétrie/Ordre</td>
+                                <td>Laisser objets en désordre volontaire</td>
+                                <td>Ne pas ranger, ne pas aligner, ne pas toucher en nombre pair</td>
+                            </tr>
+                            <tr>
+                                <td>Pensées interdites (sexe, religion, violence)</td>
+                                <td>Exposition imaginaire : écrire/dire la pensée redoutée répétitivement</td>
+                                <td>Ne pas neutraliser mentalement, ne pas prier, ne pas se rassurer</td>
+                            </tr>
+                            <tr>
+                                <td>Accumulation</td>
+                                <td>Jeter objets gardés "au cas où"</td>
+                                <td>Ne pas récupérer les objets jetés</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Erreurs fréquentes en EPR</h4>
+                    <ul>
+                        <li><strong>Arrêter trop tôt :</strong> Si on arrête l'exposition quand l'anxiété est encore élevée, cela renforce l'évitement</li>
+                        <li><strong>Permettre des "mini-rituels" :</strong> "Je me lave juste 2 fois au lieu de 15" = échec. La prévention doit être totale (0 rituel)</li>
+                        <li><strong>Rassurer :</strong> "Tu vas voir, il ne va rien se passer" = rituel de réassurance qui maintient le TOC</li>
+                        <li><strong>Expositions trop faciles :</strong> Rester dans la zone de confort ne crée pas d'apprentissage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section-outils-hierarchie" class="content-section">
+                <h2>Boîte à Outils : Construction de la Hiérarchie d'Exposition</h2>
+                <p>La hiérarchie d'exposition est la carte routière de l'EPR. Elle liste toutes les situations évitées ou ritualisées, classées par niveau d'anxiété. C'est un document vivant, constamment actualisé au fil de la thérapie.</p>
+                
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Étapes de construction</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Brainstorming exhaustif :</strong> Lister TOUTES les situations qui déclenchent anxiété et rituels. Inclure :
+                            <ul class="ml-4">
+                                <li>Situations évitées complètement</li>
+                                <li>Situations où la personne ritualise</li>
+                                <li>Objets redoutés</li>
+                                <li>Pensées déclenchantes</li>
+                                <li>Contextes (ex: rituels pires le soir, ou seul·e)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Cotation SUDS (Subjective Units of Distress) :</strong> Pour chaque item, coter l'anxiété de 0 à 100
+                            <ul class="ml-4">
+                                <li>0 = aucune anxiété</li>
+                                <li>50 = anxiété modérée mais gérable</li>
+                                <li>100 = pire anxiété imaginable, panique</li>
+                            </ul>
+                        </li>
+                        <li><strong>Classement :</strong> Organiser les items du moins anxiogène au plus anxiogène</li>
+                        <li><strong>Vérifier la progressivité :</strong> Idéalement, avoir des items tous les 10 points de SUDS. Combler les trous si nécessaire.</li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Exemple de hiérarchie - TOC de contamination</h4>
+                    <table class="text-sm">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>SUDS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Toucher poignée de porte de ma chambre</td><td>20</td></tr>
+                            <tr><td>Toucher poignée de porte d'entrée</td><td>35</td></tr>
+                            <tr><td>Toucher rampe d'escalier de mon immeuble</td><td>50</td></tr>
+                            <tr><td>Toucher poignée de porte publique (magasin)</td><td>60</td></tr>
+                            <tr><td>Toucher bouton d'ascenseur public</td><td>65</td></tr>
+                            <tr><td>Toucher le sol extérieur avec les mains</td><td>70</td></tr>
+                            <tr><td>Toucher une poubelle publique</td><td>80</td></tr>
+                            <tr><td>Toucher toilettes publiques</td><td>85</td></tr>
+                            <tr><td>Toucher mon visage avec mains "sales"</td><td>90</td></tr>
+                            <tr><td>Préparer à manger avec mains "sales"</td><td>95</td></tr>
+                            <tr><td>Toucher mes enfants avec mains "sales"</td><td>100</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Par où commencer ?</h4>
+                    <p><strong>Contre-intuitif :</strong> Ne pas commencer par le plus facile. Commencer par un item du milieu de la hiérarchie (50-60/100) est plus efficace car :</p>
+                    <ul>
+                        <li>Cela crée un apprentissage plus rapide</li>
+                        <li>Une fois cet item maîtrisé, tous les items en dessous deviennent plus faciles</li>
+                        <li>Cela évite de stagner dans des expositions trop peu anxiogènes</li>
+                    </ul>
+                    <p>Exception : Si la personne est très anxieuse et fragile, on peut commencer plus bas (30-40/100).</p>
+                </div>
+            </div>
+           
+            <div id="section-outils-defusion" class="content-section"> 
+                <h2>Boîte à Outils : Techniques de Défusion Cognitive</h2>
+                <p>Les compulsions mentales (neutralisation, réassurance mentale, prière compulsive, comptage) sont invisibles mais tout aussi importantes à prévenir que les rituels comportementaux. Les techniques de défusion cognitive, issues de l'ACT (Acceptance and Commitment Therapy), aident à créer une distance avec les pensées obsessionnelles sans les combattre.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Fusion vs Défusion</h4>
+                    <p><strong>Fusion :</strong> Les pensées sont vécues comme des faits. "Si je pense que je vais contaminer mes enfants, c'est que c'est vrai et dangereux." La personne est "collée" à ses pensées.</p>
+                    <p><strong>Défusion :</strong> Les pensées sont vues comme des événements mentaux, pas des vérités. "J'ai la pensée que je vais contaminer mes enfants" (vs "Je vais contaminer mes enfants"). La personne observe ses pensées avec distance.</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Techniques de défusion</h4>
+                    <div class="accordion-item">
+                        <button class="accordion-header">1. Nommer la pensée <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content hidden">
+                            <p>Au lieu de "Je vais contaminer mes enfants", dire :</p>
+                            <p>"Je remarque que j'ai la pensée que je vais contaminer mes enfants"</p>
+                            <p>ou</p>
+                            <p>"Mon TOC me dit que je vais contaminer mes enfants"</p>
+                            <p>Cela crée une distance entre soi et la pensée.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">2. Métaphore des feuilles sur le ruisseau <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content hidden">
+                            <p>"Imaginez que vous êtes assis·e au bord d'un ruisseau. Vos pensées obsessionnelles sont des feuilles qui flottent sur l'eau. Votre rôle n'est pas d'arrêter le ruisseau, ni de sauter dans l'eau pour attraper les feuilles. Juste observer les feuilles passer."</p>
+                            <p>Ne pas s'accrocher aux pensées, les laisser passer.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">3. Chanter la pensée <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content hidden">
+                            <p>Prendre la pensée obsessionnelle et la chanter sur un air ridicule (ex: "Joyeux anniversaire").</p>
+                            <p>"Je vais contaminer mes enfants, je vais contaminer mes enfants..." sur l'air de "Joyeux anniversaire".</p>
+                            <p>Cela défusionne la pensée en montrant qu'on peut jouer avec elle, qu'elle n'est pas un fait sacré.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">4. Répétition rapide <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content hidden">
+                            <p>Répéter un mot de la pensée obsessionnelle très rapidement pendant 30 secondes.</p>
+                            <p>Ex: Si l'obsession est "contaminé", répéter "contaminé contaminé contaminé..." à voix haute très vite.</p>
+                            <p>Le mot perd son sens et devient juste un son. Effet de satiation sémantique.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">5. "Merci mon cerveau" <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content hidden">
+                            <p>Quand une obsession arrive : "Merci mon cerveau de me protéger. Je note cette pensée, mais je n'ai pas besoin d'agir dessus maintenant."</p>
+                            <p>Approche bienveillante qui reconnaît que le cerveau essaie de protéger (même si de manière dysfonctionnelle).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Défusion ≠ Neutralisation</h4>
+                    <p>Attention : La défusion n'est PAS une compulsion mentale si elle est utilisée correctement. Elle ne vise pas à réduire l'anxiété ou à contrôler la pensée, mais à changer la relation à la pensée.</p>
+                    <p><strong>Neutralisation (compulsion mentale) :</strong> "Cette pensée est horrible, je dois la faire partir en pensant à quelque chose de positif" → Évitement</p>
+                    <p><strong>Défusion (sain) :</strong> "Cette pensée est là, c'est juste mon TOC, je la laisse être là sans y réagir" → Acceptation</p>
+                </div>
+            </div>
+
+            <div id="section-outils-entourage" class="content-section">
+                <h2>Boîte à Outils : Désengagement de l'Entourage (Réduction de l'Accommodation Familiale)</h2>
+                <p>L'accommodation familiale désigne les modifications que l'entourage fait pour réduire l'anxiété de la personne avec un TOC ou pour éviter les conflits. Paradoxalement, cela maintient et aggrave le TOC. Le désengagement de l'entourage est une composante essentielle du traitement.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Exemples d'accommodation familiale</h4>
+                    <ul>
+                        <li>Rassurer répétitivement ("Non, tu n'es pas contaminé·e")</li>
+                        <li>Participer aux rituels (laver les vêtements de manière spéciale, vérifier pour la personne)</li>
+                        <li>Modifier son comportement (ne pas toucher certains objets, rentrer par une porte spécifique)</li>
+                        <li>Éviter des lieux ou situations pour ne pas déclencher le TOC</li>
+                        <li>Prendre en charge des tâches que la personne ne fait plus à cause des rituels</li>
+                    </ul>
+                    <p><strong>Conséquence :</strong> L'accommodation renforce le TOC car la personne n'apprend jamais à tolérer l'anxiété. De plus, cela génère du ressentiment et de l'épuisement chez l'entourage.</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Plan de désengagement graduel</h4>
+                    <p>Le désengagement doit être progressif, planifié et expliqué. Arrêter brusquement toute accommodation peut créer une crise.</p>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Évaluation :</strong> Identifier toutes les accommodations actuelles. Utiliser la Family Accommodation Scale (FAS).</li>
+                        <li><strong>Psychoéducation de l'entourage :</strong> Expliquer que l'accommodation maintient le TOC. "En me rassurant, vous empêchez mon cerveau d'apprendre que je peux tolérer l'incertitude."</li>
+                        <li><strong>Hiérarchie des accommodations :</strong> Comme pour l'EPR, classer les accommodations de la plus facile à arrêter à la plus difficile.</li>
+                        <li><strong>Désengagement progressif :</strong> Commencer par arrêter les accommodations les moins importantes. Progresser graduellement.</li>
+                        <li><strong>Réponse uniforme de l'entourage :</strong> Quand la personne demande réassurance ou participation au rituel, réponse empathique mais ferme :
+                            <ul class="ml-4">
+                                <li>"Je comprends que c'est difficile, mais l'équipe soignante nous a demandé de ne plus te rassurer. Je t'aime et je suis là, mais je ne répondrai pas à cette question."</li>
+                                <li>"Utilise tes outils d'EPR que tu as appris avec le/la psychologue."</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Gérer les réactions de la personne</h4>
+                    <p>Quand l'entourage arrête d'accommoder, la personne peut :</p>
+                    <ul>
+                        <li>Être en colère</li>
+                        <li>Supplier</li>
+                        <li>Menacer</li>
+                        <li>Avoir une crise d'anxiété</li>
+                    </ul>
+                    <p><strong>Réponse de l'entourage :</strong> Rester calme, empathique mais ferme. "Je sais que c'est très dur pour toi en ce moment. Je ne t'abandonne pas, au contraire, je t'aide à affronter ton TOC. L'équipe soignante est là pour te soutenir."</p>
+                    <p>Avoir un plan de crise : Si la personne est en grande détresse, qui contacter ? (équipe mobile, numéro d'urgence)</p>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Le désengagement n'est pas du rejet</h4>
+                    <p>Important : Arrêter d'accommoder ne signifie pas arrêter de soutenir. L'entourage reste présent, aimant, encourageant. Ils arrêtent simplement de participer au TOC.</p>
+                    <p>Différence :</p>
+                    <ul>
+                        <li><strong>Rejet :</strong> "Arrête avec ton TOC, tu m'énerves, débrouille-toi"</li>
+                        <li><strong>Désengagement sain :</strong> "Je t'aime, je suis là pour toi, mais je ne peux plus te rassurer sur cette question car cela maintient ton TOC. L'équipe soignante va t'aider à apprendre d'autres stratégies."</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FONDAMENTAUX -->
+            <div id="section-comprendre" class="content-section">
+                 <h2>Fondamentaux : Comprendre le TOC</h2>
+                 <p>Le Trouble Obsessionnel Compulsif (TOC) est un trouble anxieux chronique caractérisé par la présence d'obsessions et/ou de compulsions qui sont chronophages (>1h/jour) et/ou causent une détresse significative ou une altération du fonctionnement. Prévalence vie entière : 2-3%.</p>
+                
+                <h4>Les obsessions :</h4>
+                <p>Pensées, images ou impulsions récurrentes et persistantes qui sont :</p>
+                <ul class="list-disc ml-5">
+                    <li><strong>Intrusives :</strong> Non voulues, qui s'imposent à la conscience</li>
+                    <li><strong>Anxiogènes :</strong> Génèrent anxiété, dégoût ou détresse</li>
+                    <li><strong>Ego-dystoniques :</strong> Incompatibles avec les valeurs de la personne ("Ce n'est pas moi, je ne veux pas penser ça")</li>
+                </ul>
+
+                <h4>Les compulsions :</h4>
+                <p>Comportements répétitifs ou actes mentaux que la personne se sent obligée d'accomplir en réponse à une obsession ou selon des règles rigides. Objectif : réduire l'anxiété ou empêcher un événement redouté.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Thèmes obsessionnels fréquents</h4>
+                    <ul>
+                        <li><strong>Contamination :</strong> Peur de la saleté, des microbes, des maladies, des substances chimiques</li>
+                        <li><strong>Vérification :</strong> Doute pathologique (portes, gaz, erreurs), peur de causer un accident</li>
+                        <li><strong>Symétrie/Ordre :</strong> Besoin que tout soit aligné, équilibré, "juste comme il faut"</li>
+                        <li><strong>Pensées interdites :</strong> Obsessions sexuelles, religieuses (blasphème), violentes (agresser quelqu'un), d'inceste</li>
+                        <li><strong>Accumulation :</strong> Incapacité à jeter des objets, peur de perdre quelque chose d'important</li>
+                        <li><strong>Somatiques :</strong> Préoccupations excessives sur la santé, les sensations corporelles</li>
+                    </ul>
+                </div>
+
+                <h4>Compulsions associées :</h4>
+                <ul class="list-disc ml-5">
+                    <li><strong>Comportementales :</strong> Lavage, nettoyage, vérification, rangement, toucher, compter, répéter des actions</li>
+                    <li><strong>Mentales :</strong> Prier, compter mentalement, répéter des mots/phrases, neutraliser (remplacer une "mauvaise" pensée par une "bonne"), se rassurer mentalement</li>
+                </ul>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> TOC ≠ Perfectionnisme ou Maniaquerie</h4>
+                    <p>Le TOC est un trouble psychiatrique invalidant, pas un trait de personnalité. Les personnes avec un TOC ne tirent AUCUN plaisir de leurs rituels, au contraire. Elles les font pour réduire une anxiété intense, contre leur volonté.</p>
+                </div>
+            </div>
+            
+            <div id="section-cycle" class="content-section">
+                <h2>Fondamentaux : Le Cycle Obsession-Compulsion</h2>
+                <p>Comprendre le cycle du TOC est essentiel pour la psychoéducation et pour expliquer le rationnel de l'EPR.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Les 5 étapes du cycle</h4>
+                    <ol class="list-decimal ml-5">
+                        <li><strong>Déclencheur :</strong> Situation, objet, pensée qui active l'obsession (ex: toucher une poignée de porte)</li>
+                        <li><strong>Obsession :</strong> Pensée intrusive anxiogène (ex: "Je suis contaminé·e, je vais transmettre des microbes à mes enfants et ils vont mourir")</li>
+                        <li><strong>Anxiété/Détresse :</strong> Montée d'anxiété intense, souvent insoutenable (SUDS 80-100/100)</li>
+                        <li><strong>Compulsion :</strong> Rituel effectué pour réduire l'anxiété (ex: se laver les mains 15 fois selon une procédure précise)</li>
+                        <li><strong>Soulagement temporaire :</strong> L'anxiété baisse... pour quelques minutes/heures</li>
+                    </ol>
+                    <p><strong>→ Le cycle recommence au prochain déclencheur</strong></p>
+                </div>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Pourquoi le cycle se maintient : Le renforcement négatif</h4>
+                    <p>La compulsion est <strong>renforcée négativement</strong> : elle enlève quelque chose de désagréable (l'anxiété). Cela rend la compulsion extrêmement difficile à arrêter, même si la personne sait rationnellement que c'est absurde.</p>
+                    <p><strong>Problème :</strong> En ritualisant, la personne n'apprend jamais que :</p>
+                    <ul>
+                        <li>L'anxiété diminuerait naturellement sans rituel (habituation)</li>
+                        <li>La catastrophe redoutée ne se produit pas (la preuve que l'obsession est irrationnelle)</li>
+                    </ul>
+                    <p><strong>Résultat :</strong> Le TOC se renforce. Les obsessions deviennent plus fréquentes, les rituels plus longs et rigides.</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Comment l'EPR brise le cycle</h4>
+                    <p>L'EPR intervient à l'étape 4 (compulsion) :</p>
+                    <ol class="list-decimal ml-5">
+                        <li>Déclencheur → Obsession → Anxiété (étapes 1-3 identiques)</li>
+                        <li><strong>PAS de compulsion</strong> (prévention de la réponse)</li>
+                        <li>Anxiété reste élevée... puis diminue naturellement (habituation)</li>
+                        <li>La personne apprend : "Je peux tolérer l'anxiété", "La catastrophe ne se produit pas", "Je n'ai pas besoin du rituel"</li>
+                        <li>Le lien obsession-compulsion s'affaiblit (extinction)</li>
+                    </ol>
+                    <p>Avec la répétition, l'anxiété déclenchée par l'obsession diminue d'intensité et de durée.</p>
+                </div>
+            </div>
+
+             <div id="section-neurobio" class="content-section">
+                <h2>Fondamentaux : Neurobiologie du TOC</h2>
+                <p>Le TOC a des bases neurobiologiques claires, démontrées par l'imagerie cérébrale et les études génétiques. Ce n'est pas "dans la tête" au sens psychologique, c'est dans le cerveau au sens neurologique.</p>
+                
+                <div class="idea-box">
+                    <h4><i class="fas fa-lightbulb icon"></i> Le circuit cortico-striato-thalamo-cortical (CSTC)</h4>
+                    <p>Dans le TOC, il existe une hyperactivité d'un circuit cérébral spécifique :</p>
+                    <ul>
+                        <li><strong>Cortex orbitofrontal (COF) :</strong> Détecte les erreurs et les menaces. Hyperactif dans le TOC → sentiment persistant que "quelque chose ne va pas"</li>
+                        <li><strong>Noyau caudé (striatum) :</strong> Filtre les pensées et les comportements. Dysfonctionnel dans le TOC → pensées intrusives passent le filtre, comportements répétitifs non inhibés</li>
+                        <li><strong>Thalamus :</strong> Relais d'information. Hyperactif → boucle de rétroaction excessive</li>
+                    </ul>
+                    <p><strong>Résultat :</strong> Le cerveau envoie en boucle le message "Danger ! Erreur ! Pas sûr !" même en l'absence de menace réelle. D'où les doutes pathologiques et les vérifications interminables.</p>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Neurotransmetteurs impliqués</h4>
+                    <ul>
+                        <li><strong>Sérotonine :</strong> Dysrégulation majeure. C'est pourquoi les ISRS (Inhibiteurs Sélectifs de la Recapture de la Sérotonine) sont efficaces dans le TOC.</li>
+                        <li><strong>Dopamine :</strong> Impliquée dans les comportements répétitifs et les habitudes</li>
+                        <li><strong>Glutamate :</strong> Rôle émergent, neurotransmetteur excitateur</li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4><i class="fas fa-check-circle icon"></i> Impact de l'EPR sur le cerveau</h4>
+                    <p>L'EPR n'est pas qu'un traitement psychologique, elle modifie le cerveau :</p>
+                    <ul>
+                        <li>Des études en neuroimagerie montrent que l'EPR <strong>normalise l'hyperactivité</strong> du circuit CSTC</li>
+                        <li>Les changements cérébraux après EPR sont comparables à ceux obtenus avec les ISRS</li>
+                        <li>L'EPR crée de nouveaux circuits neuronaux d'habituation et d'extinction</li>
+                    </ul>
+                    <p>Message pour la personne : "L'EPR n'est pas juste un exercice psychologique, c'est un ré-entraînement de votre cerveau."</p>
+                </div>
+            </div>
+            
+            <!-- Rôles de l'équipe -->
+             <div id="section-roles-recap" class="content-section">
+                <h2>Rôles de l'Équipe en Crise TOC</h2>
+                <p>La prise en charge du TOC en CRT nécessite une expertise en TCC, particulièrement en EPR. La coordination et la cohérence de l'équipe sont cruciales.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Professionnel</th>
+                            <th>Rôle Prioritaire en Crise TOC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Psychiatre</strong></td>
+                            <td>Leader clinique. Diagnostic différentiel (TOC vs trouble psychotique, dépression). Gestion pharmacologique (ISRS à doses élevées, augmentation possible par antipsychotique). Évaluation des comorbidités. Supervision de l'équipe sur les aspects médicaux.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Psychologue / Thérapeute TCC</strong></td>
+                            <td>Expert en EPR. Mène les séances d'exposition au domicile. Construit les hiérarchies. Forme l'équipe aux principes de l'EPR. Supervise le désengagement familial. Travail sur les compulsions mentales (défusion cognitive).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infirmier·ère</strong></td>
+                            <td>Soutien entre les séances d'EPR. Monitoring de l'observance et des progrès. Encouragement et validation. Doit être formé·e aux principes de l'EPR pour ne pas rassurer involontairement. Coordination avec la famille.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Assistant·e Social·e</strong></td>
+                            <td>Évalue l'impact socio-professionnel du TOC (heures perdues en rituels, arrêts de travail, isolement). Aide aux démarches si le TOC a créé des dettes ou problèmes légaux. Travaille sur la réinsertion professionnelle progressive.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Ergothérapeute</strong></td>
+                            <td>Évalue l'impact fonctionnel sur les activités quotidiennes (hygiène, alimentation, ménage envahis par les rituels). Accompagne la reprise d'activités significatives. Travaille sur la gestion du temps (réduire le temps de ritualisation, structurer la journée).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pair-Aidant</strong></td>
+                            <td>Si vécu de TOC : témoignage du rétablissement et de l'efficacité de l'EPR. Partage des stratégies concrètes. Réduction du stigma et de la honte (obsessions taboues). Message d'espoir crédible.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Secrétaire</strong></td>
+                            <td>Planification rigoureuse des séances d'EPR (longues, ne pas interrompre). Gestion des contacts avec l'entourage. Si la personne appelle en crise pour être rassurée : réponse empathique mais ferme ("Je comprends que c'est difficile, mais l'équipe soignante nous a demandé de ne pas vous rassurer. Utilisez vos outils d'EPR").</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert-box">
+                    <h4><i class="fas fa-exclamation-triangle icon"></i> Formation de toute l'équipe aux principes de l'EPR</h4>
+                    <p>CRITIQUE : Tous les membres de l'équipe doivent comprendre qu'il ne faut JAMAIS rassurer. Une seule réassurance d'un membre de l'équipe peut défaire des semaines d'EPR. Cohérence absolue nécessaire.</p>
+                </div>
+            </div>
+            
+            <!-- Psychoéducation -->
+            <div id="section-psychoed-patient" class="content-section">
+                <h2>Modules de Psychoéducation pour la Personne</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Le TOC : un système d'alarme défectueux <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Fournir une métaphore compréhensible du TOC.</p>
+                        <p><strong>Contenu :</strong> "Imaginez que votre cerveau a un système d'alarme pour vous protéger des dangers. Dans le TOC, ce système est défectueux : il se déclenche pour des 'faux positifs'. Il crie 'DANGER !' alors qu'il n'y a pas de danger réel. Les compulsions, c'est comme essayer d'éteindre l'alarme en appuyant sur un bouton. Ça marche quelques secondes, puis elle se redéclenche. L'EPR, c'est apprendre à laisser sonner l'alarme jusqu'à ce qu'elle s'arrête d'elle-même et que votre cerveau apprenne qu'il n'y a pas de danger."</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Les rituels : le problème, pas la solution <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Déconstruire la croyance que les rituels protègent.</p>
+                        <p><strong>Contenu :</strong> "Vous pensez que vos rituels vous protègent. En réalité, ils MAINTIENNENT votre TOC. Chaque fois que vous ritualisez, vous dites à votre cerveau : 'Tu as raison d'avoir peur, il y avait vraiment un danger'. Votre cerveau apprend à avoir encore plus peur la prochaine fois. C'est un cercle vicieux. Pour guérir, il faut casser ce cercle en NE PAS ritualisant, même si c'est terrifiant au début."</p>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">3. L'EPR : pourquoi ça marche (et pourquoi c'est dur) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Expliquer le rationnel de l'EPR et préparer à la difficulté.</p>
+                        <p><strong>Contenu :</strong> "L'EPR, c'est se confronter volontairement à ce qui déclenche votre anxiété, SANS faire le rituel. Oui, c'est terrifiant. Votre anxiété va monter très haut. MAIS, si vous restez dans la situation sans ritualiser, deux choses vont se passer :</p>
+                        <ol class="ml-5">
+                            <li>Votre anxiété va finir par baisser naturellement (habituation)</li>
+                            <li>Vous allez constater que la catastrophe que vous redoutiez ne se produit pas</li>
+                        </ol>
+                        <p>Votre cerveau va apprendre qu'il n'y a pas de danger. Avec la répétition, l'anxiété déclenchée va devenir de plus en plus faible. C'est comme un muscle : plus vous pratiquez, plus c'est facile."</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Les pensées ne sont pas des faits <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Introduire la défusion cognitive.</p>
+                        <p><strong>Contenu :</strong> "Dans le TOC, on confond pensées et réalité. Parce que vous PENSEZ que vous êtes contaminé·e, vous CROYEZ que c'est vrai. Mais une pensée est juste une pensée. Elle peut être vraie ou fausse. Dans le TOC, la plupart des pensées obsessionnelles sont fausses, même si elles semblent vraies. Vous pouvez apprendre à observer vos pensées comme des nuages qui passent, sans vous y accrocher ni agir dessus."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-psychoed-entourage" class="content-section">
+                <h2>Modules de Psychoéducation pour l'Entourage</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Le TOC n'est pas un choix <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Réduire la frustration et la culpabilisation.</p>
+                        <p><strong>Contenu :</strong> "Votre proche ne CHOISIT pas d'avoir un TOC. Il/elle ne peut pas 'juste arrêter'. Le TOC est un trouble neurobiologique. Les rituels ne sont pas de la manipulation ou de la recherche d'attention, c'est une tentative désespérée de réduire une anxiété insoutenable. Votre proche souffre probablement encore plus que vous de cette situation."</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Pourquoi vous devez arrêter d'aider (accommodation) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Expliquer le rationnel du désengagement.</p>
+                        <p><strong>Contenu :</strong> "Quand vous rassurez votre proche, ou que vous participez à ses rituels, vous pensez l'aider. En réalité, vous MAINTENEZ son TOC. Voici pourquoi : en le/la rassurant, vous empêchez son cerveau d'apprendre à tolérer l'incertitude. Vous êtes comme une béquille : utile à court terme, mais qui empêche la jambe de se muscler. Pour que votre proche guérisse, il/elle doit apprendre à affronter l'anxiété sans béquille."</p>
+                         <div class="recommendation-box">
+                             <h4><i class="fas fa-check-circle icon"></i> Ce que vous pouvez faire à la place</h4>
+                             <ul>
+                                <li>Encourager l'utilisation des outils d'EPR</li>
+                                <li>Féliciter les efforts et les progrès</li>
+                                <li>Être présent·e émotionnellement sans participer au TOC</li>
+                                <li>Avoir de la patience (le TOC ne guérit pas du jour au lendemain)</li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Comment réagir face à une crise d'anxiété <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                         <div class="recommendation-box">
+                             <h4><i class="fas fa-check-circle icon"></i> Quoi faire</h4>
+                             <ul>
+                                <li>Rester calme</li>
+                                <li>Valider l'émotion sans valider le contenu : "Je vois que tu es très anxieux·se" (pas "Oui, c'est vrai que c'est dangereux")</li>
+                                <li>Rappeler les outils : "Utilise ta respiration", "Tu as appris à faire face à ça avec le/la psy"</li>
+                                <li>Offrir une présence calme</li>
+                             </ul>
+                        </div>
+                        <div class="alert-box">
+                             <h4><i class="fas fa-exclamation-triangle icon"></i> Quoi ne pas faire</h4>
+                             <ul>
+                                 <li>Ne pas rassurer sur le contenu ("Non, tu n'es pas contaminé·e")</li>
+                                 <li>Ne pas participer au rituel</li>
+                                 <li>Ne pas minimiser ("Ce n'est rien, arrête")</li>
+                                 <li>Ne pas s'énerver ou crier</li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Prendre soin de vous <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden">
+                        <p><strong>But :</strong> Prévenir l'épuisement des aidants.</p>
+                        <p><strong>Contenu :</strong> "Vivre avec une personne qui a un TOC sévère est extrêmement difficile. Vous pouvez vous sentir frustré·e, épuisé·e, en colère, impuissant·e. Ces émotions sont normales. Vous devez prendre soin de vous :"</p>
+                        <ul>
+                            <li>Maintenir vos activités et vos relations</li>
+                            <li>Rejoindre un groupe de soutien (ex: AFTOC - Association Française de personnes souffrant de TOC)</li>
+                            <li>Mettre des limites si nécessaire</li>
+                            <li>Chercher du soutien psychologique pour vous</li>
+                        </ul>
+                        <p>Ressources : <a href="https://aftoc.org" target="_blank" rel="noopener">AFTOC</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Glossaire et références -->
+            <div id="section-glossaire" class="content-section">
+                <h2>Glossaire</h2>
+                <div class="accordion-item">
+                    <button class="accordion-header">Accommodation Familiale <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Modifications du comportement de l'entourage pour réduire l'anxiété de la personne avec un TOC ou pour faciliter ses rituels. Paradoxalement, cela maintient et aggrave le TOC à long terme.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Compulsion <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Comportement répétitif ou acte mental que la personne se sent obligée d'accomplir pour réduire l'anxiété causée par une obsession. Les compulsions peuvent être visibles (lavage, vérification) ou mentales (comptage, prière, neutralisation).</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">EPR (Exposition avec Prévention de la Réponse) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Traitement gold standard du TOC. Consiste à s'exposer aux déclencheurs d'anxiété tout en s'abstenant complètement d'effectuer le rituel compulsif, jusqu'à ce que l'anxiété diminue naturellement (habituation).</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Habituation <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Processus par lequel l'anxiété diminue naturellement lors d'une exposition prolongée à un stimulus anxiogène, sans échappatoire ou rituel. Phénomène neurobiologique central à l'EPR.</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Obsession <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Pensée, image ou impulsion intrusive, récurrente et anxiogène qui s'impose à la conscience contre la volonté de la personne. Ego-dystonique (incompatible avec les valeurs de la personne).</p></div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">SUDS (Subjective Units of Distress Scale) <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content hidden"><p>Échelle de 0 à 100 pour mesurer subjectivement le niveau d'anxiété ou de détresse. Outil central en EPR pour monitorer l'anxiété pendant l'exposition et constater l'habituation.</p></div>
+                </div>
+            </div>
+
+            <div id="section-references" class="content-section">
+                <h2>Références</h2>
+                <ul class="list-disc text-sm space-y-3">
+                    <li>American Psychiatric Association. (2013). <em>Diagnostic and Statistical Manual of Mental Disorders</em> (5e éd.). Arlington, VA: American Psychiatric Publishing.</li>
+                    <li>Abramowitz, J. S., Taylor, S., & McKay, D. (2009). Obsessive-compulsive disorder. <em>The Lancet, 374</em>(9688), 491-499.</li>
+                    <li>Foa, E. B., Yadin, E., & Lichner, T. K. (2012). <em>Exposure and response (ritual) prevention for obsessive-compulsive disorder: Therapist guide</em> (2e éd.). New York: Oxford University Press.</li>
+                    <li>Goodman, W. K., Price, L. H., Rasmussen, S. A., Mazure, C., Fleischmann, R. L., Hill, C. L., ... & Charney, D. S. (1989). The Yale-Brown Obsessive Compulsive Scale: I. Development, use, and reliability. <em>Archives of General Psychiatry, 46</em>(11), 1006-1011.</li>
+                    <li>Hayes, S. C., Strosahl, K. D., & Wilson, K. G. (2011). <em>Acceptance and commitment therapy: The process and practice of mindful change</em> (2e éd.). New York: Guilford Press.</li>
+                    <li>Mataix-Cols, D., & de la Cruz, L. F. (2018). OCD treatment: What does the future hold? <em>Current Treatment Options in Psychiatry, 5</em>(3), 304-321.</li>
+                    <li>National Institute for Health and Care Excellence. (2005). <em>Obsessive-compulsive disorder and body dysmorphic disorder: treatment</em> (Clinical guideline CG31). London: NICE.</li>
+                    <li>Öst, L. G., Havnen, A., Hansen, B., & Kvale, G. (2015). Cognitive behavioral treatments of obsessive-compulsive disorder: A systematic review and meta-analysis of studies published 1993-2014. <em>Clinical Psychology Review, 40</em>, 156-169.</li>
+                    <li>Pinto, A., Van Noppen, B., & Calvocoressi, L. (2013). Development and preliminary psychometric evaluation of a self-rated version of the Family Accommodation Scale for Obsessive-Compulsive Disorder. <em>Journal of Obsessive-Compulsive and Related Disorders, 2</em>(4), 457-465.</li>
+                    <li>Salkovskis, P. M. (1985). Obsessional-compulsive problems: A cognitive-behavioural analysis. <em>Behaviour Research and Therapy, 23</em>(5), 571-583.</li>
+                    <li>Soomro, G. M., Altman, D., Rajagopal, S., & Oakley-Browne, M. (2008). Selective serotonin re-uptake inhibitors (SSRIs) versus placebo for obsessive compulsive disorder (OCD). <em>Cochrane Database of Systematic Reviews</em>, (1), CD001765.</li>
+                    <li>Stein, D. J., Costa, D. L. C., Lochner, C., Miguel, E. C., Reddy, Y. C. J., Shavitt, R. G., ... & Simpson, H. B. (2019). Obsessive-compulsive disorder. <em>Nature Reviews Disease Primers, 5</em>(1), 1-21.</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+    
+    <footer class="mt-16 bg-slate-900 text-slate-300 text-sm border-t border-slate-700 py-6 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+            <div class="flex-shrink-0">
+                <a href="https://www.ch-le-vinatier.fr" target="_blank" rel="noopener noreferrer">
+                    <img class="h-20 md:h-24 w-auto" 
+                         src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/e079f7cf4939908ea9a07ce40d529d0b" 
+                         alt="Logo Centre Hospitalier Le Vinatier">
+                </a>
+            </div>
+            <div class="flex-1 text-center md:text-left space-y-2">
+                <p>Dr <strong>FENOHASINA </strong>T.J. Felicien (Psychiatre - FFI) ;</p>
+                <p>Dr <strong>MONNIER </strong>Romain (Psychiatre - CCA) ; </p>
+                <p>Equipe Mobile - <strong>Pôle Centre</strong> Rive Gauche ;</p>
+                <p>Chef de service: Dr Thomas <strong>LATHIERE</strong> ;</p>
+                <p>Chef de Pôle: Prof. Nicolas <strong>FRANCK</strong></p>
+                <p>CH - Le <strong>Vinatier.</strong></p>
+                <div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+                    <img class="h-5 w-auto" 
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cc-by-nc-sa_icon.svg/120px-Cc-by-nc-sa_icon.svg.png" 
+                         alt="Icône Creative Commons BY-NC-SA">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="underline hover:text-white">Licence CC BY-NC-SA 4.0</a> –
+                    <span>Dernière mise à jour : Octobre 2025.</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 flex-shrink-0">
+                <a href="https://www.facebook.com/Psykozy?locale=fr_FR" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://cdn-assets.inwink.com/fe065c87-0643-42fc-8b5d-4d94b5d12c11/a1904f78-1bca-466d-a9f4-8ac9fde06c0c" 
+                         alt="Logo Psy-kôzy">
+                </a>
+                <a href="https://centre-ressource-rehabilitation.org" target="_blank" rel="noopener noreferrer">
+                    <img class="h-16 md:h-20 w-auto" 
+                         src="https://faustinebrunet.com/images/RS/creation-nouveau-logo-domaine-sante-mentale.jpg" 
+                         alt="Logo Centre Ressource Réhabilitation">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeSidebarButton = document.getElementById('close-sidebar-button');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const mainContent = document.getElementById('main-content');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            sidebarBackdrop.classList.add('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            openSidebar();
+        });
+        closeSidebarButton.addEventListener('click', closeSidebar);
+        sidebarBackdrop.addEventListener('click', closeSidebar);
+
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                requestAnimationFrame(() => {
+                    mainContent.scrollTop = 0;
+                });
+            }
+
+            const navLinks = document.querySelectorAll('#sidebar .nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const isDirectMatch = link.getAttribute('onclick') && link.getAttribute('onclick').includes(`showSection('${sectionId}')`);
+                let isInSubmenuOfActiveParent = false;
+                
+                const submenu = link.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const submenuLinks = submenu.querySelectorAll('.nav-link');
+                    submenuLinks.forEach(sl => {
+                         sl.classList.remove('active'); 
+                        if (sl.getAttribute('onclick') && sl.getAttribute('onclick').includes(`showSection('${sectionId}')`)) {
+                            isInSubmenuOfActiveParent = true;
+                            sl.classList.add('active'); 
+                        }
+                    });
+                }
+
+                if (isDirectMatch || isInSubmenuOfActiveParent) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            const icon = element.querySelector('i.fa-chevron-down, i.fa-chevron-up');
+            if (submenu && submenu.classList.contains('submenu')) {
+                submenu.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                }
+            }
+        }
+        
+        function initializeAccordions() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.fas.fa-chevron-down, .fas.fa-chevron-up');
+                    
+                    content.classList.toggle('hidden');
+                    header.classList.toggle('open'); 
+                    
+                    if (icon) { 
+                        if (content.classList.contains('hidden')) {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        } else {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        }
+                    }
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('section-home');
+            
+            const crisisPlanParentLink = Array.from(document.querySelectorAll('a.nav-link.font-semibold')).find(el => el.textContent.includes("Plan d'Intervention de Crise"));
+            if(crisisPlanParentLink) {
+                const submenu = crisisPlanParentLink.nextElementSibling;
+                const icon = crisisPlanParentLink.querySelector('i.fa-chevron-down');
+                 if (submenu && submenu.classList.contains('submenu') && icon) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                 }
+            }
+            
+            initializeAccordions(); 
+        });
+    </script>
+
+</body>
+</html>
